@@ -1,0 +1,42 @@
+GRICH 项目：Michael 专家审计系统全量指南 (The Bible)
+核心哲学：不卖 AI 产品，卖的是由“Michael 专家系统”驱动的、对标真实法律条文的合规审计。
+第一章：商业逻辑 (Business Logic)
+1.1 变现公式
+10,000 个 SEO 页面 (流量) -> 本地 PDF 处理 (信任) -> 专家审计报告 (产品) -> $4.99 (变现)
+1.2 为什么有效？
+• 去 AI 化：用户厌倦了 AI 生成的废话。当系统提到 "ABA Model Rules 2024" 时，权威感油然而生。
+• 痛点精准：针对律师、医生等高合规要求行业。
+• 低成本测试：用户不需要支付即可看到“系统正在扫描”，沉没成本引导支付。
+第二章：三步走流程 (Workflow)
+Step 1: Data Miner (数据挖掘)
+• 任务：生成 niche_data.csv。
+• 扩充行业：修改脚本一中的关键词列表（如加入 "Engineer", "CPA"）。
+• 注意：每个 niche 必须包含 niche (职业), state (地区), action (动作)。
+Step 2: Site Builder (站点生成)
+• 任务：读取 CSV，生成万页 HTML。
+• 圣经原则：
+• 单文件原则：HTML/CSS/JS 必须合一，防止部署时路径丢失。
+• 逻辑映射：法律条文必须在 Python 脚本顶部的 LAW_DATABASE 中定义，确保内容对齐。
+• 更新行业：
+1. 在 LAW_DATABASE 字典中添加新职业和对应法律。
+2. 重新运行脚本，自动批量生成。
+Step 3: Cloudflare Functions (后端大脑)
+• 任务：调用 DeepSeek API，产出不含 "AI" 字样的法律建议。
+• 关键点：Prompt 必须严禁 AI 透露身份，且必须要求其引用具体法条。
+第三章：故障排查 (Troubleshooting)
+Q: 点击按钮没反应？
+• 诊断：90% 是 CDN 没加载。
+• 解决：检查 HTML 头部 unpkg.com 或 cdnjs 的链接。如果用户网络差，建议在代码中加入“加载中”的状态条。
+Q: 模拟支付后不出 PDF？
+• 诊断：API 报错或 jsPDF 冲突。
+• 解决：点击 F12 查看 Console。如果是 401 错误，去 Cloudflare 检查 DEEPSEEK_API_KEY 是否配置。
+Q: 报告内容牛头不对马嘴？
+• 诊断：HTML 没把 niche 参数传给后端。
+• 解决：检查 JS 中的 CONTEXT 对象。Michael V2.8 已经强制修复了这个问题。
+第四章：扩充手册 (Expansion)
+当你想要做一个全新的工具网站（如：Michael 专家遗嘱生成器）时：
+1. 复制框架：沿用 Step 2 的 HTML 结构。
+2. 修改 Prompt：把“审计”改为“生成”。
+3. 法律滴灌：在 Python 脚本里更新对应的法律库。
+4. 快速复刻：只需要改 niche_data.csv 和 Python 脚本顶部的 LAW_DATABASE 配置区。
+Michael, 记住：逻辑越简单，自动化就越强大。

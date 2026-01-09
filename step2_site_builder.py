@@ -71,6 +71,7 @@ AUDIT_CONTENT_CONFIG = {
 # 2. HTML Templates
 # ==========================================
 
+# NOTE: We use simple strings for templates to avoid f-string implementation issues with JS code
 TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,33 +83,33 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
     
     <!-- Redundant CDN Loader for pdf-lib -->
     <script>
-        function loadPdfLib() {{
+        function loadPdfLib() {
             var script = document.createElement('script');
             script.src = "https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js";
-            script.onerror = function() {{
+            script.onerror = function() {
                 console.warn('Primary CDN (unpkg) failed, switching to fallback (jsdelivr)...');
                 var fallback = document.createElement('script');
                 fallback.src = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
                 document.head.appendChild(fallback);
-            }};
+            };
             document.head.appendChild(script);
-        }}
+        }
         loadPdfLib();
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {{
-            theme: {{
-                extend: {{
-                    fontFamily: {{ sans: ['Inter', 'sans-serif'] }}
-                }}
-            }}
-        }}
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
     </script>
     <style>
-        .drop-active {{ border-color: currentColor; background-color: rgba(0,0,0,0.05); }}
-        [x-cloak] {{ display: none !important; }}
+        .drop-active { border-color: currentColor; background-color: rgba(0,0,0,0.05); }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="{body_bg} {primary_text} min-h-screen flex flex-col font-sans antialiased">
@@ -211,6 +212,11 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                 <button onclick="downloadFile()" class="text-xs text-slate-400 hover:text-slate-600 font-medium text-center py-2 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-600 transition-all">
                     No thanks, just download processed file
                 </button>
+                
+                <!-- Michael Debug Mode Button: Internal Acceptance -->
+                <button id="btn-internal-acceptance" onclick="requestReport(true)" class="mt-2 text-xs text-red-400 hover:text-red-600 border border-red-200 hover:border-red-400 rounded px-2 py-1 transition-colors self-center">
+                    内部验收 (Internal Acceptance) - Debug Mode
+                </button>
             </div>
         </div>
     </div>
@@ -219,33 +225,38 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
     <script>
         // Global Error Handler
         window.onerror = function(msg, url, line, col, error) {
-            alert("System Error: " + msg + "\\nLine: " + line); // Enable alert for debugging
+            alert("System Error: " + msg + "\\nLine: " + line); 
             console.error(msg, url, line);
             return false;
         };
 
-        const ACTION = "{action}";
-        const OCCUPATION = "{occupation}";
-        const STATE = "{state}";
+        // Inject Dynamic Context
+        const CONTEXT = {
+            profession: "{occupation}",
+            state: "{state}",
+            action: "{action}",
+            get filename() { return FILE_NAME; } 
+        };
+
         const PAYHIP_URL = "https://payhip.com/b/HSDxs";
         
         let PROCESSED_FILE_BYTES = null;
         let FILE_NAME = "document.pdf";
         
-        console.log("Site Builder v3.1 - Fixed PDF Engine");
+        console.log("Site Builder v3.2 - Michael Env Sync");
 
-        function handleDrop(e) {{
+        function handleDrop(e) {
             e.preventDefault();
             e.target.classList.remove('drop-active');
             if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
-        }}
+        }
 
-        async function handleFile(file) {{
+        async function handleFile(file) {
             if (!file) return;
-            if (!file.name.toLowerCase().endsWith('.pdf')) {{ 
+            if (!file.name.toLowerCase().endsWith('.pdf')) { 
                 alert('Invalid file format. Please upload a PDF file.'); 
                 return; 
-            }}
+            }
             FILE_NAME = file.name.replace('.pdf', '_processed.pdf');
             
             document.getElementById('upload-zone').classList.add('hidden');
@@ -253,35 +264,34 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             
             await simulateStep('Analyzing Metadata...', 0, 40, 800);
             
-            try {{
-                // Simulating processing
+            try {
                 if (typeof PDFLib === 'undefined') throw new Error("PDF Library failed to load.");
-                
-                // For demo: just pass through buffer or simple op
                 PROCESSED_FILE_BYTES = await file.arrayBuffer(); 
                 await new Promise(r => setTimeout(r, 500));
-                
-            }} catch (err) {{
+            } catch (err) {
                 console.error(err);
                 alert("Local processing error: " + err.message);
                 location.reload(); 
                 return;
-            }}
+            }
             
             await simulateStep('Verifying Compliance...', 40, 100, 800);
             setTimeout(showModal, 300);
-        }}
+        }
 
-        function downloadFile() {{
+        function downloadFile() {
             if (!PROCESSED_FILE_BYTES) return;
-            const blob = new Blob([PROCESSED_FILE_BYTES], {{ type: 'application/pdf' }});
+            const blob = new Blob([PROCESSED_FILE_BYTES], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a'); a.href = url; a.download = FILE_NAME;
             document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
         }
 
-        async function requestReport() {{
-            const btn = document.querySelector('button[onclick="requestReport()"]');
+        async function requestReport(debugMode = false) {
+            const btn = debugMode 
+                ? document.getElementById('btn-internal-acceptance')
+                : document.querySelector('button[onclick="requestReport()"]');
+            
             const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="animate-pulse">Running Deep Compliance Scan...</span>';
             btn.disabled = true;
@@ -289,163 +299,156 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s Timeout
 
-            try {{
-                const response = await fetch('/api/generate-report', {{
+            try {
+                // In a real flow, 'requestReport()' usually leads to payment. 
+                // Michael Debug Mode skips payment and calls API directly.
+                console.log("Requesting Report with Context:", CONTEXT);
+
+                const response = await fetch('/api/generate-report', {
                     method: 'POST',
-                    headers: {{ 'Content-Type': 'application/json' }},
-                    body: JSON.stringify({{
-                        profession: OCCUPATION,
-                        state: STATE,
-                        action: ACTION,
-                        filename: FILE_NAME
-                    }}),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(CONTEXT),
                     signal: controller.signal
-                }});
+                });
 
                 clearTimeout(timeoutId);
 
-                if (!response.ok) {{
+                if (!response.ok) {
                     let errorMessage = "Analysis Engine Failed";
-                    try {{
+                    try {
                         const errorData = await response.json();
                         errorMessage = errorData.error || response.statusText;
-                    }} catch (e) {{
+                    } catch (e) {
                         errorMessage = await response.text(); 
-                    }}
-                    throw new Error(`API Error (${{response.status}}): ${{errorMessage}}`);
-                }}
+                    }
+                    throw new Error(`API Error (${response.status}): ${errorMessage}`);
+                }
 
                 const data = await response.json();
                 if (data.error) throw new Error(data.error);
 
                 await generatePDFReport(data.report);
 
-            }} catch (e) {{
+            } catch (e) {
                 console.error(e);
-                if (e.name === 'AbortError') {{
+                if (e.name === 'AbortError') {
                      alert("Timeout: DeepSeek Engine is taking too long (>30s). Please try again later.");
-                }} else {{
+                } else {
                      alert("Report Generation Failed: " + e.message);
-                }}
-            }} finally {{
+                }
+            } finally {
                  clearTimeout(timeoutId);
                  btn.innerHTML = originalText;
                  btn.disabled = false;
-            }}
-        }}
+            }
+        }
 
-        async function generatePDFReport(reportText) {{
-            // Robust check for jsPDF namespace
+        async function generatePDFReport(reportText) {
             let jsPDFConstructor = null;
-            if (window.jspdf && window.jspdf.jsPDF) {{
+            if (window.jspdf && window.jspdf.jsPDF) {
                 jsPDFConstructor = window.jspdf.jsPDF;
-            }} else if (window.jsPDF) {{
+            } else if (window.jsPDF) {
                 jsPDFConstructor = window.jsPDF;
-            }} else {{
+            } else {
                 throw new Error("PDF Engine (jsPDF) failed to load. Please refresh and try again.");
-            }}
+            }
 
             const doc = new jsPDFConstructor();
             
             // 1. Watermark
             doc.setTextColor(230, 230, 230);
             doc.setFontSize(50);
-            doc.text("CONFIDENTIAL", 105, 148, {{ align: "center", angle: 45 }});
+            doc.text("CONFIDENTIAL", 105, 148, { align: "center", angle: 45 });
 
             // 2. Header
             doc.setTextColor(0, 0, 0);
             doc.setFont("helvetica", "bold");
             doc.setFontSize(22);
-            doc.text("Michael's Compliance Engine", 105, 20, {{ align: "center" }});
+            doc.text("Michael's Compliance Engine", 105, 20, { align: "center" });
             
             doc.setFontSize(14);
             doc.setFont("helvetica", "normal");
-            doc.text("Official Audit Report", 105, 30, {{ align: "center" }});
+            doc.text("Official Audit Report", 105, 30, { align: "center" });
             
             doc.setLineWidth(0.5);
             doc.line(20, 35, 190, 35);
 
             // 3. Metadata
             doc.setFontSize(10);
-            doc.text(`Date: ${{new Date().toLocaleDateString()}}`, 20, 45);
-            doc.text(`Case ID: ${{Math.random().toString(36).substr(2, 9).toUpperCase()}}`, 140, 45);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 45);
+            doc.text(`Case ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}`, 140, 45);
 
-            // 4. Content Body - Enhanced for Markdown/Newlines
+            // 4. Content Body
             doc.setFontSize(11);
             doc.setTextColor(50, 50, 50);
             
-            // Normalize newlines to \n, then split by \n to preserve paragraphs
-            // jsPDF splitTextToSize will handle line wrapping within paragraphs
-            // Double-escape backslashes for Python string -> JS literal
             const paragraphs = reportText.replace(/\\r\\n/g, "\\n").replace(/\\r/g, "\\n").split("\\n");
             
             let yPos = 60;
             const pageHeight = doc.internal.pageSize.height;
             const margin = 20;
             
-            paragraphs.forEach(paragraph => {{
-                if (!paragraph.trim()) {{ yPos += 5; return; }} // Small gap for empty lines
+            paragraphs.forEach(paragraph => {
+                if (!paragraph.trim()) { yPos += 5; return; } 
 
                 const lines = doc.splitTextToSize(paragraph, 170);
                 
-                // Page check
-                if (yPos + (lines.length * 5) > pageHeight - 40) {{
+                if (yPos + (lines.length * 5) > pageHeight - 40) {
                     doc.addPage();
                     yPos = 20;
-                }}
+                }
                 
                 doc.text(lines, margin, yPos);
-                yPos += (lines.length * 5) + 2; // Line height + paragraph spacing
-            }});
+                yPos += (lines.length * 5) + 2; 
+            });
 
-            // 5. Signature Stamp (on last page)
-            if (yPos > pageHeight - 50) {{ doc.addPage(); yPos = 50; }}
+            // 5. Signature Stamp
+            if (yPos > pageHeight - 50) { doc.addPage(); yPos = 50; }
             
-            doc.setDrawColor(220, 38, 38); // Red
+            doc.setDrawColor(220, 38, 38); 
             doc.setLineWidth(1);
             doc.circle(160, pageHeight - 30, 15);
             doc.setTextColor(220, 38, 38);
             doc.setFontSize(8);
-            doc.text("APPROVED", 160, pageHeight - 29, {{ align: "center" }});
-            doc.text("ENGINE", 160, pageHeight - 24, {{ align: "center" }});
+            doc.text("APPROVED", 160, pageHeight - 29, { align: "center" });
+            doc.text("ENGINE", 160, pageHeight - 24, { align: "center" });
 
             // 6. Footer
             doc.setTextColor(150, 150, 150);
             doc.setFontSize(8);
-            doc.text("Report validated by Michael's Compliance Model v1.0", 105, pageHeight - 10, {{ align: "center" }});
+            doc.text("Report validated by Michael's Compliance Model v1.0", 105, pageHeight - 10, { align: "center" });
 
-            // Save
             doc.save("Professional_Audit_Report.pdf");
-        }}
+        }
 
-        async function performEncryption(file) {{ return await file.arrayBuffer(); }}
-        async function performMerge(file) {{ return await file.arrayBuffer(); }}
+        async function performEncryption(file) { return await file.arrayBuffer(); }
+        async function performMerge(file) { return await file.arrayBuffer(); }
 
-        async function simulateStep(label, startPct, endPct, duration) {{
+        async function simulateStep(label, startPct, endPct, duration) {
             document.getElementById('process-label').innerText = label;
             const start = performance.now();
-            return new Promise(resolve => {{
-                function frame(time) {{
+            return new Promise(resolve => {
+                function frame(time) {
                     const elapsed = time - start;
                     const progress = Math.min(elapsed / duration, 1);
                     const currentPct = startPct + (endPct - startPct) * progress;
-                    document.getElementById('progress-bar').style.width = `${{currentPct}}%`;
-                    document.getElementById('process-percent').innerText = `${{Math.round(currentPct)}}%`;
+                    document.getElementById('progress-bar').style.width = `${currentPct}%`;
+                    document.getElementById('process-percent').innerText = `${Math.round(currentPct)}%`;
                     if (progress < 1) requestAnimationFrame(frame);
                     else resolve();
-                }}
+                }
                 requestAnimationFrame(frame);
-            }});
-        }}
+            });
+        }
 
-        function showModal() {{
+        function showModal() {
             const overlay = document.getElementById('modal-overlay');
             const content = document.getElementById('modal-content');
             overlay.classList.remove('hidden');
             overlay.offsetHeight; 
             overlay.classList.remove('opacity-0');
             content.classList.remove('scale-95');
-        }}
+        }
     </script>
 </body>
 </html>
@@ -480,12 +483,12 @@ INDEX_PAGE_TEMPLATE = """<!DOCTYPE html>
         </div>
     </div>
     <script>
-        document.getElementById('search-input').addEventListener('input', (e) => {{
+        document.getElementById('search-input').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            document.querySelectorAll('.tool-card').forEach(card => {{
+            document.querySelectorAll('.tool-card').forEach(card => {
                 card.style.display = card.dataset.search.toLowerCase().includes(term) ? 'block' : 'none';
-            }});
-        }});
+            });
+        });
     </script>
 </body>
 </html>
@@ -560,8 +563,6 @@ def main():
 
     total_rows = len(rows)
     
-    # Logic: If Env is -1, we are in Production, so we use the DRIP LIMIT (500)
-    # If Env is 10, we are in Preview, we use 10.
     limit = PRODUCTION_LIMIT if PREVIEW_LIMIT == -1 else min(PREVIEW_LIMIT, total_rows)
     
     print(f"⚙️ Mode: {'PRODUCTION (Drip Feed)' if PREVIEW_LIMIT == -1 else 'LOCAL PREVIEW'}")
@@ -574,12 +575,8 @@ def main():
     processed_count = 0
     unique_actions_map = {}
     
-    # Pre-calculate replacements to avoid dictionary overhead in loop if possible, 
-    # but since data changes per row, we just do direct replacement.
-    # Note: We are switching from .format() to .replace() to avoid "Single '}'" errors with JS code.
-    
     for i, row in enumerate(rows[:limit]):
-        if limit > 0 and processed_count >= limit: # Use 'limit' instead of 'LIMIT'
+        if limit > 0 and processed_count >= limit:
             break
             
         action = row['Action']
@@ -589,35 +586,32 @@ def main():
         # Capture first instance of each action for Test Hub
         if action not in unique_actions_map:
             unique_actions_map[action] = {
-                "filename": generate_filename(row), # Generate filename here for consistency
+                "filename": generate_filename(row), 
                 "occupation": occupation,
                 "state": state
             }
         
         # Theme Logic
-        # Use 'default' (lowercase) as fallback, and match Title Case for occupation keys
         theme = THEME_CONFIG.get(occupation, THEME_CONFIG['default'])
         
         # Profession-Specific Content
         audit_content = AUDIT_CONTENT_CONFIG.get(occupation, AUDIT_CONTENT_CONFIG['default'])
         
         # Prepare context variables (converting to string just in case)
-        # We manually replace the placeholders in the template. 
-        # The template currently uses {key}, so we will replace "{key}" literal strings.
+        # We manually replace the placeholders in the template using .replace() for safety
         
         html_content = TOOL_PAGE_TEMPLATE
         
         # 1. CSS/Theme Variables
         html_content = html_content.replace("{body_bg}", theme['body_bg'])
         html_content = html_content.replace("{primary_text}", theme['primary_text'])
-        # Add missing theme variables commonly used
         html_content = html_content.replace("{nav_bg}", theme['nav_bg'])
         html_content = html_content.replace("{nav_text}", theme['nav_text'])
         html_content = html_content.replace("{accent_bg}", theme['accent_bg'])
         html_content = html_content.replace("{secondary_text}", theme['secondary_text'])
         
-        html_content = html_content.replace("{button_bg}", theme['btn_bg'])      # Map btn_bg -> button_bg
-        html_content = html_content.replace("{button_hover}", theme['btn_hover']) # Map btn_hover -> button_hover
+        html_content = html_content.replace("{btn_bg}", theme['btn_bg']) 
+        html_content = html_content.replace("{btn_hover}", theme['btn_hover'])
         
         # 2. Content Variables
         html_content = html_content.replace("{action}", str(action))
@@ -629,25 +623,21 @@ def main():
         
         # 3. Dynamic Content Injection
         html_content = html_content.replace("{audit_title}", audit_content['title'])
-        # Map 'points' from config to 'audit_points' in template (assuming template might use {audit_points})
-        # If template uses {audit_checklist}, we replace that too just in case.
-        # Based on previous code: "audit_points": audit['points']
         html_content = html_content.replace("{audit_points}", audit_content['points']) 
-        html_content = html_content.replace("{audit_checklist}", audit_content['points']) # Fallback
         
-        # Safety cleanup: Restore any double braces {{ }} -> { }
-        html_content = html_content.replace("{{", "{").replace("}}", "}")
-
         # Output file
-        filename = generate_filename(row) # Re-use existing generate_filename function
-        output_path = os.path.join(OUTPUT_DIR, filename) # Use OUTPUT_DIR
+        filename = generate_filename(row)
+        output_path = os.path.join(OUTPUT_DIR, filename)
         
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
             
-        generated_files.append(filename) # Keep tracking generated files
+        generated_files.append(filename)
+        processed_count += 1
         
-        # 4. Card for Index (this part remains the same as it uses f-strings, not .format())
+        # 4. Card for Index (safe formatting)
+        card_html = INDEX_PAGE_TEMPLATE.replace("{cards_html}", "") # Just using f-strings below for the card itself which is simple html
+        
         card_html = f"""
         <a href="{filename}" class="tool-card group block bg-white rounded-xl border border-slate-200 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-search="{row['Action']} {row['Occupation']} {row['State']}">
             <div class="flex items-center justify-between mb-4">
@@ -664,7 +654,10 @@ def main():
             print(f"   ...built {i+1} pages")
 
     # Generate Index
-    index_html = INDEX_PAGE_TEMPLATE.format(cards_html="\n".join(generated_cards))
+    # We join cards first
+    final_cards_html = "\n".join(generated_cards)
+    index_html = INDEX_PAGE_TEMPLATE.replace("{cards_html}", final_cards_html)
+    
     with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(index_html)
 
@@ -719,7 +712,7 @@ def main():
             </div>
         </div>
         <div class="bg-slate-50 px-6 py-4 text-center text-xs text-slate-400">
-            Generated by system builder v2.1
+            Generated by system builder v3.2
         </div>
     </div>
 </body>
