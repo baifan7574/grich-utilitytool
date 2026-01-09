@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge PDF for Psychologist in Georgia - Michael 专家审计系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 多重 CDN 备份加载 PDF 引擎 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js'"></script>
+    <style>
+        .drop-active { border-color: #4f46e5 !important; background-color: #f5f3ff !important; }
+        .animate-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900">
+    <nav class="bg-white border-b border-slate-200 py-4 sticky top-0 z-10 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
+            <span class="font-bold text-xl text-indigo-600 tracking-tighter">GRICH <span class="text-slate-800 tracking-normal">Audit</span></span>
+            <div class="flex items-center space-x-2">
+                <span class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Michael V3.3 Active</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Merge PDF for Psychologists</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">In the high-stakes world of Georgia's client trust sector, a Psychologist cannot risk data breaches. Effectively consolidate your documents with our Merge PDF solution. Designed for storing session notes, it guarantees that specific ethical confidentiality standards standards are met.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-2xl p-2 border border-slate-100">
+            <div class="p-8">
+                <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center transition-all cursor-pointer hover:border-indigo-300 group">
+                    <input type="file" id="pdf-input" class="hidden" accept="application/pdf">
+                    <div id="upload-ui">
+                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        </div>
+                        <p class="text-lg font-bold text-slate-700">点击或拖入待审计 PDF 文档</p>
+                        <p class="text-slate-400 text-sm mt-2">系统将基于 通用商事文档合规准则 (Standard Compliance) 进行专家级扫描</p>
+                    </div>
+                    <div id="file-info-ui" class="hidden animate-in">
+                        <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
+                        </div>
+                        <p id="file-name" class="text-lg font-bold text-slate-800 truncate px-4"></p>
+                    </div>
+                </div>
+
+                <div id="action-bar" class="mt-8 hidden animate-in">
+                    <button id="generate-btn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl">
+                        生成 Michael 专家合规报告
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 支付与验收模态框 -->
+    <div id="pay-modal" class="fixed inset-0 bg-slate-900/80 hidden flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl animate-in">
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">审计已完成</h3>
+            <p class="text-slate-500 mb-8 px-4 leading-relaxed tracking-tight">
+                针对 <b>Psychologist</b> 行业的审计已结束。<br>点击下方按钮直接获取专家报告。
+            </p>
+            <button id="test-pay-btn" class="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 shadow-lg transition-all">
+                内部验收：直接出图报告
+            </button>
+            <button onclick="document.getElementById('pay-modal').classList.add('hidden')" class="mt-6 text-slate-400 text-sm hover:underline">返回</button>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const pdfInput = document.getElementById('pdf-input');
+        const fileNameDisp = document.getElementById('file-name');
+        const actionBar = document.getElementById('action-bar');
+        const generateBtn = document.getElementById('generate-btn');
+        const payModal = document.getElementById('pay-modal');
+        const testPayBtn = document.getElementById('test-pay-btn');
+
+        const CONTEXT = {
+            profession: "Psychologist",
+            state: "Georgia",
+            action: "Merge PDF",
+            filename: ""
+        };
+
+        // 文件处理
+        function handleFile(file) {
+            if (file && file.type === 'application/pdf') {
+                fileNameDisp.innerText = file.name;
+                CONTEXT.filename = file.name;
+                document.getElementById('upload-ui').classList.add('hidden');
+                document.getElementById('file-info-ui').classList.remove('hidden');
+                actionBar.classList.remove('hidden');
+            } else {
+                alert("请选择 PDF 文档。");
+            }
+        }
+
+        dropZone.onclick = () => pdfInput.click();
+        pdfInput.onchange = (e) => handleFile(e.target.files[0]);
+        ['dragenter', 'dragover'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('drop-active'); });
+        });
+        ['dragleave', 'drop'].forEach(name => {
+            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('drop-active'); });
+        });
+        dropZone.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        });
+
+        generateBtn.onclick = () => payModal.classList.remove('hidden');
+
+        // Michael 专用核心逻辑：请求报告并生成 PDF
+        async function requestReport() {
+            console.log("Michael Env Sync - Requesting Report...");
+            try {
+                const response = await fetch('/api/generate-report', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(CONTEXT)
+                });
+                
+                if (!response.ok) throw new Error("后端连接失败: " + response.status);
+                const data = await response.json();
+                
+                if (data.report) {
+                    generatePDFReport(data.report);
+                } else {
+                    throw new Error("报告内容为空，请检查 DeepSeek 余额。");
+                }
+            } catch (e) {
+                alert(" Michael 报告生成异常: " + e.message);
+                console.error(e);
+            }
+        }
+
+        function generatePDFReport(reportContent) {
+            console.log("Initializing PDF Engine...");
+            try {
+                // 解决 jsPDF 加载检查问题
+                const { jsPDF } = window.jspdf || {};
+                if (!jsPDF) {
+                    throw new Error("PDF Engine (jsPDF) 未能加载。请检查网络或刷新重试。");
+                }
+
+                const doc = new jsPDF();
+                doc.setFontSize(22);
+                doc.text("Michael 专家审计报告", 105, 20, { align: "center" });
+                doc.setFontSize(10);
+                doc.text("审计标准: 通用商事文档合规准则 (Standard Compliance)", 105, 30, { align: "center" });
+                doc.line(20, 35, 190, 35);
+                doc.setFontSize(11);
+                
+                const lines = doc.splitTextToSize(reportContent, 170);
+                doc.text(lines, 20, 45);
+                doc.save(`Michael_Audit_Report.pdf`);
+                payModal.classList.add('hidden');
+            } catch (e) {
+                alert("PDF 生成失败: " + e.message);
+            }
+        }
+
+        testPayBtn.onclick = async () => {
+            testPayBtn.disabled = true;
+            testPayBtn.innerHTML = '<span class="animate-pulse">专家系统扫描中...</span>';
+            await requestReport();
+            testPayBtn.disabled = false;
+            testPayBtn.innerText = "内部验收：直接出图报告";
+        };
+    </script>
+</body>
+</html>
