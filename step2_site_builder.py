@@ -279,7 +279,7 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
         }
 
-        async function requestReport() {
+        async function requestReport() {{
             const btn = document.querySelector('button[onclick="requestReport()"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="animate-pulse">Running Deep Compliance Scan...</span>';
@@ -288,86 +288,86 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s Timeout
 
-            try {
-                const response = await fetch('/api/generate-report', {
+            try {{
+                const response = await fetch('/api/generate-report', {{
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify({{
                         profession: OCCUPATION,
                         state: STATE,
                         action: ACTION,
                         filename: FILE_NAME
-                    }),
+                    }}),
                     signal: controller.signal
-                });
+                }});
 
                 clearTimeout(timeoutId);
 
-                if (!response.ok) {
+                if (!response.ok) {{
                     let errorMessage = "Analysis Engine Failed";
-                    try {
+                    try {{
                         const errorData = await response.json();
                         errorMessage = errorData.error || response.statusText;
-                    } catch (e) {
+                    }} catch (e) {{
                         errorMessage = await response.text(); 
-                    }
-                    throw new Error(`API Error (${response.status}): ${errorMessage}`);
-                }
+                    }}
+                    throw new Error(`API Error (${{response.status}}): ${{errorMessage}}`);
+                }}
 
                 const data = await response.json();
                 if (data.error) throw new Error(data.error);
 
                 await generatePDFReport(data.report);
 
-            } catch (e) {
+            }} catch (e) {{
                 console.error(e);
-                if (e.name === 'AbortError') {
+                if (e.name === 'AbortError') {{
                      alert("Timeout: DeepSeek Engine is taking too long (>30s). Please try again later.");
-                } else {
+                }} else {{
                      alert("Report Generation Failed: " + e.message);
-                }
-            } finally {
+                }}
+            }} finally {{
                  clearTimeout(timeoutId);
                  btn.innerHTML = originalText;
                  btn.disabled = false;
-            }
-        }
+            }}
+        }}
 
-        async function generatePDFReport(reportText) {
+        async function generatePDFReport(reportText) {{
             // Robust check for jsPDF namespace
             let jsPDFConstructor = null;
-            if (window.jspdf && window.jspdf.jsPDF) {
+            if (window.jspdf && window.jspdf.jsPDF) {{
                 jsPDFConstructor = window.jspdf.jsPDF;
-            } else if (window.jsPDF) {
+            }} else if (window.jsPDF) {{
                 jsPDFConstructor = window.jsPDF;
-            } else {
+            }} else {{
                 throw new Error("PDF Engine (jsPDF) failed to load. Please refresh and try again.");
-            }
+            }}
 
             const doc = new jsPDFConstructor();
             
             // 1. Watermark
             doc.setTextColor(230, 230, 230);
             doc.setFontSize(50);
-            doc.text("CONFIDENTIAL", 105, 148, { align: "center", angle: 45 });
+            doc.text("CONFIDENTIAL", 105, 148, {{ align: "center", angle: 45 }});
 
             // 2. Header
             doc.setTextColor(0, 0, 0);
             doc.setFont("helvetica", "bold");
             doc.setFontSize(22);
-            doc.text("Michael's Compliance Engine", 105, 20, { align: "center" });
+            doc.text("Michael's Compliance Engine", 105, 20, {{ align: "center" }});
             
             doc.setFontSize(14);
             doc.setFont("helvetica", "normal");
-            doc.text("Official Audit Report", 105, 30, { align: "center" });
+            doc.text("Official Audit Report", 105, 30, {{ align: "center" }});
             
             doc.setLineWidth(0.5);
             doc.line(20, 35, 190, 35);
 
             // 3. Metadata
             doc.setFontSize(10);
-            doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 45);
-            doc.text(`Case ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}`, 140, 45);
+            doc.text(`Date: ${{new Date().toLocaleDateString()}}`, 20, 45);
+            doc.text(`Case ID: ${{Math.random().toString(36).substr(2, 9).toUpperCase()}}`, 140, 45);
 
             // 4. Content Body - Enhanced for Markdown/Newlines
             doc.setFontSize(11);
