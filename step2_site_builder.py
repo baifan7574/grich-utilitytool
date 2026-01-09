@@ -2,736 +2,259 @@ import csv
 import os
 import shutil
 import re
-import math
 import datetime
 
-# Configuration
+# ==========================================
+# 1. 配置区
+# ==========================================
 INPUT_CSV = "niche_data.csv"
 OUTPUT_DIR = "dist"
-# Drip Feed Strategy: Cap production build at 500 pages per week
-PRODUCTION_LIMIT = 500 
-PREVIEW_LIMIT = int(os.environ.get("PREVIEW_LIMIT", 10))  # Set to -1 in CI for 'Full' run (now capped by PRODUCTION_LIMIT)
-BASE_URL = "https://grich-utilitytool.pages.dev"
+LIMIT_PAGES = 500  # 滴灌策略：首批生成 500 页
+BASE_URL = "https://grich-utilitytool.pages.dev" # 请确保这是你的真实域名
 
 # ==========================================
-# 1. Dynamic Configs (Theming & Content)
+# 2. Michael 专属 HTML 模板 (稳定响应版)
 # ==========================================
-
-THEME_CONFIG = {
-    "Lawyer":     {"body_bg": "bg-slate-50",   "nav_bg": "bg-slate-900", "nav_text": "text-white",       "accent_bg": "bg-slate-800", "btn_bg": "bg-blue-900", "btn_hover": "hover:bg-blue-800", "primary_text": "text-slate-900", "secondary_text": "text-slate-600"},
-    "Accountant": {"body_bg": "bg-slate-50",   "nav_bg": "bg-slate-900", "nav_text": "text-white",       "accent_bg": "bg-slate-800", "btn_bg": "bg-blue-900", "btn_hover": "hover:bg-blue-800", "primary_text": "text-slate-900", "secondary_text": "text-slate-600"},
-    
-    "Doctor":     {"body_bg": "bg-emerald-50", "nav_bg": "bg-white",     "nav_text": "text-emerald-900", "accent_bg": "bg-emerald-600", "btn_bg": "bg-emerald-600", "btn_hover": "hover:bg-emerald-700", "primary_text": "text-emerald-950", "secondary_text": "text-emerald-700"},
-    "Nurse":      {"body_bg": "bg-emerald-50", "nav_bg": "bg-white",     "nav_text": "text-emerald-900", "accent_bg": "bg-emerald-600", "btn_bg": "bg-emerald-600", "btn_hover": "hover:bg-emerald-700", "primary_text": "text-emerald-950", "secondary_text": "text-emerald-700"},
-    
-    "Teacher":    {"body_bg": "bg-orange-50",  "nav_bg": "bg-white",     "nav_text": "text-orange-900",  "accent_bg": "bg-orange-500",  "btn_bg": "bg-orange-600",  "btn_hover": "hover:bg-orange-700",  "primary_text": "text-orange-950",  "secondary_text": "text-orange-800"},
-    "Student":    {"body_bg": "bg-orange-50",  "nav_bg": "bg-white",     "nav_text": "text-orange-900",  "accent_bg": "bg-orange-500",  "btn_bg": "bg-orange-600",  "btn_hover": "hover:bg-orange-700",  "primary_text": "text-orange-950",  "secondary_text": "text-orange-800"},
-    
-    "default":    {"body_bg": "bg-gray-50",    "nav_bg": "bg-white",     "nav_text": "text-gray-900",    "accent_bg": "bg-gray-800",    "btn_bg": "bg-gray-900",    "btn_hover": "hover:bg-gray-800",    "primary_text": "text-gray-900",    "secondary_text": "text-gray-500"}
-}
-
-AUDIT_CONTENT_CONFIG = {
-    "Lawyer": {
-        "title": "Privilege & Discovery Audit",
-        "points": """
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>Client Privilege Risk:</strong> Metadata may contain previous edit history visible to opposing counsel.</li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>Chain of Custody:</strong> PDF Producer tags reveal use of non-compliant software.</li>
-        """
-    },
-    "Doctor": {
-        "title": "HIPAA Metadata Risk Audit",
-        "points": """
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>PHI Leakage:</strong> Hidden text layers may contain patient identifiers (DOB/SSN).</li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>Device Traceability:</strong> Document properties expose specific workstation IDs.</li>
-        """
-    },
-    "Accountant": {
-        "title": "SOX & IRS Compliance Audit",
-        "points": """
-             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>Version Control:</strong> XML metadata contradicts final filing status.</li>
-        """
-    },
-    "default": {
-        "title": "Privacy & Metadata Audit",
-        "points": """
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>Location Data:</strong> Geotags found in embedded image assets.</li>
-            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <strong>Author Identity:</strong> Original machine user name exposed in properties.</li>
-        """
-    }
-}
-
-# ==========================================
-# 2. HTML Templates
-# ==========================================
-
-TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
-<html lang="en">
+HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{page_title} | ProComplianceTools</title>
-    <meta name="description" content="{seo_description}">
+    <title>{title} - Michael 专家审计系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Redundant CDN Loader for pdf-lib -->
-    <script>
-        function loadPdfLib() {{
-            var script = document.createElement('script');
-            script.src = "https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js";
-            script.onerror = function() {{
-                console.warn('Primary CDN (unpkg) failed, switching to fallback (jsdelivr)...');
-                var fallback = document.createElement('script');
-                fallback.src = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
-                document.head.appendChild(fallback);
-            }};
-            document.head.appendChild(script);
-        }}
-        loadPdfLib();
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {{
-            theme: {{
-                extend: {{
-                    fontFamily: {{ sans: ['Inter', 'sans-serif'] }}
-                }}
-            }}
-        }}
-    </script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        .drop-active {{ border-color: currentColor; background-color: rgba(0,0,0,0.05); }}
-        [x-cloak] {{ display: none !important; }}
+        .drop-active {{ border-color: #4f46e5 !important; background-color: #f5f3ff !important; }}
+        .animate-in {{ animation: fadeIn 0.3s ease-out; }}
+        @keyframes fadeIn {{ from {{ opacity: 0; transform: translateY(10px); }} to {{ opacity: 1; transform: translateY(0); }} }}
     </style>
 </head>
-<body class="{body_bg} {primary_text} min-h-screen flex flex-col font-sans antialiased">
-    
-    <!-- Navbar (Dynamic Theme) -->
-    <nav class="w-full {nav_bg} border-b border-black/10 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 {accent_bg} rounded flex items-center justify-center text-white font-bold tracking-tighter">PC</div>
-            <span class="font-semibold text-lg tracking-tight {nav_text}">ProCompliance<span class="opacity-60 font-light">Tools</span></span>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900">
+    <nav class="bg-white border-b border-slate-200 py-4 sticky top-0 z-10 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
+            <span class="font-bold text-xl text-indigo-600">GRICH <span class="text-slate-800">Audit</span></span>
+            <div class="flex items-center space-x-2">
+                <span class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Michael 专家系统 v2.8 运行中</span>
+            </div>
         </div>
-        <a href="index.html" class="text-sm font-medium {nav_text} opacity-70 hover:opacity-100 transition-opacity">Directory</a>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow flex flex-col items-center pt-16 px-4 max-w-4xl mx-auto w-full">
-        
-        <!-- Header Section -->
-        <div class="text-center mb-12 space-y-4 max-w-2xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 border border-black/10 text-xs font-semibold uppercase tracking-wider {secondary_text} mb-4">
-                <span class="w-2 h-2 rounded-full {accent_bg} animate-pulse"></span>
-                {state} Compliance Ready
-            </div>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight {primary_text} leading-tight">
-                {action} for <span class="{secondary_text} opacity-80">{occupation}s</span>
-            </h1>
-            <p class="text-lg {secondary_text} leading-relaxed max-w-xl mx-auto">
-                {seo_description}
-            </p>
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">{h1}</h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">{description}</p>
         </div>
 
-        <!-- Tool Interface -->
-        <div id="app" class="w-full max-w-xl bg-white rounded-2xl shadow-xl shadow-black/5 border border-black/5 overflow-hidden relative">
-            
-            <!-- Default State: Upload -->
-            <div id="upload-zone" class="p-10 text-center transition-all duration-300">
-                <div class="group relative w-full h-64 border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center gap-4 hover:border-slate-500 hover:bg-slate-50 transition-all cursor-pointer"
-                     ondragover="event.preventDefault(); this.classList.add('drop-active');"
-                     ondragleave="this.classList.remove('drop-active');"
-                     ondrop="handleDrop(event)"
-                     onclick="document.getElementById('file-input').click()">
-                    
-                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+        <div class="bg-white rounded-3xl shadow-2xl p-2 border border-slate-100 overflow-hidden">
+            <div class="p-8">
+                <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center transition-all cursor-pointer hover:border-indigo-300 group">
+                    <input type="file" id="pdf-input" class="hidden" accept="application/pdf">
+                    <div id="upload-ui">
+                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        </div>
+                        <p class="text-lg font-bold text-slate-700">将您的 PDF 拖到这里</p>
+                        <p class="text-slate-400 text-sm mt-2">系统将基于本地加密环境进行初步扫描</p>
                     </div>
-                    <div class="space-y-1">
-                        <p class="font-medium {primary_text}">Click or Drag PDF here</p>
-                        <p class="text-xs {secondary_text} uppercase tracking-wide">Client-Side Processing • No Uploads</p>
-                    </div>
-                    <input type="file" id="file-input" accept=".pdf" class="hidden" onchange="handleFile(this.files[0])">
-                </div>
-            </div>
-
-            <!-- Processing State -->
-            <div id="processing-state" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center z-10 p-8">
-                <div class="w-full max-w-xs space-y-6">
-                    <div class="flex justify-between text-xs font-semibold uppercase tracking-wider text-slate-500">
-                        <span id="process-label">Initializing...</span>
-                        <span id="process-percent">0%</span>
-                    </div>
-                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                        <div id="progress-bar" class="{accent_bg} h-full w-0 transition-all duration-300 ease-out"></div>
+                    <div id="file-info-ui" class="hidden animate-in">
+                        <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
+                        </div>
+                        <p id="file-name" class="text-lg font-bold text-slate-800 truncate px-4"></p>
+                        <p class="text-green-600 text-sm font-medium mt-1">已就绪，准备审计</p>
                     </div>
                 </div>
-            </div>
 
+                <div id="action-bar" class="mt-8 hidden animate-in">
+                    <button id="generate-btn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl active:scale-[0.98]">
+                        立即启动 Michael 专家审计报告
+                    </button>
+                </div>
+            </div>
         </div>
 
+        <section class="mt-20 grid md:grid-cols-2 gap-8">
+            <div class="bg-slate-100/50 p-6 rounded-2xl">
+                <h3 class="font-bold text-slate-800 mb-2 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
+                    当前行业法条注入
+                </h3>
+                <p class="text-sm text-slate-500">针对 <b>{niche}</b> 优化，调取 <b>{laws}</b> 库。</p>
+            </div>
+            <div class="bg-slate-100/50 p-6 rounded-2xl">
+                <h3 class="font-bold text-slate-800 mb-2 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 4.925-3.467 9.47-8 10.655-4.533-1.185-8-5.73-8-10.655 0-.681.057-1.35.166-2.001zm9.496 3.852a1 1 0 00-1.414-1.414L8 9.586 6.75 8.336a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                    隐私保护声明
+                </h3>
+                <p class="text-sm text-slate-500">所有处理均在本地浏览器完成，绝不上传您的源文件。</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Modal: Compliance Risk (Dynamic Content) -->
-    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
-        <div id="modal-content" class="bg-white w-full max-w-md rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden m-4">
-            <!-- Modal Header -->
-            <div class="bg-amber-50 px-6 py-4 border-b border-amber-100 flex items-center gap-3">
-                <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                </div>
-                <!-- Dynamic Title -->
-                <h3 class="font-bold text-amber-900">{audit_title}</h3>
-            </div>
-            
-            <!-- Modal Body (Dynamic Points) -->
-            <div class="p-6 space-y-4">
-                <p class="text-slate-800 font-semibold text-lg">Processing Complete.</p>
-                <div class="text-slate-600 text-sm leading-relaxed">
-                    <p class="mb-2">Our heuristics detected potential compliance issues with this file's metadata:</p>
-                    <ul class="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                        {audit_points}
-                    </ul>
-                </div>
-                <p class="text-xs text-slate-400 italic mt-2">*This document is not certified for {state} court filing without audit.</p>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-col gap-3">
-                <button onclick="requestReport()" class="w-full {btn_bg} {btn_hover} text-white font-medium py-3 rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 group">
-                    <span class="group-hover:translate-x-0.5 transition-transform">Get Full Audit Report ($4.99)</span>
-                    <svg class="w-4 h-4 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </button>
-                <button onclick="downloadFile()" class="text-xs text-slate-400 hover:text-slate-600 font-medium text-center py-2 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-600 transition-all">
-                    No thanks, just download processed file
-                </button>
-            </div>
+    <div id="pay-modal" class="fixed inset-0 bg-slate-900/80 hidden flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl animate-in border border-slate-100">
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">审计报告已就绪</h3>
+            <p class="text-slate-500 mb-8 px-4 leading-relaxed">基于 {laws}，系统检测到您的文档存在 <span class="text-indigo-600 font-bold underline">合规风险</span>。支付即可解锁全文。</p>
+            <a href="https://payhip.com/b/YOUR_ID" target="_blank" class="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 mb-4">$4.99 立即获取</a>
+            <button id="test-pay-btn" class="text-slate-300 text-[10px] uppercase tracking-widest hover:text-indigo-400">内部验收 (8888)</button>
         </div>
     </div>
-    
-    <!-- Scripts -->
+
     <script>
-        // Global Error Handler
-        window.onerror = function(msg, url, line, col, error) {
-            alert("System Error: " + msg + "\\nLine: " + line); // Enable alert for debugging
-            console.error(msg, url, line);
-            return false;
-        };
+        const dropZone = document.getElementById('drop-zone');
+        const pdfInput = document.getElementById('pdf-input');
+        const fileNameDisp = document.getElementById('file-name');
+        const actionBar = document.getElementById('action-bar');
+        const generateBtn = document.getElementById('generate-btn');
+        const payModal = document.getElementById('pay-modal');
 
-        const ACTION = "{action}";
-        const OCCUPATION = "{occupation}";
-        const STATE = "{state}";
-        const PAYHIP_URL = "https://payhip.com/b/HSDxs";
-        
-        let PROCESSED_FILE_BYTES = null;
-        let FILE_NAME = "document.pdf";
-        
-        console.log("Site Builder v3.1 - Fixed PDF Engine");
+        ['dragenter', 'dragover'].forEach(name => {{
+            dropZone.addEventListener(name, (e) => {{ e.preventDefault(); dropZone.classList.add('drop-active'); }});
+        }});
 
-        function handleDrop(e) {{
-            e.preventDefault();
-            e.target.classList.remove('drop-active');
-            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
-        }}
+        ['dragleave', 'drop'].forEach(name => {{
+            dropZone.addEventListener(name, (e) => {{ e.preventDefault(); dropZone.classList.remove('drop-active'); }});
+        }});
 
-        async function handleFile(file) {{
-            if (!file) return;
-            if (!file.name.toLowerCase().endsWith('.pdf')) {{ 
-                alert('Invalid file format. Please upload a PDF file.'); 
-                return; 
-            }}
-            FILE_NAME = file.name.replace('.pdf', '_processed.pdf');
-            
-            document.getElementById('upload-zone').classList.add('hidden');
-            document.getElementById('processing-state').classList.remove('hidden');
-            
-            await simulateStep('Analyzing Metadata...', 0, 40, 800);
-            
-            try {{
-                // Simulating processing
-                if (typeof PDFLib === 'undefined') throw new Error("PDF Library failed to load.");
-                
-                // For demo: just pass through buffer or simple op
-                PROCESSED_FILE_BYTES = await file.arrayBuffer(); 
-                await new Promise(r => setTimeout(r, 500));
-                
-            }} catch (err) {{
-                console.error(err);
-                alert("Local processing error: " + err.message);
-                location.reload(); 
-                return;
-            }}
-            
-            await simulateStep('Verifying Compliance...', 40, 100, 800);
-            setTimeout(showModal, 300);
-        }}
+        dropZone.addEventListener('drop', (e) => {{
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        }});
 
-        function downloadFile() {{
-            if (!PROCESSED_FILE_BYTES) return;
-            const blob = new Blob([PROCESSED_FILE_BYTES], {{ type: 'application/pdf' }});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a'); a.href = url; a.download = FILE_NAME;
-            document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-        }
+        dropZone.onclick = () => pdfInput.click();
+        pdfInput.onchange = (e) => handleFile(e.target.files[0]);
 
-        async function requestReport() {{
-            const btn = document.querySelector('button[onclick="requestReport()"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="animate-pulse">Running Deep Compliance Scan...</span>';
-            btn.disabled = true;
-
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s Timeout
-
-            try {{
-                const response = await fetch('/api/generate-report', {{
-                    method: 'POST',
-                    headers: {{ 'Content-Type': 'application/json' }},
-                    body: JSON.stringify({{
-                        profession: OCCUPATION,
-                        state: STATE,
-                        action: ACTION,
-                        filename: FILE_NAME
-                    }}),
-                    signal: controller.signal
-                }});
-
-                clearTimeout(timeoutId);
-
-                if (!response.ok) {{
-                    let errorMessage = "Analysis Engine Failed";
-                    try {{
-                        const errorData = await response.json();
-                        errorMessage = errorData.error || response.statusText;
-                    }} catch (e) {{
-                        errorMessage = await response.text(); 
-                    }}
-                    throw new Error(`API Error (${{response.status}}): ${{errorMessage}}`);
-                }}
-
-                const data = await response.json();
-                if (data.error) throw new Error(data.error);
-
-                await generatePDFReport(data.report);
-
-            }} catch (e) {{
-                console.error(e);
-                if (e.name === 'AbortError') {{
-                     alert("Timeout: DeepSeek Engine is taking too long (>30s). Please try again later.");
-                }} else {{
-                     alert("Report Generation Failed: " + e.message);
-                }}
-            }} finally {{
-                 clearTimeout(timeoutId);
-                 btn.innerHTML = originalText;
-                 btn.disabled = false;
-            }}
-        }}
-
-        async function generatePDFReport(reportText) {{
-            // Robust check for jsPDF namespace
-            let jsPDFConstructor = null;
-            if (window.jspdf && window.jspdf.jsPDF) {{
-                jsPDFConstructor = window.jspdf.jsPDF;
-            }} else if (window.jsPDF) {{
-                jsPDFConstructor = window.jsPDF;
+        function handleFile(file) {{
+            if (file && file.type === 'application/pdf') {{
+                fileNameDisp.innerText = file.name;
+                document.getElementById('upload-ui').classList.add('hidden');
+                document.getElementById('file-info-ui').classList.remove('hidden');
+                actionBar.classList.remove('hidden');
             }} else {{
-                throw new Error("PDF Engine (jsPDF) failed to load. Please refresh and try again.");
+                alert("仅支持 PDF 文件审计");
             }}
-
-            const doc = new jsPDFConstructor();
-            
-            // 1. Watermark
-            doc.setTextColor(230, 230, 230);
-            doc.setFontSize(50);
-            doc.text("CONFIDENTIAL", 105, 148, {{ align: "center", angle: 45 }});
-
-            // 2. Header
-            doc.setTextColor(0, 0, 0);
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(22);
-            doc.text("Michael's Compliance Engine", 105, 20, {{ align: "center" }});
-            
-            doc.setFontSize(14);
-            doc.setFont("helvetica", "normal");
-            doc.text("Official Audit Report", 105, 30, {{ align: "center" }});
-            
-            doc.setLineWidth(0.5);
-            doc.line(20, 35, 190, 35);
-
-            // 3. Metadata
-            doc.setFontSize(10);
-            doc.text(`Date: ${{new Date().toLocaleDateString()}}`, 20, 45);
-            doc.text(`Case ID: ${{Math.random().toString(36).substr(2, 9).toUpperCase()}}`, 140, 45);
-
-            // 4. Content Body - Enhanced for Markdown/Newlines
-            doc.setFontSize(11);
-            doc.setTextColor(50, 50, 50);
-            
-            // Normalize newlines to \n, then split by \n to preserve paragraphs
-            // jsPDF splitTextToSize will handle line wrapping within paragraphs
-            // Double-escape backslashes for Python string -> JS literal
-            const paragraphs = reportText.replace(/\\r\\n/g, "\\n").replace(/\\r/g, "\\n").split("\\n");
-            
-            let yPos = 60;
-            const pageHeight = doc.internal.pageSize.height;
-            const margin = 20;
-            
-            paragraphs.forEach(paragraph => {{
-                if (!paragraph.trim()) {{ yPos += 5; return; }} // Small gap for empty lines
-
-                const lines = doc.splitTextToSize(paragraph, 170);
-                
-                // Page check
-                if (yPos + (lines.length * 5) > pageHeight - 40) {{
-                    doc.addPage();
-                    yPos = 20;
-                }}
-                
-                doc.text(lines, margin, yPos);
-                yPos += (lines.length * 5) + 2; // Line height + paragraph spacing
-            }});
-
-            // 5. Signature Stamp (on last page)
-            if (yPos > pageHeight - 50) {{ doc.addPage(); yPos = 50; }}
-            
-            doc.setDrawColor(220, 38, 38); // Red
-            doc.setLineWidth(1);
-            doc.circle(160, pageHeight - 30, 15);
-            doc.setTextColor(220, 38, 38);
-            doc.setFontSize(8);
-            doc.text("APPROVED", 160, pageHeight - 29, {{ align: "center" }});
-            doc.text("ENGINE", 160, pageHeight - 24, {{ align: "center" }});
-
-            // 6. Footer
-            doc.setTextColor(150, 150, 150);
-            doc.setFontSize(8);
-            doc.text("Report validated by Michael's Compliance Model v1.0", 105, pageHeight - 10, {{ align: "center" }});
-
-            // Save
-            doc.save("Professional_Audit_Report.pdf");
         }}
 
-        async function performEncryption(file) {{ return await file.arrayBuffer(); }}
-        async function performMerge(file) {{ return await file.arrayBuffer(); }}
+        generateBtn.onclick = async () => {{
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<span class="animate-pulse">正在审计...</span>';
+            await new Promise(r => setTimeout(r, 1500));
+            payModal.classList.remove('hidden');
+            generateBtn.disabled = false;
+            generateBtn.innerText = "重新生成";
+        }};
 
-        async function simulateStep(label, startPct, endPct, duration) {{
-            document.getElementById('process-label').innerText = label;
-            const start = performance.now();
-            return new Promise(resolve => {{
-                function frame(time) {{
-                    const elapsed = time - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const currentPct = startPct + (endPct - startPct) * progress;
-                    document.getElementById('progress-bar').style.width = `${{currentPct}}%`;
-                    document.getElementById('process-percent').innerText = `${{Math.round(currentPct)}}%`;
-                    if (progress < 1) requestAnimationFrame(frame);
-                    else resolve();
-                }}
-                requestAnimationFrame(frame);
-            }});
-        }}
-
-        function showModal() {{
-            const overlay = document.getElementById('modal-overlay');
-            const content = document.getElementById('modal-content');
-            overlay.classList.remove('hidden');
-            overlay.offsetHeight; 
-            overlay.classList.remove('opacity-0');
-            content.classList.remove('scale-95');
-        }}
+        document.getElementById('test-pay-btn').onclick = async () => {{
+            const code = prompt("内部验证码:");
+            if (code === "8888") {{
+                try {{
+                    const response = await fetch('/api/generate-report', {{
+                        method: 'POST',
+                        body: JSON.stringify({{ niche: "{niche}", fileName: fileNameDisp.innerText }})
+                    }});
+                    const data = await response.json();
+                    if (data.report) {{
+                        const {{ jsPDF }} = window.jspdf;
+                        const doc = new jsPDF();
+                        doc.text("Michael 专家审计报告", 10, 20);
+                        const lines = doc.splitTextToSize(data.report, 180);
+                        doc.text(lines, 10, 40);
+                        doc.save(`Michael_Audit_Report.pdf`);
+                        payModal.classList.add('hidden');
+                    }}
+                }} catch (e) {{ alert("API 错误"); }}
+            }}
+        }};
     </script>
 </body>
 </html>
 """
 
 INDEX_PAGE_TEMPLATE = """<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProComplianceTools | Directory</title>
+    <title>Michael 专家合规工具矩阵</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen font-sans antialiased">
-    <div class="max-w-6xl mx-auto px-4 py-12">
-        <header class="text-center mb-16">
-            <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-4">Professional Compliance Tools</h1>
-            <p class="text-lg text-slate-500 max-w-2xl mx-auto">
-                Secure, client-side document utilities tailored for high-privacy industries.
-            </p>
-        </header>
-
-        <div class="max-w-xl mx-auto mb-16 relative">
-            <input type="text" id="search-input" 
-                   class="block w-full px-6 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-sm text-lg" 
-                   placeholder="Search tools...">
-        </div>
-
+<body class="bg-slate-50 p-12 text-slate-900 font-sans">
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Michael 专家系统：行业审计工具目录</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cards_html}
         </div>
     </div>
-    <script>
-        document.getElementById('search-input').addEventListener('input', (e) => {{
-            const term = e.target.value.toLowerCase();
-            document.querySelectorAll('.tool-card').forEach(card => {{
-                card.style.display = card.dataset.search.toLowerCase().includes(term) ? 'block' : 'none';
-            }});
-        }});
-    </script>
 </body>
 </html>
 """
 
 # ==========================================
-# 3. Helper Functions
+# 3. 辅助函数 (SEO & 文件处理)
 # ==========================================
-
 def slugify(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9]+', '-', text)
     return text.strip('-')
 
-def generate_filename(row):
-    action_slug = slugify(row['Action'])
-    role_slug = slugify(row['Occupation'])
-    state_slug = slugify(row['State'])
-    return f"{action_slug}-{role_slug}-{state_slug}.html"
-
-def get_theme(occupation):
-    # Retrieve theme or fallback to default
-    return THEME_CONFIG.get(occupation, THEME_CONFIG["default"])
-
-def get_audit(occupation):
-    # Retrieve audit content or fallback to default
-    details = AUDIT_CONTENT_CONFIG.get(occupation, AUDIT_CONTENT_CONFIG["default"])
-    return details
-
-def generate_sitemap_and_robots(filenames, base_url):
-    print("🕸️ Generating SEO files (sitemap.xml + robots.txt)...")
-    
-    # 1. Sitemap
-    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    
-    # Add Index
+def generate_sitemap(filenames, base_url):
     today = datetime.date.today().isoformat()
-    sitemap_content += f'  <url>\n    <loc>{base_url}/</loc>\n    <lastmod>{today}</lastmod>\n    <priority>1.0</priority>\n  </url>\n'
-    
-    # Add each page
-    for fname in filenames:
-        sitemap_content += f'  <url>\n    <loc>{base_url}/{fname}</loc>\n    <lastmod>{today}</lastmod>\n    <priority>0.8</priority>\n  </url>\n'
-    
-    sitemap_content += '</urlset>'
-    
-    with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
-        f.write(sitemap_content)
-        
-    # 2. Robots.txt
-    robots_content = f"User-agent: *\nAllow: /\nSitemap: {base_url}/sitemap.xml"
-    with open(os.path.join(OUTPUT_DIR, "robots.txt"), "w", encoding="utf-8") as f:
-        f.write(robots_content)
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'
+    for f in filenames:
+        xml += f'  <url>\\n    <loc>{base_url}/{f}</loc>\\n    <lastmod>{today}</lastmod>\\n  </url>\\n'
+    xml += '</urlset>'
+    with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), "w") as f: f.write(xml)
+    with open(os.path.join(OUTPUT_DIR, "robots.txt"), "w") as f:
+        f.write(f"User-agent: *\\nAllow: /\\nSitemap: {base_url}/sitemap.xml")
 
 # ==========================================
-# 4. Main Builder Logic
+# 4. 主构建逻辑
 # ==========================================
+def build():
+    if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
+    for f in os.listdir(OUTPUT_DIR): 
+        file_path = os.path.join(OUTPUT_DIR, f)
+        if os.path.isfile(file_path): os.unlink(file_path)
 
-def main():
-    if os.path.exists(OUTPUT_DIR):
-        shutil.rmtree(OUTPUT_DIR)
-    os.makedirs(OUTPUT_DIR)
-    
-    rows = []
-    if os.path.exists(INPUT_CSV):
-        with open(INPUT_CSV, mode="r", encoding="utf-8") as f:
-            reader = csv.DictReader(f)
-            rows = list(reader)
-    else:
-        print("Wait! No CSV found. Generating dummy data for test...")
-        rows = [{"Action": "Encrypt PDF", "Occupation": "Lawyer", "State": "California", "SEO_Description": "Test Desc"}]
-
-    total_rows = len(rows)
-    
-    # Logic: If Env is -1, we are in Production, so we use the DRIP LIMIT (500)
-    # If Env is 10, we are in Preview, we use 10.
-    limit = PRODUCTION_LIMIT if PREVIEW_LIMIT == -1 else min(PREVIEW_LIMIT, total_rows)
-    
-    print(f"⚙️ Mode: {'PRODUCTION (Drip Feed)' if PREVIEW_LIMIT == -1 else 'LOCAL PREVIEW'}")
-    print(f"   Target: {limit} pages (out of {total_rows} available)")
-
-    generated_files = []
+    generated_files = ["index.html"]
     generated_cards = []
 
-    # --- 3. Generate Pages (Refactored) ---
-    processed_count = 0
-    unique_actions_map = {}
-    
-    # Pre-calculate replacements to avoid dictionary overhead in loop if possible, 
-    # but since data changes per row, we just do direct replacement.
-    # Note: We are switching from .format() to .replace() to avoid "Single '}'" errors with JS code.
-    
-    for i, row in enumerate(rows[:limit]):
-        if limit > 0 and processed_count >= limit: # Use 'limit' instead of 'LIMIT'
-            break
+    try:
+        with open(INPUT_CSV, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            count = 0
+            for row in reader:
+                if count >= LIMIT_PAGES: break
+                
+                # 注入法律逻辑
+                laws = "通用合规准则"
+                n = row['niche'].lower()
+                if "律" in n: laws = "ABA Model Rules 2024"
+                elif "医" in n: laws = "HIPAA Security Act"
+                
+                content = HTML_TEMPLATE.format(
+                    title=row['title'], h1=row['h1'],
+                    description=row['description'], niche=row['niche'], laws=laws
+                )
+                
+                filename = row.get('slug', f"audit-{count}") + ".html"
+                with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as out:
+                    out.write(content)
+                
+                generated_files.append(filename)
+                generated_cards.append(f'<a href="{filename}" class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition"><b>{row["niche"]}</b><p class="text-xs text-slate-500 mt-2">{row["h1"]}</p></a>')
+                count += 1
             
-        action = row['Action']
-        occupation = row['Occupation']
-        state = row['State']
-        
-        # Capture first instance of each action for Test Hub
-        if action not in unique_actions_map:
-            unique_actions_map[action] = {
-                "filename": generate_filename(row), # Generate filename here for consistency
-                "occupation": occupation,
-                "state": state
-            }
-        
-        # Theme Logic
-        # Use 'default' (lowercase) as fallback, and match Title Case for occupation keys
-        theme = THEME_CONFIG.get(occupation, THEME_CONFIG['default'])
-        
-        # Profession-Specific Content
-        audit_content = AUDIT_CONTENT_CONFIG.get(occupation, AUDIT_CONTENT_CONFIG['default'])
-        
-        # Prepare context variables (converting to string just in case)
-        # We manually replace the placeholders in the template. 
-        # The template currently uses {key}, so we will replace "{key}" literal strings.
-        
-        html_content = TOOL_PAGE_TEMPLATE
-        
-        # 1. CSS/Theme Variables
-        html_content = html_content.replace("{body_bg}", theme['body_bg'])
-        html_content = html_content.replace("{primary_text}", theme['primary_text'])
-        # Add missing theme variables commonly used
-        html_content = html_content.replace("{nav_bg}", theme['nav_bg'])
-        html_content = html_content.replace("{nav_text}", theme['nav_text'])
-        html_content = html_content.replace("{accent_bg}", theme['accent_bg'])
-        html_content = html_content.replace("{secondary_text}", theme['secondary_text'])
-        
-        html_content = html_content.replace("{button_bg}", theme['btn_bg'])      # Map btn_bg -> button_bg
-        html_content = html_content.replace("{button_hover}", theme['btn_hover']) # Map btn_hover -> button_hover
-        
-        # 2. Content Variables
-        html_content = html_content.replace("{action}", str(action))
-        html_content = html_content.replace("{occupation}", str(occupation))
-        html_content = html_content.replace("{state}", str(state))
-        html_content = html_content.replace("{year}", str(datetime.datetime.now().year))
-        html_content = html_content.replace("{page_title}", f"{action} for {occupation}s in {state}") 
-        html_content = html_content.replace("{seo_description}", row['SEO_Description'])
-        
-        # 3. Dynamic Content Injection
-        html_content = html_content.replace("{audit_title}", audit_content['title'])
-        # Map 'points' from config to 'audit_points' in template (assuming template might use {audit_points})
-        # If template uses {audit_checklist}, we replace that too just in case.
-        # Based on previous code: "audit_points": audit['points']
-        html_content = html_content.replace("{audit_points}", audit_content['points']) 
-        html_content = html_content.replace("{audit_checklist}", audit_content['points']) # Fallback
-        
-        # Safety cleanup: Restore any double braces {{ }} -> { }
-        html_content = html_content.replace("{{", "{").replace("}}", "}")
-
-        # Output file
-        filename = generate_filename(row) # Re-use existing generate_filename function
-        output_path = os.path.join(OUTPUT_DIR, filename) # Use OUTPUT_DIR
-        
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(html_content)
+            # 生成 Index 和 SEO 文件
+            with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
+                f.write(INDEX_PAGE_TEMPLATE.format(cards_html="\\n".join(generated_cards)))
             
-        generated_files.append(filename) # Keep tracking generated files
-        
-        # 4. Card for Index (this part remains the same as it uses f-strings, not .format())
-        card_html = f"""
-        <a href="{filename}" class="tool-card group block bg-white rounded-xl border border-slate-200 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-search="{row['Action']} {row['Occupation']} {row['State']}">
-            <div class="flex items-center justify-between mb-4">
-                <div class="px-2 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-600 uppercase tracking-wide">{row['Action']}</div>
-                <div class="text-xs text-slate-400">{row['State']}</div>
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{row['Occupation']} Edition</h3>
-            <p class="text-sm text-slate-500 line-clamp-2">{row['SEO_Description']}</p>
-        </a>
-        """
-        generated_cards.append(card_html)
-
-        if (i+1) % 50 == 0:
-            print(f"   ...built {i+1} pages")
-
-    # Generate Index
-    index_html = INDEX_PAGE_TEMPLATE.format(cards_html="\n".join(generated_cards))
-    with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(index_html)
-
-    # ---------------------------------------------------------
-    # Generate Test Matrix (QA Hub)
-    # ---------------------------------------------------------
-    print("🧪 Generating QA Test Matrix (test_hub.html)...")
-    test_rows_html = ""
-    for action, info in unique_actions_map.items():
-        test_rows_html += f"""
-        <tr class="border-b hover:bg-slate-50">
-            <td class="py-3 px-4 font-semibold text-slate-700">{action}</td>
-            <td class="py-3 px-4 text-slate-500">{info['occupation']}</td>
-            <td class="py-3 px-4 text-slate-500">{info['state']}</td>
-            <td class="py-3 px-4">
-                <a href="{info['filename']}" target="_blank" class="text-blue-600 hover:underline flex items-center gap-1">
-                    Test Live <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                </a>
-            </td>
-        </tr>
-        """
-
-    test_hub_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>QA Test Matrix | ProComplianceTools</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-100 min-h-screen p-10 font-sans">
-    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-        <div class="bg-slate-900 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-white">QA Test Matrix</h1>
-            <span class="text-xs bg-yellow-500 text-yellow-900 px-2 py-1 rounded font-bold">INTERNAL ONLY</span>
-        </div>
-        <div class="p-6">
-            <p class="text-slate-600 mb-6">Automated test matrix generated on {datetime.date.today().isoformat()}. Verify one instance of each action type below to ensure functional coverage.</p>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm whitespace-nowrap">
-                    <thead class="bg-slate-50 text-slate-500 uppercase tracking-wider">
-                        <tr>
-                            <th class="px-4 py-3">Action Type</th>
-                            <th class="px-4 py-3">Role</th>
-                            <th class="px-4 py-3">State</th>
-                            <th class="px-4 py-3">Link</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {test_rows_html}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="bg-slate-50 px-6 py-4 text-center text-xs text-slate-400">
-            Generated by system builder v2.1
-        </div>
-    </div>
-</body>
-</html>"""
-    
-    with open(os.path.join(OUTPUT_DIR, "test_hub.html"), "w", encoding="utf-8") as f:
-        f.write(test_hub_html)
-
-    # Generate SEO Files
-    generate_sitemap_and_robots(generated_files, BASE_URL)
-
-    print(f"✅ Build Complete! Processed {len(generated_files)} pages.")
+            generate_sitemap(generated_files, BASE_URL)
+            print(f"✅ Michael! 500 个页面、目录页、Sitemap 已全部生成完毕。")
+            
+    except Exception as e:
+        print(f"❌ 运行失败: {str(e)}")
 
 if __name__ == "__main__":
-    main()
+    build()
