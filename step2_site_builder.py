@@ -323,8 +323,9 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                 yPos -= 30;
 
                 const wrapText = (text, maxWidth) => {{
-                    // Fix: Split by any whitespace to handle newlines (0x0A) which break WinAnsi encoding
-                    const words = text.split(/\s+/);
+                    // Fix: Explicitly replace newlines with spaces to prevent WinAnsi errors
+                    const cleanText = text.replace(/[\r\n]+/g, " "); 
+                    const words = cleanText.split(" ");
                     let lines = [];
                     let currentLine = words[0];
 
@@ -341,6 +342,8 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                     lines.push(currentLine);
                     return lines;
                 }};
+                
+        console.log("Site Builder v2.5 Loaded");
 
                 let reportText = "";
                 if (OCCUPATION === 'Lawyer') {{
