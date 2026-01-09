@@ -9,11 +9,11 @@ import datetime
 # ==========================================
 INPUT_CSV = "niche_data.csv"
 OUTPUT_DIR = "dist"
-LIMIT_PAGES = 500  # 滴灌策略：首批生成 500 页
-BASE_URL = "https://grich-utilitytool.pages.dev" # 请确保这是你的真实域名
+LIMIT_PAGES = 500  # 滴灌策略
+BASE_URL = "https://grich-utilitytool.pages.dev" 
 
 # ==========================================
-# 2. Michael 专属 HTML 模板 (稳定响应版)
+# 2. Michael 专属 HTML 模板 (V2.8 调试增强版)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="zh-CN">
@@ -36,7 +36,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <span class="font-bold text-xl text-indigo-600">GRICH <span class="text-slate-800">Audit</span></span>
             <div class="flex items-center space-x-2">
                 <span class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Michael 专家系统 v2.8 运行中</span>
+                <span class="text-xs text-slate-400 font-medium tracking-wider uppercase">Michael 调试模式 v2.8</span>
             </div>
         </div>
     </nav>
@@ -47,58 +47,54 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto">{description}</p>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-2xl p-2 border border-slate-100 overflow-hidden">
+        <div class="bg-white rounded-3xl shadow-2xl p-2 border border-slate-100">
             <div class="p-8">
+                <!-- 拖拽区 -->
                 <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center transition-all cursor-pointer hover:border-indigo-300 group">
                     <input type="file" id="pdf-input" class="hidden" accept="application/pdf">
                     <div id="upload-ui">
-                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
                         </div>
-                        <p class="text-lg font-bold text-slate-700">将您的 PDF 拖到这里</p>
-                        <p class="text-slate-400 text-sm mt-2">系统将基于本地加密环境进行初步扫描</p>
+                        <p class="text-lg font-bold text-slate-700">拖入 PDF 开始专家审计</p>
                     </div>
+                    <!-- 文件就绪 UI -->
                     <div id="file-info-ui" class="hidden animate-in">
                         <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
                         </div>
                         <p id="file-name" class="text-lg font-bold text-slate-800 truncate px-4"></p>
-                        <p class="text-green-600 text-sm font-medium mt-1">已就绪，准备审计</p>
                     </div>
                 </div>
 
                 <div id="action-bar" class="mt-8 hidden animate-in">
-                    <button id="generate-btn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl active:scale-[0.98]">
-                        立即启动 Michael 专家审计报告
+                    <button id="generate-btn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl">
+                        立即生成合规报告
                     </button>
                 </div>
             </div>
         </div>
-
-        <section class="mt-20 grid md:grid-cols-2 gap-8">
-            <div class="bg-slate-100/50 p-6 rounded-2xl">
-                <h3 class="font-bold text-slate-800 mb-2 flex items-center">
-                    <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
-                    当前行业法条注入
-                </h3>
-                <p class="text-sm text-slate-500">针对 <b>{niche}</b> 优化，调取 <b>{laws}</b> 库。</p>
-            </div>
-            <div class="bg-slate-100/50 p-6 rounded-2xl">
-                <h3 class="font-bold text-slate-800 mb-2 flex items-center">
-                    <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 4.925-3.467 9.47-8 10.655-4.533-1.185-8-5.73-8-10.655 0-.681.057-1.35.166-2.001zm9.496 3.852a1 1 0 00-1.414-1.414L8 9.586 6.75 8.336a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                    隐私保护声明
-                </h3>
-                <p class="text-sm text-slate-500">所有处理均在本地浏览器完成，绝不上传您的源文件。</p>
-            </div>
-        </section>
     </main>
 
+    <!-- 支付与验收弹窗 -->
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/80 hidden flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl animate-in border border-slate-100">
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">审计报告已就绪</h3>
-            <p class="text-slate-500 mb-8 px-4 leading-relaxed">基于 {laws}，系统检测到您的文档存在 <span class="text-indigo-600 font-bold underline">合规风险</span>。支付即可解锁全文。</p>
-            <a href="https://payhip.com/b/YOUR_ID" target="_blank" class="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 mb-4">$4.99 立即获取</a>
-            <button id="test-pay-btn" class="text-slate-300 text-[10px] uppercase tracking-widest hover:text-indigo-400">内部验收 (8888)</button>
+        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl animate-in">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold text-slate-900">审计已就绪</h3>
+                <p class="text-slate-500 mt-2">行业背景：{niche} ({state})</p>
+            </div>
+            
+            <!-- 真实支付（目前跳过） -->
+            <button onclick="alert('生产环境请点击下方模拟支付')" class="block w-full bg-slate-100 text-slate-400 py-4 rounded-2xl font-bold mb-4 cursor-not-allowed">
+                正式购买报告 ($4.99)
+            </button>
+            
+            <!-- 模拟支付按钮 - Michael 验收专用 -->
+            <button id="test-pay-btn" class="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-100 transition-all">
+                Michael 内部验收：模拟支付并出图
+            </button>
+            
+            <button onclick="document.getElementById('pay-modal').classList.add('hidden')" class="mt-6 text-slate-400 text-sm hover:underline">取消</button>
         </div>
     </div>
 
@@ -109,7 +105,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const actionBar = document.getElementById('action-bar');
         const generateBtn = document.getElementById('generate-btn');
         const payModal = document.getElementById('pay-modal');
+        const testPayBtn = document.getElementById('test-pay-btn');
 
+        // 变量映射 - 对应 Worker 的 API 参数
+        const CONTEXT = {{
+            profession: "{niche}",
+            state: "{state}",
+            action: "{action}",
+            filename: ""
+        }};
+
+        // 1. 拖拽逻辑
         ['dragenter', 'dragover'].forEach(name => {{
             dropZone.addEventListener(name, (e) => {{ e.preventDefault(); dropZone.classList.add('drop-active'); }});
         }});
@@ -129,42 +135,62 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         function handleFile(file) {{
             if (file && file.type === 'application/pdf') {{
                 fileNameDisp.innerText = file.name;
+                CONTEXT.filename = file.name;
                 document.getElementById('upload-ui').classList.add('hidden');
                 document.getElementById('file-info-ui').classList.remove('hidden');
                 actionBar.classList.remove('hidden');
             }} else {{
-                alert("仅支持 PDF 文件审计");
+                alert("请上传 PDF 文件。");
             }}
         }}
 
-        generateBtn.onclick = async () => {{
-            generateBtn.disabled = true;
-            generateBtn.innerHTML = '<span class="animate-pulse">正在审计...</span>';
-            await new Promise(r => setTimeout(r, 1500));
+        // 2. 唤起弹窗
+        generateBtn.onclick = () => {{
             payModal.classList.remove('hidden');
-            generateBtn.disabled = false;
-            generateBtn.innerText = "重新生成";
         }};
 
-        document.getElementById('test-pay-btn').onclick = async () => {{
-            const code = prompt("内部验证码:");
-            if (code === "8888") {{
-                try {{
-                    const response = await fetch('/api/generate-report', {{
-                        method: 'POST',
-                        body: JSON.stringify({{ niche: "{niche}", fileName: fileNameDisp.innerText }})
-                    }});
-                    const data = await response.json();
-                    if (data.report) {{
-                        const {{ jsPDF }} = window.jspdf;
-                        const doc = new jsPDF();
-                        doc.text("Michael 专家审计报告", 10, 20);
-                        const lines = doc.splitTextToSize(data.report, 180);
-                        doc.text(lines, 10, 40);
-                        doc.save(`Michael_Audit_Report.pdf`);
-                        payModal.classList.add('hidden');
-                    }}
-                }} catch (e) {{ alert("API 错误"); }}
+        // 3. 模拟支付并生成报告 (核心逻辑修复)
+        testPayBtn.onclick = async () => {{
+            testPayBtn.disabled = true;
+            testPayBtn.innerHTML = '<span class="animate-pulse">正在调用 DeepSeek 生成报告...</span>';
+            
+            try {{
+                // 发送给 Worker 的参数必须包含职业和州，否则报告内容会错
+                const response = await fetch('/api/generate-report', {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify(CONTEXT)
+                }});
+                
+                if (!response.ok) throw new Error("API 响应失败，状态码: " + response.status);
+
+                const data = await response.json();
+                if (data.report) {{
+                    const {{ jsPDF }} = window.jspdf;
+                    const doc = new jsPDF();
+                    
+                    // 报告页眉
+                    doc.setFontSize(22);
+                    doc.text("Michael 专家审计报告", 105, 20, {{ align: "center" }});
+                    doc.setFontSize(10);
+                    doc.text("行业：" + CONTEXT.profession + " | 州：" + CONTEXT.state, 105, 30, {{ align: "center" }});
+                    doc.line(20, 35, 190, 35);
+                    
+                    // 报告正文 (自动换行处理)
+                    doc.setFontSize(11);
+                    const lines = doc.splitTextToSize(data.report, 170);
+                    doc.text(lines, 20, 45);
+                    
+                    doc.save(`Michael_Report_${{Date.now()}}.pdf`);
+                    payModal.classList.add('hidden');
+                }} else {{
+                    alert("API 返回了空内容，请检查 Cloudflare Worker 的 Prompt 设置。");
+                }}
+            } catch (e) {{ 
+                alert("生成失败！原因：" + e.message + "\\n请检查 API Key 是否配置或 Worker 是否已发布。"); 
+            }} finally {{
+                testPayBtn.disabled = false;
+                testPayBtn.innerText = "Michael 内部验收：模拟支付并出图";
             }}
         }};
     </script>
@@ -172,54 +198,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
-INDEX_PAGE_TEMPLATE = """<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>Michael 专家合规工具矩阵</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50 p-12 text-slate-900 font-sans">
-    <div class="max-w-5xl mx-auto">
-        <h1 class="text-3xl font-bold mb-8">Michael 专家系统：行业审计工具目录</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cards_html}
-        </div>
-    </div>
-</body>
-</html>
-"""
-
 # ==========================================
-# 3. 辅助函数 (SEO & 文件处理)
-# ==========================================
-def slugify(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9]+', '-', text)
-    return text.strip('-')
-
-def generate_sitemap(filenames, base_url):
-    today = datetime.date.today().isoformat()
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'
-    for f in filenames:
-        xml += f'  <url>\\n    <loc>{base_url}/{f}</loc>\\n    <lastmod>{today}</lastmod>\\n  </url>\\n'
-    xml += '</urlset>'
-    with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), "w") as f: f.write(xml)
-    with open(os.path.join(OUTPUT_DIR, "robots.txt"), "w") as f:
-        f.write(f"User-agent: *\\nAllow: /\\nSitemap: {base_url}/sitemap.xml")
-
-# ==========================================
-# 4. 主构建逻辑
+# 3. 构建主函数
 # ==========================================
 def build():
     if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
-    for f in os.listdir(OUTPUT_DIR): 
-        file_path = os.path.join(OUTPUT_DIR, f)
-        if os.path.isfile(file_path): os.unlink(file_path)
-
-    generated_files = ["index.html"]
-    generated_cards = []
-
+    
+    generated_files = []
     try:
         with open(INPUT_CSV, "r", encoding="utf-8") as f:
             reader = csv.DictReader(f)
@@ -227,34 +212,25 @@ def build():
             for row in reader:
                 if count >= LIMIT_PAGES: break
                 
-                # 注入法律逻辑
-                laws = "通用合规准则"
+                # 法条注入逻辑
+                laws = "通用商事合规准则"
                 n = row['niche'].lower()
-                if "律" in n: laws = "ABA Model Rules 2024"
-                elif "医" in n: laws = "HIPAA Security Act"
+                if any(x in n for x in ["律", "法", "law"]): laws = "ABA Model Rules 2024"
+                elif any(x in n for x in ["医", "药", "health"]): laws = "HIPAA Privacy Rule"
                 
                 content = HTML_TEMPLATE.format(
                     title=row['title'], h1=row['h1'],
-                    description=row['description'], niche=row['niche'], laws=laws
+                    description=row['description'], niche=row['niche'], 
+                    state=row['state'], action=row['action'], laws=laws
                 )
                 
                 filename = row.get('slug', f"audit-{count}") + ".html"
                 with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as out:
                     out.write(content)
-                
-                generated_files.append(filename)
-                generated_cards.append(f'<a href="{filename}" class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition"><b>{row["niche"]}</b><p class="text-xs text-slate-500 mt-2">{row["h1"]}</p></a>')
                 count += 1
-            
-            # 生成 Index 和 SEO 文件
-            with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
-                f.write(INDEX_PAGE_TEMPLATE.format(cards_html="\\n".join(generated_cards)))
-            
-            generate_sitemap(generated_files, BASE_URL)
-            print(f"✅ Michael! 500 个页面、目录页、Sitemap 已全部生成完毕。")
-            
+            print(f"✅ Michael! 已生成 {count} 个调试页面。请去网站点击【模拟支付】验收报告内容！")
     except Exception as e:
-        print(f"❌ 运行失败: {str(e)}")
+        print(f"❌ 构建中断: {str(e)}")
 
 if __name__ == "__main__":
     build()
