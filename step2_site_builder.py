@@ -568,72 +568,84 @@ def main():
     generated_files = []
     generated_cards = []
 
-    for i, row in enumerate(rows[:limit]):
-        filename = generate_filename(row)
-        
-        # 1. Get Dynamic Data
-        theme = get_theme(row['Occupation'])
-        audit = get_audit(row['Occupation'])
-        
-        # 2. Prepare Context (Merge Row + Theme + Audit)
-        context = {
-            "page_title": f"{row['Action']} for {row['Occupation']}s in {row['State']}",
-            "action": row['Action'],
-            "occupation": row['Occupation'],
-            "state": row['State'],
-            "seo_description": row['SEO_Description'],
-            "audit_title": audit['title'],
-            "audit_points": audit['points'],
-            **theme # Unpack theme colors
-        }
-        
-        # 3. Render & Write
-        html_content = TOOL_PAGE_TEMPLATE.format(**context)
-        with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as f:
-            f.write(html_content)
-            
-        generated_files.append(filename)
-        
-    # ... (Previous code)
-
-    # Track unique actions for Test Matrix
+    # --- 3. Generate Pages (Refactored) ---
+    processed_count = 0
     unique_actions_map = {}
-
+    
+    # Pre-calculate replacements to avoid dictionary overhead in loop if possible, 
+    # but since data changes per row, we just do direct replacement.
+    # Note: We are switching from .format() to .replace() to avoid "Single '}'" errors with JS code.
+    
     for i, row in enumerate(rows[:limit]):
-        filename = generate_filename(row)
+        if limit > 0 and processed_count >= limit: # Use 'limit' instead of 'LIMIT'
+            break
+            
+        action = row['Action']
+        occupation = row['Occupation']
+        state = row['State']
         
         # Capture first instance of each action for Test Hub
-        if row['Action'] not in unique_actions_map:
-            unique_actions_map[row['Action']] = {
-                "filename": filename,
-                "occupation": row['Occupation'],
-                "state": row['State']
+        if action not in unique_actions_map:
+            unique_actions_map[action] = {
+                "filename": generate_filename(row), # Generate filename here for consistency
+                "occupation": occupation,
+                "state": state
             }
+        
+        # Theme Logic
+        # Use 'default' (lowercase) as fallback, and match Title Case for occupation keys
+        theme = THEME_CONFIG.get(occupation, THEME_CONFIG['default'])
+        
+        # Profession-Specific Content
+        audit_content = AUDIT_CONTENT_CONFIG.get(occupation, AUDIT_CONTENT_CONFIG['default'])
+        
+        # Prepare context variables (converting to string just in case)
+        # We manually replace the placeholders in the template. 
+        # The template currently uses {key}, so we will replace "{key}" literal strings.
+        
+        html_content = TOOL_PAGE_TEMPLATE
+        
+        # 1. CSS/Theme Variables
+        html_content = html_content.replace("{body_bg}", theme['body_bg'])
+        html_content = html_content.replace("{primary_text}", theme['primary_text'])
+        # Add missing theme variables commonly used
+        html_content = html_content.replace("{nav_bg}", theme['nav_bg'])
+        html_content = html_content.replace("{nav_text}", theme['nav_text'])
+        html_content = html_content.replace("{accent_bg}", theme['accent_bg'])
+        html_content = html_content.replace("{secondary_text}", theme['secondary_text'])
+        
+        html_content = html_content.replace("{button_bg}", theme['btn_bg'])      # Map btn_bg -> button_bg
+        html_content = html_content.replace("{button_hover}", theme['btn_hover']) # Map btn_hover -> button_hover
+        
+        # 2. Content Variables
+        html_content = html_content.replace("{action}", str(action))
+        html_content = html_content.replace("{occupation}", str(occupation))
+        html_content = html_content.replace("{state}", str(state))
+        html_content = html_content.replace("{year}", str(datetime.datetime.now().year))
+        html_content = html_content.replace("{page_title}", f"{action} for {occupation}s in {state}") 
+        html_content = html_content.replace("{seo_description}", row['SEO_Description'])
+        
+        # 3. Dynamic Content Injection
+        html_content = html_content.replace("{audit_title}", audit_content['title'])
+        # Map 'points' from config to 'audit_points' in template (assuming template might use {audit_points})
+        # If template uses {audit_checklist}, we replace that too just in case.
+        # Based on previous code: "audit_points": audit['points']
+        html_content = html_content.replace("{audit_points}", audit_content['points']) 
+        html_content = html_content.replace("{audit_checklist}", audit_content['points']) # Fallback
+        
+        # Safety cleanup: Restore any double braces {{ }} -> { }
+        html_content = html_content.replace("{{", "{").replace("}}", "}")
 
-        # 1. Get Dynamic Data
-        theme = get_theme(row['Occupation'])
-        audit = get_audit(row['Occupation'])
+        # Output file
+        filename = generate_filename(row) # Re-use existing generate_filename function
+        output_path = os.path.join(OUTPUT_DIR, filename) # Use OUTPUT_DIR
         
-        # 2. Prepare Context
-        context = {
-            "page_title": f"{row['Action']} for {row['Occupation']}s in {row['State']}",
-            "action": row['Action'],
-            "occupation": row['Occupation'],
-            "state": row['State'],
-            "seo_description": row['SEO_Description'],
-            "audit_title": audit['title'],
-            "audit_points": audit['points'],
-            **theme
-        }
-        
-        # 3. Render & Write
-        html_content = TOOL_PAGE_TEMPLATE.format(**context)
-        with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as f:
+        with open(output_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
             
-        generated_files.append(filename)
+        generated_files.append(filename) # Keep tracking generated files
         
-        # 4. Card for Index
+        # 4. Card for Index (this part remains the same as it uses f-strings, not .format())
         card_html = f"""
         <a href="{filename}" class="tool-card group block bg-white rounded-xl border border-slate-200 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-search="{row['Action']} {row['Occupation']} {row['State']}">
             <div class="flex items-center justify-between mb-4">
