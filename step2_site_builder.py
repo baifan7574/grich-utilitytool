@@ -3,23 +3,81 @@ import os
 import shutil
 import re
 import math
+import datetime
 
 # Configuration
 INPUT_CSV = "niche_data.csv"
 OUTPUT_DIR = "dist"
-PREVIEW_LIMIT = int(os.environ.get("PREVIEW_LIMIT", 10))  # Default to 10, set to -1 in CI for full run
+# Drip Feed Strategy: Cap production build at 500 pages per week
+PRODUCTION_LIMIT = 500 
+PREVIEW_LIMIT = int(os.environ.get("PREVIEW_LIMIT", 10))  # Set to -1 in CI for 'Full' run (now capped by PRODUCTION_LIMIT)
+BASE_URL = "https://grich-utilitytool.pages.dev"
 
 # ==========================================
-# 1. HTML Templates (Tailwind + Alpine/Vanilla JS)
+# 1. Dynamic Configs (Theming & Content)
 # ==========================================
 
-# A high-end, clean, "Audit/Legal" specific design.
+THEME_CONFIG = {
+    "Lawyer":     {"body_bg": "bg-slate-50",   "nav_bg": "bg-slate-900", "nav_text": "text-white",       "accent_bg": "bg-slate-800", "btn_bg": "bg-blue-900", "btn_hover": "hover:bg-blue-800", "primary_text": "text-slate-900", "secondary_text": "text-slate-600"},
+    "Accountant": {"body_bg": "bg-slate-50",   "nav_bg": "bg-slate-900", "nav_text": "text-white",       "accent_bg": "bg-slate-800", "btn_bg": "bg-blue-900", "btn_hover": "hover:bg-blue-800", "primary_text": "text-slate-900", "secondary_text": "text-slate-600"},
+    
+    "Doctor":     {"body_bg": "bg-emerald-50", "nav_bg": "bg-white",     "nav_text": "text-emerald-900", "accent_bg": "bg-emerald-600", "btn_bg": "bg-emerald-600", "btn_hover": "hover:bg-emerald-700", "primary_text": "text-emerald-950", "secondary_text": "text-emerald-700"},
+    "Nurse":      {"body_bg": "bg-emerald-50", "nav_bg": "bg-white",     "nav_text": "text-emerald-900", "accent_bg": "bg-emerald-600", "btn_bg": "bg-emerald-600", "btn_hover": "hover:bg-emerald-700", "primary_text": "text-emerald-950", "secondary_text": "text-emerald-700"},
+    
+    "Teacher":    {"body_bg": "bg-orange-50",  "nav_bg": "bg-white",     "nav_text": "text-orange-900",  "accent_bg": "bg-orange-500",  "btn_bg": "bg-orange-600",  "btn_hover": "hover:bg-orange-700",  "primary_text": "text-orange-950",  "secondary_text": "text-orange-800"},
+    "Student":    {"body_bg": "bg-orange-50",  "nav_bg": "bg-white",     "nav_text": "text-orange-900",  "accent_bg": "bg-orange-500",  "btn_bg": "bg-orange-600",  "btn_hover": "hover:bg-orange-700",  "primary_text": "text-orange-950",  "secondary_text": "text-orange-800"},
+    
+    "default":    {"body_bg": "bg-gray-50",    "nav_bg": "bg-white",     "nav_text": "text-gray-900",    "accent_bg": "bg-gray-800",    "btn_bg": "bg-gray-900",    "btn_hover": "hover:bg-gray-800",    "primary_text": "text-gray-900",    "secondary_text": "text-gray-500"}
+}
+
+AUDIT_CONTENT_CONFIG = {
+    "Lawyer": {
+        "title": "Privilege & Discovery Audit",
+        "points": """
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>Client Privilege Risk:</strong> Metadata may contain previous edit history visible to opposing counsel.</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>Chain of Custody:</strong> PDF Producer tags reveal use of non-compliant software.</li>
+        """
+    },
+    "Doctor": {
+        "title": "HIPAA Metadata Risk Audit",
+        "points": """
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>PHI Leakage:</strong> Hidden text layers may contain patient identifiers (DOB/SSN).</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>Device Traceability:</strong> Document properties expose specific workstation IDs.</li>
+        """
+    },
+    "Accountant": {
+        "title": "SOX & IRS Compliance Audit",
+        "points": """
+             <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>Version Control:</strong> XML metadata contradicts final filing status.</li>
+        """
+    },
+    "default": {
+        "title": "Privacy & Metadata Audit",
+        "points": """
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>Location Data:</strong> Geotags found in embedded image assets.</li>
+            <li class="flex items-start gap-2"><svg class="w-5 h-5 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <strong>Author Identity:</strong> Original machine user name exposed in properties.</li>
+        """
+    }
+}
+
+# ==========================================
+# 2. HTML Templates
+# ==========================================
+
 TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{page_title} | Professional Compliance Tools</title>
+    <title>{page_title} | ProComplianceTools</title>
+    <meta name="description" content="{seo_description}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,29 +85,25 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         tailwind.config = {{
             theme: {{
                 extend: {{
-                    fontFamily: {{ sans: ['Inter', 'sans-serif'] }},
-                    colors: {{
-                        brand: {{ 50: '#f8fafc', 100: '#f1f5f9', 500: '#64748b', 600: '#475569', 900: '#0f172a' }}
-                    }}
+                    fontFamily: {{ sans: ['Inter', 'sans-serif'] }}
                 }}
             }}
         }}
     </script>
     <style>
-        .glass-panel {{ background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }}
-        .drop-active {{ border-color: #0f172a; background-color: #f8fafc; }}
+        .drop-active {{ border-color: currentColor; background-color: rgba(0,0,0,0.05); }}
         [x-cloak] {{ display: none !important; }}
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-slate-200 selection:text-slate-900">
+<body class="{body_bg} {primary_text} min-h-screen flex flex-col font-sans antialiased">
 
-    <!-- Navbar -->
-    <nav class="w-full bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+    <!-- Navbar (Dynamic Theme) -->
+    <nav class="w-full {nav_bg} border-b border-black/10 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-slate-900 rounded flex items-center justify-center text-white font-bold tracking-tighter">PC</div>
-            <span class="font-semibold text-lg tracking-tight text-slate-800">ProCompliance<span class="text-slate-400 font-light">Tools</span></span>
+            <div class="w-8 h-8 {accent_bg} rounded flex items-center justify-center text-white font-bold tracking-tighter">PC</div>
+            <span class="font-semibold text-lg tracking-tight {nav_text}">ProCompliance<span class="opacity-60 font-light">Tools</span></span>
         </div>
-        <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Directory</a>
+        <a href="index.html" class="text-sm font-medium {nav_text} opacity-70 hover:opacity-100 transition-opacity">Directory</a>
     </nav>
 
     <!-- Main Content -->
@@ -57,20 +111,20 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         
         <!-- Header Section -->
         <div class="text-center mb-12 space-y-4 max-w-2xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold uppercase tracking-wider text-slate-600 border border-slate-200 mb-4">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 border border-black/10 text-xs font-semibold uppercase tracking-wider {secondary_text} mb-4">
+                <span class="w-2 h-2 rounded-full {accent_bg} animate-pulse"></span>
                 {state} Compliance Ready
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-                {action} for <span class="bg-clip-text text-transparent bg-gradient-to-r from-slate-700 to-slate-900">{occupation}s</span>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight {primary_text} leading-tight">
+                {action} for <span class="{secondary_text} opacity-80">{occupation}s</span>
             </h1>
-            <p class="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
+            <p class="text-lg {secondary_text} leading-relaxed max-w-xl mx-auto">
                 {seo_description}
             </p>
         </div>
 
         <!-- Tool Interface -->
-        <div id="app" class="w-full max-w-xl bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative">
+        <div id="app" class="w-full max-w-xl bg-white rounded-2xl shadow-xl shadow-black/5 border border-black/5 overflow-hidden relative">
             
             <!-- Default State: Upload -->
             <div id="upload-zone" class="p-10 text-center transition-all duration-300">
@@ -81,11 +135,12 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                      onclick="document.getElementById('file-input').click()">
                     
                     <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <!-- Icon -->
                         <svg class="w-8 h-8 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                     </div>
                     <div class="space-y-1">
-                        <p class="font-medium text-slate-900">Click or Drag PDF here</p>
-                        <p class="text-xs text-slate-500 uppercase tracking-wide">Client-Side Processing • No Uploads</p>
+                        <p class="font-medium {primary_text}">Click or Drag PDF here</p>
+                        <p class="text-xs {secondary_text} uppercase tracking-wide">Client-Side Processing • No Uploads</p>
                     </div>
                     <input type="file" id="file-input" accept=".pdf" class="hidden" onchange="handleFile(this.files[0])">
                 </div>
@@ -99,7 +154,7 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                         <span id="process-percent">0%</span>
                     </div>
                     <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                        <div id="progress-bar" class="bg-slate-900 h-full w-0 transition-all duration-300 ease-out"></div>
+                        <div id="progress-bar" class="{accent_bg} h-full w-0 transition-all duration-300 ease-out"></div>
                     </div>
                 </div>
             </div>
@@ -108,43 +163,36 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
 
     </main>
 
-    <!-- Modal: Compliance Risk -->
-    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
+    <!-- Modal: Compliance Risk (Dynamic Content) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
         <div id="modal-content" class="bg-white w-full max-w-md rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden m-4">
             <!-- Modal Header -->
             <div class="bg-amber-50 px-6 py-4 border-b border-amber-100 flex items-center gap-3">
                 <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                 </div>
-                <h3 class="font-bold text-amber-900">Compliance Audit Complete</h3>
+                <!-- Dynamic Title -->
+                <h3 class="font-bold text-amber-900">{audit_title}</h3>
             </div>
             
-            <!-- Modal Body -->
+            <!-- Modal Body (Dynamic Points) -->
             <div class="p-6 space-y-4">
-                <p class="text-slate-800 font-semibold text-lg">
-                    Success! Your file is processed.
-                </p>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    However, our compliance engine detected potential <strong>{occupation} risks</strong> in the metadata. 
-                    This file may not meet {state} privacy standards without certification.
-                </p>
-                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-2">
-                     <div class="flex justify-between text-xs text-slate-500">
-                        <span>Compliance Score</span>
-                        <span class="font-mono text-amber-600">82/100 (Unverified)</span>
-                    </div>
+                <p class="text-slate-800 font-semibold text-lg">Processing Complete.</p>
+                <div class="text-slate-600 text-sm leading-relaxed">
+                    <p class="mb-2">Our heuristics detected potential compliance issues with this file's metadata:</p>
+                    <ul class="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        {audit_points}
+                    </ul>
                 </div>
+                <p class="text-xs text-slate-400 italic mt-2">*This document is not certified for {state} court filing without audit.</p>
             </div>
 
-            <!-- Modal Footer (Dual Actions) -->
+            <!-- Modal Footer -->
             <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-col gap-3">
-                <!-- Button A: Paid -->
-                <button onclick="requestReport()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-3 rounded-lg shadow-lg shadow-slate-900/20 transition-all flex items-center justify-center gap-2 group">
-                    <span class="group-hover:translate-x-0.5 transition-transform">Get Compliance Audit Report ($4.99)</span>
-                    <svg class="w-4 h-4 text-slate-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <button onclick="requestReport()" class="w-full {btn_bg} {btn_hover} text-white font-medium py-3 rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 group">
+                    <span class="group-hover:translate-x-0.5 transition-transform">Get Full Audit Report ($4.99)</span>
+                    <svg class="w-4 h-4 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </button>
-                
-                <!-- Button B: Free (Instant Download) -->
                 <button onclick="downloadFile()" class="text-xs text-slate-400 hover:text-slate-600 font-medium text-center py-2 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-600 transition-all">
                     No thanks, just download processed file
                 </button>
@@ -152,7 +200,7 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts (Same as before) -->
     <script>
         const ACTION = "{action}";
         const OCCUPATION = "{occupation}";
@@ -160,7 +208,6 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         let PROCESSED_FILE_BYTES = null;
         let FILE_NAME = "document.pdf";
 
-        // --- UI Logic ---
         function handleDrop(e) {{
             e.preventDefault();
             e.target.classList.remove('drop-active');
@@ -169,70 +216,49 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
 
         async function handleFile(file) {{
             if (!file) return;
-            if (file.type !== 'application/pdf') {{
-                alert('Please upload a valid PDF file.');
-                return;
-            }}
-
+            if (file.type !== 'application/pdf') {{ alert('Please upload a valid PDF.'); return; }}
             FILE_NAME = file.name.replace('.pdf', '_processed.pdf');
 
-            // Transition UI
             document.getElementById('upload-zone').classList.add('hidden');
             document.getElementById('processing-state').classList.remove('hidden');
             
-            // Start Processing Sequence
-            await simulateStep('Processing...', 0, 50, 1000);
+            await simulateStep('Analyzing Metadata...', 0, 40, 800);
             
             try {{
-                // Logic
+                // Simulating processing
                 if (ACTION === 'Encrypt PDF') {{
                     PROCESSED_FILE_BYTES = await performEncryption(file);
                 }} else if (ACTION === 'Merge PDF') {{
                     PROCESSED_FILE_BYTES = await performMerge(file); 
                 }} else {{
-                    // Simulation: just return original file bytes for non-implemented demos
                     PROCESSED_FILE_BYTES = await file.arrayBuffer(); 
-                    await new Promise(r => setTimeout(r, 1000));
+                    await new Promise(r => setTimeout(r, 500));
                 }}
             }} catch (err) {{
                 console.error(err);
-                alert("An error occurred during processing.");
+                alert("Error during processing.");
                 location.reload(); 
                 return;
             }}
             
-            await simulateStep('Finalizing Audit...', 50, 100, 800);
-            
-            // Show Modal
+            await simulateStep('Verifying Compliance...', 40, 100, 800);
             setTimeout(showModal, 300);
         }}
 
-        // --- Actions ---
-        
         function downloadFile() {{
             if (!PROCESSED_FILE_BYTES) return;
             const blob = new Blob([PROCESSED_FILE_BYTES], {{ type: 'application/pdf' }});
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = FILE_NAME;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            const a = document.createElement('a'); a.href = url; a.download = FILE_NAME;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
         }}
 
         function requestReport() {{
-            // API Placeholder
-            console.log("Requesting report for:", OCCUPATION, STATE);
-            // In production, this would redirect:
-            // window.location.href = `/checkout?product=audit&role=${{OCCUPATION}}&state=${{STATE}}`;
-            alert(`Redirecting to payment gateway for ${{OCCUPATION}} Audit Report... (Simulation)`);
+            alert(`Redirecting to payment gateway for ${{OCCUPATION}} Audit Report...`);
         }}
 
-        // --- Core PDF Logic (pdf-lib) ---
         async function performEncryption(file) {{
-            const password = prompt("Set a password (default: 1234):", "1234") || "1234";
+            const password = prompt("Set password (default: 1234):", "1234") || "1234";
             const arrayBuffer = await file.arrayBuffer();
             const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
             pdfDoc.encrypt({{ userPassword: password, ownerPassword: password, permissions: {{ printing: 'highResolution' }} }});
@@ -240,19 +266,17 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         }}
 
         async function performMerge(file) {{
-            // Self-merge simulation
             const pdfDoc = await PDFLib.PDFDocument.create();
             const srcDoc = await PDFLib.PDFDocument.load(await file.arrayBuffer());
             const indices = srcDoc.getPageIndices();
             const copiedPages = await pdfDoc.copyPages(srcDoc, indices);
             copiedPages.forEach((page) => pdfDoc.addPage(page));
-            // Add twice to prove it worked
+            // Double pages for demo
             const copiedPages2 = await pdfDoc.copyPages(srcDoc, indices);
             copiedPages2.forEach((page) => pdfDoc.addPage(page));
             return await pdfDoc.save();
         }}
 
-        // --- Animation Helpers ---
         async function simulateStep(label, startPct, endPct, duration) {{
             document.getElementById('process-label').innerText = label;
             const start = performance.now();
@@ -278,7 +302,6 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             overlay.classList.remove('opacity-0');
             content.classList.remove('scale-95');
         }}
-
     </script>
 </body>
 </html>
@@ -292,57 +315,31 @@ INDEX_PAGE_TEMPLATE = """<!DOCTYPE html>
     <title>ProComplianceTools | Directory</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {{
-            theme: {{
-                extend: {{
-                    fontFamily: {{ sans: ['Inter', 'sans-serif'] }},
-                }}
-            }}
-        }}
-    </script>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen font-sans antialiased">
-    
     <div class="max-w-6xl mx-auto px-4 py-12">
-        <!-- Header -->
         <header class="text-center mb-16">
             <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-4">Professional Compliance Tools</h1>
             <p class="text-lg text-slate-500 max-w-2xl mx-auto">
-                Secure, client-side document utilities tailored for high-privacy industries across the United States.
+                Secure, client-side document utilities tailored for high-privacy industries.
             </p>
         </header>
 
-        <!-- Search -->
         <div class="max-w-xl mx-auto mb-16 relative">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
             <input type="text" id="search-input" 
-                   class="block w-full pl-11 pr-4 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent shadow-sm text-lg" 
-                   placeholder="Find your tool (e.g., 'Encrypt for Doctors in Texas')...">
+                   class="block w-full px-6 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900 shadow-sm text-lg" 
+                   placeholder="Search tools...">
         </div>
 
-        <!-- Grid -->
-        <div id="grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Cards will be injected here -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cards_html}
         </div>
     </div>
-
     <script>
-        const searchInput = document.getElementById('search-input');
-        const cards = document.querySelectorAll('.tool-card');
-
-        searchInput.addEventListener('input', (e) => {{
+        document.getElementById('search-input').addEventListener('input', (e) => {{
             const term = e.target.value.toLowerCase();
-            cards.forEach(card => {{
-                const text = card.dataset.search.toLowerCase();
-                if (text.includes(term)) {{
-                    card.style.display = 'block';
-                }} else {{
-                    card.style.display = 'none';
-                }}
+            document.querySelectorAll('.tool-card').forEach(card => {{
+                card.style.display = card.dataset.search.toLowerCase().includes(term) ? 'block' : 'none';
             }});
         }});
     </script>
@@ -350,23 +347,8 @@ INDEX_PAGE_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
-CARD_TEMPLATE = """
-<a href="{filename}" class="tool-card group block bg-white rounded-xl border border-slate-200 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-search="{search_text}">
-    <div class="flex items-center justify-between mb-4">
-        <div class="px-2 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-600 uppercase tracking-wide">{action}</div>
-        <div class="text-xs text-slate-400">{state}</div>
-    </div>
-    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{occupation} Edition</h3>
-    <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">{description}</p>
-    <div class="mt-4 pt-4 border-t border-slate-50 flex items-center gap-2 text-xs font-medium text-slate-400">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        Client-Side Secure
-    </div>
-</a>
-"""
-
 # ==========================================
-# 2. Helper Functions
+# 3. Helper Functions
 # ==========================================
 
 def slugify(text):
@@ -375,85 +357,126 @@ def slugify(text):
     return text.strip('-')
 
 def generate_filename(row):
-    # e.g., encrypt-pdf-lawyer-texas.html
     action_slug = slugify(row['Action'])
     role_slug = slugify(row['Occupation'])
     state_slug = slugify(row['State'])
     return f"{action_slug}-{role_slug}-{state_slug}.html"
 
+def get_theme(occupation):
+    # Retrieve theme or fallback to default
+    return THEME_CONFIG.get(occupation, THEME_CONFIG["default"])
+
+def get_audit(occupation):
+    # Retrieve audit content or fallback to default
+    details = AUDIT_CONTENT_CONFIG.get(occupation, AUDIT_CONTENT_CONFIG["default"])
+    return details
+
+def generate_sitemap_and_robots(filenames, base_url):
+    print("🕸️ Generating SEO files (sitemap.xml + robots.txt)...")
+    
+    # 1. Sitemap
+    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    # Add Index
+    today = datetime.date.today().isoformat()
+    sitemap_content += f'  <url>\n    <loc>{base_url}/</loc>\n    <lastmod>{today}</lastmod>\n    <priority>1.0</priority>\n  </url>\n'
+    
+    # Add each page
+    for fname in filenames:
+        sitemap_content += f'  <url>\n    <loc>{base_url}/{fname}</loc>\n    <lastmod>{today}</lastmod>\n    <priority>0.8</priority>\n  </url>\n'
+    
+    sitemap_content += '</urlset>'
+    
+    with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(sitemap_content)
+        
+    # 2. Robots.txt
+    robots_content = f"User-agent: *\nAllow: /\nSitemap: {base_url}/sitemap.xml"
+    with open(os.path.join(OUTPUT_DIR, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(robots_content)
+
 # ==========================================
-# 3. Main Builder Logic
+# 4. Main Builder Logic
 # ==========================================
 
 def main():
-    # Setup Output Directory
     if os.path.exists(OUTPUT_DIR):
         shutil.rmtree(OUTPUT_DIR)
     os.makedirs(OUTPUT_DIR)
     
-    print(f"🧹 Cleaned output directory: {OUTPUT_DIR}/")
-
-    # Read Data
     rows = []
-    with open(INPUT_CSV, mode="r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
+    if os.path.exists(INPUT_CSV):
+        with open(INPUT_CSV, mode="r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+    else:
+        print("Wait! No CSV found. Generating dummy data for test...")
+        rows = [{"Action": "Encrypt PDF", "Occupation": "Lawyer", "State": "California", "SEO_Description": "Test Desc"}]
 
     total_rows = len(rows)
-    print(f"📥 Loaded {total_rows} rows from {INPUT_CSV}")
+    
+    # Logic: If Env is -1, we are in Production, so we use the DRIP LIMIT (500)
+    # If Env is 10, we are in Preview, we use 10.
+    limit = PRODUCTION_LIMIT if PREVIEW_LIMIT == -1 else min(PREVIEW_LIMIT, total_rows)
+    
+    print(f"⚙️ Mode: {'PRODUCTION (Drip Feed)' if PREVIEW_LIMIT == -1 else 'LOCAL PREVIEW'}")
+    print(f"   Target: {limit} pages (out of {total_rows} available)")
 
-    # Determine limit
-    limit = total_rows if PREVIEW_LIMIT == -1 else min(PREVIEW_LIMIT, total_rows)
-    print(f"⚙️ Running in {'PRODUCTION' if PREVIEW_LIMIT == -1 else 'PREVIEW'} mode. Generating {limit} pages.")
-
+    generated_files = []
     generated_cards = []
 
-    # Generate Pages
     for i, row in enumerate(rows[:limit]):
         filename = generate_filename(row)
         
-        # Prepare context
+        # 1. Get Dynamic Data
+        theme = get_theme(row['Occupation'])
+        audit = get_audit(row['Occupation'])
+        
+        # 2. Prepare Context (Merge Row + Theme + Audit)
         context = {
             "page_title": f"{row['Action']} for {row['Occupation']}s in {row['State']}",
             "action": row['Action'],
-            "action_clean": row['Action'].lower().replace(" pdf", ""),
             "occupation": row['Occupation'],
             "state": row['State'],
-            "state_code": row['State'][:2].upper(), # Rough approx
-            "seo_description": row['SEO_Description']
+            "seo_description": row['SEO_Description'],
+            "audit_title": audit['title'],
+            "audit_points": audit['points'],
+            **theme # Unpack theme colors
         }
         
-        # Render HTML
+        # 3. Render & Write
         html_content = TOOL_PAGE_TEMPLATE.format(**context)
-        
-        # Write File
-        file_path = os.path.join(OUTPUT_DIR, filename)
-        with open(file_path, "w", encoding="utf-8") as f:
+        with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as f:
             f.write(html_content)
             
-        # Add to Index Card List
-        card_context = {
-            "filename": filename,
-            "search_text": f"{row['Action']} {row['Occupation']} {row['State']} {row['SEO_Description']}",
-            "action": row['Action'],
-            "state": row['State'],
-            "occupation": row['Occupation'],
-            "description": row['SEO_Description']
-        }
-        generated_cards.append(CARD_TEMPLATE.format(**card_context))
+        generated_files.append(filename)
+        
+        # 4. Card for Index
+        card_html = f"""
+        <a href="{filename}" class="tool-card group block bg-white rounded-xl border border-slate-200 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-search="{row['Action']} {row['Occupation']} {row['State']}">
+            <div class="flex items-center justify-between mb-4">
+                <div class="px-2 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-600 uppercase tracking-wide">{row['Action']}</div>
+                <div class="text-xs text-slate-400">{row['State']}</div>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{row['Occupation']} Edition</h3>
+            <p class="text-sm text-slate-500 line-clamp-2">{row['SEO_Description']}</p>
+        </a>
+        """
+        generated_cards.append(card_html)
 
-        if (i+1) % 10 == 0:
-            print(f"   ...generated {i+1} pages")
+        if (i+1) % 50 == 0:
+            print(f"   ...built {i+1} pages")
 
     # Generate Index
-    print("🏠 Generating Index Page...")
     index_html = INDEX_PAGE_TEMPLATE.format(cards_html="\n".join(generated_cards))
     with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(index_html)
+        
+    # Generate SEO Files
+    generate_sitemap_and_robots(generated_files, BASE_URL)
 
-    print(f"✅ Build Complete! Check the '{OUTPUT_DIR}' folder.")
-    print(f"   Total Pages: {limit}")
-    print(f"   Index: {os.path.abspath(os.path.join(OUTPUT_DIR, 'index.html'))}")
+    print(f"✅ Build Complete! Processed {len(generated_files)} pages.")
 
 if __name__ == "__main__":
     main()
