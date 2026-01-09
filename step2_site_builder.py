@@ -217,6 +217,12 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
     
     <!-- Scripts -->
     <script>
+        // Global Error Handler to catch silent crashes
+        window.onerror = function(msg, url, line, col, error) {{
+            alert("System Error: " + msg + "\\nLine: " + line);
+            return false;
+        }};
+
         const ACTION = "{action}";
         const OCCUPATION = "{occupation}";
         const STATE = "{state}";
@@ -225,6 +231,8 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         
         let PROCESSED_FILE_BYTES = null;
         let FILE_NAME = "document.pdf";
+        
+        console.log("Site Builder v2.6 Loaded - Robust Validation Pattern");
 
         function handleDrop(e) {{
             e.preventDefault();
@@ -234,8 +242,15 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
 
         async function handleFile(file) {{
             if (!file) return;
-            if (file.type !== 'application/pdf') {{ alert('Please upload a valid PDF.'); return; }}
+            
+            // Robust Validation: Check extension instead of strict MIME type to support Windows edge cases
+            if (!file.name.toLowerCase().endsWith('.pdf')) {{ 
+                alert('Invalid file format. Please upload a PDF file.'); 
+                return; 
+            }}
+            
             FILE_NAME = file.name.replace('.pdf', '_processed.pdf');
+            console.log("Processing file:", FILE_NAME);
 
             document.getElementById('upload-zone').classList.add('hidden');
             document.getElementById('processing-state').classList.remove('hidden');
