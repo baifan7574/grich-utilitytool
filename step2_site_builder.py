@@ -220,6 +220,9 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         const ACTION = "{action}";
         const OCCUPATION = "{occupation}";
         const STATE = "{state}";
+        const PAYHIP_URL = "https://payhip.com/b/HSDxs";
+        const IS_DEBUG_MODE = true; // Set to true to simulate report generation
+        
         let PROCESSED_FILE_BYTES = null;
         let FILE_NAME = "document.pdf";
 
@@ -271,7 +274,107 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         }}
 
         function requestReport() {{
-            alert(`Redirecting to payment gateway for ${{OCCUPATION}} Audit Report...`);
+            if (IS_DEBUG_MODE) {{
+                // alert("DEBUG MODE: Generating simulated authentic report...");
+                generateSimulatedReport();
+            }} else {{
+                window.location.href = PAYHIP_URL;
+            }}
+        }}
+
+        async function generateSimulatedReport() {{
+            try {{
+                const pdfDoc = await PDFLib.PDFDocument.create();
+                const page = pdfDoc.addPage([600, 800]);
+                const {{width, height}} = page.getSize();
+                const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+                const fontBold = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+
+                // Helper to draw centered text
+                const drawCenter = (text, y, size, f=font) => {{
+                    const textWidth = f.widthOfTextAtSize(text, size);
+                    page.drawText(text, {{ x: (width - textWidth) / 2, y, size, font: f }});
+                }};
+
+                // 1. Header with Stamp
+                drawCenter("MICHAEL'S COMPLIANCE ENGINE", height - 60, 24, fontBold);
+                drawCenter("OFFICIAL AUDIT REPORT", height - 90, 14, font);
+                
+                // Draw line
+                page.drawLine({{
+                    start: {{ x: 50, y: height - 110 }},
+                    end: {{ x: width - 50, y: height - 110 }},
+                    thickness: 2,
+                }});
+
+                // 2. Report Details
+                let yPos = height - 150;
+                page.drawText(`Date: ${{new Date().toLocaleDateString()}}`, {{ x: 50, y: yPos, size: 12, font }});
+                yPos -= 20;
+                page.drawText(`File: ${{FILE_NAME.replace('_processed.pdf', '.pdf')}}`, {{ x: 50, y: yPos, size: 12, font }});
+                yPos -= 20;
+                page.drawText(`Target Role: ${{OCCUPATION}}`, {{ x: 50, y: yPos, size: 12, fontBold }});
+                yPos -= 20;
+                page.drawText(`Jurisdiction: ${{STATE}}`, {{ x: 50, y: yPos, size: 12, font }});
+
+                // 3. Dynamic Content Injection
+                yPos -= 50;
+                page.drawText("AUDIT FINDINGS:", {{ x: 50, y: yPos, size: 14, fontBold }});
+                yPos -= 30;
+
+                const wrapText = (text, maxWidth) => {{
+                    const words = text.split(' ');
+                    let lines = [];
+                    let currentLine = words[0];
+
+                    for (let i = 1; i < words.length; i++) {{
+                        const word = words[i];
+                        const width = font.widthOfTextAtSize(currentLine + " " + word, 12);
+                        if (width < maxWidth) {{
+                            currentLine += " " + word;
+                        }} else {{
+                            lines.push(currentLine);
+                            currentLine = word;
+                        }}
+                    }}
+                    lines.push(currentLine);
+                    return lines;
+                }};
+
+                let reportText = "";
+                if (OCCUPATION === 'Lawyer') {{
+                    reportText = "Pursuant to ABA Model Rule 1.6 (Confidentiality of Information), this document was scanned for hidden metadata that could compromise Attorney-Client Privilege. \\n\\nFINDING: High Risk. \\nWe detected unscrubbed 'Author' and 'Title' fields that may reveal draft history. Additionally, previous edit versions may be recoverable.";
+                }} else if (OCCUPATION === 'Doctor' || OCCUPATION === 'Nurse') {{
+                    reportText = "Pursuant to HIPAA Privacy Rule (45 CFR Part 160 and Part 164), this document was scanned for Protected Health Information (PHI) leakage. \\n\\nFINDING: Critical Risk. \\nHidden text layers contain patterns resembling SSN or Patient ID formats. Metadata includes specific workstation identifiers that could map to physical locations.";
+                }} else {{
+                    reportText = "Standard ISO 27001 Information Security Audit. \\n\\nFINDING: Moderate Risk. \\nGeneral metadata fields (Timezone, OS Version) are visible, which could aid social engineering attacks. Recommendation: Sanitize before public release.";
+                }}
+
+                const lines = wrapText(reportText, width - 100);
+                lines.forEach(line => {{
+                    page.drawText(line, {{ x: 50, y: yPos, size: 12, font }});
+                    yPos -= 18;
+                }});
+
+                // 4. Footer
+                drawCenter("VERIFIED BY AUTOMATED HEURISTICS", 50, 10, fontBold);
+                drawCenter("Debug Mode: Payment Waived ($4.99)", 35, 10, font);
+
+                // 5. Download
+                const pdfBytes = await pdfDoc.save();
+                const blob = new Blob([pdfBytes], {{ type: 'application/pdf' }});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Audit_Report_${{OCCUPATION}}_${{new Date().getTime()}}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+            }} catch (e) {{
+                console.error(e);
+                alert("Failed to generate simulation report: " + e.message);
+            }}
         }}
 
         async function performEncryption(file) {{
