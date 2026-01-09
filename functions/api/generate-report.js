@@ -1,4 +1,6 @@
-// Cloudflare Pages Functions - 诊断增强版
+// Michael V3.7 - Cloudflare Pages Functions
+// Core Logic: Diagnostic Enhanced + Force English Output
+
 export async function onRequestPost(context) {
     const { request, env } = context;
 
@@ -23,7 +25,7 @@ export async function onRequestPost(context) {
         console.log(`Michael Audit: Processing ${profession} in ${state}`);
 
         // --- 诊断 3: 调用 DeepSeek ---
-        // 使用 OpenAI 官方库兼容的端点，提高稳定性
+        // 使用 OpenAI 官方库兼容的端点
         const response = await fetch("https://api.deepseek.com/chat/completions", {
             method: "POST",
             headers: {
@@ -35,16 +37,20 @@ export async function onRequestPost(context) {
                 messages: [
                     {
                         role: "system",
-                        content: `你是一个极其专业的合规专家系统。
-任务：针对 ${profession} 行业在 ${state} 地区的 ${action} 操作生成审计报告。
-规则：引用 ${state} 法律，严禁提到 AI，语气冷峻。`
+                        content: `You are Michael, a strict, cold, and professional expert compliance system.
+Your Task: Audit the logic of the user's request for ${profession} in ${state} doing ${action}.
+Rules:
+1. STRICTLY OUTPUT IN ENGLISH ONLY. NO CHINESE CHARACTERS ALLOWED to avoid PDF rendering issues.
+2. Maintain a professional, detached tone.
+3. Cite relevant ${state} laws or federal regulations (e.g., ABA, HIPAA, SOX, FERPA).
+4. Do not mention "AI" or "LLM". You are an expert algorithm.`
                     },
                     {
                         role: "user",
-                        content: `文档：${filename}。请生成报告。`
+                        content: `Document: ${filename}. Please generate the audit report body.`
                     }
                 ],
-                temperature: 0.1 // 降低随机性，确保专业度
+                temperature: 0.1 // 降低随机性
             })
         });
 
@@ -52,7 +58,7 @@ export async function onRequestPost(context) {
             const errorText = await response.text();
             console.error("DeepSeek API Error:", errorText);
             return new Response(JSON.stringify({
-                error: `诊断结果：DeepSeek 接口报错 (${response.status})。可能是余额不足或密钥被封。`
+                error: `Diag Alert: DeepSeek API Error (${response.status}). Check Balance or Keys.`
             }), { status: 500, headers: corsHeaders });
         }
 
@@ -66,12 +72,12 @@ export async function onRequestPost(context) {
     } catch (err) {
         console.error("Michael System Crash:", err.message);
         return new Response(JSON.stringify({
-            error: "诊断结果：后端代码崩溃。请联系 Michael 检查 functions 文件夹结构。" + err.message
+            error: "System Crash: " + err.message
         }), { status: 500, headers: corsHeaders });
     }
 }
 
-// 必须保留，解决前端拦截问题
+// OPTIONS Handler
 export async function onRequestOptions() {
     return new Response(null, {
         headers: {

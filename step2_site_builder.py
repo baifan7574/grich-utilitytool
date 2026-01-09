@@ -2,7 +2,6 @@ import csv
 import os
 import shutil
 import re
-import datetime
 
 # ==========================================
 # 1. 配置区
@@ -10,107 +9,121 @@ import datetime
 INPUT_CSV = "niche_data.csv"
 OUTPUT_DIR = "dist"
 
-# [Michael 核心 SEO 策略]：不要一次性上传 10,000 页！
-# 建议：第一周设为 500，第二周设为 1000，逐步增加，模拟自然增长。
+# Michael 核心 SEO 策略：分批上线，模拟自然增长
 LIMIT_PAGES = 500  
 
-BASE_URL = "https://grich-utilitytool.pages.dev" 
+# Michael 真实支付链接
+PAYHIP_LINK = "https://payhip.com/b/HSDxs"
 
 # 行业法律映射表
 LAW_DATABASE = {
     "lawyer": "ABA Model Rules of Professional Conduct 2024",
     "doctor": "HIPAA Privacy Rule (45 CFR Part 160)",
-    "nurse": "Nursing Practice Act & Healthcare Compliance",
-    "teacher": "FERPA (Family Educational Rights and Privacy Act)",
-    "accountant": "SOX Compliance & AICPA Professional Standards",
-    "default": "通用商事文档合规准则 (Standard Compliance)"
+    "nurse": "Nursing Practice Act",
+    "teacher": "FERPA Compliance",
+    "accountant": "SOX Standards",
+    "default": "Standard Compliance"
 }
 
 # ==========================================
-# 2. Michael 专属 HTML 模板 (V3.3 鲁棒版)
+# 2. Michael 专属 HTML 模板 (V3.7 逻辑复原版)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}} - Michael 专家审计系统</title>
+    <title>{{title}} - Michael Expert Audit System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 多重 CDN 备份加载 PDF 引擎 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js'"></script>
+    <!-- 多重冗余 CDN 确保 PDF 库在各种浏览器环境下均可加载 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // 备份加载逻辑：如果第一个 CDN 挂了，尝试第二个
+        if (typeof window.jspdf === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\\/script>');
+        }
+    </script>
     <style>
         .drop-active { border-color: #4f46e5 !important; background-color: #f5f3ff !important; }
         .animate-in { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen font-sans text-slate-900">
-    <nav class="bg-white border-b border-slate-200 py-4 sticky top-0 z-10 shadow-sm">
+    <nav class="bg-white border-b border-slate-200 py-4 shadow-sm">
         <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
-            <span class="font-bold text-xl text-indigo-600 tracking-tighter">GRICH <span class="text-slate-800 tracking-normal">Audit</span></span>
+            <span class="font-black text-2xl text-indigo-600 tracking-tighter">GRICH AUDIT</span>
             <div class="flex items-center space-x-2">
-                <span class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Michael V3.3 Active</span>
+                <span id="status-dot" class="h-2 w-2 bg-yellow-500 rounded-full animate-pulse"></span>
+                <span id="status-text" class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">System Initializing...</span>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-4 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">{{h1}}</h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">{{description}}</p>
+    <main class="max-w-4xl mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-black text-slate-900 mb-6 tracking-tight">{{h1}}</h1>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto">{{description}}</p>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-2xl p-2 border border-slate-100">
-            <div class="p-8">
-                <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center transition-all cursor-pointer hover:border-indigo-300 group">
+        <div class="bg-white rounded-[2.5rem] shadow-2xl p-2 border border-slate-100">
+            <div class="p-10">
+                <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-3xl p-16 text-center transition-all cursor-pointer hover:border-indigo-400 hover:bg-slate-50 group">
                     <input type="file" id="pdf-input" class="hidden" accept="application/pdf">
                     <div id="upload-ui">
-                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                        <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
                         </div>
-                        <p class="text-lg font-bold text-slate-700">点击或拖入待审计 PDF 文档</p>
-                        <p class="text-slate-400 text-sm mt-2">系统将基于 {{laws}} 进行专家级扫描</p>
+                        <p class="text-2xl font-bold text-slate-700">Upload PDF for Compliance Audit</p>
+                        <p class="text-slate-400 mt-3">Target Standard: <span class="text-indigo-500 font-semibold">{{laws}}</span></p>
                     </div>
-                    <div id="file-info-ui" class="hidden animate-in">
-                        <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
+                    <div id="file-ready-ui" class="hidden animate-in">
+                        <div class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
                         </div>
-                        <p id="file-name" class="text-lg font-bold text-slate-800 truncate px-4"></p>
+                        <p id="ready-file-name" class="text-2xl font-bold text-slate-800 truncate px-8"></p>
                     </div>
                 </div>
 
-                <div id="action-bar" class="mt-8 hidden animate-in">
-                    <button id="generate-btn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl">
-                        生成 Michael 专家合规报告
-                    </button>
-                </div>
+                <button id="run-audit-btn" class="hidden mt-10 w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl hover:-translate-y-1">
+                    RUN EXPERT AUDIT SCAN
+                </button>
             </div>
         </div>
     </main>
 
-    <!-- 支付与验收模态框 -->
-    <div id="pay-modal" class="fixed inset-0 bg-slate-900/80 hidden flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl animate-in">
-            <h3 class="text-2xl font-bold text-slate-900 mb-2">审计已完成</h3>
-            <p class="text-slate-500 mb-8 px-4 leading-relaxed tracking-tight">
-                针对 <b>{{profession}}</b> 行业的审计已结束。<br>点击下方按钮直接获取专家报告。
-            </p>
-            <button id="test-pay-btn" class="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 shadow-lg transition-all">
-                内部验收：直接出图报告
+    <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
+        <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
+            <div class="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+            </div>
+            <h3 class="text-3xl font-black text-slate-900 mb-4">Audit Complete</h3>
+            <p class="text-slate-500 mb-10 text-lg">Your expert report for <b>{{profession}}</b> in <b>{{state}}</b> is ready for download.</p>
+            
+            <a href="""" + PAYHIP_LINK + """" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4">
+                Download Full Report ($4.99)
+            </a>
+            
+            <div class="relative py-6">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-100"></div></div>
+                <div class="relative flex justify-center text-xs uppercase tracking-widest text-slate-300 font-bold bg-white px-4">Michael Admin</div>
+            </div>
+            
+            <button id="bypass-btn" class="text-slate-400 font-bold hover:text-red-500 transition-colors">
+                Internal Acceptance (Admin Only)
             </button>
-            <button onclick="document.getElementById('pay-modal').classList.add('hidden')" class="mt-6 text-slate-400 text-sm hover:underline">返回</button>
         </div>
     </div>
 
     <script>
         const dropZone = document.getElementById('drop-zone');
         const pdfInput = document.getElementById('pdf-input');
-        const fileNameDisp = document.getElementById('file-name');
-        const actionBar = document.getElementById('action-bar');
-        const generateBtn = document.getElementById('generate-btn');
+        const runBtn = document.getElementById('run-audit-btn');
         const payModal = document.getElementById('pay-modal');
-        const testPayBtn = document.getElementById('test-pay-btn');
+        const bypassBtn = document.getElementById('bypass-btn');
+        const statusDot = document.getElementById('status-dot');
+        const statusText = document.getElementById('status-text');
 
         const CONTEXT = {
             profession: "{{profession}}",
@@ -119,99 +132,80 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             filename: ""
         };
 
-        // 文件处理
-        function handleFile(file) {
-            if (file && file.type === 'application/pdf') {
-                fileNameDisp.innerText = file.name;
-                CONTEXT.filename = file.name;
-                document.getElementById('upload-ui').classList.add('hidden');
-                document.getElementById('file-info-ui').classList.remove('hidden');
-                actionBar.classList.remove('hidden');
+        // 系统自检
+        window.onload = () => {
+            if (window.jspdf || (window.jspdf && window.jspdf.jsPDF)) {
+                statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
+                statusText.innerText = 'Michael Expert System Active';
             } else {
-                alert("请选择 PDF 文档。");
+                statusDot.className = 'h-2 w-2 bg-red-500 rounded-full';
+                statusText.innerText = 'Engine Offline - Refresh Needed';
             }
-        }
+        };
 
         dropZone.onclick = () => pdfInput.click();
-        pdfInput.onchange = (e) => handleFile(e.target.files[0]);
-        ['dragenter', 'dragover'].forEach(name => {
-            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('drop-active'); });
-        });
-        ['dragleave', 'drop'].forEach(name => {
-            dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('drop-active'); });
-        });
-        dropZone.addEventListener('drop', (e) => {
-            const files = e.dataTransfer.files;
-            if (files.length > 0) handleFile(files[0]);
-        });
+        pdfInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file && file.type === 'application/pdf') {
+                CONTEXT.filename = file.name;
+                document.getElementById('ready-file-name').innerText = file.name;
+                document.getElementById('upload-ui').classList.add('hidden');
+                document.getElementById('file-ready-ui').classList.remove('hidden');
+                runBtn.classList.remove('hidden');
+            }
+        };
 
-        generateBtn.onclick = () => payModal.classList.remove('hidden');
+        runBtn.onclick = () => {
+            runBtn.disabled = true;
+            runBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Analyzing Compliance...</span>';
+            setTimeout(() => {
+                payModal.classList.remove('hidden');
+                runBtn.disabled = false;
+                runBtn.innerText = 'RUN EXPERT AUDIT SCAN';
+            }, 1800);
+        };
 
-        // Michael 专用核心逻辑：请求报告并生成 PDF
-        async function requestReport() {
-            console.log("Michael Env Sync - Requesting Report...");
+        bypassBtn.onclick = async () => {
+            bypassBtn.innerText = "Generating PDF...";
+            bypassBtn.disabled = true;
+            
             try {
-                const response = await fetch('/api/generate-report', {
+                const res = await fetch('/api/generate-report', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(CONTEXT)
                 });
                 
-                if (!response.ok) throw new Error("后端连接失败: " + response.status);
-                const data = await response.json();
-                
+                const data = await res.json();
                 if (data.report) {
-                    generatePDFReport(data.report);
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
+                    doc.setFontSize(22);
+                    doc.text("Expert Compliance Audit Report", 105, 20, {align: "center"});
+                    doc.setFontSize(10);
+                    doc.text(`Target: {{profession}} | Standard: {{laws}} | Jurisdiction: {{state}}`, 105, 30, {align: "center"});
+                    doc.line(20, 35, 190, 35);
+                    
+                    doc.setFontSize(11);
+                    const lines = doc.splitTextToSize(data.report, 170);
+                    doc.text(lines, 20, 45);
+                    doc.save(`Audit_Report_${CONTEXT.profession}.pdf`);
                 } else {
-                    throw new Error("报告内容为空，请检查 DeepSeek 余额。");
+                    alert("System Feedback: " + (data.error || "Unknown error occurred."));
                 }
             } catch (e) {
-                alert(" Michael 报告生成异常: " + e.message);
-                console.error(e);
+                alert("Critical Failure: " + e.message);
             }
-        }
-
-        function generatePDFReport(reportContent) {
-            console.log("Initializing PDF Engine...");
-            try {
-                // 解决 jsPDF 加载检查问题
-                const { jsPDF } = window.jspdf || {};
-                if (!jsPDF) {
-                    throw new Error("PDF Engine (jsPDF) 未能加载。请检查网络或刷新重试。");
-                }
-
-                const doc = new jsPDF();
-                doc.setFontSize(22);
-                doc.text("Michael 专家审计报告", 105, 20, { align: "center" });
-                doc.setFontSize(10);
-                doc.text("审计标准: {{laws}}", 105, 30, { align: "center" });
-                doc.line(20, 35, 190, 35);
-                doc.setFontSize(11);
-                
-                const lines = doc.splitTextToSize(reportContent, 170);
-                doc.text(lines, 20, 45);
-                doc.save(`Michael_Audit_Report.pdf`);
-                payModal.classList.add('hidden');
-            } catch (e) {
-                alert("PDF 生成失败: " + e.message);
-            }
-        }
-
-        testPayBtn.onclick = async () => {
-            testPayBtn.disabled = true;
-            testPayBtn.innerHTML = '<span class="animate-pulse">专家系统扫描中...</span>';
-            await requestReport();
-            testPayBtn.disabled = false;
-            testPayBtn.innerText = "内部验收：直接出图报告";
+            
+            payModal.classList.add('hidden');
+            bypassBtn.innerText = "Internal Acceptance (Admin Only)";
+            bypassBtn.disabled = false;
         };
     </script>
 </body>
 </html>
 """
 
-# ==========================================
-# 3. 辅助函数
-# ==========================================
 def slugify(text):
     text = str(text).lower()
     text = re.sub(r'[^a-z0-9]+', '-', text)
@@ -226,41 +220,35 @@ def build():
     try:
         with open(INPUT_CSV, "r", encoding="utf-8") as f:
             reader = csv.DictReader(f)
-            headers = {k.lower(): k for k in reader.fieldnames}
+            # 获取 CSV 列名的映射，解决大小写不一致问题
+            h_map = {k.lower().strip(): k for k in reader.fieldnames}
+            
             count = 0
-            generated_files = []
-
             for row in reader:
                 if count >= LIMIT_PAGES: break
-                action = row.get(headers.get('action'), "审计")
-                occupation = row.get(headers.get('occupation'), row.get(headers.get('niche'), "专业人员"))
-                state = row.get(headers.get('state'), "全国")
-                title = row.get(headers.get('title'), f"{action} for {occupation} in {state}")
-                description = row.get(headers.get('seo_description'), row.get(headers.get('description'), "专业审计服务"))
                 
-                niche_key = occupation.lower()
-                law_text = LAW_DATABASE["default"]
-                for key in LAW_DATABASE:
-                    if key in niche_key:
-                        law_text = LAW_DATABASE[key]
-                        break
+                action = row.get(h_map.get('action'), 'Audit')
+                occ = row.get(h_map.get('occupation'), row.get(h_map.get('niche'), 'Expert'))
+                st = row.get(h_map.get('state'), 'California')
+                title = row.get(h_map.get('title'), f"{action} for {occ} in {st}")
+                desc = row.get(h_map.get('seo_description'), f"Professional {action} services for {occ} practitioners.")
                 
-                content = HTML_TEMPLATE.replace("{{title}}", title)\
-                                      .replace("{{h1}}", f"{action} for {occupation}s")\
-                                      .replace("{{description}}", description)\
-                                      .replace("{{profession}}", occupation)\
-                                      .replace("{{state}}", state)\
+                law_text = LAW_DATABASE.get(occ.lower(), LAW_DATABASE["default"])
+                
+                content = HTML_TEMPLATE.replace("{{h1}}", f"Expert {action} for {occ}s")\
+                                      .replace("{{title}}", title)\
+                                      .replace("{{description}}", desc)\
+                                      .replace("{{profession}}", occ)\
+                                      .replace("{{state}}", st)\
                                       .replace("{{action}}", action)\
                                       .replace("{{laws}}", law_text)
                 
-                filename = slugify(f"{action}-{occupation}-{state}") + ".html"
-                with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as out:
+                fname = slugify(f"{action}-{occ}-{st}") + ".html"
+                with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
-                generated_files.append(filename)
                 count += 1
-            print(f"✅ Michael! V3.3 构建成功。已生成 {count} 个文件。")
+            print(f"✅ Michael! V3.7 Final Build Ready: {count} pages generated. Execute Git Push.")
     except Exception as e:
-        print(f"❌ 运行崩溃：{str(e)}")
+        print(f"❌ Error during build: {str(e)}")
 
-if __name__ == "__main__":
-    build()
+if __name__ == "__main__": build()
