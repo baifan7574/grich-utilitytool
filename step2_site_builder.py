@@ -219,7 +219,6 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
     <script>
         // Global Error Handler
         window.onerror = function(msg, url, line, col, error) {{
-            // alert("System Error: " + msg + "\\nLine: " + line); // Suppress alerts for now
             console.error(msg, url, line);
             return false;
         }};
@@ -232,7 +231,7 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         let PROCESSED_FILE_BYTES = null;
         let FILE_NAME = "document.pdf";
         
-        console.log("Site Builder v3.0 - Michael's Engine Integration");
+        console.log("Site Builder v3.1 - Fixed PDF Engine");
 
         function handleDrop(e) {{
             e.preventDefault();
@@ -299,7 +298,7 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                     }})
                 }});
 
-                if (!response.ok) throw new Error("Analysis Engine overloaded. Please try again.");
+                if (!response.ok) throw new Error("Analysis Engine overloaded (API Error).");
 
                 const data = await response.json();
                 if (data.error) throw new Error(data.error);
@@ -316,8 +315,17 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
         }}
 
         async function generatePDFReport(reportText) {{
-            const {{ jsPDF }} = window.jspdf;
-            const doc = new jsPDF();
+            // Robust check for jsPDF namespace
+            let jsPDFConstructor = null;
+            if (window.jspdf && window.jspdf.jsPDF) {{
+                jsPDFConstructor = window.jspdf.jsPDF;
+            }} else if (window.jsPDF) {{
+                jsPDFConstructor = window.jsPDF;
+            }} else {{
+                throw new Error("PDF Engine (jsPDF) failed to load. Please refresh and try again.");
+            }}
+
+            const doc = new jsPDFConstructor();
             
             // 1. Watermark
             doc.setTextColor(230, 230, 230);
@@ -345,7 +353,10 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             // 4. Content Body
             doc.setFontSize(11);
             doc.setTextColor(50, 50, 50);
-            const splitText = doc.splitTextToSize(reportText, 170);
+            
+             // Cleanse text of problematic characters
+            const cleanReport = reportText.replace(/[\\r\\n]+/g, " ");
+            const splitText = doc.splitTextToSize(cleanReport, 170);
             doc.text(splitText, 20, 60);
 
             // 5. Signature Stamp
