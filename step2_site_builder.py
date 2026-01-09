@@ -323,7 +323,8 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                 yPos -= 30;
 
                 const wrapText = (text, maxWidth) => {{
-                    const words = text.split(' ');
+                    // Fix: Split by any whitespace to handle newlines (0x0A) which break WinAnsi encoding
+                    const words = text.split(/\s+/);
                     let lines = [];
                     let currentLine = words[0];
 
