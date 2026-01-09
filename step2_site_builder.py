@@ -381,23 +381,23 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             const pageHeight = doc.internal.pageSize.height;
             const margin = 20;
             
-            paragraphs.forEach(paragraph => {
-                if (!paragraph.trim()) { yPos += 5; return; } // Small gap for empty lines
+            paragraphs.forEach(paragraph => {{
+                if (!paragraph.trim()) {{ yPos += 5; return; }} // Small gap for empty lines
 
                 const lines = doc.splitTextToSize(paragraph, 170);
                 
                 // Page check
-                if (yPos + (lines.length * 5) > pageHeight - 40) {
+                if (yPos + (lines.length * 5) > pageHeight - 40) {{
                     doc.addPage();
                     yPos = 20;
-                }
+                }}
                 
                 doc.text(lines, margin, yPos);
                 yPos += (lines.length * 5) + 2; // Line height + paragraph spacing
-            });
+            }});
 
             // 5. Signature Stamp (on last page)
-            if (yPos > pageHeight - 50) { doc.addPage(); yPos = 50; }
+            if (yPos > pageHeight - 50) {{ doc.addPage(); yPos = 50; }}
             
             doc.setDrawColor(220, 38, 38); // Red
             doc.setLineWidth(1);
