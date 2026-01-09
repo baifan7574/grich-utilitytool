@@ -20,7 +20,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Generate Data (Step 1)
         run: python step1_data_miner.py
@@ -35,6 +35,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: quick-tools-hub # Replace if not your exact project name
+          projectName: grich-utilitytool
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
