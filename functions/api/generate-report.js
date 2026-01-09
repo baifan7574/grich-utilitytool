@@ -1,8 +1,7 @@
-// 针对 Cloudflare Pages Functions 架构的正式修正版
+// Cloudflare Pages Functions - 诊断增强版
 export async function onRequestPost(context) {
     const { request, env } = context;
 
-    // 1. 跨域头配置 (确保前端网页能调动后端)
     const corsHeaders = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -10,50 +9,51 @@ export async function onRequestPost(context) {
     };
 
     try {
-        // 2. 核心诊断：验证密钥 (env 是从 context 中解构出来的)
+        // --- 诊断 1: 检查密钥 ---
         if (!env.DEEPSEEK_API_KEY) {
+            console.error("Michael Error: DEEPSEEK_API_KEY is missing in env");
             return new Response(JSON.stringify({
-                error: "Michael，系统仍然找不到密钥！请在 CF 后台确认变量名是否【全大写】为 DEEPSEEK_API_KEY，且已点击‘保存并部署’。"
-            }), {
-                status: 500,
-                headers: corsHeaders
-            });
+                error: "诊断结果：CF 后台没配置好密钥！请检查变量名是否完全匹配 DEEPSEEK_API_KEY (全大写)。"
+            }), { status: 500, headers: corsHeaders });
         }
 
-        // 3. 解析前端网页传来的数据
+        // --- 诊断 2: 解析数据 ---
         const body = await request.json();
         const { profession, state, action, filename } = body;
+        console.log(`Michael Audit: Processing ${profession} in ${state}`);
 
-        // 4. 调用 DeepSeek API (使用标准 OpenAI 兼容路径)
+        // --- 诊断 3: 调用 DeepSeek ---
+        // 使用 OpenAI 官方库兼容的端点，提高稳定性
         const response = await fetch("https://api.deepseek.com/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${env.DEEPSEEK_API_KEY}`
+                "Authorization": `Bearer ${env.DEEPSEEK_API_KEY.trim()}`
             },
             body: JSON.stringify({
                 model: "deepseek-chat",
                 messages: [
                     {
                         role: "system",
-                        content: `你是一个严肃的合规专家。针对${profession}行业在${state}地区的${action}操作。严禁提到AI，语气必须专业、冷峻。`
+                        content: `你是一个极其专业的合规专家系统。
+任务：针对 ${profession} 行业在 ${state} 地区的 ${action} 操作生成审计报告。
+规则：引用 ${state} 法律，严禁提到 AI，语气冷峻。`
                     },
                     {
                         role: "user",
-                        content: `待审计文件：${filename}。请生成一份针对性的专家审计报告正文。`
+                        content: `文档：${filename}。请生成报告。`
                     }
                 ],
-                temperature: 0.3
+                temperature: 0.1 // 降低随机性，确保专业度
             })
         });
 
-        // 5. 检查 DeepSeek 响应是否正常
         if (!response.ok) {
-            const errorData = await response.text();
-            return new Response(JSON.stringify({ error: `DeepSeek 接口报错 (${response.status}): ${errorData}` }), {
-                status: 500,
-                headers: corsHeaders
-            });
+            const errorText = await response.text();
+            console.error("DeepSeek API Error:", errorText);
+            return new Response(JSON.stringify({
+                error: `诊断结果：DeepSeek 接口报错 (${response.status})。可能是余额不足或密钥被封。`
+            }), { status: 500, headers: corsHeaders });
         }
 
         const data = await response.json();
@@ -64,14 +64,14 @@ export async function onRequestPost(context) {
         });
 
     } catch (err) {
-        return new Response(JSON.stringify({ error: "Michael，后端运行崩溃: " + err.message }), {
-            status: 500,
-            headers: corsHeaders
-        });
+        console.error("Michael System Crash:", err.message);
+        return new Response(JSON.stringify({
+            error: "诊断结果：后端代码崩溃。请联系 Michael 检查 functions 文件夹结构。" + err.message
+        }), { status: 500, headers: corsHeaders });
     }
 }
 
-// 处理 OPTIONS 预检请求
+// 必须保留，解决前端拦截问题
 export async function onRequestOptions() {
     return new Response(null, {
         headers: {
