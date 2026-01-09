@@ -218,10 +218,11 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
     <!-- Scripts -->
     <script>
         // Global Error Handler
-        window.onerror = function(msg, url, line, col, error) {{
+        window.onerror = function(msg, url, line, col, error) {
+            alert("System Error: " + msg + "\\nLine: " + line); // Enable alert for debugging
             console.error(msg, url, line);
             return false;
-        }};
+        };
 
         const ACTION = "{action}";
         const OCCUPATION = "{occupation}";
@@ -375,7 +376,8 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             
             // Normalize newlines to \n, then split by \n to preserve paragraphs
             // jsPDF splitTextToSize will handle line wrapping within paragraphs
-            const paragraphs = reportText.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+            // Double-escape backslashes for Python string -> JS literal
+            const paragraphs = reportText.replace(/\\r\\n/g, "\\n").replace(/\\r/g, "\\n").split("\\n");
             
             let yPos = 60;
             const pageHeight = doc.internal.pageSize.height;
