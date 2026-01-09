@@ -1,0 +1,40 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build & Deploy
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Generate Data (Step 1)
+        run: python step1_data_miner.py
+
+      - name: Build Site Matrix (Step 2)
+        env:
+          PREVIEW_LIMIT: -1 # Full Production Mode
+        run: python step2_site_builder.py
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: quick-tools-hub # Replace if not your exact project name
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

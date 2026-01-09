@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Generated content
+dist/
+niche_data.csv
+seed_data.sql
+_processed.pdf
+
+# OS
+.DS_Store
+Thumbs.db
