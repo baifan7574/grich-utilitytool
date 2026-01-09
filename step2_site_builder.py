@@ -339,7 +339,8 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
 
                 const wrapText = (text, maxWidth) => {{
                     // Fix: Explicitly replace newlines with spaces to prevent WinAnsi errors
-                    const cleanText = text.replace(/[\r\n]+/g, " "); 
+                    // Double escaped backslash for Python string literals
+                    const cleanText = text.replace(/[\\r\\n]+/g, " "); 
                     const words = cleanText.split(" ");
                     let lines = [];
                     let currentLine = words[0];
