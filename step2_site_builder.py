@@ -112,14 +112,134 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
     </style>
 </head>
 <body class="{body_bg} {primary_text} min-h-screen flex flex-col font-sans antialiased">
-    <!-- ... (rest of body) ... -->
+    
+    <!-- Navbar (Dynamic Theme) -->
+    <nav class="w-full {nav_bg} border-b border-black/10 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 {accent_bg} rounded flex items-center justify-center text-white font-bold tracking-tighter">PC</div>
+            <span class="font-semibold text-lg tracking-tight {nav_text}">ProCompliance<span class="opacity-60 font-light">Tools</span></span>
+        </div>
+        <a href="index.html" class="text-sm font-medium {nav_text} opacity-70 hover:opacity-100 transition-opacity">Directory</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center pt-16 px-4 max-w-4xl mx-auto w-full">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-12 space-y-4 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 border border-black/10 text-xs font-semibold uppercase tracking-wider {secondary_text} mb-4">
+                <span class="w-2 h-2 rounded-full {accent_bg} animate-pulse"></span>
+                {state} Compliance Ready
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight {primary_text} leading-tight">
+                {action} for <span class="{secondary_text} opacity-80">{occupation}s</span>
+            </h1>
+            <p class="text-lg {secondary_text} leading-relaxed max-w-xl mx-auto">
+                {seo_description}
+            </p>
+        </div>
+
+        <!-- Tool Interface -->
+        <div id="app" class="w-full max-w-xl bg-white rounded-2xl shadow-xl shadow-black/5 border border-black/5 overflow-hidden relative">
+            
+            <!-- Default State: Upload -->
+            <div id="upload-zone" class="p-10 text-center transition-all duration-300">
+                <div class="group relative w-full h-64 border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center gap-4 hover:border-slate-500 hover:bg-slate-50 transition-all cursor-pointer"
+                     ondragover="event.preventDefault(); this.classList.add('drop-active');"
+                     ondragleave="this.classList.remove('drop-active');"
+                     ondrop="handleDrop(event)"
+                     onclick="document.getElementById('file-input').click()">
+                    
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="font-medium {primary_text}">Click or Drag PDF here</p>
+                        <p class="text-xs {secondary_text} uppercase tracking-wide">Client-Side Processing • No Uploads</p>
+                    </div>
+                    <input type="file" id="file-input" accept=".pdf" class="hidden" onchange="handleFile(this.files[0])">
+                </div>
+            </div>
+
+            <!-- Processing State -->
+            <div id="processing-state" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center z-10 p-8">
+                <div class="w-full max-w-xs space-y-6">
+                    <div class="flex justify-between text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        <span id="process-label">Initializing...</span>
+                        <span id="process-percent">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div id="progress-bar" class="{accent_bg} h-full w-0 transition-all duration-300 ease-out"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Modal: Compliance Risk (Dynamic Content) -->
+    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="modal-content" class="bg-white w-full max-w-md rounded-2xl shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden m-4">
+            <!-- Modal Header -->
+            <div class="bg-amber-50 px-6 py-4 border-b border-amber-100 flex items-center gap-3">
+                <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <!-- Dynamic Title -->
+                <h3 class="font-bold text-amber-900">{audit_title}</h3>
+            </div>
+            
+            <!-- Modal Body (Dynamic Points) -->
+            <div class="p-6 space-y-4">
+                <p class="text-slate-800 font-semibold text-lg">Processing Complete.</p>
+                <div class="text-slate-600 text-sm leading-relaxed">
+                    <p class="mb-2">Our heuristics detected potential compliance issues with this file's metadata:</p>
+                    <ul class="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                        {audit_points}
+                    </ul>
+                </div>
+                <p class="text-xs text-slate-400 italic mt-2">*This document is not certified for {state} court filing without audit.</p>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-col gap-3">
+                <button onclick="requestReport()" class="w-full {btn_bg} {btn_hover} text-white font-medium py-3 rounded-lg shadow-lg transition-all flex items-center justify-center gap-2 group">
+                    <span class="group-hover:translate-x-0.5 transition-transform">Get Full Audit Report ($4.99)</span>
+                    <svg class="w-4 h-4 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </button>
+                <button onclick="downloadFile()" class="text-xs text-slate-400 hover:text-slate-600 font-medium text-center py-2 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-600 transition-all">
+                    No thanks, just download processed file
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Scripts -->
     <script>
-        // ... (vars) ...
+        const ACTION = "{action}";
+        const OCCUPATION = "{occupation}";
+        const STATE = "{state}";
+        let PROCESSED_FILE_BYTES = null;
+        let FILE_NAME = "document.pdf";
+
+        function handleDrop(e) {{
+            e.preventDefault();
+            e.target.classList.remove('drop-active');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        }}
 
         async function handleFile(file) {{
-            // ... (setup) ...
-             try {{
+            if (!file) return;
+            if (file.type !== 'application/pdf') {{ alert('Please upload a valid PDF.'); return; }}
+            FILE_NAME = file.name.replace('.pdf', '_processed.pdf');
+
+            document.getElementById('upload-zone').classList.add('hidden');
+            document.getElementById('processing-state').classList.remove('hidden');
+            
+            await simulateStep('Analyzing Metadata...', 0, 40, 800);
+            
+            try {{
                 // Simulating processing
                 if (typeof PDFLib === 'undefined') throw new Error("PDF Library failed to load from CDNs.");
 
@@ -137,7 +257,10 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
                 location.reload(); 
                 return;
             }}
-            // ... (rest) ...
+            
+            await simulateStep('Verifying Compliance...', 40, 100, 800);
+            setTimeout(showModal, 300);
+        }}
 
         function downloadFile() {{
             if (!PROCESSED_FILE_BYTES) return;
