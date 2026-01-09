@@ -277,96 +277,133 @@ TOOL_PAGE_TEMPLATE = """<!DOCTYPE html>
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a'); a.href = url; a.download = FILE_NAME;
             document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-        }}
+        }
 
-        async function requestReport() {{
-            // Show loading state
+        async function requestReport() {
             const btn = document.querySelector('button[onclick="requestReport()"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="animate-pulse">Running Deep Compliance Scan...</span>';
             btn.disabled = true;
 
-            try {{
-                const response = await fetch('/api/generate-report', {{
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s Timeout
+
+            try {
+                const response = await fetch('/api/generate-report', {
                     method: 'POST',
-                    headers: {{ 'Content-Type': 'application/json' }},
-                    body: JSON.stringify({{
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
                         profession: OCCUPATION,
                         state: STATE,
                         action: ACTION,
                         filename: FILE_NAME
-                    }})
-                }});
+                    }),
+                    signal: controller.signal
+                });
 
-                if (!response.ok) throw new Error("Analysis Engine overloaded (API Error).");
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    let errorMessage = "Analysis Engine Failed";
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.error || response.statusText;
+                    } catch (e) {
+                        errorMessage = await response.text(); 
+                    }
+                    throw new Error(`API Error (${response.status}): ${errorMessage}`);
+                }
 
                 const data = await response.json();
                 if (data.error) throw new Error(data.error);
 
                 await generatePDFReport(data.report);
 
-            }} catch (e) {{
+            } catch (e) {
                 console.error(e);
-                alert("Report Generation Failed: " + e.message);
-            }} finally {{
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }}
-        }}
+                if (e.name === 'AbortError') {
+                     alert("Timeout: DeepSeek Engine is taking too long (>30s). Please try again later.");
+                } else {
+                     alert("Report Generation Failed: " + e.message);
+                }
+            } finally {
+                 clearTimeout(timeoutId);
+                 btn.innerHTML = originalText;
+                 btn.disabled = false;
+            }
+        }
 
-        async function generatePDFReport(reportText) {{
+        async function generatePDFReport(reportText) {
             // Robust check for jsPDF namespace
             let jsPDFConstructor = null;
-            if (window.jspdf && window.jspdf.jsPDF) {{
+            if (window.jspdf && window.jspdf.jsPDF) {
                 jsPDFConstructor = window.jspdf.jsPDF;
-            }} else if (window.jsPDF) {{
+            } else if (window.jsPDF) {
                 jsPDFConstructor = window.jsPDF;
-            }} else {{
+            } else {
                 throw new Error("PDF Engine (jsPDF) failed to load. Please refresh and try again.");
-            }}
+            }
 
             const doc = new jsPDFConstructor();
             
             // 1. Watermark
             doc.setTextColor(230, 230, 230);
             doc.setFontSize(50);
-            doc.text("CONFIDENTIAL", 105, 148, {{ align: "center", angle: 45 }});
+            doc.text("CONFIDENTIAL", 105, 148, { align: "center", angle: 45 });
 
             // 2. Header
             doc.setTextColor(0, 0, 0);
             doc.setFont("helvetica", "bold");
             doc.setFontSize(22);
-            doc.text("Michael's Compliance Engine", 105, 20, {{ align: "center" }});
+            doc.text("Michael's Compliance Engine", 105, 20, { align: "center" });
             
             doc.setFontSize(14);
             doc.setFont("helvetica", "normal");
-            doc.text("Official Audit Report", 105, 30, {{ align: "center" }});
+            doc.text("Official Audit Report", 105, 30, { align: "center" });
             
             doc.setLineWidth(0.5);
             doc.line(20, 35, 190, 35);
 
             // 3. Metadata
             doc.setFontSize(10);
-            doc.text(`Date: ${{new Date().toLocaleDateString()}}`, 20, 45);
-            doc.text(`Case ID: ${{Math.random().toString(36).substr(2, 9).toUpperCase()}}`, 140, 45);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 45);
+            doc.text(`Case ID: ${Math.random().toString(36).substr(2, 9).toUpperCase()}`, 140, 45);
 
-            // 4. Content Body
+            // 4. Content Body - Enhanced for Markdown/Newlines
             doc.setFontSize(11);
             doc.setTextColor(50, 50, 50);
             
-             // Cleanse text of problematic characters
-            const cleanReport = reportText.replace(/[\\r\\n]+/g, " ");
-            const splitText = doc.splitTextToSize(cleanReport, 170);
-            doc.text(splitText, 20, 60);
-
-            // 5. Signature Stamp
+            // Normalize newlines to \n, then split by \n to preserve paragraphs
+            // jsPDF splitTextToSize will handle line wrapping within paragraphs
+            const paragraphs = reportText.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split("\n");
+            
+            let yPos = 60;
             const pageHeight = doc.internal.pageSize.height;
+            const margin = 20;
+            
+            paragraphs.forEach(paragraph => {
+                if (!paragraph.trim()) { yPos += 5; return; } // Small gap for empty lines
+
+                const lines = doc.splitTextToSize(paragraph, 170);
+                
+                // Page check
+                if (yPos + (lines.length * 5) > pageHeight - 40) {
+                    doc.addPage();
+                    yPos = 20;
+                }
+                
+                doc.text(lines, margin, yPos);
+                yPos += (lines.length * 5) + 2; // Line height + paragraph spacing
+            });
+
+            // 5. Signature Stamp (on last page)
+            if (yPos > pageHeight - 50) { doc.addPage(); yPos = 50; }
+            
             doc.setDrawColor(220, 38, 38); // Red
             doc.setLineWidth(1);
             doc.circle(160, pageHeight - 30, 15);
             doc.setTextColor(220, 38, 38);
             doc.setFontSize(8);
-            doc.text("MICHAEL'S", 160, pageHeight - 34, {{ align: "center" }});
             doc.text("APPROVED", 160, pageHeight - 29, {{ align: "center" }});
             doc.text("ENGINE", 160, pageHeight - 24, {{ align: "center" }});
 
