@@ -25,13 +25,12 @@ LAW_DATABASE = {
 }
 
 # ==========================================
-# 2. HTML 模板 (V5.3 引擎终极修复版)
+# 2. HTML 模板 (V5.4 支付链接修复版)
 # ==========================================
 # 修复日志:
-# 1. 切换至 cdnjs.cloudflare.com 确保 PDF-Lib 完整加载
-# 2. 增加 StandardFonts 支持，修复 Watermark 缺少字体报错
-# 3. 增加 Encrypt 方法存在性检测
-# 4. 优化 Payment 交互逻辑
+# 1. 修复 HTML 模板中 PAYHIP_LINK 无法被 Python 解析为变量的问题
+# 2. 使用 {{payhip_link}} 占位符进行标准替换
+# 3. 保持 V5.3 的引擎修复 (CDNJS + StdFonts + Encrypt Check)
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -41,7 +40,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <title>{{title}} - Michael Expert System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- V5.3 核心修复：使用最稳定的 cdnjs 源，移除不可靠的 fallback -->
+    <!-- V5.3 引擎核心：CDNJS 源 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -142,13 +141,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- 支付弹窗 -->
+    <!-- 支付弹窗 (修复: 使用占位符注入 Payhip 链接) -->
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
         <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
             <h3 class="text-3xl font-black text-slate-900 mb-4 italic uppercase">Unlock Report</h3>
             <p class="text-slate-500 mb-10 text-lg leading-snug">Generate professional audit for <b>{{profession}}</b> regarding <b>{{laws}}</b>.</p>
             
-            <a id="pay-link" href="""" + PAYHIP_LINK + """" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4 cursor-pointer">
+            <a id="pay-link" href="{{payhip_link}}" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4 cursor-pointer">
                 Pay with Payhip ($4.99)
             </a>
             
@@ -192,16 +191,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             filename: ""
         };
 
-        // --- 系统自检 & 引擎加载 (V5.3 Engine Repair) ---
+        // --- 系统自检 & 引擎加载 ---
         function checkEngines() {
             if (typeof PDFLib !== 'undefined' && typeof window.jspdf !== 'undefined') {
                 statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
-                statusText.innerText = 'Engine V5.3 Ready';
+                statusText.innerText = 'Engine V5.4 Ready';
                 
                 if (!runToolBtn.classList.contains('processing')) {
                     runToolBtn.disabled = false;
                     runToolBtn.innerText = "START {{action}} (FREE)";
-                    engineStatus.innerText = "PDF Core Engine Loaded via CDNJS";
+                    engineStatus.innerText = "Michael System Online";
                 }
                 return true;
             } else {
@@ -239,7 +238,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             }
         }
 
-        // --- 2. 免费功能执行 (核心功能修复) ---
+        // --- 2. 免费功能执行 ---
         runToolBtn.onclick = async () => {
             if (typeof PDFLib === 'undefined') {
                 alert("Core Engine (PDFLib) failed. Please check internet connection.");
@@ -251,34 +250,29 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             runToolBtn.innerHTML = '<span class="spinner"></span> Processing...';
             
             try {
-                // 解构并加载核心库
                 const { PDFDocument, rgb, StandardFonts } = PDFLib;
                 const pdfDoc = await PDFDocument.load(currentFileArrayBuffer);
                 const actionKey = CONTEXT.action.toLowerCase();
 
-                // 路由 A: 加密 (Encrypt/Protect)
+                // 路由 A: 加密
                 if (actionKey.includes('encrypt') || actionKey.includes('protect') || actionKey.includes('lock')) {
                     const pwd = document.getElementById('pdf-password').value || "123456";
-                    
-                    // 防御性检测
                     if (typeof pdfDoc.encrypt === 'function') {
                         pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
                     } else {
-                        console.warn('Encrypt method missing on pdf-lib instance. Using basic save.');
-                        alert('Warning: Encryption engine partial load. File will be saved without encryption.');
+                        console.warn('Encrypt method missing.');
+                        alert('Warning: Encryption engine partial load.');
                     }
                 }
-                // 路由 B: 水印 (Watermark/Stamp)
+                // 路由 B: 水印
                 else if (actionKey.includes('watermark') || actionKey.includes('stamp')) {
                     const pages = pdfDoc.getPages();
                     const { width, height } = pages[0].getSize();
-                    // V5.3 修复: 嵌入字体!
                     const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-                    
                     pages[0].drawText('MICHAEL SYSTEM STAMP', {
                         x: 50, y: height - 80,
                         size: 24,
-                        font: helveticaFont, // 必须指定字体
+                        font: helveticaFont,
                         color: rgb(0.8, 0.1, 0.1),
                         opacity: 0.5,
                         rotate: PDFLib.degrees(45),
@@ -319,7 +313,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             URL.revokeObjectURL(url);
         };
 
-        // --- 4. 专家报告逻辑 ---
+        // --- 4. 专家报告 logic ---
         paywallTrigger.onclick = () => payModal.classList.remove('hidden');
         payLink.onclick = () => { setTimeout(() => postPayActions.classList.remove('hidden'), 2000); };
 
@@ -398,13 +392,14 @@ def build():
                                       .replace("{{profession}}", occ)\
                                       .replace("{{state}}", st)\
                                       .replace("{{action}}", action)\
-                                      .replace("{{laws}}", law_text)
+                                      .replace("{{laws}}", law_text)\
+                                      .replace("{{payhip_link}}", PAYHIP_LINK)
                 
                 fname = slugify(f"{action}-{occ}-{st}") + ".html"
                 with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
                 count += 1
-            print(f"✅ Michael! V5.3 Engine Repaired: {count} pages generated. CdnJS + StdFonts.")
+            print(f"✅ Michael! V5.4 Payment Fixed: {count} pages generated.")
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
 
