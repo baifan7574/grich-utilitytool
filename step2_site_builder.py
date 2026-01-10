@@ -25,7 +25,7 @@ LAW_DATABASE = {
 }
 
 # ==========================================
-# 2. HTML 模板 (V5.0 智能路由真功能版)
+# 2. HTML 模板 (V5.1 正式收款版 - 移除模拟功能)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -57,7 +57,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Tool</span>
             <div class="flex items-center space-x-2">
                 <span id="status-dot" class="h-2 w-2 bg-green-500 rounded-full"></span>
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">V5.0 Intelligent</span>
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Live System</span>
             </div>
         </div>
     </nav>
@@ -140,25 +140,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- 支付弹窗 (Paywall) -->
+    <!-- 支付弹窗 (Paywall - 正式收款模式) -->
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
         <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
             <h3 class="text-3xl font-black text-slate-900 mb-4 italic uppercase">Unlock Report</h3>
             <p class="text-slate-500 mb-10 text-lg leading-snug">Generate professional audit for <b>{{profession}}</b> regarding <b>{{laws}}</b>.</p>
             
-            <a href="""" + PAYHIP_LINK + """" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4">
+            <!-- 真实支付链接 -->
+            <a id="pay-link" href="""" + PAYHIP_LINK + """" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4 cursor-pointer">
                 Pay with Payhip ($4.99)
             </a>
             
-            <div class="relative py-6">
-                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-100"></div></div>
-                <div class="relative flex justify-center text-xs uppercase tracking-widest text-slate-300 font-bold bg-white px-4">Admin Only</div>
+            <p class="text-xs text-slate-400 mt-2 mb-6">Secure payment via Payhip. Report unlocks after payment.</p>
+
+            <!-- 支付后操作区 (点击支付后才会显示) -->
+            <div id="post-pay-actions" class="hidden border-t border-slate-100 pt-6">
+                <p class="text-green-600 font-bold mb-3 text-sm">Payment Initiated?</p>
+                <button id="generate-report-btn" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-md">
+                    I've Paid - Download Report
+                </button>
             </div>
             
-            <button id="bypass-btn" class="text-slate-400 font-bold hover:text-red-500 transition-colors uppercase text-[10px] tracking-widest underline">
-                Internal Acceptance
-            </button>
-            <button onclick="document.getElementById('pay-modal').classList.add('hidden')" class="mt-4 block w-full text-slate-300 text-xs">Close</button>
+            <button onclick="document.getElementById('pay-modal').classList.add('hidden')" class="mt-4 block w-full text-slate-300 text-xs hover:text-slate-500">Close</button>
         </div>
     </div>
 
@@ -171,9 +174,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const resultUi = document.getElementById('result-ui');
         const payModal = document.getElementById('pay-modal');
         const paywallTrigger = document.getElementById('paywall-trigger');
-        const bypassBtn = document.getElementById('bypass-btn');
         const freeDownloadBtn = document.getElementById('free-download-btn');
         const encryptInput = document.getElementById('encrypt-input');
+        
+        // 支付相关变量
+        const payLink = document.getElementById('pay-link');
+        const postPayActions = document.getElementById('post-pay-actions');
+        const generateReportBtn = document.getElementById('generate-report-btn');
 
         let currentFileArrayBuffer = null;
         let processedPdfBytes = null;
@@ -182,7 +189,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const CONTEXT = {
             profession: "{{profession}}",
             state: "{{state}}",
-            action: "{{action}}", // 关键：这就是用户搜的关键词
+            action: "{{action}}",
             filename: ""
         };
 
@@ -205,10 +212,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 document.getElementById('upload-ui').classList.add('hidden');
                 document.getElementById('file-ready-ui').classList.remove('hidden');
                 
-                // 智能路由 UI 显示
                 actionControls.classList.remove('hidden');
                 
-                // 如果是加密需求，显示密码框
                 const actionLower = CONTEXT.action.toLowerCase();
                 if (actionLower.includes('encrypt') || actionLower.includes('protect') || actionLower.includes('lock')) {
                     encryptInput.classList.remove('hidden');
@@ -216,7 +221,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             }
         }
 
-        // --- 2. 智能功能路由 (Smart Router) ---
+        // --- 2. 智能功能路由 (免费功能) ---
         runToolBtn.onclick = async () => {
             runToolBtn.disabled = true;
             runToolBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Processing...</span>';
@@ -224,32 +229,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             try {
                 const { PDFDocument, rgb } = PDFLib;
                 const pdfDoc = await PDFDocument.load(currentFileArrayBuffer);
-                
                 const actionKey = CONTEXT.action.toLowerCase();
 
-                // 路由 A: 加密 (Encrypt/Protect)
                 if (actionKey.includes('encrypt') || actionKey.includes('protect') || actionKey.includes('lock')) {
-                    const pwd = document.getElementById('pdf-password').value || "123456"; // 默认密码兜底
+                    const pwd = document.getElementById('pdf-password').value || "123456";
                     pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
-                    console.log("Action: Encrypt Executed");
                 }
-                // 路由 B: 水印 (Watermark/Stamp)
                 else if (actionKey.includes('watermark') || actionKey.includes('stamp')) {
                     const pages = pdfDoc.getPages();
                     pages[0].drawText('DRAFT - ' + CONTEXT.profession + ' COPY', {
                         x: 50, y: 500, size: 50, color: rgb(0.9, 0.1, 0.1), opacity: 0.3, rotate: PDFLib.degrees(45)
                     });
-                    console.log("Action: Watermark Executed");
                 }
-                // 路由 C: 通用/默认 (Metadata Clean / Compress 模拟)
                 else {
                     pdfDoc.setTitle('Processed by Michael Tool');
                     pdfDoc.setAuthor('Michael System');
-                    // 模拟通用处理：稍微修改一下元数据
-                    console.log("Action: Generic Process Executed");
                 }
 
-                // 保存处理后的文件
                 processedPdfBytes = await pdfDoc.save();
                 
                 setTimeout(() => {
@@ -272,7 +268,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            // 智能重命名
             a.download = `Processed_${CONTEXT.filename}`;
             document.body.appendChild(a);
             a.click();
@@ -280,12 +275,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             URL.revokeObjectURL(url);
         };
 
-        // --- 4. 专家报告逻辑 (Upsell) ---
+        // --- 4. 专家报告逻辑 (正式收费版) ---
         paywallTrigger.onclick = () => payModal.classList.remove('hidden');
 
-        bypassBtn.onclick = async () => {
-            bypassBtn.innerText = "Generating...";
-            bypassBtn.disabled = true;
+        // 点击支付链接后，2秒显示“我已支付”按钮
+        payLink.onclick = () => {
+            setTimeout(() => {
+                postPayActions.classList.remove('hidden');
+            }, 2000);
+        };
+
+        // 真实生成报告 (原 Internal Acceptance 逻辑)
+        generateReportBtn.onclick = async () => {
+            generateReportBtn.innerText = "Verifying & Generating...";
+            generateReportBtn.disabled = true;
             try {
                 const res = await fetch('/api/generate-report', {
                     method: 'POST',
@@ -311,11 +314,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         y += 6;
                     }
                     doc.save(`Audit_Report.pdf`);
+                    
+                    // 生成成功后关闭弹窗
+                    setTimeout(() => payModal.classList.add('hidden'), 1000);
+                } else {
+                    alert("Report Error: " + (data.error || "System Busy"));
+                    generateReportBtn.disabled = false;
+                    generateReportBtn.innerText = "Retry Download";
                 }
-            } catch (e) { alert("Error: " + e.message); }
-            payModal.classList.add('hidden');
-            bypassBtn.innerText = "Internal Acceptance";
-            bypassBtn.disabled = false;
+            } catch (e) { 
+                alert("Connection Error: " + e.message);
+                generateReportBtn.disabled = false;
+                generateReportBtn.innerText = "Retry Download";
+            }
         };
     </script>
 </body>
@@ -361,7 +372,7 @@ def build():
                 with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
                 count += 1
-            print(f"✅ Michael! V5.0 Smart Router Build Ready: {count} pages generated.")
+            print(f"✅ Michael! V5.1 Final Build Ready: {count} pages generated. Simulation Mode Removed.")
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
 
