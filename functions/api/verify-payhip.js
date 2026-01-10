@@ -4,17 +4,6 @@ export async function onRequestPost(context) {
         const body = await request.json();
         const { email } = body;
 
-        // --- 临时模拟测试 (SIMULATION MODE) ---
-        // 允许 test@test.com 直接通过验证，用于测试流程
-        if (email.toLowerCase() === 'test@test.com') {
-            return new Response(JSON.stringify({
-                success: true,
-                message: "Simulation Verified",
-                transaction_id: "sim_mode_123"
-            }), { headers: { "Content-Type": "application/json" } });
-        }
-        // ------------------------------------
-
         // 1. Validate Input
         if (!email) {
             return new Response(JSON.stringify({ error: "Email is required" }), {
