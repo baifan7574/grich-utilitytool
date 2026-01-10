@@ -403,17 +403,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     bytes = await pdfDoc.save();
                 }
 
-                // 5. COMPRESS (压缩) - Simulate via metadata strip & re-save
+                // 5. COMPRESS (压缩) - Enable Object Streams for size reduction
                 else if (actionKey.includes('compress') || actionKey.includes('optimize')) {
                     const pdfDoc = await PDFDocument.load(fileBuffers[0]);
-                    // PDF-lib doesn't support heavy compression natively, but we can clean it
+                    
+                    // A. Aggressive Metadata Stripping
                     pdfDoc.setTitle('');
                     pdfDoc.setAuthor('');
                     pdfDoc.setSubject('');
                     pdfDoc.setKeywords([]);
-                    pdfDoc.setProducer('Michael Tool');
-                    pdfDoc.setCreator('Michael Tool');
-                    bytes = await pdfDoc.save({ useObjectStreams: false }); // sometimes false is smaller for simple docs
+                    pdfDoc.setProducer('');
+                    pdfDoc.setCreator('');
+                    
+                    // B. Enable Object Streams (Crucial for size)
+                    // Previous version had this FALSE, which bloats files!
+                    bytes = await pdfDoc.save({ useObjectStreams: true }); 
                 }
                 
                 // 6. DEFAULT (Word-to-PDF is client-side mock or error)
