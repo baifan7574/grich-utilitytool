@@ -5,14 +5,14 @@ import random
 from datetime import datetime
 
 # ==========================================
-# GRICH 项目协议 (V43.1 Final Verified) - 自动回航闭环版
+# GRICH 项目协议 (V43.1 Final) - 自动回航闭环版
 # ==========================================
 # Michael 专用：极致稳定 + 自动生成 success.html + 零成本 AI 模拟
 # ------------------------------------------
 
 # --- Michael 核心控制区 ---
-LIMIT_PAGES = 19800          # 【针对 CF 20,000 限制的极致优化】
-INDEX_DISPLAY_LIMIT = 80    # 主页展示精品卡片数，保证首屏加载速度
+LIMIT_PAGES = 10000          # 总生成物理页面数
+INDEX_DISPLAY_LIMIT = 80    # 主页展示卡片数
 BRAND_NAME = "soeasyhub"
 # 以后有了正式域名，把下面这个换成你的域名（如 https://soeasyhub.com）
 BASE_URL = "https://yourdomain.com" 
@@ -23,7 +23,7 @@ OUTPUT_DIR = "dist"
 SUBPAGE_DIR = os.path.join(OUTPUT_DIR, "p")
 CSV_FILE = "professions.csv"
 
-# --- 深度法律合规知识库 (确保报告含金量，防止 Google 判定为垃圾站) ---
+# --- 深度法律合规知识库 (确保报告含金量) ---
 KNOWLEDGE_BASE = {
     "Lawyer": [
         "Audit Log: Found unprotected revision metadata. Fails ABA Formal Opinion 06-442 for digital security. Recommendation: Apply {{brand}} proprietary sanitization layers.",
@@ -55,7 +55,7 @@ THEME_CONFIG = {
     "Default": {"color": "indigo", "bg": "bg-indigo-600", "text": "text-indigo-600", "warning": "Security Integrity Alert: Document structure not verified for {{state}} professional standards."}
 }
 
-# 自动回航成功页
+# 自动回航成功页 (用于 Payhip 重定向)
 SUCCESS_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
@@ -66,16 +66,21 @@ SUCCESS_TEMPLATE = """
 </head>
 <body class="bg-slate-50 flex items-center justify-center min-h-screen">
     <div class="text-center">
-        <div class="w-20 h-20 border-8 border-slate-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-8"></div>
-        <h1 class="text-3xl font-black text-slate-900 mb-2 italic">Payment Verified!</h1>
-        <p class="text-slate-500 font-medium">Authenticating your node access. Please wait...</p>
+        <div class="w-16 h-16 border-8 border-slate-200 border-t-indigo-600 rounded-full animate-spin mx-auto mb-6"></div>
+        <h1 class="text-2xl font-black text-slate-900 mb-2">Payment Verified!</h1>
+        <p class="text-slate-500 font-medium">Redirecting you to your secure download...</p>
     </div>
     <script>
         window.onload = function() {
+            // 从浏览器缓存中找回刚才离开的页面地址
             const lastNode = localStorage.getItem('last_node');
-            setTimeout(() => {
-                window.location.href = lastNode ? lastNode + '?status=success' : 'index.html';
-            }, 1500);
+            if (lastNode) {
+                // 回航并带上成功标记
+                window.location.href = lastNode + '?status=success';
+            } else {
+                // 如果找不到，返回主页
+                window.location.href = 'index.html';
+            }
         };
     </script>
 </body>
@@ -136,8 +141,8 @@ SUBPAGE_TEMPLATE = """
                     </div>
                 </div>
 
-                <div id="fileBox" class="hidden mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-100 text-left">
-                    <div id="fileList" class="space-y-2 mb-6"></div>
+                <div id="fileBox" class="hidden mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div id="fileList" class="space-y-2 mb-6 text-left"></div>
                     <div class="flex justify-between items-center">
                         <button onclick="resetFiles()" class="text-red-500 font-black text-[10px] uppercase">Clear All</button>
                         <span id="fileCounter" class="text-[10px] font-black text-slate-500 uppercase">0 Files Ready</span>
@@ -153,6 +158,7 @@ SUBPAGE_TEMPLATE = """
         </div>
     </main>
 
+    <!-- 变现弹窗 -->
     <div id="upsellModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/95 backdrop-blur-xl"></div>
         <div class="relative bg-white rounded-[3.5rem] max-w-lg w-full overflow-hidden shadow-2xl">
@@ -164,8 +170,11 @@ SUBPAGE_TEMPLATE = """
                 <p class="text-slate-600 font-bold text-sm leading-relaxed italic">{{warning}}</p>
             </div>
             <div class="p-10 text-center">
-                <div class="mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-100 text-slate-800 font-black text-lg">Generate Full Audit Report & Apply Verified Seal</div>
+                <div class="mb-8 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p class="text-slate-800 font-black text-lg">Generate Full Audit Report & Apply Verified Seal</p>
+                </div>
                 <div class="flex flex-col gap-4">
+                    <!-- 关键：点击支付前记住当前地址 -->
                     <a href="{{pay_link}}" target="_blank" onclick="saveNode()" class="block w-full py-6 {{theme_bg}} text-white rounded-2xl font-black text-lg shadow-xl">Audit My Document ($4.99)</a>
                     <button onclick="closeUpsell()" class="text-slate-400 font-black text-[10px] uppercase py-2">Continue Free / Take Risk</button>
                 </div>
@@ -173,8 +182,8 @@ SUBPAGE_TEMPLATE = """
         </div>
     </div>
 
-    <div id="loader" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-white/95 backdrop-blur-md text-center">
-        <div class="relative">
+    <div id="loader" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-white/95 backdrop-blur-md">
+        <div class="text-center">
             <div class="w-16 h-16 border-8 border-slate-100 border-t-{{theme_color}}-500 rounded-full animate-spin mx-auto mb-6"></div>
             <p id="loaderTxt" class="font-black text-slate-900 uppercase tracking-widest text-sm italic">Analyzing Node...</p>
         </div>
@@ -185,6 +194,7 @@ SUBPAGE_TEMPLATE = """
         let selectedFiles = []; let currentMode = 'merge'; let processedBytes = null;
         const knowledge = {{knowledge_json}};
 
+        // 【自动下载雷达】
         window.onload = () => {
             const params = new URLSearchParams(window.location.search);
             if (params.get('status') === 'success') {
@@ -193,6 +203,7 @@ SUBPAGE_TEMPLATE = """
             }
         };
 
+        // 记住当前节点，方便支付后跳回
         function saveNode() {
             localStorage.setItem('last_node', window.location.href.split('?')[0]);
         }
@@ -207,7 +218,7 @@ SUBPAGE_TEMPLATE = """
             if (selectedFiles.length > 0) {
                 box.classList.remove('hidden');
                 document.getElementById('fileCounter').innerText = selectedFiles.length + " File(s) Ready";
-                list.innerHTML = selectedFiles.map(f => `<div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between items-center mb-2"><span class="text-[11px] font-black truncate max-w-[200px]">${f.name}</span><span class="text-[10px] text-slate-300 font-black">${(f.size/1024).toFixed(0)}KB</span></div>`).join('');
+                list.innerHTML = selectedFiles.map(f => `<div class="bg-white p-3 rounded-xl border border-slate-100 flex justify-between"><span class="text-[11px] font-black truncate max-w-[200px]">${f.name}</span><span class="text-[10px] text-slate-300 font-black">${(f.size/1024).toFixed(0)}KB</span></div>`).join('');
             } else { box.classList.add('hidden'); }
         }
 
@@ -257,10 +268,7 @@ SUBPAGE_TEMPLATE = """
             const doc = new jsPDF();
             const fileName = selectedFiles.length > 0 ? selectedFiles[0].name : "Unknown_File.pdf";
             const reportID = "REPORT-" + Math.random().toString(36).substr(2, 9).toUpperCase();
-            
-            let industryContent = knowledge[Math.floor(Math.random() * knowledge.length)];
-            const randHex = Math.random().toString(16).substr(2, 8).toUpperCase();
-            industryContent = industryContent.replace("{{rand_hex}}", randHex).replace("{{brand}}", "{{brand}}");
+            const industryContent = knowledge[Math.floor(Math.random() * knowledge.length)];
 
             doc.setFontSize(22); doc.text("{{brand}} Compliance Audit", 20, 30);
             doc.setFontSize(10); doc.text("Audit ID: " + reportID, 20, 40);
@@ -306,7 +314,7 @@ INDEX_TEMPLATE = """
         </div>
         <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {% for item in registry %}
-            <a href="p/{{item.slug}}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left group" data-s="{{item.p}} {{item.st}}">
+            <a href="p/{{item.slug}}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{{item.p}} {{item.st}}">
                 <div class="w-14 h-14 {{item.t_bg}} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg shadow-{{item.t_color}}-100">{{item.p[0]}}</div>
                 <h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{{item.p}}</h3>
                 <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{{item.st}} Node</p>
@@ -343,7 +351,7 @@ def build():
                     break
             
             warning_text = theme['warning'].replace("{{state}}", st)
-            knowledge_json = json.dumps(industry_knowledge).replace("{{state}}", st).replace("{{brand}}", BRAND_NAME)
+            knowledge_json = json.dumps(industry_knowledge).replace("{{state}}", st)
             
             pg = SUBPAGE_TEMPLATE.replace("{{title}}", f"{st} {p} Pro-Audit")\
                               .replace("{{brand}}", BRAND_NAME)\
@@ -364,19 +372,19 @@ def build():
             sitemap_urls.append(f"{BASE_URL}/p/{s}.html")
             total += 1
 
-    # 生成精品卡片主页
+    # 生成主页
     cards_html = ""
     for i in registry:
-        cards_html += f'''<a href="p/{i['slug']}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left group" data-s="{i['p']} {i['st']}"><div class="w-14 h-14 {i['t_bg']} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg shadow-{i['t_color']}-100">{i['p'][0]}</div><h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{i['p']}</h3><p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{i['st']} Node</p></a>'''
+        cards_html += f'''<a href="p/{i['slug']}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{i['p']} {i['st']}"><div class="w-14 h-14 {i['t_bg']} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg shadow-{i['t_color']}-100">{i['p'][0]}</div><h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{i['p']}</h3><p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{i['st']} Node</p></a>'''
     
     final_idx = INDEX_TEMPLATE.split('{% for item in registry %}')[0].replace("{{brand}}", BRAND_NAME) + cards_html + INDEX_TEMPLATE.split('{% endfor %}')[1]
     with open(os.path.join(OUTPUT_DIR, "index.html"), 'w', encoding='utf-8') as f: f.write(final_idx)
 
-    # 生成自动回航中转页 (success.html)
+    # 生成自动回航页 (success.html)
     success_pg = SUCCESS_TEMPLATE.replace("{{brand}}", BRAND_NAME)
     with open(os.path.join(OUTPUT_DIR, "success.html"), 'w', encoding='utf-8') as f: f.write(success_pg)
 
-    # 生成全量 Sitemap.xml
+    # 生成 Sitemap.xml
     today = datetime.now().strftime("%Y-%m-%d")
     sitemap = f'<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'
     sitemap += f'  <url><loc>{BASE_URL}/index.html</loc><lastmod>{today}</lastmod><priority>1.0</priority></url>\\n'
@@ -384,7 +392,7 @@ def build():
     sitemap += '</urlset>'
     with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), 'w', encoding='utf-8') as f: f.write(sitemap)
     
-    print(f"Build V43.1 Verified Complete: Generated success.html and {total} professional nodes.")
+    print(f"Build V43.1 Complete: Generated success.html and {total} nodes.")
 
 if __name__ == "__main__":
     build()
