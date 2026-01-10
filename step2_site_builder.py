@@ -25,8 +25,14 @@ LAW_DATABASE = {
 }
 
 # ==========================================
-# 2. HTML 模板 (V5.2 强力加载修复版)
+# 2. HTML 模板 (V5.3 引擎终极修复版)
 # ==========================================
+# 修复日志:
+# 1. 切换至 cdnjs.cloudflare.com 确保 PDF-Lib 完整加载
+# 2. 增加 StandardFonts 支持，修复 Watermark 缺少字体报错
+# 3. 增加 Encrypt 方法存在性检测
+# 4. 优化 Payment 交互逻辑
+
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,11 +41,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <title>{{title}} - Michael Expert System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- V5.2 核心修复：双重 CDN 冗余加载 PDF-Lib (解决免费功能报错) -->
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js'"></script>
-    
-    <!-- jsPDF 依然保留双重备份 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js'"></script>
+    <!-- V5.3 核心修复：使用最稳定的 cdnjs 源，移除不可靠的 fallback -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <style>
         .drop-active { border-color: #4f46e5 !important; background-color: #f5f3ff !important; }
@@ -47,6 +51,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         button:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
         .hidden { display: none; }
+        .spinner { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid white; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen font-sans text-slate-900">
@@ -55,7 +61,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Tool</span>
             <div class="flex items-center space-x-2">
                 <span id="status-dot" class="h-2 w-2 bg-yellow-500 rounded-full animate-pulse"></span>
-                <span id="status-text" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Loading Engine...</span>
+                <span id="status-text" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Initializing...</span>
             </div>
         </div>
     </nav>
@@ -94,9 +100,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         <input type="password" id="pdf-password" placeholder="Enter Password to Protect PDF" class="w-full p-4 border rounded-xl text-center bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none">
                     </div>
                     
-                    <button id="run-tool-btn" disabled class="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl">
+                    <button id="run-tool-btn" disabled class="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl flex items-center justify-center gap-2">
                         Wait for Engine...
                     </button>
+                    <p id="engine-status" class="text-center text-xs text-slate-400 mt-2">Loading core libraries...</p>
                 </div>
 
                 <!-- 结果区 -->
@@ -173,6 +180,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const generateReportBtn = document.getElementById('generate-report-btn');
         const statusDot = document.getElementById('status-dot');
         const statusText = document.getElementById('status-text');
+        const engineStatus = document.getElementById('engine-status');
 
         let currentFileArrayBuffer = null;
         let processedPdfBytes = null;
@@ -184,19 +192,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             filename: ""
         };
 
-        // --- 系统自检 (V5.2 Fix) ---
+        // --- 系统自检 & 引擎加载 (V5.3 Engine Repair) ---
         function checkEngines() {
             if (typeof PDFLib !== 'undefined' && typeof window.jspdf !== 'undefined') {
                 statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
-                statusText.innerText = 'System V5.2 Online';
+                statusText.innerText = 'Engine V5.3 Ready';
+                
                 if (!runToolBtn.classList.contains('processing')) {
                     runToolBtn.disabled = false;
                     runToolBtn.innerText = "START {{action}} (FREE)";
+                    engineStatus.innerText = "PDF Core Engine Loaded via CDNJS";
                 }
                 return true;
             } else {
-                // 如果未加载，尝试动态重载或等待
-                setTimeout(checkEngines, 500); 
+                setTimeout(checkEngines, 300); 
                 return false;
             }
         }
@@ -230,36 +239,52 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             }
         }
 
-        // --- 2. 免费功能执行 (强力修复) ---
+        // --- 2. 免费功能执行 (核心功能修复) ---
         runToolBtn.onclick = async () => {
             if (typeof PDFLib === 'undefined') {
-                alert("Core Engine (PDFLib) failed to load from CDN. Please refresh the page.");
+                alert("Core Engine (PDFLib) failed. Please check internet connection.");
                 return;
             }
 
             runToolBtn.disabled = true;
             runToolBtn.classList.add('processing');
-            runToolBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Processing...</span>';
+            runToolBtn.innerHTML = '<span class="spinner"></span> Processing...';
             
             try {
-                const { PDFDocument, rgb } = PDFLib;
+                // 解构并加载核心库
+                const { PDFDocument, rgb, StandardFonts } = PDFLib;
                 const pdfDoc = await PDFDocument.load(currentFileArrayBuffer);
                 const actionKey = CONTEXT.action.toLowerCase();
 
-                // 路由 A: 加密
+                // 路由 A: 加密 (Encrypt/Protect)
                 if (actionKey.includes('encrypt') || actionKey.includes('protect') || actionKey.includes('lock')) {
                     const pwd = document.getElementById('pdf-password').value || "123456";
-                    pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
+                    
+                    // 防御性检测
+                    if (typeof pdfDoc.encrypt === 'function') {
+                        pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
+                    } else {
+                        console.warn('Encrypt method missing on pdf-lib instance. Using basic save.');
+                        alert('Warning: Encryption engine partial load. File will be saved without encryption.');
+                    }
                 }
-                // 路由 B: 水印
+                // 路由 B: 水印 (Watermark/Stamp)
                 else if (actionKey.includes('watermark') || actionKey.includes('stamp')) {
                     const pages = pdfDoc.getPages();
                     const { width, height } = pages[0].getSize();
+                    // V5.3 修复: 嵌入字体!
+                    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+                    
                     pages[0].drawText('MICHAEL SYSTEM STAMP', {
-                        x: 50, y: height - 50, size: 20, color: rgb(0.8, 0.1, 0.1), opacity: 0.5
+                        x: 50, y: height - 80,
+                        size: 24,
+                        font: helveticaFont, // 必须指定字体
+                        color: rgb(0.8, 0.1, 0.1),
+                        opacity: 0.5,
+                        rotate: PDFLib.degrees(45),
                     });
                 }
-                // 路由 C: 默认 (加个元数据)
+                // 路由 C: 默认
                 else {
                     pdfDoc.setTitle('Processed by Michael Tool');
                 }
@@ -379,7 +404,7 @@ def build():
                 with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
                 count += 1
-            print(f"✅ Michael! V5.2 Robust Build Ready: {count} pages generated. PDF Engines Secured.")
+            print(f"✅ Michael! V5.3 Engine Repaired: {count} pages generated. CdnJS + StdFonts.")
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
 
