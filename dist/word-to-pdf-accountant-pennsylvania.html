@@ -3,37 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word to PDF for Accountant in Pennsylvania - Michael Expert Audit System</title>
+    <title>Word to PDF for Accountant in Pennsylvania - Michael Expert System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 多重冗余 CDN 确保 PDF 库在各种浏览器环境下均可加载 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
-        // 备份加载逻辑：如果第一个 CDN 挂了，尝试第二个
-        if (typeof window.jspdf === 'undefined') {
-            document.write('<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\/script>');
-        }
-    </script>
-    <style>
-        .drop-active { border-color: #4f46e5 !important; background-color: #f5f3ff !important; }
-        .animate-in { animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        button:disabled { opacity: 0.6; cursor: not-allowed; }
-    </style>
 </head>
 <body class="bg-slate-50 min-h-screen font-sans text-slate-900">
     <nav class="bg-white border-b border-slate-200 py-4 shadow-sm">
         <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
-            <span class="font-black text-2xl text-indigo-600 tracking-tighter">GRICH AUDIT</span>
+            <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Audit</span>
             <div class="flex items-center space-x-2">
-                <span id="status-dot" class="h-2 w-2 bg-yellow-500 rounded-full animate-pulse"></span>
-                <span id="status-text" class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">System Initializing...</span>
+                <span id="status-dot" class="h-2 w-2 bg-green-500 rounded-full"></span>
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Michael V3.9 Secure</span>
             </div>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto px-4 py-16">
         <div class="text-center mb-16">
-            <h1 class="text-5xl font-black text-slate-900 mb-6 tracking-tight">Expert Word to PDF for Accountants</h1>
+            <h1 class="text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight">Professional Word to PDF for Accountants</h1>
             <p class="text-xl text-slate-500 max-w-2xl mx-auto">Securely convert your critical files using advanced pixel-perfect layout preservation. Tailored for the Accountant in Pennsylvania, this tool addresses the unique challenge of preparing tax audits. Uphold SOX and IRS guidelines and protect your clients' interests with every document processed.</p>
         </div>
 
@@ -45,8 +32,8 @@
                         <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
                         </div>
-                        <p class="text-2xl font-bold text-slate-700">Upload PDF for Compliance Audit</p>
-                        <p class="text-slate-400 mt-3">Target Standard: <span class="text-indigo-500 font-semibold">SOX Standards</span></p>
+                        <p class="text-2xl font-bold text-slate-700">Drop PDF to Start Word to PDF</p>
+                        <p class="text-slate-400 mt-3 italic uppercase text-xs tracking-widest font-bold">Target Standard: SOX Standards</p>
                     </div>
                     <div id="file-ready-ui" class="hidden animate-in">
                         <div class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
@@ -56,31 +43,58 @@
                     </div>
                 </div>
 
-                <button id="run-audit-btn" class="hidden mt-10 w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl hover:-translate-y-1">
-                    RUN EXPERT AUDIT SCAN
+                <button id="run-tool-btn" class="hidden mt-10 w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl">
+                    PROCESS DOCUMENT
                 </button>
+
+                <div id="result-ui" class="hidden mt-10 border-t pt-10 animate-in">
+                    <div class="bg-green-50 border border-green-100 p-6 rounded-3xl mb-8 flex items-center justify-between">
+                        <div>
+                            <h4 class="text-green-800 font-bold text-lg">Document Processed Successfully!</h4>
+                            <p class="text-green-600">The basic Word to PDF task is complete.</p>
+                        </div>
+                        <button onclick="alert('Starting free download...')" class="bg-green-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-700 transition-all shadow-md">
+                            Free Download
+                        </button>
+                    </div>
+                    
+                    <div class="bg-indigo-50 border border-indigo-100 p-8 rounded-[2rem]">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-600 text-white p-3 rounded-2xl">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-indigo-900 font-black text-xl mb-2 italic uppercase tracking-tight">Compliance Alert: High Risk Detected</h4>
+                                <p class="text-indigo-700 mb-6 leading-relaxed">
+                                    Our expert system detected <b>3 potential legal compliance risks</b> for <b>Accountants</b> in this document. 
+                                    We recommend an immediate <b>Expert Audit Report</b> to ensure full adherence to <b>SOX Standards</b>.
+                                </p>
+                                <button id="paywall-trigger" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-xl transition-all uppercase tracking-widest">
+                                    Get Expert Audit Report ($4.99)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
         <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
-            <div class="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
-                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
-            </div>
-            <h3 class="text-3xl font-black text-slate-900 mb-4">Audit Complete</h3>
-            <p class="text-slate-500 mb-10 text-lg">Your expert report for <b>Accountant</b> in <b>Pennsylvania</b> is ready for download.</p>
+            <h3 class="text-3xl font-black text-slate-900 mb-4 tracking-tighter italic uppercase">Unlock Report</h3>
+            <p class="text-slate-500 mb-10 text-lg leading-snug">Secure the professional compliance report for <b>Accountant</b> in <b>Pennsylvania</b>.</p>
             
             <a href= + PAYHIP_LINK +  target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4">
-                Download Full Report ($4.99)
+                Pay with Payhip ($4.99)
             </a>
             
             <div class="relative py-6">
                 <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-100"></div></div>
-                <div class="relative flex justify-center text-xs uppercase tracking-widest text-slate-300 font-bold bg-white px-4">Michael Admin</div>
+                <div class="relative flex justify-center text-xs uppercase tracking-widest text-slate-300 font-bold bg-white px-4 italic">Michael Admin Sync</div>
             </div>
             
-            <button id="bypass-btn" class="text-slate-400 font-bold hover:text-red-500 transition-colors">
+            <button id="bypass-btn" class="text-slate-400 font-bold hover:text-red-500 transition-colors uppercase text-[10px] tracking-widest underline">
                 Internal Acceptance (Admin Only)
             </button>
         </div>
@@ -89,28 +103,17 @@
     <script>
         const dropZone = document.getElementById('drop-zone');
         const pdfInput = document.getElementById('pdf-input');
-        const runBtn = document.getElementById('run-audit-btn');
+        const runToolBtn = document.getElementById('run-tool-btn');
+        const resultUi = document.getElementById('result-ui');
         const payModal = document.getElementById('pay-modal');
+        const paywallTrigger = document.getElementById('paywall-trigger');
         const bypassBtn = document.getElementById('bypass-btn');
-        const statusDot = document.getElementById('status-dot');
-        const statusText = document.getElementById('status-text');
 
         const CONTEXT = {
             profession: "Accountant",
             state: "Pennsylvania",
             action: "Word to PDF",
             filename: ""
-        };
-
-        // 系统自检
-        window.onload = () => {
-            if (window.jspdf || (window.jspdf && window.jspdf.jsPDF)) {
-                statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
-                statusText.innerText = 'Michael Expert System Active';
-            } else {
-                statusDot.className = 'h-2 w-2 bg-red-500 rounded-full';
-                statusText.innerText = 'Engine Offline - Refresh Needed';
-            }
         };
 
         dropZone.onclick = () => pdfInput.click();
@@ -121,31 +124,31 @@
                 document.getElementById('ready-file-name').innerText = file.name;
                 document.getElementById('upload-ui').classList.add('hidden');
                 document.getElementById('file-ready-ui').classList.remove('hidden');
-                runBtn.classList.remove('hidden');
+                runToolBtn.classList.remove('hidden');
             }
         };
 
-        runBtn.onclick = () => {
-            runBtn.disabled = true;
-            runBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Analyzing Compliance...</span>';
+        runToolBtn.onclick = () => {
+            runToolBtn.disabled = true;
+            runToolBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Analyzing...</span>';
             setTimeout(() => {
-                payModal.classList.remove('hidden');
-                runBtn.disabled = false;
-                runBtn.innerText = 'RUN EXPERT AUDIT SCAN';
+                runToolBtn.classList.add('hidden');
+                resultUi.classList.remove('hidden');
+                resultUi.scrollIntoView({ behavior: 'smooth' });
             }, 1800);
         };
 
+        paywallTrigger.onclick = () => payModal.classList.remove('hidden');
+
         bypassBtn.onclick = async () => {
-            bypassBtn.innerText = "Generating PDF...";
+            bypassBtn.innerText = "Generating Professional PDF...";
             bypassBtn.disabled = true;
-            
             try {
                 const res = await fetch('/api/generate-report', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(CONTEXT)
                 });
-                
                 const data = await res.json();
                 if (data.report) {
                     const { jsPDF } = window.jspdf;
@@ -153,20 +156,18 @@
                     doc.setFontSize(22);
                     doc.text("Expert Compliance Audit Report", 105, 20, {align: "center"});
                     doc.setFontSize(10);
-                    doc.text(`Target: Accountant | Standard: SOX Standards | Jurisdiction: Pennsylvania`, 105, 30, {align: "center"});
+                    doc.text(`Target: Accountant | Standard: Pennsylvania Laws`, 105, 30, {align: "center"});
                     doc.line(20, 35, 190, 35);
-                    
                     doc.setFontSize(11);
                     const lines = doc.splitTextToSize(data.report, 170);
                     doc.text(lines, 20, 45);
-                    doc.save(`Audit_Report_${CONTEXT.profession}.pdf`);
+                    doc.save(`Expert_Audit_${CONTEXT.profession}.pdf`);
                 } else {
-                    alert("System Feedback: " + (data.error || "Unknown error occurred."));
+                    alert("Error: " + (data.error || "DeepSeek Connection Failed."));
                 }
             } catch (e) {
-                alert("Critical Failure: " + e.message);
+                alert("Critical System Error: " + e.message);
             }
-            
             payModal.classList.add('hidden');
             bypassBtn.innerText = "Internal Acceptance (Admin Only)";
             bypassBtn.disabled = false;

@@ -1,4 +1,4 @@
-// Michael V3.7 - Cloudflare Pages Functions
+// Michael V3.9 - Cloudflare Pages Functions
 // Core Logic: Diagnostic Enhanced + Force English Output
 
 export async function onRequestPost(context) {
