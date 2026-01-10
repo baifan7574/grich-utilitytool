@@ -25,7 +25,7 @@ LAW_DATABASE = {
 }
 
 # ==========================================
-# 2. HTML 模板 (V5.1 正式收款版 - 移除模拟功能)
+# 2. HTML 模板 (V5.2 强力加载修复版)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -34,20 +34,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}} - Michael Expert System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 加载核心 PDF 处理库 -->
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
-        // 冗余备份加载
-        if (typeof window.jspdf === 'undefined') {
-            document.write('<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\\/script>');
-        }
-    </script>
+    
+    <!-- V5.2 核心修复：双重 CDN 冗余加载 PDF-Lib (解决免费功能报错) -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js'"></script>
+    
+    <!-- jsPDF 依然保留双重备份 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js'"></script>
+
     <style>
         .drop-active { border-color: #4f46e5 !important; background-color: #f5f3ff !important; }
         .animate-in { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
         .hidden { display: none; }
     </style>
 </head>
@@ -56,8 +54,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
             <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Tool</span>
             <div class="flex items-center space-x-2">
-                <span id="status-dot" class="h-2 w-2 bg-green-500 rounded-full"></span>
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Live System</span>
+                <span id="status-dot" class="h-2 w-2 bg-yellow-500 rounded-full animate-pulse"></span>
+                <span id="status-text" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Loading Engine...</span>
             </div>
         </div>
     </nav>
@@ -74,7 +72,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-3xl p-16 text-center transition-all cursor-pointer hover:border-indigo-400 hover:bg-slate-50 group">
                     <input type="file" id="pdf-input" class="hidden" accept="application/pdf">
                     
-                    <!-- 初始状态 -->
                     <div id="upload-ui">
                         <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
@@ -83,7 +80,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         <p class="text-slate-400 mt-3 italic uppercase text-xs tracking-widest font-bold">Free Tool for {{profession}}s</p>
                     </div>
 
-                    <!-- 文件就绪状态 -->
                     <div id="file-ready-ui" class="hidden animate-in">
                         <div class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
@@ -92,33 +88,32 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     </div>
                 </div>
 
-                <!-- 动态功能区 (根据 Action 变化) -->
+                <!-- 动态功能区 -->
                 <div id="action-controls" class="mt-8 hidden">
-                    <!-- 加密输入框 (仅在 Encrypt 时显示) -->
                     <div id="encrypt-input" class="hidden mb-4">
                         <input type="password" id="pdf-password" placeholder="Enter Password to Protect PDF" class="w-full p-4 border rounded-xl text-center bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none">
                     </div>
                     
-                    <button id="run-tool-btn" class="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl">
-                        START {{action}} (FREE)
+                    <button id="run-tool-btn" disabled class="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl">
+                        Wait for Engine...
                     </button>
                 </div>
 
-                <!-- 结果区域 -->
+                <!-- 结果区 -->
                 <div id="result-ui" class="hidden mt-10 border-t pt-10 animate-in">
-                    <!-- 1. 真实免费功能结果 -->
+                    <!-- 免费下载 -->
                     <div class="bg-green-50 border border-green-100 p-6 rounded-3xl mb-8 flex items-center justify-between">
                         <div>
-                            <h4 class="text-green-800 font-bold text-lg">Success!</h4>
-                            <p class="text-green-600 text-sm">Your file has been {{action}}ed.</p>
+                            <h4 class="text-green-800 font-bold text-lg">Task Complete!</h4>
+                            <p class="text-green-600 text-sm">Your file has been processed locally.</p>
                         </div>
                         <button id="free-download-btn" class="bg-green-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-700 transition-all shadow-md flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                            Download File
+                            Download Free
                         </button>
                     </div>
                     
-                    <!-- 2. 专家审计转化 (Upsell) -->
+                    <!-- 专家审计转化 -->
                     <div class="bg-indigo-50 border border-indigo-100 p-8 rounded-[2rem]">
                         <div class="flex items-start space-x-4">
                             <div class="bg-indigo-600 text-white p-3 rounded-2xl">
@@ -127,7 +122,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                             <div class="flex-1">
                                 <h4 class="text-indigo-900 font-black text-xl mb-2 italic uppercase tracking-tight">Compliance Alert</h4>
                                 <p class="text-indigo-700 mb-6 leading-relaxed text-sm">
-                                    We detected metadata risks in this file. As a <b>{{profession}}</b>, you must comply with <b>{{laws}}</b>.
+                                    System detected metadata risks. As a <b>{{profession}}</b>, verify compliance with <b>{{laws}}</b>.
                                 </p>
                                 <button id="paywall-trigger" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-xl transition-all uppercase tracking-widest">
                                     Get Expert Audit Report ($4.99)
@@ -140,20 +135,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- 支付弹窗 (Paywall - 正式收款模式) -->
+    <!-- 支付弹窗 -->
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
         <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
             <h3 class="text-3xl font-black text-slate-900 mb-4 italic uppercase">Unlock Report</h3>
             <p class="text-slate-500 mb-10 text-lg leading-snug">Generate professional audit for <b>{{profession}}</b> regarding <b>{{laws}}</b>.</p>
             
-            <!-- 真实支付链接 -->
             <a id="pay-link" href="""" + PAYHIP_LINK + """" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4 cursor-pointer">
                 Pay with Payhip ($4.99)
             </a>
             
-            <p class="text-xs text-slate-400 mt-2 mb-6">Secure payment via Payhip. Report unlocks after payment.</p>
+            <p class="text-xs text-slate-400 mt-2 mb-6">Secure payment via Payhip.</p>
 
-            <!-- 支付后操作区 (点击支付后才会显示) -->
             <div id="post-pay-actions" class="hidden border-t border-slate-100 pt-6">
                 <p class="text-green-600 font-bold mb-3 text-sm">Payment Initiated?</p>
                 <button id="generate-report-btn" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-md">
@@ -166,7 +159,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
 
     <script>
-        // 核心变量
         const dropZone = document.getElementById('drop-zone');
         const pdfInput = document.getElementById('pdf-input');
         const actionControls = document.getElementById('action-controls');
@@ -176,16 +168,15 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const paywallTrigger = document.getElementById('paywall-trigger');
         const freeDownloadBtn = document.getElementById('free-download-btn');
         const encryptInput = document.getElementById('encrypt-input');
-        
-        // 支付相关变量
         const payLink = document.getElementById('pay-link');
         const postPayActions = document.getElementById('post-pay-actions');
         const generateReportBtn = document.getElementById('generate-report-btn');
+        const statusDot = document.getElementById('status-dot');
+        const statusText = document.getElementById('status-text');
 
         let currentFileArrayBuffer = null;
         let processedPdfBytes = null;
 
-        // 上下文数据
         const CONTEXT = {
             profession: "{{profession}}",
             state: "{{state}}",
@@ -193,9 +184,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             filename: ""
         };
 
-        // --- 1. 文件处理逻辑 ---
+        // --- 系统自检 (V5.2 Fix) ---
+        function checkEngines() {
+            if (typeof PDFLib !== 'undefined' && typeof window.jspdf !== 'undefined') {
+                statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
+                statusText.innerText = 'System V5.2 Online';
+                if (!runToolBtn.classList.contains('processing')) {
+                    runToolBtn.disabled = false;
+                    runToolBtn.innerText = "START {{action}} (FREE)";
+                }
+                return true;
+            } else {
+                // 如果未加载，尝试动态重载或等待
+                setTimeout(checkEngines, 500); 
+                return false;
+            }
+        }
+        window.onload = checkEngines;
+
+        // --- 1. 文件处理 ---
         dropZone.onclick = () => pdfInput.click();
         pdfInput.onchange = (e) => handleFile(e.target.files[0]);
+        
         dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drop-active'); });
         dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drop-active'));
         dropZone.addEventListener('drop', (e) => {
@@ -211,7 +221,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 document.getElementById('ready-file-name').innerText = file.name;
                 document.getElementById('upload-ui').classList.add('hidden');
                 document.getElementById('file-ready-ui').classList.remove('hidden');
-                
                 actionControls.classList.remove('hidden');
                 
                 const actionLower = CONTEXT.action.toLowerCase();
@@ -221,9 +230,15 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             }
         }
 
-        // --- 2. 智能功能路由 (免费功能) ---
+        // --- 2. 免费功能执行 (强力修复) ---
         runToolBtn.onclick = async () => {
+            if (typeof PDFLib === 'undefined') {
+                alert("Core Engine (PDFLib) failed to load from CDN. Please refresh the page.");
+                return;
+            }
+
             runToolBtn.disabled = true;
+            runToolBtn.classList.add('processing');
             runToolBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Processing...</span>';
             
             try {
@@ -231,19 +246,22 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 const pdfDoc = await PDFDocument.load(currentFileArrayBuffer);
                 const actionKey = CONTEXT.action.toLowerCase();
 
+                // 路由 A: 加密
                 if (actionKey.includes('encrypt') || actionKey.includes('protect') || actionKey.includes('lock')) {
                     const pwd = document.getElementById('pdf-password').value || "123456";
                     pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
                 }
+                // 路由 B: 水印
                 else if (actionKey.includes('watermark') || actionKey.includes('stamp')) {
                     const pages = pdfDoc.getPages();
-                    pages[0].drawText('DRAFT - ' + CONTEXT.profession + ' COPY', {
-                        x: 50, y: 500, size: 50, color: rgb(0.9, 0.1, 0.1), opacity: 0.3, rotate: PDFLib.degrees(45)
+                    const { width, height } = pages[0].getSize();
+                    pages[0].drawText('MICHAEL SYSTEM STAMP', {
+                        x: 50, y: height - 50, size: 20, color: rgb(0.8, 0.1, 0.1), opacity: 0.5
                     });
                 }
+                // 路由 C: 默认 (加个元数据)
                 else {
                     pdfDoc.setTitle('Processed by Michael Tool');
-                    pdfDoc.setAuthor('Michael System');
                 }
 
                 processedPdfBytes = await pdfDoc.save();
@@ -257,11 +275,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             } catch (err) {
                 alert("Processing Error: " + err.message);
                 runToolBtn.disabled = false;
+                runToolBtn.classList.remove('processing');
                 runToolBtn.innerText = "RETRY";
             }
         };
 
-        // --- 3. 真实免费下载 ---
+        // --- 3. 免费下载 ---
         freeDownloadBtn.onclick = () => {
             if (!processedPdfBytes) return;
             const blob = new Blob([processedPdfBytes], { type: 'application/pdf' });
@@ -275,19 +294,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             URL.revokeObjectURL(url);
         };
 
-        // --- 4. 专家报告逻辑 (正式收费版) ---
+        // --- 4. 专家报告逻辑 ---
         paywallTrigger.onclick = () => payModal.classList.remove('hidden');
+        payLink.onclick = () => { setTimeout(() => postPayActions.classList.remove('hidden'), 2000); };
 
-        // 点击支付链接后，2秒显示“我已支付”按钮
-        payLink.onclick = () => {
-            setTimeout(() => {
-                postPayActions.classList.remove('hidden');
-            }, 2000);
-        };
-
-        // 真实生成报告 (原 Internal Acceptance 逻辑)
         generateReportBtn.onclick = async () => {
-            generateReportBtn.innerText = "Verifying & Generating...";
+            generateReportBtn.innerText = "Connecting to Expert Brain...";
             generateReportBtn.disabled = true;
             try {
                 const res = await fetch('/api/generate-report', {
@@ -305,7 +317,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     doc.text(`Ref: {{laws}}`, 105, 30, {align: "center"});
                     doc.line(20, 35, 190, 35);
                     doc.setFontSize(11);
-                    
                     const lines = doc.splitTextToSize(data.report, 170);
                     let y = 45;
                     for (let line of lines) {
@@ -314,16 +325,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         y += 6;
                     }
                     doc.save(`Audit_Report.pdf`);
-                    
-                    // 生成成功后关闭弹窗
                     setTimeout(() => payModal.classList.add('hidden'), 1000);
                 } else {
-                    alert("Report Error: " + (data.error || "System Busy"));
-                    generateReportBtn.disabled = false;
-                    generateReportBtn.innerText = "Retry Download";
+                    throw new Error(data.error || "Brain disconnected.");
                 }
             } catch (e) { 
-                alert("Connection Error: " + e.message);
+                alert("Error: " + e.message);
                 generateReportBtn.disabled = false;
                 generateReportBtn.innerText = "Retry Download";
             }
@@ -372,7 +379,7 @@ def build():
                 with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
                 count += 1
-            print(f"✅ Michael! V5.1 Final Build Ready: {count} pages generated. Simulation Mode Removed.")
+            print(f"✅ Michael! V5.2 Robust Build Ready: {count} pages generated. PDF Engines Secured.")
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
 
