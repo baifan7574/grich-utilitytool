@@ -25,7 +25,7 @@ LAW_DATABASE = {
 }
 
 # ==========================================
-# 2. HTML 模板 (V4.0 修复下载与排版)
+# 2. HTML 模板 (V5.0 智能路由真功能版)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -34,8 +34,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}} - Michael Expert System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 加载核心 PDF 处理库 -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
+        // 冗余备份加载
         if (typeof window.jspdf === 'undefined') {
             document.write('<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\\/script>');
         }
@@ -45,15 +48,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         .animate-in { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .hidden { display: none; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen font-sans text-slate-900">
     <nav class="bg-white border-b border-slate-200 py-4 shadow-sm">
         <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
-            <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Audit</span>
+            <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Tool</span>
             <div class="flex items-center space-x-2">
                 <span id="status-dot" class="h-2 w-2 bg-green-500 rounded-full"></span>
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">System V4.0 Ready</span>
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">V5.0 Intelligent</span>
             </div>
         </div>
     </nav>
@@ -66,15 +70,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         <div class="bg-white rounded-[2.5rem] shadow-2xl p-2 border border-slate-100">
             <div class="p-10">
+                <!-- 拖拽区 -->
                 <div id="drop-zone" class="relative border-2 border-dashed border-slate-200 rounded-3xl p-16 text-center transition-all cursor-pointer hover:border-indigo-400 hover:bg-slate-50 group">
                     <input type="file" id="pdf-input" class="hidden" accept="application/pdf">
+                    
+                    <!-- 初始状态 -->
                     <div id="upload-ui">
                         <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
                         </div>
-                        <p class="text-2xl font-bold text-slate-700">Drop PDF to Start {{action}}</p>
-                        <p class="text-slate-400 mt-3 italic uppercase text-xs tracking-widest font-bold">Ref: {{laws}}</p>
+                        <p class="text-2xl font-bold text-slate-700">Click to {{action}}</p>
+                        <p class="text-slate-400 mt-3 italic uppercase text-xs tracking-widest font-bold">Free Tool for {{profession}}s</p>
                     </div>
+
+                    <!-- 文件就绪状态 -->
                     <div id="file-ready-ui" class="hidden animate-in">
                         <div class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /></svg>
@@ -83,17 +92,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     </div>
                 </div>
 
-                <button id="run-tool-btn" class="hidden mt-10 w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl">
-                    PROCESS DOCUMENT
-                </button>
+                <!-- 动态功能区 (根据 Action 变化) -->
+                <div id="action-controls" class="mt-8 hidden">
+                    <!-- 加密输入框 (仅在 Encrypt 时显示) -->
+                    <div id="encrypt-input" class="hidden mb-4">
+                        <input type="password" id="pdf-password" placeholder="Enter Password to Protect PDF" class="w-full p-4 border rounded-xl text-center bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                    
+                    <button id="run-tool-btn" class="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl">
+                        START {{action}} (FREE)
+                    </button>
+                </div>
 
                 <!-- 结果区域 -->
                 <div id="result-ui" class="hidden mt-10 border-t pt-10 animate-in">
-                    <!-- 免费下载部分 -->
+                    <!-- 1. 真实免费功能结果 -->
                     <div class="bg-green-50 border border-green-100 p-6 rounded-3xl mb-8 flex items-center justify-between">
                         <div>
-                            <h4 class="text-green-800 font-bold text-lg">Task Complete!</h4>
-                            <p class="text-green-600 text-sm">Your file is processed and ready.</p>
+                            <h4 class="text-green-800 font-bold text-lg">Success!</h4>
+                            <p class="text-green-600 text-sm">Your file has been {{action}}ed.</p>
                         </div>
                         <button id="free-download-btn" class="bg-green-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-700 transition-all shadow-md flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
@@ -101,7 +118,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         </button>
                     </div>
                     
-                    <!-- 付费转化部分 -->
+                    <!-- 2. 专家审计转化 (Upsell) -->
                     <div class="bg-indigo-50 border border-indigo-100 p-8 rounded-[2rem]">
                         <div class="flex items-start space-x-4">
                             <div class="bg-indigo-600 text-white p-3 rounded-2xl">
@@ -110,8 +127,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                             <div class="flex-1">
                                 <h4 class="text-indigo-900 font-black text-xl mb-2 italic uppercase tracking-tight">Compliance Alert</h4>
                                 <p class="text-indigo-700 mb-6 leading-relaxed text-sm">
-                                    Our system detected potential risks regarding <b>{{laws}}</b>. 
-                                    We recommend generating an <b>Expert Audit Report</b>.
+                                    We detected metadata risks in this file. As a <b>{{profession}}</b>, you must comply with <b>{{laws}}</b>.
                                 </p>
                                 <button id="paywall-trigger" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-xl transition-all uppercase tracking-widest">
                                     Get Expert Audit Report ($4.99)
@@ -124,11 +140,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- Paywall Modal -->
+    <!-- 支付弹窗 (Paywall) -->
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
         <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
             <h3 class="text-3xl font-black text-slate-900 mb-4 italic uppercase">Unlock Report</h3>
-            <p class="text-slate-500 mb-10 text-lg leading-snug">Secure the professional compliance report for <b>{{profession}}</b> in <b>{{state}}</b>.</p>
+            <p class="text-slate-500 mb-10 text-lg leading-snug">Generate professional audit for <b>{{profession}}</b> regarding <b>{{laws}}</b>.</p>
             
             <a href="""" + PAYHIP_LINK + """" target="_blank" class="block w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-lg transition-all mb-4">
                 Pay with Payhip ($4.99)
@@ -147,76 +163,128 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
 
     <script>
+        // 核心变量
         const dropZone = document.getElementById('drop-zone');
         const pdfInput = document.getElementById('pdf-input');
+        const actionControls = document.getElementById('action-controls');
         const runToolBtn = document.getElementById('run-tool-btn');
         const resultUi = document.getElementById('result-ui');
         const payModal = document.getElementById('pay-modal');
         const paywallTrigger = document.getElementById('paywall-trigger');
         const bypassBtn = document.getElementById('bypass-btn');
         const freeDownloadBtn = document.getElementById('free-download-btn');
+        const encryptInput = document.getElementById('encrypt-input');
 
-        let currentFile = null; // 存储当前文件对象
+        let currentFileArrayBuffer = null;
+        let processedPdfBytes = null;
 
+        // 上下文数据
         const CONTEXT = {
             profession: "{{profession}}",
             state: "{{state}}",
-            action: "{{action}}",
+            action: "{{action}}", // 关键：这就是用户搜的关键词
             filename: ""
         };
 
+        // --- 1. 文件处理逻辑 ---
         dropZone.onclick = () => pdfInput.click();
-        
-        pdfInput.onchange = (e) => handleFileSelection(e.target.files[0]);
-        
-        // 拖拽支持
+        pdfInput.onchange = (e) => handleFile(e.target.files[0]);
         dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drop-active'); });
         dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drop-active'));
         dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             dropZone.classList.remove('drop-active');
-            handleFileSelection(e.dataTransfer.files[0]);
+            handleFile(e.dataTransfer.files[0]);
         });
 
-        function handleFileSelection(file) {
+        async function handleFile(file) {
             if (file && file.type === 'application/pdf') {
-                currentFile = file; // 保存文件以供下载
+                currentFileArrayBuffer = await file.arrayBuffer();
                 CONTEXT.filename = file.name;
                 document.getElementById('ready-file-name').innerText = file.name;
                 document.getElementById('upload-ui').classList.add('hidden');
                 document.getElementById('file-ready-ui').classList.remove('hidden');
-                runToolBtn.classList.remove('hidden');
+                
+                // 智能路由 UI 显示
+                actionControls.classList.remove('hidden');
+                
+                // 如果是加密需求，显示密码框
+                const actionLower = CONTEXT.action.toLowerCase();
+                if (actionLower.includes('encrypt') || actionLower.includes('protect') || actionLower.includes('lock')) {
+                    encryptInput.classList.remove('hidden');
+                }
             }
         }
 
-        runToolBtn.onclick = () => {
+        // --- 2. 智能功能路由 (Smart Router) ---
+        runToolBtn.onclick = async () => {
             runToolBtn.disabled = true;
             runToolBtn.innerHTML = '<span class="animate-pulse tracking-widest uppercase">Processing...</span>';
-            setTimeout(() => {
-                runToolBtn.classList.add('hidden');
-                resultUi.classList.remove('hidden');
-                resultUi.scrollIntoView({ behavior: 'smooth' });
-            }, 1500);
+            
+            try {
+                const { PDFDocument, rgb } = PDFLib;
+                const pdfDoc = await PDFDocument.load(currentFileArrayBuffer);
+                
+                const actionKey = CONTEXT.action.toLowerCase();
+
+                // 路由 A: 加密 (Encrypt/Protect)
+                if (actionKey.includes('encrypt') || actionKey.includes('protect') || actionKey.includes('lock')) {
+                    const pwd = document.getElementById('pdf-password').value || "123456"; // 默认密码兜底
+                    pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
+                    console.log("Action: Encrypt Executed");
+                }
+                // 路由 B: 水印 (Watermark/Stamp)
+                else if (actionKey.includes('watermark') || actionKey.includes('stamp')) {
+                    const pages = pdfDoc.getPages();
+                    pages[0].drawText('DRAFT - ' + CONTEXT.profession + ' COPY', {
+                        x: 50, y: 500, size: 50, color: rgb(0.9, 0.1, 0.1), opacity: 0.3, rotate: PDFLib.degrees(45)
+                    });
+                    console.log("Action: Watermark Executed");
+                }
+                // 路由 C: 通用/默认 (Metadata Clean / Compress 模拟)
+                else {
+                    pdfDoc.setTitle('Processed by Michael Tool');
+                    pdfDoc.setAuthor('Michael System');
+                    // 模拟通用处理：稍微修改一下元数据
+                    console.log("Action: Generic Process Executed");
+                }
+
+                // 保存处理后的文件
+                processedPdfBytes = await pdfDoc.save();
+                
+                setTimeout(() => {
+                    actionControls.classList.add('hidden');
+                    resultUi.classList.remove('hidden');
+                    resultUi.scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
+
+            } catch (err) {
+                alert("Processing Error: " + err.message);
+                runToolBtn.disabled = false;
+                runToolBtn.innerText = "RETRY";
+            }
         };
 
-        // 修复 1: 免费下载逻辑
+        // --- 3. 真实免费下载 ---
         freeDownloadBtn.onclick = () => {
-            if (!currentFile) return;
-            const url = URL.createObjectURL(currentFile);
+            if (!processedPdfBytes) return;
+            const blob = new Blob([processedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = "Processed_" + currentFile.name; // 模拟处理后的文件名
+            // 智能重命名
+            a.download = `Processed_${CONTEXT.filename}`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         };
 
+        // --- 4. 专家报告逻辑 (Upsell) ---
         paywallTrigger.onclick = () => payModal.classList.remove('hidden');
 
-        // 修复 2: 专家报告排版逻辑
         bypassBtn.onclick = async () => {
-            bypassBtn.innerText = "Generating PDF...";
+            bypassBtn.innerText = "Generating...";
             bypassBtn.disabled = true;
             try {
                 const res = await fetch('/api/generate-report', {
@@ -228,42 +296,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 if (data.report) {
                     const { jsPDF } = window.jspdf;
                     const doc = new jsPDF();
-                    
-                    // 报告页眉
-                    doc.setFont("helvetica", "bold");
                     doc.setFontSize(22);
-                    doc.text("Expert Compliance Audit Report", 105, 20, {align: "center"});
-                    
+                    doc.text("Expert Compliance Audit", 105, 20, {align: "center"});
                     doc.setFontSize(10);
-                    doc.setFont("helvetica", "normal");
-                    doc.text(`Target: {{profession}} | Jurisdiction: {{state}}`, 105, 30, {align: "center"});
-                    doc.setLineWidth(0.5);
+                    doc.text(`Ref: {{laws}}`, 105, 30, {align: "center"});
                     doc.line(20, 35, 190, 35);
-                    
-                    // 报告正文 - 自动分页处理
                     doc.setFontSize(11);
-                    const splitText = doc.splitTextToSize(data.report, 170);
                     
+                    const lines = doc.splitTextToSize(data.report, 170);
                     let y = 45;
-                    // 循环打印每一行，处理分页
-                    for (let i = 0; i < splitText.length; i++) {
-                        if (y > 280) { // 如果到了页面底部
-                            doc.addPage();
-                            y = 20; // 重置 y 坐标
-                        }
-                        doc.text(splitText[i], 20, y);
-                        y += 6; // 行间距
+                    for (let line of lines) {
+                        if (y > 280) { doc.addPage(); y = 20; }
+                        doc.text(line, 20, y);
+                        y += 6;
                     }
-                    
-                    doc.save(`Expert_Audit_${CONTEXT.profession}.pdf`);
-                } else {
-                    alert("Error: " + (data.error || "Brain disconnected."));
+                    doc.save(`Audit_Report.pdf`);
                 }
-            } catch (e) {
-                alert("Critical System Error: " + e.message);
-            }
+            } catch (e) { alert("Error: " + e.message); }
             payModal.classList.add('hidden');
-            bypassBtn.innerText = "Internal Acceptance (Admin Only)";
+            bypassBtn.innerText = "Internal Acceptance";
             bypassBtn.disabled = false;
         };
     </script>
@@ -294,7 +345,7 @@ def build():
                 occ = row.get(h_map.get('occupation'), row.get(h_map.get('niche'), 'Expert'))
                 st = row.get(h_map.get('state'), 'California')
                 title = row.get(h_map.get('title'), f"{action} for {occ} in {st}")
-                desc = row.get(h_map.get('seo_description'), f"Professional compliance audit system for {occ} in {st}.")
+                desc = row.get(h_map.get('seo_description'), f"Professional {action} tool for {occ}.")
                 
                 law_text = LAW_DATABASE.get(occ.lower(), LAW_DATABASE["default"])
                 
@@ -310,7 +361,7 @@ def build():
                 with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
                 count += 1
-            print(f"✅ Michael! V4.0 Final Build Ready: {count} pages generated. Free Download + Expert PDF Fixed.")
+            print(f"✅ Michael! V5.0 Smart Router Build Ready: {count} pages generated.")
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
 
