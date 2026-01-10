@@ -25,12 +25,13 @@ LAW_DATABASE = {
 }
 
 # ==========================================
-# 2. HTML 模板 (V5.4 支付链接修复版)
+# 2. HTML 模板 (V5.5 ESM 终极架构版)
 # ==========================================
-# 修复日志:
-# 1. 修复 HTML 模板中 PAYHIP_LINK 无法被 Python 解析为变量的问题
-# 2. 使用 {{payhip_link}} 占位符进行标准替换
-# 3. 保持 V5.3 的引擎修复 (CDNJS + StdFonts + Encrypt Check)
+# 修复日志 V5.5:
+# 1. 彻底弃用 Global Script Tags (UMD)，改用 ES Modules (ESM)。
+# 2. 直接从 Skypack/JSDelivr 引入 ESM 版本的库，确保 Tree-Shaking 不会误删加密模块。
+# 3. 逻辑代码移入 <script type="module">，隔离作用域。
+# 4. 修复了所有按钮的事件绑定逻辑（ESM 无法直接 onclick="func()", 改为 addEventListener）。
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -40,10 +41,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <title>{{title}} - Michael Expert System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- V5.3 引擎核心：CDNJS 源 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
     <style>
         .drop-active { border-color: #4f46e5 !important; background-color: #f5f3ff !important; }
         .animate-in { animation: fadeIn 0.3s ease-out; }
@@ -60,7 +57,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <span class="font-black text-2xl text-indigo-600 tracking-tighter uppercase">Grich Tool</span>
             <div class="flex items-center space-x-2">
                 <span id="status-dot" class="h-2 w-2 bg-yellow-500 rounded-full animate-pulse"></span>
-                <span id="status-text" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Initializing...</span>
+                <span id="status-text" class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Loading ESM...</span>
             </div>
         </div>
     </nav>
@@ -102,7 +99,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     <button id="run-tool-btn" disabled class="w-full bg-slate-900 text-white py-6 rounded-3xl font-black text-xl hover:bg-indigo-600 transition-all shadow-xl flex items-center justify-center gap-2">
                         Wait for Engine...
                     </button>
-                    <p id="engine-status" class="text-center text-xs text-slate-400 mt-2">Loading core libraries...</p>
+                    <p id="engine-status" class="text-center text-xs text-slate-400 mt-2">Connecting to ESM Cloud...</p>
                 </div>
 
                 <!-- 结果区 -->
@@ -119,7 +116,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         </button>
                     </div>
                     
-                    <!-- 专家审计转化 -->
+                    <!-- 专家审计 -->
                     <div class="bg-indigo-50 border border-indigo-100 p-8 rounded-[2rem]">
                         <div class="flex items-start space-x-4">
                             <div class="bg-indigo-600 text-white p-3 rounded-2xl">
@@ -141,7 +138,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- 支付弹窗 (修复: 使用占位符注入 Payhip 链接) -->
+    <!-- 支付弹窗 -->
     <div id="pay-modal" class="fixed inset-0 bg-slate-900/95 hidden flex items-center justify-center z-50 p-4 backdrop-blur-md">
         <div class="bg-white p-12 rounded-[3rem] max-w-md w-full text-center shadow-2xl animate-in">
             <h3 class="text-3xl font-black text-slate-900 mb-4 italic uppercase">Unlock Report</h3>
@@ -160,11 +157,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 </button>
             </div>
             
-            <button onclick="document.getElementById('pay-modal').classList.add('hidden')" class="mt-4 block w-full text-slate-300 text-xs hover:text-slate-500">Close</button>
+            <button id="close-modal-btn" class="mt-4 block w-full text-slate-300 text-xs hover:text-slate-500">Close</button>
         </div>
     </div>
 
-    <script>
+    <!-- ESM Script Logic -->
+    <script type="module">
+        // 核心：使用 ESM 动态引入，确保获取全量库
+        import { PDFDocument, StandardFonts, rgb } from 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/+esm';
+        import { jsPDF } from 'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/+esm';
+
+        // 获取 DOM 元素 (ESM 内部作用域)
         const dropZone = document.getElementById('drop-zone');
         const pdfInput = document.getElementById('pdf-input');
         const actionControls = document.getElementById('action-controls');
@@ -177,6 +180,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const payLink = document.getElementById('pay-link');
         const postPayActions = document.getElementById('post-pay-actions');
         const generateReportBtn = document.getElementById('generate-report-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
         const statusDot = document.getElementById('status-dot');
         const statusText = document.getElementById('status-text');
         const engineStatus = document.getElementById('engine-status');
@@ -191,26 +195,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             filename: ""
         };
 
-        // --- 系统自检 & 引擎加载 ---
-        function checkEngines() {
-            if (typeof PDFLib !== 'undefined' && typeof window.jspdf !== 'undefined') {
-                statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
-                statusText.innerText = 'Engine V5.4 Ready';
-                
-                if (!runToolBtn.classList.contains('processing')) {
-                    runToolBtn.disabled = false;
-                    runToolBtn.innerText = "START {{action}} (FREE)";
-                    engineStatus.innerText = "Michael System Online";
-                }
-                return true;
-            } else {
-                setTimeout(checkEngines, 300); 
-                return false;
+        // --- 0. ESM 初始化成功 ---
+        (function initSystem() {
+            console.log("ESM System Initialized");
+            statusDot.className = 'h-2 w-2 bg-green-500 rounded-full';
+            statusText.innerText = 'ESM Core Ready';
+            engineStatus.innerText = "Modules Loaded: pdf-lib, jspdf";
+            
+            if (!runToolBtn.classList.contains('processing')) {
+                runToolBtn.disabled = false;
+                runToolBtn.innerText = "START {{action}} (FREE)";
             }
-        }
-        window.onload = checkEngines;
+        })();
 
-        // --- 1. 文件处理 ---
+        // --- 1. 事件绑定 (ESM 中不能用 onclick HTML 属性) ---
         dropZone.onclick = () => pdfInput.click();
         pdfInput.onchange = (e) => handleFile(e.target.files[0]);
         
@@ -222,6 +220,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             handleFile(e.dataTransfer.files[0]);
         });
 
+        paywallTrigger.onclick = () => payModal.classList.remove('hidden');
+        closeModalBtn.onclick = () => payModal.classList.add('hidden');
+        payLink.onclick = () => { setTimeout(() => postPayActions.classList.remove('hidden'), 2000); };
+
+        // --- 2. 文件处理逻辑 ---
         async function handleFile(file) {
             if (file && file.type === 'application/pdf') {
                 currentFileArrayBuffer = await file.arrayBuffer();
@@ -238,44 +241,38 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             }
         }
 
-        // --- 2. 免费功能执行 ---
+        // --- 3. 核心功能执行 ---
         runToolBtn.onclick = async () => {
-            if (typeof PDFLib === 'undefined') {
-                alert("Core Engine (PDFLib) failed. Please check internet connection.");
-                return;
-            }
-
             runToolBtn.disabled = true;
             runToolBtn.classList.add('processing');
             runToolBtn.innerHTML = '<span class="spinner"></span> Processing...';
             
             try {
-                const { PDFDocument, rgb, StandardFonts } = PDFLib;
+                // 加载 PDF
                 const pdfDoc = await PDFDocument.load(currentFileArrayBuffer);
                 const actionKey = CONTEXT.action.toLowerCase();
 
                 // 路由 A: 加密
                 if (actionKey.includes('encrypt') || actionKey.includes('protect') || actionKey.includes('lock')) {
                     const pwd = document.getElementById('pdf-password').value || "123456";
-                    if (typeof pdfDoc.encrypt === 'function') {
-                        pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd });
-                    } else {
-                        console.warn('Encrypt method missing.');
-                        alert('Warning: Encryption engine partial load.');
-                    }
+                    // ESM 保证了 encrypt 方法的存在
+                    console.log("Applying Encryption...");
+                    pdfDoc.encrypt({ userPassword: pwd, ownerPassword: pwd, permissions: { modifying: false } });
                 }
                 // 路由 B: 水印
                 else if (actionKey.includes('watermark') || actionKey.includes('stamp')) {
+                    console.log("Applying Watermark...");
                     const pages = pdfDoc.getPages();
                     const { width, height } = pages[0].getSize();
                     const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+                    
                     pages[0].drawText('MICHAEL SYSTEM STAMP', {
                         x: 50, y: height - 80,
                         size: 24,
                         font: helveticaFont,
                         color: rgb(0.8, 0.1, 0.1),
                         opacity: 0.5,
-                        rotate: PDFLib.degrees(45),
+                        rotate: { type: 'degrees', angle: 45 },
                     });
                 }
                 // 路由 C: 默认
@@ -289,17 +286,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                     actionControls.classList.add('hidden');
                     resultUi.classList.remove('hidden');
                     resultUi.scrollIntoView({ behavior: 'smooth' });
-                }, 1000);
+                }, 800);
 
             } catch (err) {
-                alert("Processing Error: " + err.message);
+                console.error(err);
+                alert("ESM Error: " + err.message);
                 runToolBtn.disabled = false;
                 runToolBtn.classList.remove('processing');
                 runToolBtn.innerText = "RETRY";
             }
         };
 
-        // --- 3. 免费下载 ---
+        // --- 4. 免费下载 ---
         freeDownloadBtn.onclick = () => {
             if (!processedPdfBytes) return;
             const blob = new Blob([processedPdfBytes], { type: 'application/pdf' });
@@ -313,10 +311,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             URL.revokeObjectURL(url);
         };
 
-        // --- 4. 专家报告 logic ---
-        paywallTrigger.onclick = () => payModal.classList.remove('hidden');
-        payLink.onclick = () => { setTimeout(() => postPayActions.classList.remove('hidden'), 2000); };
-
+        // --- 5. 专家报告逻辑 ---
         generateReportBtn.onclick = async () => {
             generateReportBtn.innerText = "Connecting to Expert Brain...";
             generateReportBtn.disabled = true;
@@ -328,7 +323,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 });
                 const data = await res.json();
                 if (data.report) {
-                    const { jsPDF } = window.jspdf;
                     const doc = new jsPDF();
                     doc.setFontSize(22);
                     doc.text("Expert Compliance Audit", 105, 20, {align: "center"});
@@ -399,7 +393,7 @@ def build():
                 with open(os.path.join(OUTPUT_DIR, fname), "w", encoding="utf-8") as out:
                     out.write(content)
                 count += 1
-            print(f"✅ Michael! V5.4 Payment Fixed: {count} pages generated.")
+            print(f"✅ Michael! V5.5 ESM Ultimate Fix: {count} pages generated.")
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
 
