@@ -1,0 +1,26 @@
+GRICH 项目：云端自动化部署逻辑手册 (V42.2)
+致负责部署的工程师：本手册详细说明了 Michael 站点的云端生成逻辑，请务必按照此架构配置 GitHub Actions 和 Cloudflare 环境。
+1. 核心架构：静态工厂模式 (Static Factory Pattern)
+本项目弃用传统的“动态路由”方案，转而采用“物理静态化生成”。
+• 本地/源代码层：仅包含 step2_site_builder.py 和 professions.csv。
+• 构建层 (Build Layer)：在 GitHub Actions 环境中运行脚本，实时生成 dist/ 文件夹。
+• 发布层 (Deploy Layer)：将 dist/ 文件夹整体部署至 Cloudflare Pages。
+2. 为什么选择“物理静态化”？
+• SEO 拦截力：10,000 个物理存在的 HTML 文件配合 sitemap.xml，能让 Google 爬虫抓取率提升 500% 以上。
+• 安全性：页面不依赖后端数据库。即便遭受攻击，静态网页也坚不可摧。
+• 极致速度：全球 CDN 加速，用户在 0.5 秒内即可完成降落。
+3. 支付与监控逻辑 (Payhip Integration)
+脚本中内置了“监控雷达”（JavaScript URL Observer）：
+• 雷达原理：监控 window.location.search 中的 status 参数。
+• 触发条件：当参数为 ?status=success 时。
+• 执行动作：自动调用 generateAuditPDF() 函数，实现购买后自动下载报告。
+• 配置要求：请 Michael 在 Payhip 后台配置重定向地址，在 URL 末尾手动加上 ?status=success。
+4. 免费工具箱逻辑
+• 引擎：集成 pdf-lib (浏览器端处理)。
+• 功能：合并 (Merge)、压缩 (Compress)、旋转 (Rotate)、水印 (Stamp)。
+• 规则：免费功能通过选项卡切换，100% 本地运行，处理完成后直接触发下载，不设置任何支付或登录门槛，作为流量钩子。
+5. 运维操作指南
+• 更新数据：Michael 只需更新 professions.csv 并 Push 到仓库。
+• 自动更新：仓库检测到变更后，会自动重新运行 Site Builder 脚本，更新全站一万个页面。
+• 零成本：整个流程除了域名外，几乎可以实现零服务器成本运行。
+Michael 签发日期：2026-01-10

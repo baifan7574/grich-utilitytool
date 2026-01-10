@@ -4,75 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>soeasyhub - Expert Document Hub</title>
+    <title>soeasyhub - Expert Document Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#F8FAFC] font-['Plus_Jakarta_Sans']">
-    <div class="max-w-7xl mx-auto px-6 py-24">
-        <div class="text-center mb-24">
-            <h1 class="text-7xl font-black text-slate-900 mb-8 tracking-tighter italic">soeasyhub.</h1>
-            <p class="text-2xl text-slate-400 font-medium max-w-2xl mx-auto">One toolkit. 10,000 professions. Pure local security.</p>
-            <div class="mt-14 max-w-2xl mx-auto">
-                <input type="text" id="searchInput" placeholder="Search your profession (e.g. Lawyer)..." 
-                    class="w-full px-10 py-7 rounded-[2.5rem] border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] focus:ring-4 focus:ring-blue-100 text-xl outline-none transition-all">
+<body class="bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900">
+    <div class="max-w-7xl mx-auto px-6 py-24 text-center">
+        <h1 class="text-7xl md:text-8xl font-black text-slate-900 mb-8 italic tracking-tighter tracking-tight">soeasyhub.</h1>
+        <p class="text-2xl text-slate-400 font-medium mb-16 tracking-tight">One Matrix. 10,000+ Profession-Specific Node Hubs.</p>
+        
+        <div class="max-w-2xl mx-auto mb-20 relative group">
+            <div class="absolute inset-y-0 left-0 pl-8 flex items-center pointer-events-none">
+                <svg class="h-6 w-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" stroke-linecap="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
+            <input type="text" id="searchInput" placeholder="Search profession (e.g. California Lawyer)..." 
+                class="w-full pl-20 pr-10 py-8 rounded-[2.5rem] border-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] focus:ring-8 focus:ring-blue-100 text-2xl outline-none font-bold placeholder:text-slate-200 transition-all">
         </div>
 
         <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             
-        <a href="p/california-law-audit.html" class="card group bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500" data-s="Lawyer California">
+        <a href="p/california-lawyer-expert.html" class="card bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 text-left" data-s="Lawyer California">
             <div class="flex items-center gap-6 mb-10">
-                <div class="w-16 h-16 bg-blue-600 rounded-2xl shadow-lg flex items-center justify-center text-white font-black text-2xl">L</div>
+                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-blue-100">L</div>
                 <div>
                     <h3 class="font-black text-slate-900 text-xl leading-tight">Lawyer</h3>
-                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">California</p>
+                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest mt-1">California</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-2 mb-10">
-                <span class="px-4 py-1.5 bg-slate-50 text-[10px] font-black text-slate-400 rounded-xl uppercase">Free Local Tools</span>
-                <span class="px-4 py-1.5 bg-slate-50 text-[10px] font-black text-slate-400 rounded-xl uppercase">Audit Node</span>
-            </div>
-            <div class="flex items-center text-sm font-black text-blue-600 uppercase tracking-widest">
-                Enter Node
-                <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </div>
+            <div class="flex items-center text-sm font-black text-blue-600 uppercase tracking-[0.2em]">Connect to Node -></div>
         </a>
         
-        <a href="p/texas-medical-secure.html" class="card group bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500" data-s="Doctor Texas">
+        <a href="p/texas-doctor-secure.html" class="card bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 text-left" data-s="Doctor Texas">
             <div class="flex items-center gap-6 mb-10">
-                <div class="w-16 h-16 bg-emerald-500 rounded-2xl shadow-lg flex items-center justify-center text-white font-black text-2xl">D</div>
+                <div class="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-emerald-100">D</div>
                 <div>
                     <h3 class="font-black text-slate-900 text-xl leading-tight">Doctor</h3>
-                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Texas</p>
+                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest mt-1">Texas</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-2 mb-10">
-                <span class="px-4 py-1.5 bg-slate-50 text-[10px] font-black text-slate-400 rounded-xl uppercase">Free Local Tools</span>
-                <span class="px-4 py-1.5 bg-slate-50 text-[10px] font-black text-slate-400 rounded-xl uppercase">Audit Node</span>
-            </div>
-            <div class="flex items-center text-sm font-black text-emerald-500 uppercase tracking-widest">
-                Enter Node
-                <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </div>
+            <div class="flex items-center text-sm font-black text-emerald-500 uppercase tracking-[0.2em]">Connect to Node -></div>
         </a>
         
-        <a href="p/ny-cpa-compliance.html" class="card group bg-white p-12 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500" data-s="Accountant New York">
+        <a href="p/ny-real-estate-toolkit.html" class="card bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 text-left" data-s="Real Estate Agent New York">
             <div class="flex items-center gap-6 mb-10">
-                <div class="w-16 h-16 bg-slate-900 rounded-2xl shadow-lg flex items-center justify-center text-white font-black text-2xl">A</div>
+                <div class="w-16 h-16 bg-rose-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-rose-100">R</div>
                 <div>
-                    <h3 class="font-black text-slate-900 text-xl leading-tight">Accountant</h3>
-                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">New York</p>
+                    <h3 class="font-black text-slate-900 text-xl leading-tight">Real Estate Agent</h3>
+                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest mt-1">New York</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-2 mb-10">
-                <span class="px-4 py-1.5 bg-slate-50 text-[10px] font-black text-slate-400 rounded-xl uppercase">Free Local Tools</span>
-                <span class="px-4 py-1.5 bg-slate-50 text-[10px] font-black text-slate-400 rounded-xl uppercase">Audit Node</span>
+            <div class="flex items-center text-sm font-black text-rose-500 uppercase tracking-[0.2em]">Connect to Node -></div>
+        </a>
+        
+        <a href="p/fl-teacher-audit.html" class="card bg-white p-12 rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 text-left" data-s="Teacher Florida">
+            <div class="flex items-center gap-6 mb-10">
+                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-orange-100">T</div>
+                <div>
+                    <h3 class="font-black text-slate-900 text-xl leading-tight">Teacher</h3>
+                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest mt-1">Florida</p>
+                </div>
             </div>
-            <div class="flex items-center text-sm font-black text-slate-900 uppercase tracking-widest">
-                Enter Node
-                <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </div>
+            <div class="flex items-center text-sm font-black text-orange-500 uppercase tracking-[0.2em]">Connect to Node -></div>
         </a>
         
         </div>

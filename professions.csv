@@ -1,4 +1,5 @@
 profession,slug,state
-Lawyer,california-law-audit,California
-Doctor,texas-medical-secure,Texas
-Accountant,ny-cpa-compliance,New York
+Lawyer,california-lawyer-expert,California
+Doctor,texas-doctor-secure,Texas
+Real Estate Agent,ny-real-estate-toolkit,New York
+Teacher,fl-teacher-audit,Florida
