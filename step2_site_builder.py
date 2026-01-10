@@ -415,7 +415,165 @@ def build():
                     out.write(content)
                 count += 1
             print(f"✅ Michael V6.0 Premium UI: {count} pages generated with Dynamic Themes.")
+            
+            # --- V6.2: Auto-Generate Premium Homepage ---
+            build_index()
+
     except Exception as e:
         print(f"❌ Error during build: {str(e)}")
+
+# ==========================================
+# 3. V6.2 Homepage Generator (Embedded)
+# ==========================================
+INDEX_HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProComplianceTools - Specialized PDF Audit System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.1) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen text-slate-900">
+    
+    <!-- Navbar -->
+    <nav class="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                    <span class="text-white font-black text-lg tracking-tighter">PC</span>
+                </div>
+                <span class="font-extrabold text-xl tracking-tight text-slate-900">ProCompliance<span class="text-indigo-600">.Tools</span></span>
+            </div>
+            <div>
+                <a href="#" class="text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors">Enterprise API</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative pt-24 pb-16 overflow-hidden hero-pattern">
+        <div class="relative px-6 max-w-4xl mx-auto text-center z-10">
+            <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight leading-[1.1]">
+                Secure PDF Tools for <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Professionals.</span>
+            </h1>
+            <p class="text-xl text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Industry-standard compliance & audit tools used by <span class="text-slate-900 font-bold">5,000+</span> lawyers, doctors, and executives.
+            </p>
+
+            <!-- Google-Style Search -->
+            <div class="relative max-w-2xl mx-auto group">
+                <div class="absolute inset-0 bg-indigo-500 rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div class="relative bg-white rounded-full shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] border border-slate-200 p-2 flex items-center transition-shadow duration-300 group-hover:shadow-[0_20px_60px_-12px_rgba(99,102,241,0.2)]">
+                    <div class="pl-6">
+                        <svg class="w-6 h-6 text-slate-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                    <input type="text" id="search" placeholder="Search your profession (e.g., Lawyer, Doctor)..." class="w-full bg-transparent border-none focus:ring-0 text-lg px-4 py-3 placeholder-slate-400 font-medium text-slate-800 h-14" onkeyup="filterList()">
+                    <button class="bg-slate-900 text-white px-8 h-12 rounded-full font-bold hover:bg-indigo-600 transition-all duration-300 shadow-md">Find Tool</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tools Grid -->
+    <div class="bg-slate-50 py-24 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Popular Tools</h2>
+                    <p class="text-slate-500">Select your niche to access specialized compliance engines.</p>
+                </div>
+            </div>
+
+            <div id="link-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-slate-400 text-sm font-medium">© 2024 ProComplianceTools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const container = document.getElementById('link-list');
+        const actions = ['compress-pdf', 'encrypt-pdf', 'merge-pdf', 'ocr-pdf', 'split-pdf', 'word-to-pdf'];
+        const professions = ['accountant', 'detective', 'doctor', 'financial-advisor', 'government-official', 'hr-manager', 'journalist', 'lawyer', 'psychologist', 'r-d-scientist'];
+        const states = ['california', 'florida', 'georgia', 'illinois', 'new-york', 'north-carolina', 'ohio', 'pennsylvania', 'texas'];
+
+        let allLinks = [];
+        
+        function getMeta(prof) {
+            prof = prof.toLowerCase();
+            if(prof.includes('lawyer') || prof.includes('gov') || prof.includes('police')) return { icon: '⚖️', color: 'text-blue-600', bg: 'bg-blue-50' };
+            if(prof.includes('doctor') || prof.includes('nurse') || prof.includes('therapist')) return { icon: '🩺', color: 'text-emerald-600', bg: 'bg-emerald-50' };
+            if(prof.includes('accountant') || prof.includes('cpa') || prof.includes('fiscal')) return { icon: '📊', color: 'text-slate-700', bg: 'bg-slate-100' };
+            if(prof.includes('teacher') || prof.includes('edu')) return { icon: '🎓', color: 'text-orange-600', bg: 'bg-orange-50' };
+            return { icon: '⚡', color: 'text-indigo-600', bg: 'bg-indigo-50' };
+        }
+
+        // Generate Data
+        actions.forEach(action => {
+            professions.forEach(prof => {
+                states.forEach(state => {
+                    allLinks.push({
+                        url: `${action}-${prof}-${state}.html`,
+                        name: `${action.replace(/-/g, ' ').replace('pdf', '').toUpperCase()}`,
+                        prof: prof.replace(/-/g, ' ').replace(/\\b\\w/g, c => c.toUpperCase()),
+                        state: state.replace(/-/g, ' ').replace(/\\b\\w/g, c => c.toUpperCase())
+                    });
+                });
+            });
+        });
+
+        function renderList(items) {
+            const showItems = items.slice(0, 60); 
+            container.innerHTML = showItems.map(item => {
+                const meta = getMeta(item.prof);
+                return `
+                <a href="${item.url}" class="group bg-white p-6 rounded-2xl border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 hover:-translate-y-1 block relative overflow-hidden">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 ${meta.bg} rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+                            ${meta.icon}
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider bg-slate-50 px-2 py-1 rounded-md group-hover:text-indigo-600 transition-colors">${item.state}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">${item.name}</h3>
+                    <p class="text-sm font-medium text-slate-500">For ${item.prof}s</p>
+                    
+                    <div class="absolute bottom-6 right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-indigo-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
+                </a>
+                `;
+            }).join('');
+        }
+
+        renderList(allLinks);
+
+        function filterList() {
+            const query = document.getElementById('search').value.toLowerCase();
+            renderList(allLinks.filter(l => l.url.includes(query) || l.prof.toLowerCase().includes(query)));
+        }
+    </script>
+</body>
+</html>
+"""
+
+def build_index():
+    with open(os.path.join(OUTPUT_DIR, "index.html"), "w", encoding="utf-8") as f:
+        f.write(INDEX_HTML)
+    print("✅ V6.0 Homepage Generated Successfully.")
 
 if __name__ == "__main__": build()
