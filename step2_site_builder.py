@@ -13,9 +13,9 @@ from datetime import datetime
 # --- Michael 核心控制区 ---
 LIMIT_PAGES = 19800          # 针对 Cloudflare 20,000 文件限制的极致优化
 INDEX_DISPLAY_LIMIT = 80    # 主页展示精品卡片数
-BRAND_NAME = "soeasyhub"
-CONTACT_EMAIL = "contact@soeasyhub.com" # 申请广告必须有真实的联系方式
-BASE_URL = "https://soeasyhub.com" 
+BRAND_NAME = "scenro"
+CONTACT_EMAIL = "contact@scenro.com" # 申请广告必须有真实的联系方式
+BASE_URL = "https://scenro.com" 
 PAYHIP_LINK = "https://payhip.com/b/HSDxs"
 # ------------------------------------------
 
@@ -81,12 +81,12 @@ SUCCESS_TEMPLATE = """
         <p class="text-slate-500 font-medium italic">Authenticating node access. Please wait...</p>
     </div>
     <script>
-        window.onload = function() {{
+        window.onload = function() {
             const lastNode = localStorage.getItem('last_node');
-            setTimeout(() => {{
+            setTimeout(() => {
                 window.location.href = lastNode ? lastNode + '?status=success' : 'index.html';
-            }}, 1200);
-        }};
+            }, 1200);
+        };
     </script>
 </body>
 </html>
@@ -355,16 +355,16 @@ def build():
                     break
             
             pg = SUBPAGE_TEMPLATE.replace("{{title}}", f"{st} {p} Pro-Audit")\
-                              .replace("{{brand}}", BRAND_NAME)\
-                              .replace("{{profession}}", p)\
-                              .replace("{{state}}", st)\
-                              .replace("{{theme_bg}}", theme['bg'])\
-                              .replace("{{theme_text}}", theme['text'])\
-                              .replace("{{theme_color}}", theme['color'])\
-                              .replace("{{warning}}", theme['warning'].replace("{{state}}", st))\
-                              .replace("{{pay_link}}", PAYHIP_LINK)\
-                              .replace("{{knowledge_json}}", json.dumps(industry_knowledge).replace("{{state}}", st).replace("{{brand}}", BRAND_NAME))\
-                              .replace("{{footer}}", FOOTER_HTML)
+                                  .replace("{{brand}}", BRAND_NAME)\
+                                  .replace("{{profession}}", p)\
+                                  .replace("{{state}}", st)\
+                                  .replace("{{theme_bg}}", theme['bg'])\
+                                  .replace("{{theme_text}}", theme['text'])\
+                                  .replace("{{theme_color}}", theme['color'])\
+                                  .replace("{{warning}}", theme['warning'].replace("{{state}}", st))\
+                                  .replace("{{pay_link}}", PAYHIP_LINK)\
+                                  .replace("{{knowledge_json}}", json.dumps(industry_knowledge).replace("{{state}}", st).replace("{{brand}}", BRAND_NAME))\
+                                  .replace("{{footer}}", FOOTER_HTML)
             
             with open(os.path.join(SUBPAGE_DIR, f"{s}.html"), 'w', encoding='utf-8') as pf: pf.write(pg)
             if total < INDEX_DISPLAY_LIMIT:
@@ -393,8 +393,8 @@ def build():
     with open(os.path.join(OUTPUT_DIR, "success.html"), 'w', encoding='utf-8') as f: f.write(SUCCESS_TEMPLATE.replace("{{brand}}", BRAND_NAME))
     
     # 生成 Sitemap.xml
-    sitemap = f'<?xml version="1.0" encoding="UTF-8"?>\\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\\n'
-    for url in sitemap_urls: sitemap += f'  <url><loc>{url}</loc><priority>0.8</priority></url>\\n'
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for url in sitemap_urls: sitemap += f'  <url><loc>{url}</loc><priority>0.8</priority></url>\n'
     sitemap += '</urlset>'
     with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), 'w', encoding='utf-8') as f: f.write(sitemap)
     
