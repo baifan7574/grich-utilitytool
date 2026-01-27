@@ -18,6 +18,10 @@ LOG_FILE = os.path.abspath(os.path.join(ROOT_DIR, "../../../../indexed_progress.
 # CRITICAL FIX for Cloud: Read from LIVE site, not local disk
 LIVE_SITEMAP_URL = "https://scenro.com/sitemap.xml"
 
+# Placeholder to prevent NameError in legacy calls
+def check_verification_file():
+    return True
+
 def load_credentials():
     """Load credentials from JSON file defined in ENV or default path."""
     creds_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', 'google_service_account.json')
@@ -61,6 +65,12 @@ def get_urls_from_sitemap():
 
 
 def load_log():
+    # Ensure dir exists for log file
+    log_dir = os.path.dirname(LOG_FILE)
+    if not os.path.exists(log_dir):
+        try: os.makedirs(log_dir)
+        except: pass
+
     if os.path.exists(LOG_FILE):
         try:
             with open(LOG_FILE, 'r') as f:
@@ -74,10 +84,10 @@ def save_log(data):
         json.dump(data, f, indent=2)
 
 def main():
-    print("🚦 Traffic Sentry - Daily Indexer & Auditor")
+    print("🚦 Traffic Sentry - Daily Indexer & Auditor (Cloud Fix V2.1)")
     
     # Verification file check skipped in cloud environment as dist might not exist locally
-    # if not check_verification_file(): return
+    if not check_verification_file(): return
     creds = load_credentials()
     if not creds: return
     
