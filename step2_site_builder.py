@@ -158,6 +158,12 @@ INDEX_TEMPLATE = """
         </div>
         <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {% for item in registry %}
+            <a href="p/{{item.slug}}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{{item.p}} {{item.st}}">
+                <div class="w-14 h-14 {{item.t_bg}} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg">{{item.p[0]}}</div>
+                <h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{{item.p}}</h3>
+                <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{{item.st}} Node</p>
+            </a>
+            {% endfor %}
         </div>
     </div>
     
@@ -218,13 +224,7 @@ def generate_about_page():
     
     with open(os.path.join(OUTPUT_DIR, "about.html"), 'w', encoding='utf-8') as f: f.write(full_page)
 
-def build():
-    if not os.path.exists(SUBPAGE_DIR): os.makedirs(SUBPAGE_DIR)
-    
-    # ... (Rest of build logic) ...
-    # Make sure to call generate_about_page()
-    generate_about_page() 
-    # ...
+
 
 
 # --- Blog Generation Engine (Rule 7.1) ---
@@ -637,53 +637,7 @@ SUBPAGE_TEMPLATE = """
 </html>
 """
 
-INDEX_TEMPLATE = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"><title>{{brand}} - Expert Matrix</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900 min-h-screen flex flex-col">
-    <div class="flex-grow max-w-7xl mx-auto px-6 py-24 text-center">
-        <h1 class="text-7xl md:text-9xl font-black text-slate-900 mb-8 italic tracking-tighter leading-none">{{brand}}.</h1>
-        <p class="text-2xl text-slate-400 font-medium mb-12 italic">Global Compliance Matrix for Professional Experts.</p>
-        
-        <!-- Blog Section Preview -->
-        <div class="max-w-4xl mx-auto mb-20">
-            <h2 class="text-3xl font-black text-slate-900 mb-8">Latest Insights</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                {{blog_cards}}
-            </div>
-        </div>
 
-        <div class="max-w-2xl mx-auto mb-24 relative">
-            <input type="text" id="searchInput" placeholder="Search profession..." class="w-full px-12 py-8 rounded-[3rem] border-none shadow-2xl text-2xl outline-none font-bold">
-        </div>
-        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {% for item in registry %}
-            <a href="p/{{item.slug}}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{{item.p}} {{item.st}}">
-                <div class="w-14 h-14 {{item.t_bg}} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg">{{item.p[0]}}</div>
-                <h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{{item.p}}</h3>
-                <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{{item.st}} Node</p>
-            </a>
-            {% endfor %}
-        </div>
-    </div>
-    
-    {{footer}}
-    <script>
-        document.getElementById('searchInput').addEventListener('keyup', function(e) {
-            let term = e.target.value.toLowerCase();
-            document.querySelectorAll('.card').forEach(el => {
-                el.style.display = el.dataset.s.toLowerCase().includes(term) ? 'block' : 'none';
-            });
-        });
-    </script>
-</body>
-</html>
-"""
 
 LEGAL_TEMPLATE = """
 <!DOCTYPE html>
@@ -703,8 +657,10 @@ def build():
     if not os.path.exists(SUBPAGE_DIR): os.makedirs(SUBPAGE_DIR)
     registry = []; sitemap_urls = []; total = 0
     
+    
     print("🚀 Generating Blog Cluster...")
     blog_html = generate_blog_posts()
+    generate_about_page() # Rule 9.1: Generate Founder Bio Page
     
     with open(CSV_FILE, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
