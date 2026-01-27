@@ -94,3 +94,38 @@ description: 基于 Payhip 回调机制的海外变现中心。负责付费门�
     - **响应式折叠**：在手机端，FAQ 部分必须使用“手风琴”折叠结构，防止页面过长导致用户流失。
 - **9.3 信任信号集成 (Trust Signals)**：
     - 在页脚增加“Founded by a cross-disciplinary team of legal & tech professionals”字样。
+
+### 第 10 章：全站导航与架构固定 (Site Architecture)
+
+- **10.1 顶置全局导航 (Sticky Navigation)**：
+    - Agent 必须在全站（含主页及 1.98 万个工具页）顶部增加固定导航栏。
+    - **菜单项**：Home, Tools, Insights (Blog), About Us, Contact Us。
+- **10.2 主页权重分配 (Homepage Ranking)**：
+    - 严禁删除主页的创始人简介（Meet Our Founder）和最新文章（Latest Insights）板块。
+    - **SEO 锚点**：主页的“Latest Insights”必须通过内链指向 `/blog/` 下的 15 篇完整文章。
+- **10.3 移动端抽屉式菜单 (Mobile Drawer)**：
+    - 在手机端，导航菜单必须折叠为“汉堡图标”，确保不遮挡主页的创始人背书文字。
+- **10.4 零死路逻辑 (No Dead Ends)**：
+    - 每个页面（包括博客页）的底部必须包含“Back to Tools”或“Explore More Professions”的引导按钮。
+
+### 第 11 章：站点矩阵与收益最大化 (Matrix Scaling)
+
+- **11.1 模板化克隆 (Clone Strategy)**：
+    - 一旦 Scenro 通过审核，Agent 必须将“创始人简介”、“15 篇博客地基”和“法务四件套”封装为标准模块。
+    - **新站启动项**：在上线 SoEasyHub 等新项目时，首日必须包含这些模块以通过初审 [cite: 2025-12-26]。
+- **11.2 高级联盟准备 (Premium Prep)**：
+    - Agent 必须持续监控 Google Analytics 流量。当月活突破 1 万时，立即发出“升级联盟”提醒并准备申请材料。
+- **11.3 广告位 A/B 测试**：
+    - 审核通过后，Agent 需利用 `ads.txt` 联动机制，测试手动占位符与自动广告的最佳点击率配比。
+### 第 12 章：AdSense 审核期维稳与增长 (Review Period Stability)
+
+- **12.1 抓取压力维持 (Indexing Momentum)**：
+    - Agent 必须确保 `Daily Indexer` 脚本每日定时运行，维持全站 1.98 万个 URL 在谷歌爬虫侧的活跃抓取状态。
+- **12.2 优质内容“滴灌”策略 (Content Drip)**：
+    - **频率**：每 3 天自动生成并发布 1 篇针对“职业合规（Professional Compliance）”的高质量英文行业分析。
+    - **同步**：文章发布后，必须立即触发 Sitemap 集群更新，并向 Google Search Console 发送抓取请求。
+- **12.3 核心资产在线监控 (Health Monitoring)**：
+    - **每日巡检**：Agent 必须每日自检一次全站 `<head>` 中的 `ca-pub-7675066436961689` 代码及根目录 `ads.txt`。
+    - **自动修复**：若检测到 404 错误或代码被误覆盖，Agent 必须通过 GitHub Actions 立即执行强制重新部署（Force Deploy），并在恢复后第一时间向用户报告。
+- **12.4 流量波动防护**：
+    - 在审核未通过前，严禁对全站 URL 结构、CSS 主色调及创始人简介板块进行任何破坏性修改。

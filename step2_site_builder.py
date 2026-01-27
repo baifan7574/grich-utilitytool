@@ -283,6 +283,7 @@ BLOG_TOPICS = [
     "Secure Document Exchange for Medical Professionals",
     "What Every Real Estate Agent Needs to Know About Digital Disclosures",
     "Cybersecurity Basics for Small Professional Firms",
+    "The Ethics of Digital Redaction: A State-by-State Guide"
     "The Role of Hash Verification in Court Admissibility",
     "Going Paperless: A Compliance Checklist for Accountants",
     "Future-Proofing Your Practice Against Data Breaches"
