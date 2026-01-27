@@ -449,9 +449,33 @@ def build():
         pg = LEGAL_TEMPLATE.replace("{{title}}", title).replace("{{brand}}", BRAND_NAME).replace("{{content}}", content)
         with open(os.path.join(OUTPUT_DIR, f"{name}.html"), 'w', encoding='utf-8') as f: f.write(pg)
 
-    make_legal("privacy", "Privacy Policy", f"We take your privacy seriously. All PDF processing is performed locally in your browser. No documents are ever uploaded to our servers. For inquiries, contact us at {CONTACT_EMAIL}.")
-    make_legal("terms", "Terms of Service", f"By using {BRAND_NAME}, you acknowledge that all tools are for professional use. We are not liable for document integrity after processing. Audit reports are for reference only.")
-    make_legal("contact", "Contact Us", f"For professional support or business inquiries regarding {BRAND_NAME}, please email us at: <strong>{CONTACT_EMAIL}</strong>. Our team typically responds within 48 hours.")
+    # AdSense-Compliant Legal Page Content Generator
+    
+    privacy_content = f"""
+    <h3 class="text-xl font-bold mb-4">1. Data Processing Security</h3>
+    <p class="mb-4">At {BRAND_NAME}, we prioritize your data security. <strong>All PDF conversions, edits, and audits are performed locally within your browser using WebAssembly technology.</strong> Your documents are NOT uploaded to our servers, ensuring banking-level privacy and zero data leakage risk.</p>
+    
+    <h3 class="text-xl font-bold mb-4">2. Cookies and Tracking</h3>
+    <p class="mb-4">We use third-party services like Google Analytics and Google AdSense. These services may use cookies to analyze traffic and serve personalized advertisements. You can opt-out of personalized advertising by visiting Google's Ad Settings.</p>
+    
+    <h3 class="text-xl font-bold mb-4">3. GDPR & CCPA Compliance</h3>
+    <p class="mb-4">We respect your rights under GDPR and CCPA. Since we do not collect personal data or store user documents, we are compliant by design. For any privacy inquiries, please contact our Data Protection Officer at {CONTACT_EMAIL}.</p>
+    """
+
+    terms_content = f"""
+    <h3 class="text-xl font-bold mb-4">1. Acceptance of Terms</h3>
+    <p class="mb-4">By accessing {BRAND_NAME} ({BASE_URL}), you agree to be bound by these Terms of Service. If you do not agree, please discontinue use immediately.</p>
+    
+    <h3 class="text-xl font-bold mb-4">2. Professional Use Only</h3>
+    <p class="mb-4">Our tools are designed for professional legal, medical, and corporate use. While we strive for accuracy, {BRAND_NAME} provides these tools "as is" without warranties of any kind regarding the legal admissibility of processed documents.</p>
+    
+    <h3 class="text-xl font-bold mb-4">3. Limitation of Liability</h3>
+    <p class="mb-4">In no event shall {BRAND_NAME} be liable for any data loss, corruption, or legal consequences arising from the use of our PDF tools. Users are responsible for verifying the integrity of their own files.</p>
+    """
+
+    make_legal("privacy", "Privacy Policy", privacy_content)
+    make_legal("terms", "Terms of Service", terms_content)
+    make_legal("contact", "Contact Us", f"For professional support, partnership inquiries, or AdSense related questions regarding {BRAND_NAME}, please email us at: <a href='mailto:{CONTACT_EMAIL}' class='text-blue-600 font-bold'>{CONTACT_EMAIL}</a>. Our team typically responds within 24-48 business hours.")
     
     with open(os.path.join(OUTPUT_DIR, "success.html"), 'w', encoding='utf-8') as f: f.write(SUCCESS_TEMPLATE.replace("{{brand}}", BRAND_NAME))
     

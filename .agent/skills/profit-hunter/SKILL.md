@@ -42,3 +42,16 @@ description: 基于 Payhip 回调机制的海外变现中心。负责付费门�
 # 第三部分：执行流程 (Execution Flow)
 - **第一步**: 确认 `.env` 文件中的 `PAYHIP_LINK` 是否配置正确。
 - **第二步**: 在生成全站静态页时，将付费墙逻辑自动织入每一个 `{{state}}` 对应的工具页。
+
+### 第 5 章：Google AdSense 申请与合规 (AdSense Mastery)
+
+- **5.1 申请前置检查 (Pre-application Audit)**：
+    - Agent 必须确保全站 1.98 万个页面均包含：隐私政策 (Privacy Policy)、关于我们 (About Us) 和 联系我们 (Contact Us) 页面。
+    - **内容加厚**：严禁在核心文字少于 300 字的页面展示广告，Agent 需利用 `pseo-evolver` 持续加厚内容，直到通过 AdSense 审核。 [cite: 2026-01-17]
+- **5.2 广告位动态管理 (Ad Layout)**：
+    - **Header 位置**：必须位于 H1 标题下方，严禁遮挡“Audit”付费按钮。
+    - **Footer 位置**：必须位于页面底部，确保不影响 PDF 生成逻辑。
+- **5.3 自动化 `ads.txt` 维护**：
+    - 一旦用户获得 AdSense 账号，Agent 必须自动在根目录生成 `ads.txt`，并确保其在 Cloudflare 上实时可访问。
+- **5.4 审核期降权防护**：
+    - 在申请期间，Agent 必须将页面加载速度优化至 90 分以上（Lighthouse），防止因加载过慢被拒绝。
