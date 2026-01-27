@@ -1,0 +1,50 @@
+name: Traffic Sentry - Daily Indexer
+
+on:
+  schedule:
+    # 每天北京时间 09:00 (UTC 01:00) 运行
+    - cron: '0 1 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  indexing-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 允许回写 log
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install Dependencies
+      run: |
+        pip install google-api-python-client google-auth oauth2client
+
+    - name: Create Google Credentials JSON
+      id: create-json
+      uses: jsdaniell/create-json@v1.1.2
+      with:
+        name: "google_service_account.json"
+        json: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        dir: '.agent/skills/traffic-sentry/scripts/' # 临时存放位置
+
+    - name: Run Indexer Script
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: .agent/skills/traffic-sentry/scripts/google_service_account.json
+      run: |
+        cd .agent/skills/traffic-sentry/scripts
+        python daily_indexer.py
+
+    - name: Commit & Push Log Updates
+      # 只有当 log 文件发生变化时才提交
+      run: |
+        git config --global user.name "Traffic Sentry Bot"
+        git config --global user.email "bot@scenro.com"
+        git add indexed_progress.log
+        git commit -m "chore: update indexing progress log [skip ci]" || echo "No changes to commit"
+        git push
