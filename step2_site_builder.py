@@ -154,6 +154,12 @@ SUBPAGE_TEMPLATE = """
     </nav>
 
     <main class="flex-grow max-w-4xl mx-auto px-6 py-12 w-full text-center">
+        <!-- ADSENSE SLOT: HEADER (To be activated) -->
+        <div class="w-full h-[90px] bg-slate-100/50 rounded-xl mb-8 flex items-center justify-center border border-dashed border-slate-200">
+            <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Sponsored Space</span>
+        </div>
+        <!-- END ADSENSE SLOT -->
+
         <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight">{{profession}} <span class="{{theme_text}}">Toolkit</span></h1>
         <p class="text-lg text-slate-500 font-medium max-w-2xl mx-auto italic mb-12">{{dynamic_description}}</p>
 
@@ -191,6 +197,13 @@ SUBPAGE_TEMPLATE = """
                 </div>
             </div>
         </div>
+
+        <!-- ADSENSE SLOT: FOOTER (To be activated) -->
+        <div class="w-full h-[250px] bg-slate-100/50 rounded-[3rem] mt-12 flex items-center justify-center border border-dashed border-slate-200">
+            <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Sponsored Display</span>
+        </div>
+        <!-- END ADSENSE SLOT -->
+
     </main>
 
     <div id="upsellModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
