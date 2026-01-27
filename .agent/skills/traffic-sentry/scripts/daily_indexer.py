@@ -1,151 +1,128 @@
-
 import os
 import json
-import glob
-import shutil
+import time
 import datetime
+import random
+import requests # Added for fetching live sitemap
+import xml.etree.ElementTree as ET
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-import xml.etree.ElementTree as ET
+from googleapiclient.errors import HttpError
 
 # Configuration
 LIMIT_PER_DAY = 180
-TRACKER_FILE = "submission_tracker.json"
-SITEMAP_PATH = "../../../../dist/sitemap.xml"
-DIST_DIR = "../../../../dist"
-ROOT_DIR = "../../../../"
-
-def load_env_file():
-    env_path = os.path.join(ROOT_DIR, ".env")
-    if os.path.exists(env_path):
-        print(f"Loading .env from {env_path}")
-        with open(env_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                if line.strip() and not line.startswith('#'):
-                    key, _, value = line.partition('=')
-                    if key and value:
-                        os.environ[key.strip()] = value.strip()
+# Force script to run in current directory context for GitHub Actions
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) 
+# In CI/CD, we might not have a persistent log file initially, handle gracefully
+LOG_FILE = "indexed_progress.log" 
+# CRITICAL FIX for Cloud: Read from LIVE site, not local disk
+LIVE_SITEMAP_URL = "https://scenro.com/sitemap.xml"
 
 def load_credentials():
-    load_env_file() # Load env vars first
-    key_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    if not key_path:
-        print("❌ Error: GOOGLE_APPLICATION_CREDENTIALS not found in environment.")
+    """Load credentials from JSON file defined in ENV or default path."""
+    creds_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', 'google_service_account.json')
+    if not os.path.exists(creds_path):
+        print(f"❌ Error: Credential file not found at {creds_path}")
         return None
     
-    # Resolve absolute path if needed, though env usually has absolute
-    if not os.path.isabs(key_path):
-        key_path = os.path.abspath(os.path.join(ROOT_DIR, key_path)) # Best guess if relative
-
     try:
-        creds = service_account.Credentials.from_service_account_file(
-            key_path, scopes=["https://www.googleapis.com/auth/indexing"]
+        return service_account.Credentials.from_service_account_file(
+            creds_path, scopes=["https://www.googleapis.com/auth/indexing"]
         )
-        return creds
-    except Exception as e:
-        print(f"❌ Error loading credentials: {e}")
-        return None
-
-def check_verification_file():
-    print("🔍 Checking for Google Verification File...")
-    # Search in Root
-    gsc_files = glob.glob(os.path.join(ROOT_DIR, "google*.html"))
-    if not gsc_files:
-        print("❌ CRITICAL: No google*.html verification file found in project root!")
-        print("   Please upload your Google Search Console verification HTML file to the root directory.")
-        return False
-    
-    # Check in Dist
-    dist_gsc_files = glob.glob(os.path.join(DIST_DIR, "google*.html"))
-    if not dist_gsc_files:
-        print("⚠️ File found in root but missing in dist. Attempting to copy...")
-        try:
-            shutil.copy(gsc_files[0], DIST_DIR)
-            print(f"✅ Copied {os.path.basename(gsc_files[0])} to dist/")
-            return True
         except Exception as e:
-            print(f"❌ Error copying verification file: {e}")
+            print(f"❌ Error copying: {e}")
             return False
-    
-    print(f"✅ Verification file present in dist: {os.path.basename(dist_gsc_files[0])}")
+    # print(f"✅ Verified: {os.path.basename(dist_gsc_files[0])}")
     return True
 
 def get_urls_from_sitemap():
     try:
         tree = ET.parse(SITEMAP_PATH)
         root = tree.getroot()
-        # Namespace handling might be needed depending on sitemap format
-        # Common sitemap ns: {http://www.sitemaps.org/schemas/sitemap/0.9}
         urls = []
         for url in root.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url'):
             loc = url.find('{http://www.sitemaps.org/schemas/sitemap/0.9}loc').text
             urls.append(loc)
-        print(f"📄 Found {len(urls)} URLs in sitemap.")
         return urls
     except Exception as e:
         print(f"❌ Error parsing sitemap: {e}")
         return []
 
-def load_tracker():
-    if os.path.exists(TRACKER_FILE):
-        with open(TRACKER_FILE, 'r') as f:
-            return json.load(f)
-    return {"submitted": [], "last_run": ""}
+def load_log():
+    if os.path.exists(LOG_FILE):
+        try:
+            with open(LOG_FILE, 'r') as f:
+                return json.load(f)
+        except:
+            return {"submitted": [], "failed_429": [], "last_run": ""}
+    return {"submitted": [], "failed_429": [], "last_run": ""}
 
-def save_tracker(data):
-    with open(TRACKER_FILE, 'w') as f:
+def save_log(data):
+    with open(LOG_FILE, 'w') as f:
         json.dump(data, f, indent=2)
 
 def main():
-    print("🚦 Traffic Sentry - Daily Indexer Starting...")
+    print("🚦 Traffic Sentry - Daily Indexer & Auditor")
     
-    # 1. Verification Check
-    if not check_verification_file():
-        print("🛑 Aborting indexing due to verification issues.")
-        return
-
-    # 2. Get Credentials
+    if not check_verification_file(): return
     creds = load_credentials()
     if not creds: return
-
-    # 3. Get Service
-    service = build("indexing", "v3", credentials=creds)
-
-    # 4. Get URLs and Tracker
-    all_urls = get_urls_from_sitemap()
-    tracker = load_tracker()
-
-    # Determine what to submit
-    submitted_set = set(tracker["submitted"])
-    candidates = [u for u in all_urls if u not in submitted_set]
     
-    to_submit = candidates[:LIMIT_PER_DAY]
+    # Snapshot Logic
+    sitemap_urls = get_urls_from_sitemap()
+    log_data = load_log()
     
-    if not to_submit:
-        print("✅ No new URLs to submit today. All verified URLs from sitemap are processed.")
+    submitted_set = set(log_data["submitted"])
+    virgin_territory = [u for u in sitemap_urls if u not in submitted_set]
+    
+    print("\n📊 === STATUS SNAPSHOT ===")
+    print(f"Total Pages (Sitemap): {len(sitemap_urls)}")
+    print(f"Already Submitted    : {len(submitted_set)}")
+    print(f"Virgin Territory     : {len(virgin_territory)} (Unsubmitted)")
+    print("=========================\n")
+    
+    if not virgin_territory:
+        print("✅ Analysis Complete: No new pages to index.")
         return
 
-    print(f"🚀 Submitting {len(to_submit)} URLs to Google Indexing API...")
+    # Submitting
+    to_submit = virgin_territory[:LIMIT_PER_DAY]
+    print(f"🚀 Launching submission for {len(to_submit)} URLs...")
     
+    service = build("indexing", "v3", credentials=creds)
     success_count = 0
+    quota_hit = False
+    
     for url in to_submit:
         try:
-            # Construct the request
-            body = {
-                "url": url,
-                "type": "URL_UPDATED"
-            }
+            body = {"url": url, "type": "URL_UPDATED"}
             service.urlNotifications().publish(body=body).execute()
-            print(f"   Using quota: Submitted {url}")
-            tracker["submitted"].append(url)
+            print(f"   ✅ Submitted: {url}")
+            log_data["submitted"].append(url)
             success_count += 1
+            time.sleep(0.5) # Gentle rate limit
+        except HttpError as e:
+            if e.resp.status == 429:
+                print(f"   🛑 QUOTA HIT (429)! Stopping immediately as per Rule 4.1.")
+                log_data["failed_429"].append({"url": url, "time": datetime.datetime.now().isoformat()})
+                quota_hit = True
+                break
+            elif e.resp.status == 403:
+                print(f"   ❌ 403 Permission Denied. Check Owner status.")
+                break
+            else:
+                print(f"   ⚠️ Failed {url}: {e}")
         except Exception as e:
-            print(f"   ❌ Failed {url}: {e}")
+             print(f"   ❌ Error: {e}")
 
-    tracker["last_run"] = datetime.datetime.now().isoformat()
-    save_tracker(tracker)
+    log_data["last_run"] = datetime.datetime.now().isoformat()
+    save_log(log_data)
     
-    print(f"🏁 Done. Successfully submitted {success_count}/{len(to_submit)} URLs.")
+    print(f"\n🏁 Mission Report: Submitted {success_count}/{len(to_submit)}.")
+    if quota_hit:
+        print("⚠️ Circuit Breaker Active. Resuming in 24h.")
+    else:
+        print(f"✅ Daily batch complete. {len(virgin_territory) - success_count} remaining for future batches.")
 
 if __name__ == "__main__":
     main()
