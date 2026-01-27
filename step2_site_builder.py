@@ -220,10 +220,17 @@ SUBPAGE_TEMPLATE = """
         window.onload = () => {
             const params = new URLSearchParams(window.location.search);
             if (params.get('status') === 'success') {
+                // Strict sequential "Perceived Value" Chain (Rule 2.2)
                 showLoader("Payment Verified!");
-                setTimeout(() => showLoader("Scanning document metadata..."), 800);
-                setTimeout(() => showLoader("Verifying {{state}} compliance..."), 1600);
-                setTimeout(() => { generateAuditPDF(); }, 2500);
+                setTimeout(() => {
+                    showLoader("Scanning document metadata...");
+                    setTimeout(() => {
+                        showLoader("Verifying {{state}} compliance...");
+                        setTimeout(() => {
+                            generateAuditPDF();
+                        }, 1200); // Wait 1.2s on compliance check
+                    }, 1200); // Wait 1.2s on metadata scan
+                }, 1000); // Wait 1s on Payment Verified
             }
         };
 
