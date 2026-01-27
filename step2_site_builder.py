@@ -344,6 +344,7 @@ def generate_blog_posts():
                                .replace("{{pay_link}}", PAYHIP_LINK)\
                                .replace("{{dynamic_description}}", "Expert insights on document security and professional compliance.")\
                                .replace("{{nav}}", NAV_HTML)\
+                               .replace("{{long_content}}", "")\
                                .replace("{{footer}}", FOOTER_HTML)
         
         # HACK: Replace Main content area with blog content. 
