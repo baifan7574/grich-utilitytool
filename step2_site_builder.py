@@ -2,6 +2,8 @@ import os
 import csv
 import json
 import random
+import shutil
+import glob
 from datetime import datetime
 
 # ==========================================
@@ -398,6 +400,15 @@ def build():
     sitemap += '</urlset>'
     with open(os.path.join(OUTPUT_DIR, "sitemap.xml"), 'w', encoding='utf-8') as f: f.write(sitemap)
     
+    # Copy Google Verification File
+    gsc_files = glob.glob("google*.html")
+    if gsc_files:
+        for g_file in gsc_files:
+            shutil.copy(g_file, OUTPUT_DIR)
+            print(f"Copied GSC Verification File: {g_file} -> {OUTPUT_DIR}")
+    else:
+        print("Warning: No Google Verification File (google*.html) found in root. Please place it here for GSC verification.")
+
     print(f"Build V43.4 Complete: Generated {total} subpages + Legal Pages + Sitemap.")
 
 if __name__ == "__main__":

@@ -1,18 +1,7 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Generated content
+.agent/skills/pseo-evolver/references/gen-lang-client-0846513202-3d6c54387cae.json
+gen-lang-client-0846513202-3d6c54387cae.json
+*.json
+!submission_tracker.json
+.env
 dist/
-niche_data.csv
-seed_data.sql
-_processed.pdf
-
-# OS
-.DS_Store
-Thumbs.db
-
-!dist/index.html
-
-!dist/index.html
+__pycache__/
