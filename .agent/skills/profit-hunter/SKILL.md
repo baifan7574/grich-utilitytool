@@ -82,3 +82,15 @@ description: 基于 Payhip 回调机制的海外变现中心。负责付费门�
     - 鉴于 1.98 万个 URL 超过了单个 Sitemap 的限制（5万条/50MB），Agent 必须生成“站点地图索引”及多个子地图文件。
 - **8.2 性能红线 (LCP Control)**：
     - Agent 每次推送前必须自检移动端加载速度。若低于 70 分，必须执行 JS 混淆压缩及图片懒加载优化。
+
+### 第 9 章：人设背书与 E-E-A-T 增强 (Expertise & Trust)
+
+- **9.1 多重身份背书 (Professional Bio)**：
+    - Agent 必须在主页 (Home) 和 About 页面显眼位置植入创始人简介。
+    - **关键词锁定**：必须包含 Teacher (教育专家)、Lawyer (法律背景)、Psychological Counselor (心理咨询师) [cite: 2025-12-26]。
+    - **叙事逻辑**：强调工具的开发初衷是基于多年法律合规经验与教育从业背景，旨在提供“人本主义”的数字化办公解决方案。
+- **9.2 移动端交互极致优化 (Mobile UX Plus)**：
+    - **指尖适配**：所有功能按钮在手机端的高度不得低于 44px，确保肥胖手指也能精准点击。
+    - **响应式折叠**：在手机端，FAQ 部分必须使用“手风琴”折叠结构，防止页面过长导致用户流失。
+- **9.3 信任信号集成 (Trust Signals)**：
+    - 在页脚增加“Founded by a cross-disciplinary team of legal & tech professionals”字样。
