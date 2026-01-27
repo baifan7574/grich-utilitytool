@@ -13,8 +13,8 @@ from googleapiclient.errors import HttpError
 LIMIT_PER_DAY = 180
 # Force script to run in current directory context for GitHub Actions
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) 
-# In CI/CD, we might not have a persistent log file initially, handle gracefully
-LOG_FILE = "indexed_progress.log" 
+# In CI/CD, we must save log to REPO ROOT to allow git add to find it
+LOG_FILE = os.path.abspath(os.path.join(ROOT_DIR, "../../../../indexed_progress.log")) 
 # CRITICAL FIX for Cloud: Read from LIVE site, not local disk
 LIVE_SITEMAP_URL = "https://scenro.com/sitemap.xml"
 
