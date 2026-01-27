@@ -55,3 +55,30 @@ description: 基于 Payhip 回调机制的海外变现中心。负责付费门�
     - 一旦用户获得 AdSense 账号，Agent 必须自动在根目录生成 `ads.txt`，并确保其在 Cloudflare 上实时可访问。
 - **5.4 审核期降权防护**：
     - 在申请期间，Agent 必须将页面加载速度优化至 90 分以上（Lighthouse），防止因加载过慢被拒绝。
+
+### 第 6 章：AdSense 一次性通过铁律 (First-Time Approval)
+
+- **6.1 法律合规“死命令”**：
+    - **Footer 必选链接**：全站 1.98 万个页面必须强制挂载 Privacy Policy, Terms, Contact, About Us 四个链接。
+    - **内容校验**：隐私政策必须包含“WebAssembly 本地处理”及“Google Cookie 使用说明”，严禁使用通用的垃圾模板。
+- **6.2 页面价值感加厚 (Value Inflation)**：
+    - **强制字数**：每个 pSEO 职业页面文本量必须达到 600-800 字 [cite: 2026-01-17]。
+    - **结构要求**：必须动态包含“How to use”、“Why choose Scenro”和针对该具体职业的“FAQ”。
+- **6.3 差异化防降权**：
+    - H2/H3 标题严禁全站统一，必须包含该页面的核心变量（如：Alabama Attorney Professional Standards）。
+
+### 第 7 章：内容生态与技术指标 (Content & Tech)
+
+- **7.1 博客先行原则 (Blog Strategy)**：
+    - Agent 必须在 `/blog/` 目录下自动生成 15 篇高质量英文行业文章，作为站点的“权重地基”。
+- **7.2 清理“未完成”标识**：
+    - 严禁全站出现“Beta”、“Coming Soon”或“施工中”字样，确保给审核员“已完全商用”的印象。
+- **7.3 广告间距红线**：
+    - 预留位（ADSENSE SLOT）必须距离核心功能按钮（Audit/Download）至少 100 像素，严禁诱导点击。
+
+### 第 8 章：全量索引与性能管理 (Indexing & Sitemap)
+
+- **8.1 站点地图集群 (Sitemap Cluster)**：
+    - 鉴于 1.98 万个 URL 超过了单个 Sitemap 的限制（5万条/50MB），Agent 必须生成“站点地图索引”及多个子地图文件。
+- **8.2 性能红线 (LCP Control)**：
+    - Agent 每次推送前必须自检移动端加载速度。若低于 70 分，必须执行 JS 混淆压缩及图片懒加载优化。
