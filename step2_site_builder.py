@@ -20,6 +20,10 @@ CONTACT_EMAIL = "baifan7574@gmail.com" # Updated per user request
 BASE_URL = "https://scenro.com" 
 PAYHIP_LINK = "https://payhip.com/b/HSDxs"
 
+# --- AdSense Configuration (Rule 6.2) ---
+ADSENSE_ID = "ca-pub-7675066436961689"
+ADSENSE_SCRIPT = f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_ID}" crossorigin="anonymous"></script>'
+
 # --- Navigation System (Rule 10.1 & 10.3) ---
 NAV_HTML = f"""
 <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
@@ -159,6 +163,7 @@ INDEX_TEMPLATE = """
     <meta charset="UTF-8"><title>{{brand}} - Expert Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {{adsense}}
 </head>
 <body class="bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900 min-h-screen flex flex-col">
     {{nav}}
@@ -341,7 +346,11 @@ def generate_blog_posts():
                                .replace("{{warning}}", "")\
                                .replace("{{pay_link}}", PAYHIP_LINK)\
                                .replace("{{dynamic_description}}", "Expert insights on document security and professional compliance.")\
+                               .replace("{{pay_link}}", PAYHIP_LINK)\
+                               .replace("{{dynamic_description}}", "Expert insights on document security and professional compliance.")\
                                .replace("{{nav}}", NAV_HTML)\
+                               .replace("{{adsense}}", ADSENSE_SCRIPT)\
+                               .replace("{{adsense_id}}", ADSENSE_ID)\
                                .replace("{{long_content}}", "")\
                                .replace("{{footer}}", FOOTER_HTML)
         
@@ -482,14 +491,15 @@ SUBPAGE_TEMPLATE = """
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style> body { font-family: 'Plus Jakarta Sans', sans-serif; } .active-tab { border-bottom: 4px solid currentColor; font-weight: 800; } .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); } </style>
+    {{adsense}}
 </head>
 <body class="bg-[#F8FAFC] text-slate-900 min-h-screen flex flex-col">
     {{nav}}
 
     <main class="flex-grow max-w-4xl mx-auto px-6 py-12 w-full text-center">
-        <!-- ADSENSE SLOT: HEADER (To be activated) -->
+        <!-- ADSENSE SLOT: HEADER -->
         <div class="w-full h-[90px] bg-slate-100/50 rounded-xl mb-8 flex items-center justify-center border border-dashed border-slate-200">
-            <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Sponsored Space</span>
+            <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Ad Space Reserved: {{adsense_id}}</span>
         </div>
         <!-- END ADSENSE SLOT -->
 
@@ -531,9 +541,9 @@ SUBPAGE_TEMPLATE = """
             </div>
         </div>
 
-        <!-- ADSENSE SLOT: FOOTER (To be activated) -->
+        <!-- ADSENSE SLOT: FOOTER -->
         <div class="w-full h-[250px] bg-slate-100/50 rounded-[3rem] mt-12 flex items-center justify-center border border-dashed border-slate-200">
-            <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Sponsored Display</span>
+            <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">Ad Space Reserved: {{adsense_id}}</span>
         </div>
         <!-- END ADSENSE SLOT -->
 
@@ -688,7 +698,7 @@ SUBPAGE_TEMPLATE = """
 LEGAL_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>{{title}} - {{brand}}</title><script src="https://cdn.tailwindcss.com"></script></head>
+<head><meta charset="UTF-8"><title>{{title}} - {{brand}}</title><script src="https://cdn.tailwindcss.com"></script>{{adsense}}</head>
 <body class="bg-slate-50 p-0 text-slate-900 font-sans">
     {{nav}}
     <div class="max-w-3xl mx-auto bg-white p-12 md:p-16 rounded-3xl shadow-xl text-slate-900 my-12">
@@ -739,6 +749,8 @@ def build():
                                   .replace("{{dynamic_description}}", dynamic_desc)\
                                   .replace("{{long_content}}", long_content)\
                                   .replace("{{nav}}", NAV_HTML)\
+                                  .replace("{{adsense}}", ADSENSE_SCRIPT)\
+                                  .replace("{{adsense_id}}", ADSENSE_ID)\
                                   .replace("{{footer}}", FOOTER_HTML)
             
             with open(os.path.join(SUBPAGE_DIR, f"{s}.html"), 'w', encoding='utf-8') as pf: pf.write(pg)
@@ -752,13 +764,13 @@ def build():
         cards_html += f'''<a href="p/{i['slug']}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{i['p']} {i['st']}"><div class="w-14 h-14 {i['t_bg']} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg">{i['p'][0]}</div><h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{i['p']}</h3><p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{i['st']} Node</p></a>'''
     
     parts = INDEX_TEMPLATE.split('{% for item in registry %}')
-    header = parts[0].replace("{{brand}}", BRAND_NAME).replace("{{blog_cards}}", blog_html).replace("{{nav}}", NAV_HTML)
+    header = parts[0].replace("{{brand}}", BRAND_NAME).replace("{{blog_cards}}", blog_html).replace("{{nav}}", NAV_HTML).replace("{{adsense}}", ADSENSE_SCRIPT)
     footer_part = parts[1].split('{% endfor %}')[1].replace("{{footer}}", FOOTER_HTML)
     with open(os.path.join(OUTPUT_DIR, "index.html"), 'w', encoding='utf-8') as f: f.write(header + cards_html + footer_part)
 
     # 生成 AdSense 合规页
     def make_legal(name, title, content):
-        pg = LEGAL_TEMPLATE.replace("{{title}}", title).replace("{{brand}}", BRAND_NAME).replace("{{content}}", content).replace("{{nav}}", NAV_HTML)
+        pg = LEGAL_TEMPLATE.replace("{{title}}", title).replace("{{brand}}", BRAND_NAME).replace("{{content}}", content).replace("{{nav}}", NAV_HTML).replace("{{adsense}}", ADSENSE_SCRIPT)
         with open(os.path.join(OUTPUT_DIR, f"{name}.html"), 'w', encoding='utf-8') as f: f.write(pg)
 
     # AdSense-Compliant Legal Page Content Generator
