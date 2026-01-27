@@ -20,6 +20,41 @@ CONTACT_EMAIL = "baifan7574@gmail.com" # Updated per user request
 BASE_URL = "https://scenro.com" 
 PAYHIP_LINK = "https://payhip.com/b/HSDxs"
 
+# --- Navigation System (Rule 10.1 & 10.3) ---
+NAV_HTML = f"""
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div class="w-8 h-8 bg-slate-900 rounded-lg"></div>
+            <span class="font-black text-xl tracking-tighter text-slate-900">{BRAND_NAME}</span>
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8 text-sm font-bold text-slate-600 items-center">
+            <a href="/index.html" class="hover:text-blue-600 transition-colors">Home</a>
+            <a href="/index.html#grid" class="hover:text-blue-600 transition-colors">Tools</a>
+            <a href="/index.html#insights" class="hover:text-blue-600 transition-colors">Insights</a>
+            <a href="/about.html" class="hover:text-blue-600 transition-colors">About</a>
+            <a href="/contact.html" class="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden text-slate-900 p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+    
+    <!-- Mobile Drawer (Rule 10.3) -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 absolute w-full left-0 top-16 px-6 py-6 flex flex-col gap-6 shadow-2xl">
+        <a href="/index.html" class="font-black text-lg text-slate-900">Home</a>
+        <a href="/index.html#grid" class="font-bold text-slate-600">Tools</a>
+        <a href="/index.html#insights" class="font-bold text-slate-600">Insights</a>
+        <a href="/about.html" class="font-bold text-slate-600">About</a>
+        <a href="/contact.html" class="font-bold text-slate-600">Contact Us</a>
+    </div>
+</nav>
+"""
+
 # --- Content Thickening Engine (Rule 6.2 & 9.2 Mobile UX) ---
 def generate_high_quality_content(profession, state):
     # Rule 9.2: Mobile UX - Accordion Style for FAQs
@@ -126,6 +161,7 @@ INDEX_TEMPLATE = """
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900 min-h-screen flex flex-col">
+    {{nav}}
     <div class="flex-grow max-w-7xl mx-auto px-6 py-24 text-center">
         <h1 class="text-7xl md:text-9xl font-black text-slate-900 mb-8 italic tracking-tighter leading-none">{{brand}}.</h1>
         <p class="text-2xl text-slate-400 font-medium mb-12 italic">Global Compliance Matrix for Professional Experts.</p>
@@ -146,7 +182,7 @@ INDEX_TEMPLATE = """
         </div>
 
         <!-- Blog Section Preview -->
-        <div class="max-w-4xl mx-auto mb-20">
+        <div class="max-w-4xl mx-auto mb-20" id="insights">
             <h2 class="text-3xl font-black text-slate-900 mb-8">Latest Insights</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                 {{blog_cards}}
@@ -214,6 +250,7 @@ def generate_about_page():
                            .replace("{{pay_link}}", PAYHIP_LINK)\
                            .replace("{{dynamic_description}}", "The story behind the platform.")\
                            .replace("{{long_content}}", "")\
+                           .replace("{{nav}}", NAV_HTML)\
                            .replace("{{footer}}", FOOTER_HTML)
     
     # HACK: Replace Main content area
@@ -289,6 +326,7 @@ def generate_blog_posts():
                                .replace("{{warning}}", "")\
                                .replace("{{pay_link}}", PAYHIP_LINK)\
                                .replace("{{dynamic_description}}", "Expert insights on document security and professional compliance.")\
+                               .replace("{{nav}}", NAV_HTML)\
                                .replace("{{footer}}", FOOTER_HTML)
         
         # HACK: Replace Main content area with blog content. 
@@ -430,15 +468,7 @@ SUBPAGE_TEMPLATE = """
     <style> body { font-family: 'Plus Jakarta Sans', sans-serif; } .active-tab { border-bottom: 4px solid currentColor; font-weight: 800; } .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); } </style>
 </head>
 <body class="bg-[#F8FAFC] text-slate-900 min-h-screen flex flex-col">
-    <nav class="sticky top-0 z-50 glass border-b border-slate-200/50 py-4">
-        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-2.5">
-                <div class="w-9 h-9 {{theme_bg}} rounded-xl shadow-lg flex items-center justify-center text-white font-black text-xl">S</div>
-                <span class="font-black text-2xl tracking-tighter">{{brand}}</span>
-            </a>
-            <span class="text-[10px] font-black text-slate-400 uppercase bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200">{{state}} Compliance Node</span>
-        </div>
-    </nav>
+    {{nav}}
 
     <main class="flex-grow max-w-4xl mx-auto px-6 py-12 w-full text-center">
         <!-- ADSENSE SLOT: HEADER (To be activated) -->
@@ -643,8 +673,9 @@ LEGAL_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><title>{{title}} - {{brand}}</title><script src="https://cdn.tailwindcss.com"></script></head>
-<body class="bg-slate-50 p-12 text-slate-900 font-sans">
-    <div class="max-w-3xl mx-auto bg-white p-16 rounded-3xl shadow-xl text-slate-900">
+<body class="bg-slate-50 p-0 text-slate-900 font-sans">
+    {{nav}}
+    <div class="max-w-3xl mx-auto bg-white p-12 md:p-16 rounded-3xl shadow-xl text-slate-900 my-12">
         <h1 class="text-4xl font-black mb-12 italic uppercase tracking-tighter leading-none">{{title}}</h1>
         <div class="prose prose-slate leading-relaxed text-sm font-medium space-y-6">{{content}}</div>
         <a href="/index.html" class="inline-block mt-12 text-xs font-black uppercase text-indigo-600 border-b-2 border-indigo-600">Back to Home</a>
@@ -691,6 +722,7 @@ def build():
                                   .replace("{{pay_link}}", PAYHIP_LINK)\
                                   .replace("{{dynamic_description}}", dynamic_desc)\
                                   .replace("{{long_content}}", long_content)\
+                                  .replace("{{nav}}", NAV_HTML)\
                                   .replace("{{footer}}", FOOTER_HTML)
             
             with open(os.path.join(SUBPAGE_DIR, f"{s}.html"), 'w', encoding='utf-8') as pf: pf.write(pg)
@@ -704,13 +736,13 @@ def build():
         cards_html += f'''<a href="p/{i['slug']}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{i['p']} {i['st']}"><div class="w-14 h-14 {i['t_bg']} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg">{i['p'][0]}</div><h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{i['p']}</h3><p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{i['st']} Node</p></a>'''
     
     parts = INDEX_TEMPLATE.split('{% for item in registry %}')
-    header = parts[0].replace("{{brand}}", BRAND_NAME).replace("{{blog_cards}}", blog_html)
+    header = parts[0].replace("{{brand}}", BRAND_NAME).replace("{{blog_cards}}", blog_html).replace("{{nav}}", NAV_HTML)
     footer_part = parts[1].split('{% endfor %}')[1].replace("{{footer}}", FOOTER_HTML)
     with open(os.path.join(OUTPUT_DIR, "index.html"), 'w', encoding='utf-8') as f: f.write(header + cards_html + footer_part)
 
     # 生成 AdSense 合规页
     def make_legal(name, title, content):
-        pg = LEGAL_TEMPLATE.replace("{{title}}", title).replace("{{brand}}", BRAND_NAME).replace("{{content}}", content)
+        pg = LEGAL_TEMPLATE.replace("{{title}}", title).replace("{{brand}}", BRAND_NAME).replace("{{content}}", content).replace("{{nav}}", NAV_HTML)
         with open(os.path.join(OUTPUT_DIR, f"{name}.html"), 'w', encoding='utf-8') as f: f.write(pg)
 
     # AdSense-Compliant Legal Page Content Generator
