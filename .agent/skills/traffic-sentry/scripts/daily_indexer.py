@@ -29,24 +29,36 @@ def load_credentials():
         return service_account.Credentials.from_service_account_file(
             creds_path, scopes=["https://www.googleapis.com/auth/indexing"]
         )
-        except Exception as e:
-            print(f"❌ Error copying: {e}")
-            return False
-    # print(f"✅ Verified: {os.path.basename(dist_gsc_files[0])}")
-    return True
+    except Exception as e:
+        print(f"❌ Credential Error: {e}")
+        return None
 
 def get_urls_from_sitemap():
+    """Parse the sitemap to get all target URLs. Supports Remote URL."""
+    print(f"🌍 Fetching Sitemap from: {LIVE_SITEMAP_URL}")
+    urls = []
     try:
-        tree = ET.parse(SITEMAP_PATH)
-        root = tree.getroot()
-        urls = []
-        for url in root.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url'):
-            loc = url.find('{http://www.sitemaps.org/schemas/sitemap/0.9}loc').text
-            urls.append(loc)
+        # Fetch remote sitemap
+        resp = requests.get(LIVE_SITEMAP_URL, timeout=30)
+        if resp.status_code != 200:
+            print(f"❌ Failed to fetch sitemap: Status {resp.status_code}")
+            return []
+            
+        root = ET.fromstring(resp.content)
+        # Handle namespaces commonly found in sitemaps
+        namespace = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        
+        for url in root.findall('ns:url', namespace):
+            loc = url.find('ns:loc', namespace)
+            if loc is not None and loc.text:
+                urls.append(loc.text.strip())
+                
+        print(f"✅ Found {len(urls)} URLs in Live Sitemap.")
         return urls
     except Exception as e:
         print(f"❌ Error parsing sitemap: {e}")
         return []
+
 
 def load_log():
     if os.path.exists(LOG_FILE):
