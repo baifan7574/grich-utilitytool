@@ -15,11 +15,12 @@
 - [x] Generated GitHub Actions Workflow: `.github/workflows/daily_indexing.yml` (Path B).
 
 ## Pending Tasks
-- [ ] **USER ACTION**: Configure `GOOGLE_SERVICE_ACCOUNT_JSON` secret in GitHub.
-- [ ] Monitor GitHub Actions tab for first successful run (09:00 Beijing Time).
-- [ ] Observe `indexed_progress.log` updates from cloud bot.
+- [x] **USER ACTION**: Configure `GOOGLE_SERVICE_ACCOUNT_JSON` secret in GitHub.
+- [x] Monitor GitHub Actions tab for first successful run (Success ✅).
+- [x] Observe `indexed_progress.log` updates from cloud bot.
+- [x] Web Vitals Optimization: AdSense placeholders inserted.
 
 ## Notes
-- Cloud automation environment (GitHub Actions) created.
-- Awaiting user secret configuration to initiate the first handshake.
-- 云端自动化环境已搭建，正在等待 GitHub Actions 首次握手。
+- Cloud automation environment (GitHub Actions) created and Verified.
+- 云端自动化环境已搭建，GitHub Actions 每日索引跑通。
+- 全站合规链路已贯通，具备 AdSense 申请资格。
