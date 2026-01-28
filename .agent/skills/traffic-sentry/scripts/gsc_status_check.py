@@ -148,7 +148,8 @@ def main():
     
     # Read Indexing Log for Briefing
     indexing_log = {}
-    log_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "indexed_progress.log")
+    # Need 5 levels up: scripts -> traffic-sentry -> skills -> .agent -> scenro
+    log_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))), "indexed_progress.log")
     if os.path.exists(log_path):
         try:
             with open(log_path, 'r') as f:
