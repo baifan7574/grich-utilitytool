@@ -26,6 +26,18 @@ import sys
 
 def load_credentials():
     """Load credentials from ENV JSON content (Priority) or File."""
+    # 0. Local Dev: Try loading .env
+    if 'GOOGLE_CREDENTIALS_JSON' not in os.environ and 'GOOGLE_APPLICATION_CREDENTIALS' not in os.environ:
+         # Need 5 levels up: scripts -> traffic-sentry -> skills -> .agent -> scenro
+         env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))), '.env')
+         if os.path.exists(env_path):
+            with open(env_path, 'r') as f:
+                for line in f:
+                    if line.strip() and not line.startswith('#'):
+                        parts = line.strip().split('=', 1)
+                        if len(parts) == 2:
+                            os.environ[parts[0]] = parts[1]
+
     # 1. Try Loading from Direct JSON String in Env (Cloud/GitHub Actions Best Practice)
     env_json = os.environ.get('GOOGLE_CREDENTIALS_JSON')
     if env_json:
@@ -58,31 +70,43 @@ def load_credentials():
         print(f"❌ Credential Error: {e}")
         sys.exit(1) # Critical Failure
 
-def get_urls_from_sitemap():
-    """Parse the sitemap to get all target URLs. Supports Remote URL."""
-    print(f"🌍 Fetching Sitemap from: {LIVE_SITEMAP_URL}")
+def parse_sitemap(url):
+    """Recursively fetch URLs from a sitemap or sitemap index."""
+    print(f"   📍 Parsing: {url}")
     urls = []
     try:
-        # Fetch remote sitemap
-        resp = requests.get(LIVE_SITEMAP_URL, timeout=30)
+        resp = requests.get(url, timeout=30)
         if resp.status_code != 200:
-            print(f"❌ Failed to fetch sitemap: Status {resp.status_code}")
+            print(f"   ❌ Failed to fetch {url}: {resp.status_code}")
             return []
             
         root = ET.fromstring(resp.content)
-        # Handle namespaces commonly found in sitemaps
         namespace = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
         
-        for url in root.findall('ns:url', namespace):
-            loc = url.find('ns:loc', namespace)
-            if loc is not None and loc.text:
-                urls.append(loc.text.strip())
-                
-        print(f"✅ Found {len(urls)} URLs in Live Sitemap.")
+        # Check if it's a sitemap index
+        if 'sitemapindex' in root.tag:
+            for sm in root.findall('ns:sitemap', namespace):
+                loc = sm.find('ns:loc', namespace)
+                if loc is not None and loc.text:
+                    urls.extend(parse_sitemap(loc.text.strip()))
+        else:
+             # Regular sitemap
+            for url_tag in root.findall('ns:url', namespace):
+                loc = url_tag.find('ns:loc', namespace)
+                if loc is not None and loc.text:
+                    urls.append(loc.text.strip())
+                    
         return urls
     except Exception as e:
-        print(f"❌ Error parsing sitemap: {e}")
+        print(f"   ❌ Error parsing {url}: {e}")
         return []
+
+def get_urls_from_sitemap():
+    """Parse the sitemap to get all target URLs. Supports Remote URL."""
+    print(f"🌍 Fetching Sitemap from: {LIVE_SITEMAP_URL}")
+    urls = parse_sitemap(LIVE_SITEMAP_URL)
+    print(f"✅ Found {len(urls)} URLs in Live Sitemap.")
+    return urls
 
 
 def load_log():
