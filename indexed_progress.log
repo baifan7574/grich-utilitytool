@@ -1,10 +1,33 @@
 {
-  "submitted": [],
+  "submitted": [
+    "https://scenro.com/p/alabama-senior-lawyer-expert.html",
+    "https://scenro.com/p/alabama-junior-lawyer-expert.html",
+    "https://scenro.com/p/alabama-certified-lawyer-expert.html",
+    "https://scenro.com/p/alabama-professional-lawyer-expert.html",
+    "https://scenro.com/p/alabama-licensed-lawyer-expert.html",
+    "https://scenro.com/p/alabama-lead-lawyer-expert.html",
+    "https://scenro.com/p/alabama-assistant-lawyer-expert.html",
+    "https://scenro.com/p/alabama-associate-lawyer-expert.html",
+    "https://scenro.com/p/alabama-expert-lawyer-expert.html",
+    "https://scenro.com/p/alabama-consulting-lawyer-expert.html",
+    "https://scenro.com/p/alabama-senior-attorney-expert.html",
+    "https://scenro.com/p/alabama-junior-attorney-expert.html",
+    "https://scenro.com/p/alabama-certified-attorney-expert.html",
+    "https://scenro.com/p/alabama-professional-attorney-expert.html",
+    "https://scenro.com/p/alabama-licensed-attorney-expert.html",
+    "https://scenro.com/p/alabama-lead-attorney-expert.html",
+    "https://scenro.com/p/alabama-assistant-attorney-expert.html"
+  ],
   "failed_429": [
     {
       "url": "https://scenro.com/p/alabama-senior-lawyer-expert.html",
       "time": "2026-01-27T13:42:11.968766"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-attorney-expert.html",
+      "time": "2026-01-28T01:28:16.155594"
     }
   ],
-  "last_run": "2026-01-27T13:42:11.968766"
+  "last_run": "2026-01-28T01:28:16.155612",
+  "last_batch_count": 17
 }
