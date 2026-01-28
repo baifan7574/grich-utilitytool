@@ -802,9 +802,16 @@ def build():
     make_legal("terms", "Terms of Service", terms_content)
     make_legal("contact", "Contact Us", f"For professional support, partnership inquiries, or AdSense related questions regarding {BRAND_NAME}, please email us at: <a href='mailto:{CONTACT_EMAIL}' class='text-blue-600 font-bold'>{CONTACT_EMAIL}</a>. Our team typically responds within 24-48 business hours.")
     
-    # Generate ads.txt (Rule 11.3)
-    with open(os.path.join(OUTPUT_DIR, "ads.txt"), 'w', encoding='utf-8') as f:
-        f.write("google.com, pub-7675066436961689, DIRECT, f08c47fec0942fa0")
+    
+    # 6.4 Copy ads.txt (Rule 1.2)
+    if os.path.exists("ads.txt"):
+        shutil.copy("ads.txt", os.path.join(OUTPUT_DIR, "ads.txt"))
+        print(f"✅ Copied ads.txt to {OUTPUT_DIR}")
+    else:
+        print("⚠️ ads.txt not found in root directory!")
+        
+    print(f"🎉 Build Complete. Total Pages: {total}")
+    print(f"📂 Output Directory: {os.path.abspath(OUTPUT_DIR)}")
     
     with open(os.path.join(OUTPUT_DIR, "success.html"), 'w', encoding='utf-8') as f: f.write(SUCCESS_TEMPLATE.replace("{{brand}}", BRAND_NAME))
     
