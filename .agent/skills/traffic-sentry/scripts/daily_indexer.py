@@ -22,12 +22,33 @@ LIVE_SITEMAP_URL = "https://scenro.com/sitemap.xml"
 def check_verification_file():
     return True
 
+import sys
+
 def load_credentials():
-    """Load credentials from JSON file defined in ENV or default path."""
+    """Load credentials from ENV JSON content (Priority) or File."""
+    # 1. Try Loading from Direct JSON String in Env (Cloud/GitHub Actions Best Practice)
+    env_json = os.environ.get('GOOGLE_CREDENTIALS_JSON')
+    if env_json:
+        try:
+            info = json.loads(env_json)
+            return service_account.Credentials.from_service_account_info(
+                info, scopes=["https://www.googleapis.com/auth/indexing"]
+            )
+        except json.JSONDecodeError as e:
+            print(f"❌ Error: Failed to decode GOOGLE_CREDENTIALS_JSON: {e}")
+            sys.exit(1) # Critical Failure
+
+    # 2. Fallback to File Path (Local Dev)
     creds_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', 'google_service_account.json')
+    
+    # Try to find file if path is relative
     if not os.path.exists(creds_path):
-        print(f"❌ Error: Credential file not found at {creds_path}")
-        return None
+        # Check current dir
+        if os.path.exists("google_service_account.json"):
+            creds_path = "google_service_account.json"
+        else:
+             print(f"❌ Error: Credential file not found at {creds_path} and GOOGLE_CREDENTIALS_JSON not set.")
+             sys.exit(1) # Critical Failure
     
     try:
         return service_account.Credentials.from_service_account_file(
@@ -35,7 +56,7 @@ def load_credentials():
         )
     except Exception as e:
         print(f"❌ Credential Error: {e}")
-        return None
+        sys.exit(1) # Critical Failure
 
 def get_urls_from_sitemap():
     """Parse the sitemap to get all target URLs. Supports Remote URL."""

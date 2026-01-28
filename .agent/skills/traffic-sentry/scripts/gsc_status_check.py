@@ -4,7 +4,22 @@ import datetime
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
+import sys
+
 def load_credentials():
+    """Load credentials from ENV JSON content (Priority) or File."""
+    # 1. Try Loading from Direct JSON String in Env (Cloud/GitHub Actions Best Practice)
+    env_json = os.environ.get('GOOGLE_CREDENTIALS_JSON')
+    if env_json:
+        try:
+            info = json.loads(env_json)
+            return service_account.Credentials.from_service_account_info(
+                info, scopes=["https://www.googleapis.com/auth/webmasters.readonly"]
+            )
+        except json.JSONDecodeError as e:
+            print(f"❌ Error: Failed to decode GOOGLE_CREDENTIALS_JSON: {e}")
+            sys.exit(1)
+
     """Load credentials from JSON file defined in ENV, .env file, or default path."""
     # Try to load from .env file manually if env var not set
     if 'GOOGLE_APPLICATION_CREDENTIALS' not in os.environ:
@@ -27,7 +42,7 @@ def load_credentials():
         
     if not os.path.exists(creds_path):
         print(f"❌ Error: Credential file not found at {creds_path}")
-        return None
+        sys.exit(1) # Critical Failure
     
     try:
         return service_account.Credentials.from_service_account_file(
@@ -35,7 +50,7 @@ def load_credentials():
         )
     except Exception as e:
         print(f"❌ Credential Error: {e}")
-        return None
+        sys.exit(1) # Critical Failure
 
 def get_indexing_stats(service, site_url):
     """Fetch sitemap status to infer indexing count."""
