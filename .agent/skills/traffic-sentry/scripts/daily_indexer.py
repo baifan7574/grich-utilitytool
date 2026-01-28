@@ -139,6 +139,7 @@ def main():
              print(f"   ❌ Error: {e}")
 
     log_data["last_run"] = datetime.datetime.now().isoformat()
+    log_data["last_batch_count"] = success_count
     save_log(log_data)
     
     print(f"\n🏁 Mission Report: Submitted {success_count}/{len(to_submit)}.")
