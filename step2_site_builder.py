@@ -835,7 +835,8 @@ def build():
     sitemap_index = '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for idx in range(len(sitemap_chunks)):
         sitemap_index += f'  <sitemap><loc>{BASE_URL}/sitemap_{idx+1}.xml</loc><lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod></sitemap>\n'
-    # Add blog to sitemap (simplified via main sitemap or just assume main covers it, for now strict sitemap index)
+    # Add manual drip sitemap (Rule 12.2 Content Drip)
+    sitemap_index += f'  <sitemap><loc>{BASE_URL}/sitemap_blog_drip.xml</loc><lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod></sitemap>\n'
     sitemap_index += '</sitemapindex>'
     
     # Overwrite main sitemap.xml with the Index
