@@ -836,7 +836,13 @@ def build():
     for idx in range(len(sitemap_chunks)):
         sitemap_index += f'  <sitemap><loc>{BASE_URL}/sitemap_{idx+1}.xml</loc><lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod></sitemap>\n'
     # Add manual drip sitemap (Rule 12.2 Content Drip)
-    sitemap_index += f'  <sitemap><loc>{BASE_URL}/sitemap_blog_drip.xml</loc><lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod></sitemap>\n'
+    if os.path.exists(os.path.join(OUTPUT_DIR, "sitemap_blog_drip.xml")):
+         sitemap_index += f'  <sitemap><loc>{BASE_URL}/sitemap_blog_drip.xml</loc><lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod></sitemap>\n'
+    # Also support root level drip file (source)
+    elif os.path.exists("sitemap_blog_drip.xml"):
+         shutil.copy("sitemap_blog_drip.xml", os.path.join(OUTPUT_DIR, "sitemap_blog_drip.xml"))
+         sitemap_index += f'  <sitemap><loc>{BASE_URL}/sitemap_blog_drip.xml</loc><lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod></sitemap>\n'
+    
     sitemap_index += '</sitemapindex>'
     
     # Overwrite main sitemap.xml with the Index
