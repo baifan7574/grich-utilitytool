@@ -26,7 +26,8 @@
     "https://scenro.com/p/alabama-professional-legal-consultant-expert.html",
     "https://scenro.com/p/alabama-licensed-legal-consultant-expert.html",
     "https://scenro.com/p/alabama-lead-legal-consultant-expert.html",
-    "https://scenro.com/p/alabama-assistant-legal-consultant-expert.html"
+    "https://scenro.com/p/alabama-assistant-legal-consultant-expert.html",
+    "https://scenro.com/p/alabama-associate-legal-consultant-expert.html"
   ],
   "failed_429": [
     {
@@ -60,8 +61,12 @@
     {
       "url": "https://scenro.com/p/alabama-associate-legal-consultant-expert.html",
       "time": "2026-02-03T03:10:30.596869"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert.html",
+      "time": "2026-02-04T02:50:39.286145"
     }
   ],
-  "last_run": "2026-02-03T03:10:30.596885",
+  "last_run": "2026-02-04T02:50:39.286163",
   "last_batch_count": 1
 }
