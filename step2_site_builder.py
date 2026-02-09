@@ -28,18 +28,18 @@ ADSENSE_SCRIPT = f'<script async src="https://pagead2.googlesyndication.com/page
 NAV_HTML = f"""
 <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div class="w-8 h-8 bg-slate-900 rounded-lg"></div>
             <span class="font-black text-xl tracking-tighter text-slate-900">{BRAND_NAME}</span>
         </a>
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex gap-8 text-sm font-bold text-slate-600 items-center">
-            <a href="/index.html" class="hover:text-blue-600 transition-colors">Home</a>
-            <a href="/index.html#grid" class="hover:text-blue-600 transition-colors">Tools</a>
-            <a href="/index.html#insights" class="hover:text-blue-600 transition-colors">Insights</a>
-            <a href="/about.html" class="hover:text-blue-600 transition-colors">About</a>
-            <a href="/contact.html" class="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">Contact</a>
+            <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+            <a href="/#grid" class="hover:text-blue-600 transition-colors">Tools</a>
+            <a href="/#insights" class="hover:text-blue-600 transition-colors">Insights</a>
+            <a href="/about" class="hover:text-blue-600 transition-colors">About</a>
+            <a href="/contact" class="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">Contact</a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -50,11 +50,11 @@ NAV_HTML = f"""
     
     <!-- Mobile Drawer (Rule 10.3) -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 absolute w-full left-0 top-16 px-6 py-6 flex flex-col gap-6 shadow-2xl">
-        <a href="/index.html" class="font-black text-lg text-slate-900">Home</a>
-        <a href="/index.html#grid" class="font-bold text-slate-600">Tools</a>
-        <a href="/index.html#insights" class="font-bold text-slate-600">Insights</a>
-        <a href="/about.html" class="font-bold text-slate-600">About</a>
-        <a href="/contact.html" class="font-bold text-slate-600">Contact Us</a>
+        <a href="/" class="font-black text-lg text-slate-900">Home</a>
+        <a href="/#grid" class="font-bold text-slate-600">Tools</a>
+        <a href="/#insights" class="font-bold text-slate-600">Insights</a>
+        <a href="/about" class="font-bold text-slate-600">About</a>
+        <a href="/contact" class="font-bold text-slate-600">Contact Us</a>
     </div>
 </nav>
 """
@@ -461,7 +461,7 @@ def generate_blog_posts():
         read_next_html = ""
         for related in related_topics:
             r_slug = related.lower().replace(" ", "-").replace(":", "").replace(",", "")
-            read_next_html += f'<a href="/blog/{r_slug}.html" class="block p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors"><h4 class="font-bold text-slate-800">{related}</h4><span class="text-xs text-blue-600 font-bold uppercase">Read Article &rarr;</span></a>'
+            read_next_html += f'<a href="/blog/{r_slug}" class="block p-4 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors"><h4 class="font-bold text-slate-800">{related}</h4><span class="text-xs text-blue-600 font-bold uppercase">Read Article &rarr;</span></a>'
         
         content = f"""
         <article class="max-w-3xl mx-auto px-6 py-12">
@@ -521,7 +521,7 @@ def generate_blog_posts():
         
         with open(os.path.join(blog_dir, f"{slug}.html"), 'w', encoding='utf-8') as f: f.write(full_page)
         
-        articles_html += f'<a href="/blog/{slug}.html" class="block bg-white p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all"><h3 class="font-black text-xl mb-2 text-slate-900">{title}</h3><p class="text-sm text-slate-500 font-bold uppercase">{date}</p></a>'
+        articles_html += f'<a href="/blog/{slug}" class="block bg-white p-8 rounded-3xl border border-slate-100 hover:shadow-xl transition-all"><h3 class="font-black text-xl mb-2 text-slate-900">{title}</h3><p class="text-sm text-slate-500 font-bold uppercase">{date}</p></a>'
 
     return articles_html
 
@@ -602,10 +602,10 @@ FOOTER_HTML = f"""
     <footer class="max-w-7xl mx-auto px-6 py-12 border-t border-slate-200 mt-24 text-center">
         <p class="text-slate-400 font-bold text-sm mb-6">© {datetime.now().year} {BRAND_NAME}. All Rights Reserved.</p>
         <div class="flex flex-wrap justify-center gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
-            <a href="/privacy.html" class="hover:text-slate-900 transition-all">Privacy Policy</a>
-            <a href="/terms.html" class="hover:text-slate-900 transition-all">Terms of Service</a>
-            <a href="/contact.html" class="hover:text-slate-900 transition-all">Contact Us</a>
-            <a href="/index.html" class="hover:text-slate-900 transition-all">Home</a>
+            <a href="/privacy" class="hover:text-slate-900 transition-all">Privacy Policy</a>
+            <a href="/terms" class="hover:text-slate-900 transition-all">Terms of Service</a>
+            <a href="/contact" class="hover:text-slate-900 transition-all">Contact Us</a>
+            <a href="/index" class="hover:text-slate-900 transition-all">Home</a>
         </div>
     </footer>
 """
@@ -627,7 +627,7 @@ SUCCESS_TEMPLATE = """
         window.onload = function() {
             const lastNode = localStorage.getItem('last_node');
             setTimeout(() => {
-                window.location.href = lastNode ? lastNode + '?status=success' : 'index.html';
+                window.location.href = lastNode ? lastNode + '?status=success' : '/';
             }, 1200);
         };
     </script>
@@ -642,6 +642,7 @@ SUBPAGE_TEMPLATE = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}} - {{brand}}</title>
+    <link rel="canonical" href="{{base_url}}/p/{{slug}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
@@ -854,7 +855,13 @@ SUBPAGE_TEMPLATE = """
 LEGAL_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>{{title}} - {{brand}}</title><script src="https://cdn.tailwindcss.com"></script>{{adsense}}</head>
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}} - {{brand}}</title>
+    <link rel="canonical" href="{{base_url}}/{{name}}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {{adsense}}
+</head>
 <body class="bg-slate-50 p-0 text-slate-900 font-sans">
     {{nav}}
     <div class="max-w-3xl mx-auto bg-white p-12 md:p-16 rounded-3xl shadow-xl text-slate-900 my-12">
@@ -897,6 +904,8 @@ def build():
                                   .replace("{{brand}}", BRAND_NAME)\
                                   .replace("{{profession}}", p)\
                                   .replace("{{state}}", st)\
+                                  .replace("{{slug}}", s)\
+                                  .replace("{{base_url}}", BASE_URL)\
                                   .replace("{{theme_bg}}", theme['bg'])\
                                   .replace("{{theme_text}}", theme['text'])\
                                   .replace("{{theme_color}}", theme['color'])\
@@ -912,12 +921,12 @@ def build():
             with open(os.path.join(SUBPAGE_DIR, f"{s}.html"), 'w', encoding='utf-8') as pf: pf.write(pg)
             if total < INDEX_DISPLAY_LIMIT:
                 registry.append({ "p": p, "slug": s, "st": st, "t_bg": theme['bg'], "t_color": theme['color'] if 'color' in theme else 'indigo' })
-            sitemap_urls.append(f"{BASE_URL}/p/{s}.html"); total += 1
+            sitemap_urls.append(f"{BASE_URL}/p/{s}"); total += 1
 
     # 生成主页
     cards_html = ""
     for i in registry:
-        cards_html += f'''<a href="p/{i['slug']}.html" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{i['p']} {i['st']}"><div class="w-14 h-14 {i['t_bg']} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg">{i['p'][0]}</div><h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{i['p']}</h3><p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{i['st']} Node</p></a>'''
+        cards_html += f'''<a href="p/{i['slug']}" class="card bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all text-left" data-s="{i['p']} {i['st']}"><div class="w-14 h-14 {i['t_bg']} rounded-2xl flex items-center justify-center text-white font-black text-xl mb-8 shadow-lg">{i['p'][0]}</div><h3 class="font-black text-slate-900 text-lg leading-tight mb-2">{i['p']}</h3><p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">{i['st']} Node</p></a>'''
     
     parts = INDEX_TEMPLATE.split('{% for item in registry %}')
     header = parts[0].replace("{{brand}}", BRAND_NAME).replace("{{blog_cards}}", blog_html).replace("{{nav}}", NAV_HTML).replace("{{adsense}}", ADSENSE_SCRIPT)
@@ -926,7 +935,13 @@ def build():
 
     # 生成 AdSense 合规页
     def make_legal(name, title, content):
-        pg = LEGAL_TEMPLATE.replace("{{title}}", title).replace("{{brand}}", BRAND_NAME).replace("{{content}}", content).replace("{{nav}}", NAV_HTML).replace("{{adsense}}", ADSENSE_SCRIPT)
+        pg = LEGAL_TEMPLATE.replace("{{title}}", title)\
+                           .replace("{{brand}}", BRAND_NAME)\
+                           .replace("{{content}}", content)\
+                           .replace("{{nav}}", NAV_HTML)\
+                           .replace("{{adsense}}", ADSENSE_SCRIPT)\
+                           .replace("{{base_url}}", BASE_URL)\
+                           .replace("{{name}}", name)
         with open(os.path.join(OUTPUT_DIR, f"{name}.html"), 'w', encoding='utf-8') as f: f.write(pg)
 
     # AdSense-Compliant Legal Page Content Generator
