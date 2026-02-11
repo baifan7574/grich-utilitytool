@@ -104,8 +104,22 @@ def parse_sitemap(url):
 def get_urls_from_sitemap():
     """Parse the sitemap to get all target URLs. Supports Remote URL."""
     print(f"🌍 Fetching Sitemap from: {LIVE_SITEMAP_URL}")
-    urls = parse_sitemap(LIVE_SITEMAP_URL)
+    raw_urls = parse_sitemap(LIVE_SITEMAP_URL)
+    
+    # CRITICAL FIX: Force strip .html suffix to align with Cloudflare Pretty URLs
+    urls = []
+    stripped_count = 0
+    for url in raw_urls:
+        if url.endswith('.html'):
+            clean_url = url[:-5]  # Remove last 5 chars (.html)
+            urls.append(clean_url)
+            stripped_count += 1
+        else:
+            urls.append(url)
+    
     print(f"✅ Found {len(urls)} URLs in Live Sitemap.")
+    if stripped_count > 0:
+        print(f"🔧 Stripped .html suffix from {stripped_count} URLs (Cloudflare Pretty URLs alignment)")
     return urls
 
 
