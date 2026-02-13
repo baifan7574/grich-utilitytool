@@ -167,9 +167,20 @@ def main():
         print("✅ Analysis Complete: No new pages to index.")
         return
 
-    # Submitting
-    to_submit = virgin_territory[:LIMIT_PER_DAY]
-    print(f"🚀 Launching submission for {len(to_submit)} URLs...")
+    # FOUNDER DIRECTIVE: Prioritize Medical URLs (50 slots) for higher Google authority weight
+    MEDICAL_KEYWORDS = ['surgeon', 'physician', 'doctor', 'nurse', 'medical', 'therapist', 'counselor', 'chiropractor', 'dentist', 'pharmacist', 'optometrist', 'veterinarian', 'psychiatrist', 'psychologist', 'radiologist', 'anesthesiologist', 'pathologist', 'dermatologist', 'cardiologist', 'neurologist', 'oncologist', 'pediatrician', 'urologist', 'gynecologist']
+    MEDICAL_PRIORITY_SLOTS = 50
+    
+    medical_urls = [u for u in virgin_territory if any(kw in u.lower() for kw in MEDICAL_KEYWORDS)]
+    other_urls = [u for u in virgin_territory if u not in medical_urls]
+    
+    # Assemble: Medical first (up to 50), then fill remaining with others
+    priority_batch = medical_urls[:MEDICAL_PRIORITY_SLOTS]
+    remaining_slots = LIMIT_PER_DAY - len(priority_batch)
+    priority_batch.extend(other_urls[:remaining_slots])
+    
+    to_submit = priority_batch
+    print(f"🚀 Launching submission for {len(to_submit)} URLs (Medical Priority: {min(len(medical_urls), MEDICAL_PRIORITY_SLOTS)})...")
     
     service = build("indexing", "v3", credentials=creds)
     success_count = 0
