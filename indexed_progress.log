@@ -41,7 +41,9 @@
     "https://scenro.com/p/alabama-professional-lawyer-expert",
     "https://scenro.com/p/alabama-senior-doctor-expert",
     "https://scenro.com/p/alabama-junior-doctor-expert",
-    "https://scenro.com/p/alabama-certified-doctor-expert"
+    "https://scenro.com/p/alabama-certified-doctor-expert",
+    "https://scenro.com/p/alabama-professional-doctor-expert",
+    "https://scenro.com/p/alabama-licensed-doctor-expert"
   ],
   "failed_429": [
     {
@@ -123,8 +125,12 @@
     {
       "url": "https://scenro.com/p/alabama-professional-doctor-expert",
       "time": "2026-02-15T03:20:05.042937"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-doctor-expert",
+      "time": "2026-02-16T03:16:52.333267"
     }
   ],
-  "last_run": "2026-02-15T03:20:05.042955",
-  "last_batch_count": 1
+  "last_run": "2026-02-16T03:16:52.333284",
+  "last_batch_count": 2
 }
