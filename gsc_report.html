@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenro GSC数据报告 - 3</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #4CAF50; padding-bottom: 20px; }
+        .metric-card { background: #f8f9fa; border-left: 4px solid #4CAF50; padding: 20px; margin: 15px 0; border-radius: 5px; }
+        .industry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .industry-card { background: #e8f5e9; padding: 15px; border-radius: 8px; border: 1px solid #c8e6c9; }
+        .url-list { background: #f1f8e9; padding: 10px; border-radius: 5px; margin-top: 10px; font-family: monospace; font-size: 12px; max-height: 200px; overflow-y: auto; }
+        .success { color: #4CAF50; font-weight: bold; }
+        .warning { color: #ff9800; }
+        .error { color: #f44336; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Scenro GSC数据监控报告</h1>
+            <p>运行时间: <span id="timestamp"></span> | 工作流: GSC Data Fetcher - Cloud Execution #3</p>
+        </div>
+        
+        <div class="metric-card">
+            <h3>🎯 核心指标</h3>
+            <div id="metrics"></div>
+        </div>
+        
+        <div class="metric-card">
+            <h3>📈 行业分布分析</h3>
+            <div class="industry-grid" id="industry-grid"></div>
+        </div>
+        
+        <div class="metric-card">
+            <h3>📋 最新收录页面 (前20个)</h3>
+            <table id="pages-table">
+                <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>展示</th>
+                        <th>点击</th>
+                        <th>CTR</th>
+                        <th>位置</th>
+                    </tr>
+                </thead>
+                <tbody id="pages-body"></tbody>
+            </table>
+        </div>
+        
+        <div class="metric-card">
+            <h3>📝 行动建议</h3>
+            <ul id="recommendations"></ul>
+        </div>
+    </div>
+    
+    <script>
+        fetch('gsc_cloud_report.json')
+            .then(response => response.json())
+            .then(data => {
+                // 更新时间戳
+                document.getElementById('timestamp').textContent = new Date(data.timestamp).toLocaleString('zh-CN');
+                
+                // 更新核心指标
+                const metrics = document.getElementById('metrics');
+                metrics.innerHTML = `
+                    <p>✅ 已收录页面: <span class="success">${data.total_indexed_pages}</span></p>
+                    <p>👁️ 总展示次数: ${data.total_impressions.toLocaleString()}</p>
+                    <p>🖱️ 总点击次数: ${data.total_clicks.toLocaleString()}</p>
+                    <p>🎯 总体CTR: ${data.overall_ctr}%</p>
+                `;
+                
+                // 更新行业分布
+                const industryGrid = document.getElementById('industry-grid');
+                for (const [industry, stats] of Object.entries(data.industry_distribution)) {
+                    const card = document.createElement('div');
+                    card.className = 'industry-card';
+                    card.innerHTML = `
+                        <h4>${industry}</h4>
+                        <p>📄 页面数: ${stats.count} (${stats.percentage}%)</p>
+                        <p>👁️ 展示: ${stats.impressions.toLocaleString()}</p>
+                        <p>🖱️ 点击: ${stats.clicks.toLocaleString()}</p>
+                        <p>🎯 CTR: ${stats.ctr}%</p>
+                        <div class="url-list">
+                            ${stats.sample_urls.map(url => `<div>${url}</div>`).join('')}
+                        </div>
+                    `;
+                    industryGrid.appendChild(card);
+                }
+                
+                // 更新页面表格
+                const pagesBody = document.getElementById('pages-body');
+                data.indexed_pages.slice(0, 20).forEach(page => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td title="${page.url}">${page.url.substring(0, 60)}...</td>
+                        <td>${page.impressions}</td>
+                        <td>${page.clicks}</td>
+                        <td>${page.ctr}%</td>
+                        <td>${page.position.toFixed(1)}</td>
+                    `;
+                    pagesBody.appendChild(row);
+                });
+                
+                // 更新建议
+                const recommendations = document.getElementById('recommendations');
+                const recs = [];
+                
+                if (data.total_indexed_pages < 100) {
+                    recs.push('<li class="warning">⚠️ 收录页面较少，建议优化内容质量和内部链接</li>');
+                }
+                
+                if (data.overall_ctr < 1) {
+                    recs.push('<li class="warning">⚠️ CTR较低，建议优化页面标题和描述</li>');
+                }
+                
+                if (Object.keys(data.industry_distribution).length < 3) {
+                    recs.push('<li class="warning">⚠️ 行业分布不够广泛，建议扩展内容覆盖</li>');
+                }
+                
+                if (data.total_indexed_pages >= 100 && data.overall_ctr >= 1) {
+                    recs.push('<li class="success">✅ 当前收录状态良好，继续保持现有策略</li>');
+                }
+                
+                recs.push('<li>📊 建议定期运行此报告监控收录变化</li>');
+                recs.push('<li>🔗 确保所有页面都有清晰的内部链接结构</li>');
+                recs.push('<li>🎯 针对高展示低点击的页面进行标题/描述优化</li>');
+                
+                recommendations.innerHTML = recs.map(rec => `<li>${rec}</li>`).join('');
+            })
+            .catch(error => {
+                console.error('加载报告失败:', error);
+                document.getElementById('metrics').innerHTML = '<p class="error">❌ 加载报告失败，请检查工作流日志</p>';
+            });
+    </script>
+</body>
+</html>
