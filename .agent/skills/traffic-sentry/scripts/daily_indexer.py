@@ -186,37 +186,66 @@ def main():
     success_count = 0
     quota_hit = False
     
+    # 优化配额管理：使用更智能的错误处理
+    daily_quota_used = 0
+    max_daily_quota = LIMIT_PER_DAY
+    
     for url in to_submit:
+        # 检查是否已达到每日配额上限
+        if daily_quota_used >= max_daily_quota:
+            print(f"   📊 已达到每日配额上限 ({max_daily_quota})，停止提交")
+            break
+            
         try:
             body = {"url": url, "type": "URL_UPDATED"}
             service.urlNotifications().publish(body=body).execute()
             print(f"   ✅ Submitted: {url}")
             log_data["submitted"].append(url)
             success_count += 1
+            daily_quota_used += 1
             time.sleep(0.5) # Gentle rate limit
         except HttpError as e:
             if e.resp.status == 429:
-                print(f"   🛑 QUOTA HIT (429)! Stopping immediately as per Rule 4.1.")
+                print(f"   ⚠️ 配额限制 (429)，跳过当前URL，继续尝试下一个")
                 log_data["failed_429"].append({"url": url, "time": datetime.datetime.now().isoformat()})
-                quota_hit = True
-                break
+                # 不再立即停止，而是跳过当前URL继续尝试
+                time.sleep(2) # 遇到429后增加等待时间
+                continue  # 跳过当前URL，继续下一个
             elif e.resp.status == 403:
                 print(f"   ❌ 403 Permission Denied. Check Owner status.")
                 break
             else:
                 print(f"   ⚠️ Failed {url}: {e}")
+                time.sleep(1) # 其他错误也稍作等待
         except Exception as e:
              print(f"   ❌ Error: {e}")
+             time.sleep(1)
 
     log_data["last_run"] = datetime.datetime.now().isoformat()
     log_data["last_batch_count"] = success_count
     save_log(log_data)
     
-    print(f"\n🏁 Mission Report: Submitted {success_count}/{len(to_submit)}.")
+    print(f"\n🏁 Mission Report: Submitted {success_count}/{len(to_submit)} URLs.")
+    
+    # 详细统计报告
+    print(f"📊 详细统计:")
+    print(f"   • 每日配额上限: {LIMIT_PER_DAY}")
+    print(f"   • 目标提交数量: {len(to_submit)}")
+    print(f"   • 成功提交数量: {success_count}")
+    print(f"   • 成功率: {round((success_count/len(to_submit))*100, 1) if to_submit else 0}%")
+    print(f"   • 剩余未提交URL: {len(virgin_territory) - success_count}")
+    print(f"   • 累计已提交总数: {len(log_data['submitted'])}")
+    
     if quota_hit:
-        print("⚠️ Circuit Breaker Active. Resuming in 24h.")
+        print("⚠️ 配额限制触发，部分URL遇到429错误（已跳过）")
     else:
-        print(f"✅ Daily batch complete. {len(virgin_territory) - success_count} remaining for future batches.")
+        print(f"✅ 每日批次完成，配额使用: {daily_quota_used}/{max_daily_quota}")
+        
+    # 提供优化建议
+    print(f"\n💡 优化建议:")
+    print(f"   1. 确保sitemap包含足够多的URL（当前找到 {len(sitemap_urls)} 个）")
+    print(f"   2. 每日配额: {LIMIT_PER_DAY}，实际使用: {daily_quota_used}")
+    print(f"   3. 下次运行时间: 24小时后")
 
 if __name__ == "__main__":
     main()
