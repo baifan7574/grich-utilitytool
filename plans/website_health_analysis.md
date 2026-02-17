@@ -52,7 +52,7 @@
 #### 敏感凭证泄露
 - **.env文件中的明文密钥**:
   - `CLOUDFLARE_API_KEY=69e5dc3505d1f288a82f23d5c1b8899756fae` (已暴露)
-  - `GH_TOKEN=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` (GitHub Token, 已暴露)
+  - `GH_TOKEN=[已撤销的GitHub Token]` (GitHub Token, 已撤销)
   
 - **Google服务账户私钥**:
   - `gen-lang-client-0846513202-3d6c54387cae.json` 包含完整私钥

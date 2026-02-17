@@ -58,17 +58,17 @@
 #### 任务1.1：凭证轮换与安全配置
 1. **撤销暴露凭证**:
    - 轮换Cloudflare API Key
-   - 撤销GitHub Token (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)
+   - 撤销GitHub Token (已撤销，请使用新的GitHub Secret)
    - 创建新的Google Service Account
 
 2. **配置GitHub Secrets**:
    ```yaml
-   # 需要配置的Secrets
+   # 需要配置的Secrets（请在GitHub仓库Secrets中设置）
    CLOUDFLARE_API_KEY: [新密钥]
-   CLOUDFLARE_ACCOUNT_ID: c70f291b77fbc02a6f2090ebe4abdd44
-   CLOUDFLARE_ZONE_ID: 933b04ab348fabc945f1224ab71a9fac
-   GOOGLE_CREDENTIALS_JSON: [完整的JSON内容]
-   DEEPSEEK_API_KEY: [如需]
+   CLOUDFLARE_ACCOUNT_ID: [您的Cloudflare账户ID]
+   CLOUDFLARE_ZONE_ID: [您的Cloudflare区域ID]
+   GSC_API_JSON: [GSC服务账户JSON凭证]
+   GOOGLE_SERVICE_ACCOUNT_JSON: [Indexing API服务账户JSON凭证]
    ```
 
 3. **更新部署脚本**:
