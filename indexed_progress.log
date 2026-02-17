@@ -43,7 +43,9 @@
     "https://scenro.com/p/alabama-junior-doctor-expert",
     "https://scenro.com/p/alabama-certified-doctor-expert",
     "https://scenro.com/p/alabama-professional-doctor-expert",
-    "https://scenro.com/p/alabama-licensed-doctor-expert"
+    "https://scenro.com/p/alabama-licensed-doctor-expert",
+    "https://scenro.com/p/alabama-lead-doctor-expert",
+    "https://scenro.com/p/alabama-assistant-doctor-expert"
   ],
   "failed_429": [
     {
@@ -129,8 +131,12 @@
     {
       "url": "https://scenro.com/p/alabama-lead-doctor-expert",
       "time": "2026-02-16T03:16:52.333267"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-doctor-expert",
+      "time": "2026-02-17T03:11:37.987266"
     }
   ],
-  "last_run": "2026-02-16T03:16:52.333284",
+  "last_run": "2026-02-17T03:11:37.987284",
   "last_batch_count": 2
 }
