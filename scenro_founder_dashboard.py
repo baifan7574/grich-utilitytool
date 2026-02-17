@@ -3,12 +3,18 @@ Scenro 创始人数据看板 - GSC 核心指标分析
 任务：抓取最近 7 天的真实流量数据，识别最受欢迎的细分行业
 """
 import os
+import sys
 import json
 from datetime import datetime, timedelta, timezone
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from collections import defaultdict
 import re
+
+# 设置输出编码为UTF-8，解决Windows控制台编码问题
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def load_credentials():
     """加载 GSC API 凭证"""
