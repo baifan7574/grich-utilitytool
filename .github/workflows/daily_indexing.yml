@@ -44,6 +44,7 @@ jobs:
         run: |
           git config --global user.name "Traffic Sentry Bot"
           git config --global user.email "bot@scenro.com"
+          git pull --rebase origin main
           git add indexed_progress.log
           git commit -m "chore: update indexing progress log [skip ci]" || echo "No changes to commit"
           git push

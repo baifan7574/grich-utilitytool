@@ -18,15 +18,20 @@ def load_credentials():
             return None
 
     # Fallback to file
-    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), '.env')
-    if os.path.exists(env_path):
-        with open(env_path, 'r') as f:
-            for line in f:
-                if line.startswith('GOOGLE_APPLICATION_CREDENTIALS='):
-                    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = line.split('=', 1)[1].strip()
-                    break
-
-    creds_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS', 'google_service_account.json')
+    possible_creds = [
+        'google_service_account.json',
+        'gen-lang-client-0846513202-3d6c54387cae.json'
+    ]
+    
+    creds_path = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    if not creds_path:
+        for p in possible_creds:
+            if os.path.exists(p):
+                creds_path = p
+                break
+    
+    if not creds_path:
+        creds_path = 'google_service_account.json' # Default fallback
     if not os.path.isabs(creds_path):
         creds_path = os.path.abspath(creds_path)
         
