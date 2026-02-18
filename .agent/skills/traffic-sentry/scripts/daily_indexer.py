@@ -189,6 +189,7 @@ def main():
     # 优化配额管理：使用更智能的错误处理
     daily_quota_used = 0
     max_daily_quota = LIMIT_PER_DAY
+    consecutive_429_count = 0  # 连续429计数器
     
     for url in to_submit:
         # 检查是否已达到每日配额上限
@@ -203,22 +204,33 @@ def main():
             log_data["submitted"].append(url)
             success_count += 1
             daily_quota_used += 1
+            consecutive_429_count = 0  # 成功提交后重置计数器
             time.sleep(0.5) # Gentle rate limit
         except HttpError as e:
             if e.resp.status == 429:
                 print(f"   ⚠️ 配额限制 (429)，跳过当前URL，继续尝试下一个")
                 log_data["failed_429"].append({"url": url, "time": datetime.datetime.now().isoformat()})
-                # 不再立即停止，而是跳过当前URL继续尝试
-                time.sleep(2) # 遇到429后增加等待时间
+                # 降速防抖：等待30秒，连续5次429则终止任务保护账号
+                consecutive_429_count += 1
+                print(f"   ⏳ 连续429次数: {consecutive_429_count}/5，等待30秒...")
+                time.sleep(30)  # 大幅增加等待时间以降低API压力
+                
+                if consecutive_429_count >= 5:
+                    print(f"   🚨 连续遇到5次429，终止今日任务以保护账号权重")
+                    quota_hit = True
+                    break  # 跳出循环，停止今日提交
+                    
                 continue  # 跳过当前URL，继续下一个
             elif e.resp.status == 403:
                 print(f"   ❌ 403 Permission Denied. Check Owner status.")
                 break
             else:
                 print(f"   ⚠️ Failed {url}: {e}")
+                consecutive_429_count = 0  # 其他错误重置计数器
                 time.sleep(1) # 其他错误也稍作等待
         except Exception as e:
              print(f"   ❌ Error: {e}")
+             consecutive_429_count = 0
              time.sleep(1)
 
     log_data["last_run"] = datetime.datetime.now().isoformat()
