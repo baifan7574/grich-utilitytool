@@ -143,7 +143,7 @@ def save_log(data):
         json.dump(data, f, indent=2)
 
 def main():
-    print("🚦 Traffic Sentry - Daily Indexer & Auditor (Cloud Fix V2.1)")
+    print("=== Traffic Sentry - Daily Indexer & Auditor (Cloud Fix V2.1) ===")
     
     # Verification file check skipped in cloud environment as dist might not exist locally
     if not check_verification_file(): return
@@ -157,11 +157,11 @@ def main():
     submitted_set = set(log_data["submitted"])
     virgin_territory = [u for u in sitemap_urls if u not in submitted_set]
     
-    print("\n📊 === STATUS SNAPSHOT ===")
+    print("\n=== STATUS SNAPSHOT ===")
     print(f"Total Pages (Sitemap): {len(sitemap_urls)}")
     print(f"Already Submitted    : {len(submitted_set)}")
     print(f"Virgin Territory     : {len(virgin_territory)} (Unsubmitted)")
-    print("=========================\n")
+    print("=======================\n")
     
     if not virgin_territory:
         print("✅ Analysis Complete: No new pages to index.")

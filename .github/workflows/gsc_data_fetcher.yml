@@ -389,7 +389,10 @@ jobs:
         run: |
           git config --global user.name "GSC Data Fetcher Bot"
           git config --global user.email "bot@scenro.com"
+          git add -f gsc_cloud_report.json gsc_report.html
+          git stash
           git pull --rebase origin main
+          git stash pop || echo "No stash to pop"
           git add -f gsc_cloud_report.json gsc_report.html
           git commit -m "chore: update GSC cloud data report [skip ci]" || echo "No changes to commit"
-          git push
+          git push origin main
