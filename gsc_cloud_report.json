@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-02-17T15:37:34.449243+00:00",
+  "timestamp": "2026-02-19T03:12:18.758814+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 17,
-  "total_impressions": 17,
+  "total_indexed_pages": 19,
+  "total_impressions": 19,
   "total_clicks": 2,
-  "overall_ctr": 11.76,
+  "overall_ctr": 10.53,
   "industry_distribution": {
     "Medical": {
       "count": 3,
-      "percentage": 17.65,
+      "percentage": 15.79,
       "impressions": 3,
       "clicks": 2,
       "ctr": 66.67,
@@ -20,7 +20,7 @@
     },
     "Tutor": {
       "count": 5,
-      "percentage": 29.41,
+      "percentage": 26.32,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,7 +34,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 17.65,
+      "percentage": 15.79,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -45,19 +45,21 @@
       ]
     },
     "Lawyer": {
-      "count": 2,
-      "percentage": 11.76,
-      "impressions": 2,
+      "count": 4,
+      "percentage": 21.05,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/arizona-consulting-lawyer-expert",
-        "https://scenro.com/p/colorado-senior-defense-attorney-expert"
+        "https://scenro.com/p/colorado-senior-defense-attorney-expert",
+        "https://scenro.com/p/illinois-consulting-paralegal-expert",
+        "https://scenro.com/p/illinois-professional-paralegal-expert"
       ]
     },
     "RealEstate": {
       "count": 2,
-      "percentage": 11.76,
+      "percentage": 10.53,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -68,7 +70,7 @@
     },
     "Other": {
       "count": 2,
-      "percentage": 11.76,
+      "percentage": 10.53,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -164,11 +166,25 @@
       "position": 8
     },
     {
+      "url": "https://scenro.com/p/illinois-consulting-paralegal-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 20
+    },
+    {
       "url": "https://scenro.com/p/illinois-expert-actuary-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 3
+    },
+    {
+      "url": "https://scenro.com/p/illinois-professional-paralegal-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5
     },
     {
       "url": "https://scenro.com/p/iowa-licensed-civil-engineer-expert",
