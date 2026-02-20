@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-02-19T06:59:08.959807+00:00",
+  "timestamp": "2026-02-20T06:55:43.411594+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 19,
-  "total_impressions": 19,
+  "total_indexed_pages": 20,
+  "total_impressions": 20,
   "total_clicks": 2,
-  "overall_ctr": 10.53,
+  "overall_ctr": 10.0,
   "industry_distribution": {
     "Medical": {
       "count": 3,
-      "percentage": 15.79,
+      "percentage": 15.0,
       "impressions": 3,
       "clicks": 2,
       "ctr": 66.67,
@@ -18,9 +18,21 @@
         "https://scenro.com/p/montana-associate-physician-expert"
       ]
     },
+    "RealEstate": {
+      "count": 3,
+      "percentage": 15.0,
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/alaska-associate-broker-expert",
+        "https://scenro.com/p/georgia-certified-broker-expert",
+        "https://scenro.com/p/louisiana-certified-broker-expert"
+      ]
+    },
     "Tutor": {
       "count": 5,
-      "percentage": 26.32,
+      "percentage": 25.0,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,7 +46,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 15.79,
+      "percentage": 15.0,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,7 +58,7 @@
     },
     "Lawyer": {
       "count": 4,
-      "percentage": 21.05,
+      "percentage": 20.0,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -57,20 +69,9 @@
         "https://scenro.com/p/illinois-professional-paralegal-expert"
       ]
     },
-    "RealEstate": {
-      "count": 2,
-      "percentage": 10.53,
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/georgia-certified-broker-expert",
-        "https://scenro.com/p/louisiana-certified-broker-expert"
-      ]
-    },
     "Other": {
       "count": 2,
-      "percentage": 10.53,
+      "percentage": 10.0,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -94,6 +95,13 @@
       "clicks": 1,
       "ctr": 1,
       "position": 6
+    },
+    {
+      "url": "https://scenro.com/p/alaska-associate-broker-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 14
     },
     {
       "url": "https://scenro.com/p/alaska-associate-tutor-expert",
