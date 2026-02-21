@@ -1,26 +1,28 @@
 {
-  "timestamp": "2026-02-20T06:55:43.411594+00:00",
+  "timestamp": "2026-02-21T06:40:39.519193+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 20,
-  "total_impressions": 20,
+  "total_indexed_pages": 22,
+  "total_impressions": 22,
   "total_clicks": 2,
-  "overall_ctr": 10.0,
+  "overall_ctr": 9.09,
   "industry_distribution": {
     "Medical": {
-      "count": 3,
-      "percentage": 15.0,
-      "impressions": 3,
+      "count": 5,
+      "percentage": 22.73,
+      "impressions": 5,
       "clicks": 2,
-      "ctr": 66.67,
+      "ctr": 40.0,
       "sample_urls": [
         "https://scenro.com/p/georgia-licensed-surgeon-expert",
         "https://scenro.com/p/texas-senior-medical-specialist-expert",
-        "https://scenro.com/p/montana-associate-physician-expert"
+        "https://scenro.com/p/maine-consulting-surgeon-expert",
+        "https://scenro.com/p/montana-associate-physician-expert",
+        "https://scenro.com/p/nebraska-certified-medical-specialist-expert"
       ]
     },
     "RealEstate": {
       "count": 3,
-      "percentage": 15.0,
+      "percentage": 13.64,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -32,7 +34,7 @@
     },
     "Tutor": {
       "count": 5,
-      "percentage": 25.0,
+      "percentage": 22.73,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,7 +48,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 15.0,
+      "percentage": 13.64,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -58,7 +60,7 @@
     },
     "Lawyer": {
       "count": 4,
-      "percentage": 20.0,
+      "percentage": 18.18,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -71,7 +73,7 @@
     },
     "Other": {
       "count": 2,
-      "percentage": 10.0,
+      "percentage": 9.09,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -209,11 +211,25 @@
       "position": 9
     },
     {
+      "url": "https://scenro.com/p/maine-consulting-surgeon-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 253
+    },
+    {
       "url": "https://scenro.com/p/montana-associate-physician-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 3
+    },
+    {
+      "url": "https://scenro.com/p/nebraska-certified-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 180
     },
     {
       "url": "https://scenro.com/p/utah-junior-bookkeeper-expert",
