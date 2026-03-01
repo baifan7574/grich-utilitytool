@@ -461,8 +461,28 @@
     {
       "url": "https://scenro.com/p/alabama-consulting-physician-expert",
       "time": "2026-02-28T02:07:33.717226"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-surgeon-expert",
+      "time": "2026-03-01T02:35:44.207492"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-physician-expert",
+      "time": "2026-03-01T02:36:14.262581"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-physician-expert",
+      "time": "2026-03-01T02:36:44.322781"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-physician-expert",
+      "time": "2026-03-01T02:37:14.365256"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-physician-expert",
+      "time": "2026-03-01T02:37:44.451443"
     }
   ],
-  "last_run": "2026-02-28T02:08:03.737934",
+  "last_run": "2026-03-01T02:38:14.481555",
   "last_batch_count": 0
 }
