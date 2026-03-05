@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-04T06:45:24.689892+00:00",
+  "timestamp": "2026-03-05T06:51:46.132177+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 17,
-  "total_impressions": 48,
+  "total_indexed_pages": 18,
+  "total_impressions": 60,
   "total_clicks": 1,
-  "overall_ctr": 2.08,
+  "overall_ctr": 1.67,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 29.41,
+      "percentage": 27.78,
       "impressions": 6,
       "clicks": 1,
       "ctr": 16.67,
@@ -22,7 +22,7 @@
     },
     "RealEstate": {
       "count": 3,
-      "percentage": 17.65,
+      "percentage": 16.67,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,7 +34,7 @@
     },
     "Tutor": {
       "count": 3,
-      "percentage": 17.65,
+      "percentage": 16.67,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,7 +46,7 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 11.76,
+      "percentage": 11.11,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -56,16 +56,17 @@
       ]
     },
     "Lawyer": {
-      "count": 4,
-      "percentage": 23.53,
-      "impressions": 34,
+      "count": 5,
+      "percentage": 27.78,
+      "impressions": 46,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/illinois-consulting-paralegal-expert",
         "https://scenro.com/p/illinois-professional-paralegal-expert",
         "https://scenro.com/p/indiana-licensed-defense-attorney-expert",
-        "https://scenro.com/p/indiana-licensed-legal-consultant-expert"
+        "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
+        "https://scenro.com/p/utah-lead-paralegal-expert"
       ]
     }
   },
@@ -142,10 +143,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 31,
+      "impressions": 40,
       "clicks": 0,
       "ctr": 0,
-      "position": 41.483870967741936
+      "position": 40.9
     },
     {
       "url": "https://scenro.com/p/louisiana-certified-broker-expert",
@@ -188,6 +189,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 6
+    },
+    {
+      "url": "https://scenro.com/p/utah-lead-paralegal-expert",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8.333333333333332
     }
   ]
 }
