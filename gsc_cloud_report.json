@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-05T06:51:46.132177+00:00",
+  "timestamp": "2026-03-06T06:46:31.193491+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 18,
-  "total_impressions": 60,
+  "total_impressions": 64,
   "total_clicks": 1,
-  "overall_ctr": 1.67,
+  "overall_ctr": 1.56,
   "industry_distribution": {
     "Medical": {
       "count": 5,
@@ -58,7 +58,7 @@
     "Lawyer": {
       "count": 5,
       "percentage": 27.78,
-      "impressions": 46,
+      "impressions": 50,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -143,10 +143,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 40,
+      "impressions": 44,
       "clicks": 0,
       "ctr": 0,
-      "position": 40.9
+      "position": 40.86363636363637
     },
     {
       "url": "https://scenro.com/p/louisiana-certified-broker-expert",
