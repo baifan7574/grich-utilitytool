@@ -1,67 +1,64 @@
 {
-  "timestamp": "2026-03-07T06:39:30.450659+00:00",
+  "timestamp": "2026-03-08T06:41:15.629451+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 30,
-  "total_impressions": 80,
-  "total_clicks": 1,
-  "overall_ctr": 1.25,
+  "total_indexed_pages": 26,
+  "total_impressions": 75,
+  "total_clicks": 0,
+  "overall_ctr": 0.0,
   "industry_distribution": {
-    "Medical": {
-      "count": 8,
-      "percentage": 26.67,
-      "impressions": 9,
-      "clicks": 1,
-      "ctr": 11.11,
+    "Other": {
+      "count": 4,
+      "percentage": 15.38,
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/georgia-licensed-surgeon-expert",
-        "https://scenro.com/p/illinois-certified-surgeon-expert",
-        "https://scenro.com/p/indiana-professional-physical-therapist-expert",
-        "https://scenro.com/p/maine-consulting-surgeon-expert",
-        "https://scenro.com/p/massachusetts-assistant-physician-expert"
+        "https://scenro.com/p/alabama-consulting-dentist-expert",
+        "https://scenro.com/p/kansas-expert-chiropractor-expert",
+        "https://scenro.com/p/louisiana-associate-lab-technician-expert",
+        "https://scenro.com/p/massachusetts-associate-architect-expert"
       ]
     },
     "RealEstate": {
-      "count": 3,
-      "percentage": 10.0,
-      "impressions": 3,
+      "count": 1,
+      "percentage": 3.85,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/alaska-associate-broker-expert",
-        "https://scenro.com/p/georgia-certified-broker-expert",
-        "https://scenro.com/p/louisiana-certified-broker-expert"
-      ]
-    },
-    "Tutor": {
-      "count": 3,
-      "percentage": 10.0,
-      "impressions": 3,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/alaska-associate-tutor-expert",
-        "https://scenro.com/p/colorado-certified-teacher-expert",
-        "https://scenro.com/p/georgia-senior-teacher-expert"
+        "https://scenro.com/p/alaska-associate-broker-expert"
       ]
     },
     "Finance": {
-      "count": 5,
-      "percentage": 16.67,
-      "impressions": 6,
+      "count": 3,
+      "percentage": 11.54,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/arizona-certified-cpa-expert",
         "https://scenro.com/p/connecticut-certified-cpa-expert",
         "https://scenro.com/p/indiana-assistant-accountant-expert",
-        "https://scenro.com/p/iowa-consulting-accountant-expert",
-        "https://scenro.com/p/utah-junior-bookkeeper-expert"
+        "https://scenro.com/p/iowa-consulting-accountant-expert"
+      ]
+    },
+    "Medical": {
+      "count": 9,
+      "percentage": 34.62,
+      "impressions": 9,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/florida-senior-registered-nurse-expert",
+        "https://scenro.com/p/georgia-licensed-surgeon-expert",
+        "https://scenro.com/p/illinois-certified-surgeon-expert",
+        "https://scenro.com/p/indiana-professional-physical-therapist-expert",
+        "https://scenro.com/p/maine-consulting-surgeon-expert"
       ]
     },
     "Lawyer": {
-      "count": 8,
-      "percentage": 26.67,
-      "impressions": 56,
+      "count": 9,
+      "percentage": 34.62,
+      "impressions": 57,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -71,27 +68,15 @@
         "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
         "https://scenro.com/p/kansas-junior-attorney-expert"
       ]
-    },
-    "Other": {
-      "count": 3,
-      "percentage": 10.0,
-      "impressions": 3,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/kansas-expert-chiropractor-expert",
-        "https://scenro.com/p/louisiana-associate-lab-technician-expert",
-        "https://scenro.com/p/massachusetts-associate-architect-expert"
-      ]
     }
   },
   "indexed_pages": [
     {
-      "url": "https://scenro.com/p/georgia-licensed-surgeon-expert",
-      "impressions": 2,
-      "clicks": 1,
-      "ctr": 0.5,
-      "position": 4
+      "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 90
     },
     {
       "url": "https://scenro.com/p/alaska-associate-broker-expert",
@@ -101,27 +86,6 @@
       "position": 14
     },
     {
-      "url": "https://scenro.com/p/alaska-associate-tutor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
-    },
-    {
-      "url": "https://scenro.com/p/arizona-certified-cpa-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
-    },
-    {
-      "url": "https://scenro.com/p/colorado-certified-teacher-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 8
-    },
-    {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
       "impressions": 2,
       "clicks": 0,
@@ -129,18 +93,18 @@
       "position": 72
     },
     {
-      "url": "https://scenro.com/p/georgia-certified-broker-expert",
+      "url": "https://scenro.com/p/florida-senior-registered-nurse-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 5
+      "position": 49
     },
     {
-      "url": "https://scenro.com/p/georgia-senior-teacher-expert",
+      "url": "https://scenro.com/p/georgia-licensed-surgeon-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 10
+      "position": 1
     },
     {
       "url": "https://scenro.com/p/illinois-certified-surgeon-expert",
@@ -213,18 +177,18 @@
       "position": 8
     },
     {
+      "url": "https://scenro.com/p/kentucky-professional-legal-consultant-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 53
+    },
+    {
       "url": "https://scenro.com/p/louisiana-associate-lab-technician-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 72
-    },
-    {
-      "url": "https://scenro.com/p/louisiana-certified-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 9
     },
     {
       "url": "https://scenro.com/p/maine-consulting-surgeon-expert",
@@ -269,13 +233,6 @@
       "position": 2
     },
     {
-      "url": "https://scenro.com/p/montana-associate-physician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 3
-    },
-    {
       "url": "https://scenro.com/p/nebraska-certified-medical-specialist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -283,11 +240,11 @@
       "position": 180
     },
     {
-      "url": "https://scenro.com/p/utah-junior-bookkeeper-expert",
+      "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 6
+      "position": 53
     },
     {
       "url": "https://scenro.com/p/utah-lead-paralegal-expert",
