@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-10T06:48:30.650493+00:00",
+  "timestamp": "2026-03-11T06:53:03.488495+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 26,
-  "total_impressions": 79,
+  "total_impressions": 87,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -32,7 +32,7 @@
     "Finance": {
       "count": 3,
       "percentage": 11.54,
-      "impressions": 5,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -44,7 +44,7 @@
     "Medical": {
       "count": 9,
       "percentage": 34.62,
-      "impressions": 11,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -58,7 +58,7 @@
     "Lawyer": {
       "count": 9,
       "percentage": 34.62,
-      "impressions": 58,
+      "impressions": 63,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -87,10 +87,10 @@
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 3,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 71
+      "position": 70.25
     },
     {
       "url": "https://scenro.com/p/florida-senior-registered-nurse-expert",
@@ -143,10 +143,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 48,
+      "impressions": 53,
       "clicks": 0,
       "ctr": 0,
-      "position": 40.5
+      "position": 39.905660377358494
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
@@ -241,10 +241,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
-      "impressions": 3,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 50.333333333333336
+      "position": 50
     },
     {
       "url": "https://scenro.com/p/utah-lead-paralegal-expert",
