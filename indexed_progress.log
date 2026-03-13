@@ -73,7 +73,8 @@
     "https://scenro.com/p/alabama-professional-dentist-expert",
     "https://scenro.com/p/alabama-lead-dentist-expert",
     "https://scenro.com/p/alabama-expert-dentist-expert",
-    "https://scenro.com/p/alabama-junior-dentist-expert"
+    "https://scenro.com/p/alabama-junior-dentist-expert",
+    "https://scenro.com/p/alabama-certified-dentist-expert"
   ],
   "failed_429": [
     {
@@ -619,8 +620,28 @@
     {
       "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
       "time": "2026-03-12T02:33:25.341106"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-dentist-expert",
+      "time": "2026-03-13T02:29:14.159203"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-dentist-expert",
+      "time": "2026-03-13T02:29:44.233569"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-dentist-expert",
+      "time": "2026-03-13T02:30:14.306919"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
+      "time": "2026-03-13T02:30:44.384975"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-senior-pediatrician-expert",
+      "time": "2026-03-13T02:31:14.460008"
     }
   ],
-  "last_run": "2026-03-12T02:33:55.365077",
-  "last_batch_count": 0
+  "last_run": "2026-03-13T02:31:44.490108",
+  "last_batch_count": 1
 }
