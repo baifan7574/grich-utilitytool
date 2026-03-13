@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-12T06:54:53.005217+00:00",
+  "timestamp": "2026-03-13T06:52:52.309716+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 27,
-  "total_impressions": 92,
+  "total_indexed_pages": 29,
+  "total_impressions": 100,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 4,
-      "percentage": 14.81,
-      "impressions": 4,
+      "percentage": 13.79,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,7 +21,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 3.7,
+      "percentage": 3.45,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -31,7 +31,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 11.11,
+      "percentage": 10.34,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -42,9 +42,9 @@
       ]
     },
     "Medical": {
-      "count": 10,
-      "percentage": 37.04,
-      "impressions": 16,
+      "count": 12,
+      "percentage": 41.38,
+      "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -57,8 +57,8 @@
     },
     "Lawyer": {
       "count": 9,
-      "percentage": 33.33,
-      "impressions": 64,
+      "percentage": 31.03,
+      "impressions": 65,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -143,10 +143,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 54,
+      "impressions": 55,
       "clicks": 0,
       "ctr": 0,
-      "position": 39.7962962962963
+      "position": 39.70909090909091
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
@@ -185,10 +185,10 @@
     },
     {
       "url": "https://scenro.com/p/louisiana-associate-lab-technician-expert",
-      "impressions": 1,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 72
+      "position": 73.66666666666667
     },
     {
       "url": "https://scenro.com/p/maine-consulting-surgeon-expert",
@@ -233,6 +233,20 @@
       "position": 2
     },
     {
+      "url": "https://scenro.com/p/missouri-consulting-doctor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 75
+    },
+    {
+      "url": "https://scenro.com/p/missouri-consulting-doctor-expert.html",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 78
+    },
+    {
       "url": "https://scenro.com/p/nebraska-certified-medical-specialist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -241,10 +255,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
-      "impressions": 7,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0,
-      "position": 50.285714285714285
+      "position": 49.1
     },
     {
       "url": "https://scenro.com/p/utah-consulting-surgeon-expert",
