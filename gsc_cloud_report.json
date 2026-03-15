@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-14T06:44:27.437651+00:00",
+  "timestamp": "2026-03-15T06:56:08.272268+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 47,
-  "total_impressions": 122,
+  "total_impressions": 125,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 12,
       "percentage": 25.53,
-      "impressions": 15,
+      "impressions": 17,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -33,7 +33,7 @@
     "Finance": {
       "count": 4,
       "percentage": 8.51,
-      "impressions": 9,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -86,10 +86,10 @@
   "indexed_pages": [
     {
       "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 90
+      "position": 94
     },
     {
       "url": "https://scenro.com/p/alaska-associate-broker-expert",
@@ -100,17 +100,17 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 64
+      "position": 61.5
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 6,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 70.83333333333333
+      "position": 70.71428571428571
     },
     {
       "url": "https://scenro.com/p/florida-senior-registered-nurse-expert",
