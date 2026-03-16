@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-15T06:56:08.272268+00:00",
+  "timestamp": "2026-03-16T07:15:48.911777+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 47,
-  "total_impressions": 125,
+  "total_indexed_pages": 48,
+  "total_impressions": 130,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 12,
-      "percentage": 25.53,
-      "impressions": 17,
+      "percentage": 25.0,
+      "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 2.13,
+      "percentage": 2.08,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -32,8 +32,8 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 8.51,
-      "impressions": 10,
+      "percentage": 8.33,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -44,9 +44,9 @@
       ]
     },
     "Medical": {
-      "count": 17,
-      "percentage": 36.17,
-      "impressions": 28,
+      "count": 18,
+      "percentage": 37.5,
+      "impressions": 29,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -59,7 +59,7 @@
     },
     "Lawyer": {
       "count": 11,
-      "percentage": 23.4,
+      "percentage": 22.92,
       "impressions": 67,
       "clicks": 0,
       "ctr": 0.0,
@@ -73,7 +73,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 4.26,
+      "percentage": 4.17,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -100,17 +100,17 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 2,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 61.5
+      "position": 59.666666666666664
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 7,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0,
-      "position": 70.71428571428571
+      "position": 70
     },
     {
       "url": "https://scenro.com/p/florida-senior-registered-nurse-expert",
@@ -391,6 +391,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 19
+    },
+    {
+      "url": "https://scenro.com/p/south-dakota-expert-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 50
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
