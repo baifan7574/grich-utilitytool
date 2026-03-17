@@ -719,8 +719,28 @@
     {
       "url": "https://scenro.com/p/alabama-associate-pediatrician-expert",
       "time": "2026-03-16T02:51:40.170069"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-dentist-expert",
+      "time": "2026-03-17T02:31:02.228187"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
+      "time": "2026-03-17T02:31:32.326949"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-senior-pediatrician-expert",
+      "time": "2026-03-17T02:32:02.452867"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-pediatrician-expert",
+      "time": "2026-03-17T02:32:32.511381"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-pediatrician-expert",
+      "time": "2026-03-17T02:33:02.636664"
     }
   ],
-  "last_run": "2026-03-16T02:52:10.200261",
-  "last_batch_count": 2
+  "last_run": "2026-03-17T02:33:32.662348",
+  "last_batch_count": 0
 }
