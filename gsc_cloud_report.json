@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-18T07:01:12.483479+00:00",
+  "timestamp": "2026-03-19T06:57:33.681519+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 48,
-  "total_impressions": 130,
+  "total_indexed_pages": 46,
+  "total_impressions": 128,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 12,
-      "percentage": 25.0,
+      "percentage": 26.09,
       "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,7 +22,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 2.08,
+      "percentage": 2.17,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -32,7 +32,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 8.33,
+      "percentage": 8.7,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -45,7 +45,7 @@
     },
     "Medical": {
       "count": 18,
-      "percentage": 37.5,
+      "percentage": 39.13,
       "impressions": 29,
       "clicks": 0,
       "ctr": 0.0,
@@ -58,22 +58,22 @@
       ]
     },
     "Lawyer": {
-      "count": 11,
-      "percentage": 22.92,
-      "impressions": 67,
+      "count": 9,
+      "percentage": 19.57,
+      "impressions": 65,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/idaho-junior-attorney-expert",
-        "https://scenro.com/p/illinois-consulting-paralegal-expert",
-        "https://scenro.com/p/illinois-professional-paralegal-expert",
         "https://scenro.com/p/indiana-licensed-defense-attorney-expert",
-        "https://scenro.com/p/indiana-licensed-legal-consultant-expert"
+        "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
+        "https://scenro.com/p/kansas-junior-attorney-expert",
+        "https://scenro.com/p/kentucky-professional-legal-consultant-expert"
       ]
     },
     "Tutor": {
       "count": 2,
-      "percentage": 4.17,
+      "percentage": 4.35,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -146,20 +146,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 10
-    },
-    {
-      "url": "https://scenro.com/p/illinois-consulting-paralegal-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 20
-    },
-    {
-      "url": "https://scenro.com/p/illinois-professional-paralegal-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 5
     },
     {
       "url": "https://scenro.com/p/indiana-assistant-accountant-expert",
