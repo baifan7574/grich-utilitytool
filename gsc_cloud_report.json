@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-20T06:54:38.936552+00:00",
+  "timestamp": "2026-03-21T06:41:35.480951+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 47,
-  "total_impressions": 131,
+  "total_impressions": 132,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 14,
       "percentage": 29.79,
-      "impressions": 22,
+      "impressions": 23,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -44,7 +44,7 @@
         "https://scenro.com/p/georgia-licensed-surgeon-expert",
         "https://scenro.com/p/illinois-certified-surgeon-expert",
         "https://scenro.com/p/indiana-professional-physical-therapist-expert",
-        "https://scenro.com/p/kansas-expert-medical-specialist-expert"
+        "https://scenro.com/p/iowa-licensed-medical-specialist-expert"
       ]
     },
     "Lawyer": {
@@ -83,10 +83,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 5,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0,
-      "position": 58.2
+      "position": 58.166666666666664
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
@@ -194,6 +194,13 @@
       "position": 5
     },
     {
+      "url": "https://scenro.com/p/iowa-licensed-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 42
+    },
+    {
       "url": "https://scenro.com/p/kansas-expert-chiropractor-expert",
       "impressions": 1,
       "clicks": 0,
@@ -255,13 +262,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 15
-    },
-    {
-      "url": "https://scenro.com/p/maine-consulting-surgeon-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 253
     },
     {
       "url": "https://scenro.com/p/maryland-associate-attorney-expert",
@@ -362,18 +362,18 @@
       "position": 78
     },
     {
-      "url": "https://scenro.com/p/nebraska-certified-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 180
-    },
-    {
       "url": "https://scenro.com/p/nevada-junior-physical-therapist-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 19
+    },
+    {
+      "url": "https://scenro.com/p/south-dakota-expert-doctor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 53
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-medical-specialist-expert",
