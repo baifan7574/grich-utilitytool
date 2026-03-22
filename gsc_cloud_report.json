@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-21T06:41:35.480951+00:00",
+  "timestamp": "2026-03-22T06:51:22.152783+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 47,
-  "total_impressions": 132,
+  "total_indexed_pages": 49,
+  "total_impressions": 134,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 14,
-      "percentage": 29.79,
-      "impressions": 23,
+      "count": 15,
+      "percentage": 30.61,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 8.51,
+      "percentage": 8.16,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,9 +34,9 @@
       ]
     },
     "Medical": {
-      "count": 18,
-      "percentage": 38.3,
-      "impressions": 29,
+      "count": 19,
+      "percentage": 38.78,
+      "impressions": 30,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -49,7 +49,7 @@
     },
     "Lawyer": {
       "count": 9,
-      "percentage": 19.15,
+      "percentage": 18.37,
       "impressions": 65,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 4.26,
+      "percentage": 4.08,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -369,6 +369,13 @@
       "position": 19
     },
     {
+      "url": "https://scenro.com/p/south-carolina-professional-architect-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2
+    },
+    {
       "url": "https://scenro.com/p/south-dakota-expert-doctor-expert",
       "impressions": 1,
       "clicks": 0,
@@ -388,6 +395,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 48.916666666666664
+    },
+    {
+      "url": "https://scenro.com/p/south-dakota-professional-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 51
     },
     {
       "url": "https://scenro.com/p/utah-consulting-surgeon-expert",
