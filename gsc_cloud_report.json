@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-22T06:51:22.152783+00:00",
+  "timestamp": "2026-03-23T07:09:11.495476+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 49,
-  "total_impressions": 134,
+  "total_indexed_pages": 53,
+  "total_impressions": 138,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 15,
-      "percentage": 30.61,
+      "percentage": 28.3,
       "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
@@ -20,9 +20,37 @@
         "https://scenro.com/p/iowa-assistant-actuary-expert"
       ]
     },
+    "Medical": {
+      "count": 21,
+      "percentage": 39.62,
+      "impressions": 32,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/alabama-expert-medical-specialist-expert",
+        "https://scenro.com/p/delaware-expert-medical-specialist-expert",
+        "https://scenro.com/p/florida-senior-registered-nurse-expert",
+        "https://scenro.com/p/georgia-licensed-surgeon-expert",
+        "https://scenro.com/p/illinois-certified-surgeon-expert"
+      ]
+    },
+    "Lawyer": {
+      "count": 11,
+      "percentage": 20.75,
+      "impressions": 67,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
+        "https://scenro.com/p/idaho-junior-attorney-expert",
+        "https://scenro.com/p/indiana-licensed-defense-attorney-expert",
+        "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
+        "https://scenro.com/p/kansas-junior-attorney-expert"
+      ]
+    },
     "Finance": {
       "count": 4,
-      "percentage": 8.16,
+      "percentage": 7.55,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -33,37 +61,9 @@
         "https://scenro.com/p/iowa-consulting-accountant-expert"
       ]
     },
-    "Medical": {
-      "count": 19,
-      "percentage": 38.78,
-      "impressions": 30,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/florida-senior-registered-nurse-expert",
-        "https://scenro.com/p/georgia-licensed-surgeon-expert",
-        "https://scenro.com/p/illinois-certified-surgeon-expert",
-        "https://scenro.com/p/indiana-professional-physical-therapist-expert",
-        "https://scenro.com/p/iowa-licensed-medical-specialist-expert"
-      ]
-    },
-    "Lawyer": {
-      "count": 9,
-      "percentage": 18.37,
-      "impressions": 65,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/idaho-junior-attorney-expert",
-        "https://scenro.com/p/indiana-licensed-defense-attorney-expert",
-        "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-        "https://scenro.com/p/kansas-junior-attorney-expert",
-        "https://scenro.com/p/kentucky-professional-legal-consultant-expert"
-      ]
-    },
     "Tutor": {
       "count": 2,
-      "percentage": 4.08,
+      "percentage": 3.77,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -82,6 +82,13 @@
       "position": 94
     },
     {
+      "url": "https://scenro.com/p/alabama-expert-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 71
+    },
+    {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
       "impressions": 6,
       "clicks": 0,
@@ -89,11 +96,25 @@
       "position": 58.166666666666664
     },
     {
+      "url": "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 37
+    },
+    {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
       "impressions": 10,
       "clicks": 0,
       "ctr": 0,
       "position": 70
+    },
+    {
+      "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 79
     },
     {
       "url": "https://scenro.com/p/florida-senior-registered-nurse-expert",
@@ -290,6 +311,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 18
+    },
+    {
+      "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 60
     },
     {
       "url": "https://scenro.com/p/massachusetts-assistant-physician-expert",
