@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-25T07:01:43.139433+00:00",
+  "timestamp": "2026-03-26T07:07:05.314885+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 53,
-  "total_impressions": 152,
+  "total_indexed_pages": 54,
+  "total_impressions": 155,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 15,
-      "percentage": 28.3,
-      "impressions": 26,
+      "count": 16,
+      "percentage": 29.63,
+      "impressions": 28,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,8 +22,8 @@
     },
     "Medical": {
       "count": 21,
-      "percentage": 39.62,
-      "impressions": 44,
+      "percentage": 38.89,
+      "impressions": 45,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "Lawyer": {
       "count": 11,
-      "percentage": 20.75,
+      "percentage": 20.37,
       "impressions": 67,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 7.55,
+      "percentage": 7.41,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 3.77,
+      "percentage": 3.7,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -90,10 +90,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 8,
+      "impressions": 9,
       "clicks": 0,
       "ctr": 0,
-      "position": 58.75
+      "position": 59
     },
     {
       "url": "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
@@ -111,10 +111,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-      "impressions": 6,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 73.5
+      "position": 71.28571428571429
     },
     {
       "url": "https://scenro.com/p/florida-senior-registered-nurse-expert",
@@ -388,6 +388,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 78
+    },
+    {
+      "url": "https://scenro.com/p/missouri-licensed-property-manager-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 92
     },
     {
       "url": "https://scenro.com/p/nevada-junior-physical-therapist-expert",
