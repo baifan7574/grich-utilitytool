@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-27T07:05:54.999542+00:00",
+  "timestamp": "2026-03-28T06:58:32.828193+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 53,
-  "total_impressions": 156,
+  "total_indexed_pages": 55,
+  "total_impressions": 162,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 16,
-      "percentage": 30.19,
-      "impressions": 29,
+      "percentage": 29.09,
+      "impressions": 31,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,9 +21,9 @@
       ]
     },
     "Medical": {
-      "count": 21,
-      "percentage": 39.62,
-      "impressions": 46,
+      "count": 22,
+      "percentage": 40.0,
+      "impressions": 47,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,9 +35,9 @@
       ]
     },
     "Lawyer": {
-      "count": 10,
-      "percentage": 18.87,
-      "impressions": 66,
+      "count": 11,
+      "percentage": 20.0,
+      "impressions": 69,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 7.55,
+      "percentage": 7.27,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 3.77,
+      "percentage": 3.64,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -90,10 +90,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 10,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0,
-      "position": 59.1
+      "position": 59
     },
     {
       "url": "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
@@ -278,6 +278,13 @@
       "position": 15
     },
     {
+      "url": "https://scenro.com/p/louisiana-licensed-defense-attorney-expert",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 79.66666666666667
+    },
+    {
       "url": "https://scenro.com/p/maryland-associate-attorney-expert",
       "impressions": 1,
       "clicks": 0,
@@ -384,10 +391,10 @@
     },
     {
       "url": "https://scenro.com/p/missouri-licensed-property-manager-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 92
+      "position": 90.5
     },
     {
       "url": "https://scenro.com/p/nevada-junior-physical-therapist-expert",
@@ -430,6 +437,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 51
+    },
+    {
+      "url": "https://scenro.com/p/texas-consulting-physical-therapist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 56
     },
     {
       "url": "https://scenro.com/p/utah-consulting-surgeon-expert",
