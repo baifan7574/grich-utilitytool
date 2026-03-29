@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-28T06:58:32.828193+00:00",
+  "timestamp": "2026-03-29T07:02:31.945069+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 55,
-  "total_impressions": 162,
+  "total_impressions": 160,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 16,
-      "percentage": 29.09,
-      "impressions": 31,
+      "count": 17,
+      "percentage": 30.91,
+      "impressions": 33,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,9 +21,9 @@
       ]
     },
     "Medical": {
-      "count": 22,
-      "percentage": 40.0,
-      "impressions": 47,
+      "count": 21,
+      "percentage": 38.18,
+      "impressions": 46,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -37,7 +37,7 @@
     "Lawyer": {
       "count": 11,
       "percentage": 20.0,
-      "impressions": 69,
+      "impressions": 66,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -90,10 +90,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 11,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0,
-      "position": 59
+      "position": 58.833333333333336
     },
     {
       "url": "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
@@ -167,10 +167,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 55,
+      "impressions": 52,
       "clicks": 0,
       "ctr": 0,
-      "position": 39.70909090909091
+      "position": 39.55769230769231
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
@@ -306,6 +306,13 @@
       "position": 100
     },
     {
+      "url": "https://scenro.com/p/maryland-certified-property-manager-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 90
+    },
+    {
       "url": "https://scenro.com/p/maryland-expert-investment-banker-expert",
       "impressions": 1,
       "clicks": 0,
@@ -318,13 +325,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 60
-    },
-    {
-      "url": "https://scenro.com/p/massachusetts-assistant-physician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 6
     },
     {
       "url": "https://scenro.com/p/massachusetts-associate-architect-expert",
