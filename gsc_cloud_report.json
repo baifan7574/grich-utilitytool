@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-29T07:02:31.945069+00:00",
+  "timestamp": "2026-03-30T07:26:10.953249+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 55,
-  "total_impressions": 160,
+  "total_indexed_pages": 56,
+  "total_impressions": 153,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 17,
-      "percentage": 30.91,
-      "impressions": 33,
+      "count": 18,
+      "percentage": 32.14,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Medical": {
       "count": 21,
-      "percentage": 38.18,
+      "percentage": 37.5,
       "impressions": 46,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,8 +36,8 @@
     },
     "Lawyer": {
       "count": 11,
-      "percentage": 20.0,
-      "impressions": 66,
+      "percentage": 19.64,
+      "impressions": 56,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 7.27,
+      "percentage": 7.14,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 3.64,
+      "percentage": 3.57,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -90,10 +90,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 12,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0,
-      "position": 58.833333333333336
+      "position": 60.46153846153846
     },
     {
       "url": "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
@@ -167,10 +167,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 52,
+      "impressions": 42,
       "clicks": 0,
       "ctr": 0,
-      "position": 39.55769230769231
+      "position": 38.95238095238095
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
@@ -307,10 +307,10 @@
     },
     {
       "url": "https://scenro.com/p/maryland-certified-property-manager-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 90
+      "position": 91
     },
     {
       "url": "https://scenro.com/p/maryland-expert-investment-banker-expert",
@@ -318,6 +318,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 18
+    },
+    {
+      "url": "https://scenro.com/p/maryland-licensed-architect-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
