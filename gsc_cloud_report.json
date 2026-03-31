@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-03-30T07:26:10.953249+00:00",
+  "timestamp": "2026-03-31T07:13:05.747897+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 56,
-  "total_impressions": 153,
+  "total_indexed_pages": 57,
+  "total_impressions": 146,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 18,
-      "percentage": 32.14,
-      "impressions": 36,
+      "percentage": 31.58,
+      "impressions": 37,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Medical": {
       "count": 21,
-      "percentage": 37.5,
+      "percentage": 36.84,
       "impressions": 46,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,9 +35,9 @@
       ]
     },
     "Lawyer": {
-      "count": 11,
-      "percentage": 19.64,
-      "impressions": 56,
+      "count": 12,
+      "percentage": 21.05,
+      "impressions": 48,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 7.14,
+      "percentage": 7.02,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 3.57,
+      "percentage": 3.51,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -90,10 +90,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 13,
+      "impressions": 14,
       "clicks": 0,
       "ctr": 0,
-      "position": 60.46153846153846
+      "position": 62.714285714285715
     },
     {
       "url": "https://scenro.com/p/connecticut-associate-corporate-lawyer-expert",
@@ -167,10 +167,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 42,
+      "impressions": 33,
       "clicks": 0,
       "ctr": 0,
-      "position": 38.95238095238095
+      "position": 38.27272727272727
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
@@ -402,6 +402,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 90.5
+    },
+    {
+      "url": "https://scenro.com/p/montana-licensed-lawyer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 43
     },
     {
       "url": "https://scenro.com/p/nevada-junior-physical-therapist-expert",
