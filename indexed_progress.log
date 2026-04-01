@@ -1054,8 +1054,28 @@
     {
       "url": "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
       "time": "2026-03-31T02:49:11.269672"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-pediatrician-expert",
+      "time": "2026-04-01T02:56:46.840423"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-pediatrician-expert",
+      "time": "2026-04-01T02:57:16.918493"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-pediatrician-expert",
+      "time": "2026-04-01T02:57:46.979651"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-pediatrician-expert",
+      "time": "2026-04-01T02:58:17.055472"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-senior-medical-specialist-expert",
+      "time": "2026-04-01T02:58:47.137897"
     }
   ],
-  "last_run": "2026-03-31T02:49:41.270121",
-  "last_batch_count": 1
+  "last_run": "2026-04-01T02:59:17.164661",
+  "last_batch_count": 0
 }
