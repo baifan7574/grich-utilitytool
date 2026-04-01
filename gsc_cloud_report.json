@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-03-31T07:13:05.747897+00:00",
+  "timestamp": "2026-04-01T07:19:24.946142+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 57,
-  "total_impressions": 146,
+  "total_impressions": 137,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -37,7 +37,7 @@
     "Lawyer": {
       "count": 12,
       "percentage": 21.05,
-      "impressions": 48,
+      "impressions": 39,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -167,10 +167,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 33,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0,
-      "position": 38.27272727272727
+      "position": 37.416666666666664
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
