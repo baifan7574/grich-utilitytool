@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-04-02T07:11:41.380326+00:00",
+  "timestamp": "2026-04-03T07:06:45.955159+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 58,
-  "total_impressions": 127,
+  "total_indexed_pages": 61,
+  "total_impressions": 126,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 18,
-      "percentage": 31.03,
+      "percentage": 29.51,
       "impressions": 37,
       "clicks": 0,
       "ctr": 0.0,
@@ -21,23 +21,23 @@
       ]
     },
     "Medical": {
-      "count": 22,
-      "percentage": 37.93,
-      "impressions": 47,
+      "count": 23,
+      "percentage": 37.7,
+      "impressions": 48,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
+        "https://scenro.com/p/alabama-consulting-physician-expert",
         "https://scenro.com/p/alabama-expert-medical-specialist-expert",
         "https://scenro.com/p/delaware-expert-medical-specialist-expert",
         "https://scenro.com/p/florida-senior-registered-nurse-expert",
-        "https://scenro.com/p/georgia-expert-medical-specialist-expert",
-        "https://scenro.com/p/illinois-certified-surgeon-expert"
+        "https://scenro.com/p/georgia-expert-medical-specialist-expert"
       ]
     },
     "Lawyer": {
-      "count": 12,
-      "percentage": 20.69,
-      "impressions": 28,
+      "count": 14,
+      "percentage": 22.95,
+      "impressions": 26,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 6.9,
+      "percentage": 6.56,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 3.45,
+      "percentage": 3.28,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -80,6 +80,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 94
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-physician-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 83
     },
     {
       "url": "https://scenro.com/p/alabama-expert-medical-specialist-expert",
@@ -167,10 +174,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 15,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0,
-      "position": 36.53333333333333
+      "position": 35.09090909090909
     },
     {
       "url": "https://scenro.com/p/indiana-professional-physical-therapist-expert",
@@ -283,6 +290,20 @@
       "clicks": 0,
       "ctr": 0,
       "position": 79.66666666666667
+    },
+    {
+      "url": "https://scenro.com/p/maine-lead-attorney-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "url": "https://scenro.com/p/maine-lead-paralegal-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7
     },
     {
       "url": "https://scenro.com/p/maryland-associate-attorney-expert",
