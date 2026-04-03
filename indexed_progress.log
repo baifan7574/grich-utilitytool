@@ -85,7 +85,9 @@
     "https://scenro.com/p/alabama-lead-pediatrician-expert",
     "https://scenro.com/p/alabama-associate-pediatrician-expert",
     "https://scenro.com/p/alabama-consulting-pediatrician-expert",
-    "https://scenro.com/p/alabama-professional-pediatrician-expert"
+    "https://scenro.com/p/alabama-professional-pediatrician-expert",
+    "https://scenro.com/p/alabama-licensed-pediatrician-expert",
+    "https://scenro.com/p/alabama-expert-pediatrician-expert"
   ],
   "failed_429": [
     {
@@ -1095,8 +1097,32 @@
     {
       "url": "https://scenro.com/p/alabama-junior-medical-specialist-expert",
       "time": "2026-04-02T02:43:02.992519"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-pediatrician-expert",
+      "time": "2026-04-03T02:43:12.692546"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-senior-medical-specialist-expert",
+      "time": "2026-04-03T02:43:43.279627"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-medical-specialist-expert",
+      "time": "2026-04-03T02:44:13.340772"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-medical-specialist-expert",
+      "time": "2026-04-03T02:44:43.377897"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-medical-specialist-expert",
+      "time": "2026-04-03T02:45:13.449321"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
+      "time": "2026-04-03T02:45:43.510240"
     }
   ],
-  "last_run": "2026-04-02T02:43:32.995692",
-  "last_batch_count": 1
+  "last_run": "2026-04-03T02:46:13.517189",
+  "last_batch_count": 2
 }
