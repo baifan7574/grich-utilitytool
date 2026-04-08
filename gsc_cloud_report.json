@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-07T07:15:21.603148+00:00",
+  "timestamp": "2026-04-08T07:18:21.650888+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 50,
-  "total_impressions": 106,
+  "total_indexed_pages": 52,
+  "total_impressions": 102,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 17,
-      "percentage": 34.0,
-      "impressions": 34,
+      "count": 18,
+      "percentage": 34.62,
+      "impressions": 35,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,8 +22,8 @@
     },
     "Medical": {
       "count": 19,
-      "percentage": 38.0,
-      "impressions": 41,
+      "percentage": 36.54,
+      "impressions": 39,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,8 +36,8 @@
     },
     "Lawyer": {
       "count": 10,
-      "percentage": 20.0,
-      "impressions": 21,
+      "percentage": 19.23,
+      "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,8 +50,8 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 4.0,
-      "impressions": 8,
+      "percentage": 3.85,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -61,13 +61,23 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/iowa-assistant-professor-expert",
         "https://scenro.com/p/michigan-licensed-professor-expert"
+      ]
+    },
+    "RealEstate": {
+      "count": 1,
+      "percentage": 1.92,
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/new-york-licensed-real-estate-agent-expert"
       ]
     }
   },
@@ -109,10 +119,10 @@
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 7,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0,
-      "position": 69.57142857142857
+      "position": 69.83333333333333
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
@@ -158,10 +168,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 7,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 34.285714285714285
+      "position": 34.5
     },
     {
       "url": "https://scenro.com/p/iowa-assistant-actuary-expert",
@@ -319,10 +329,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 3,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 71.66666666666667
+      "position": 71.8
     },
     {
       "url": "https://scenro.com/p/minnesota-licensed-real-estate-consultant-expert",
@@ -367,6 +377,13 @@
       "position": 19
     },
     {
+      "url": "https://scenro.com/p/new-york-licensed-real-estate-agent-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 98
+    },
+    {
       "url": "https://scenro.com/p/south-carolina-professional-architect-expert",
       "impressions": 1,
       "clicks": 0,
@@ -389,10 +406,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
-      "impressions": 9,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 48.44444444444444
+      "position": 48.142857142857146
     },
     {
       "url": "https://scenro.com/p/south-dakota-professional-medical-specialist-expert",
@@ -407,6 +424,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 56
+    },
+    {
+      "url": "https://scenro.com/p/texas-expert-real-estate-consultant-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 53
     },
     {
       "url": "https://scenro.com/p/utah-certified-physician-expert",
