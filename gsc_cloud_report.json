@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-04-08T07:18:21.650888+00:00",
+  "timestamp": "2026-04-09T07:21:07.067311+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 52,
-  "total_impressions": 102,
+  "total_indexed_pages": 56,
+  "total_impressions": 103,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 18,
-      "percentage": 34.62,
-      "impressions": 35,
+      "count": 20,
+      "percentage": 35.71,
+      "impressions": 37,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-dentist-expert",
         "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
+        "https://scenro.com/p/florida-professional-property-manager-expert",
         "https://scenro.com/p/idaho-professional-engineer-expert",
-        "https://scenro.com/p/indiana-associate-appraiser-expert",
-        "https://scenro.com/p/indiana-certified-investment-banker-expert"
+        "https://scenro.com/p/illinois-licensed-data-scientist-expert"
       ]
     },
     "Medical": {
-      "count": 19,
-      "percentage": 36.54,
-      "impressions": 39,
+      "count": 18,
+      "percentage": 32.14,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -34,9 +34,22 @@
         "https://scenro.com/p/iowa-licensed-medical-specialist-expert"
       ]
     },
+    "Tutor": {
+      "count": 4,
+      "percentage": 7.14,
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/alaska-professional-professor-expert",
+        "https://scenro.com/p/connecticut-junior-teacher-expert",
+        "https://scenro.com/p/iowa-assistant-professor-expert",
+        "https://scenro.com/p/michigan-licensed-professor-expert"
+      ]
+    },
     "Lawyer": {
       "count": 10,
-      "percentage": 19.23,
+      "percentage": 17.86,
       "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
@@ -49,30 +62,20 @@
       ]
     },
     "Finance": {
-      "count": 2,
-      "percentage": 3.85,
+      "count": 3,
+      "percentage": 5.36,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-certified-cpa-expert",
-        "https://scenro.com/p/iowa-associate-accountant-expert"
-      ]
-    },
-    "Tutor": {
-      "count": 2,
-      "percentage": 3.85,
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/iowa-assistant-professor-expert",
-        "https://scenro.com/p/michigan-licensed-professor-expert"
+        "https://scenro.com/p/iowa-associate-accountant-expert",
+        "https://scenro.com/p/texas-licensed-tax-auditor-expert.html"
       ]
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 1.92,
+      "percentage": 1.79,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -104,6 +107,13 @@
       "position": 89.2
     },
     {
+      "url": "https://scenro.com/p/alaska-professional-professor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9
+    },
+    {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
       "impressions": 14,
       "clicks": 0,
@@ -119,10 +129,17 @@
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 6,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 69.83333333333333
+      "position": 69.8
+    },
+    {
+      "url": "https://scenro.com/p/connecticut-junior-teacher-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 10
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
@@ -130,6 +147,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 72.375
+    },
+    {
+      "url": "https://scenro.com/p/florida-professional-property-manager-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7
     },
     {
       "url": "https://scenro.com/p/georgia-expert-medical-specialist-expert",
@@ -153,6 +177,13 @@
       "position": 17
     },
     {
+      "url": "https://scenro.com/p/illinois-licensed-data-scientist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6
+    },
+    {
       "url": "https://scenro.com/p/indiana-associate-appraiser-expert",
       "impressions": 1,
       "clicks": 0,
@@ -168,10 +199,10 @@
     },
     {
       "url": "https://scenro.com/p/indiana-licensed-legal-consultant-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 34.5
+      "position": 35
     },
     {
       "url": "https://scenro.com/p/iowa-assistant-actuary-expert",
@@ -329,10 +360,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 5,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0,
-      "position": 71.8
+      "position": 72.16666666666667
     },
     {
       "url": "https://scenro.com/p/minnesota-licensed-real-estate-consultant-expert",
@@ -406,10 +437,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
-      "impressions": 7,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 48.142857142857146
+      "position": 47
     },
     {
       "url": "https://scenro.com/p/south-dakota-professional-medical-specialist-expert",
@@ -433,18 +464,18 @@
       "position": 53
     },
     {
+      "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert.html",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8
+    },
+    {
       "url": "https://scenro.com/p/utah-certified-physician-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 39
-    },
-    {
-      "url": "https://scenro.com/p/utah-consulting-surgeon-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 99
     }
   ]
 }
