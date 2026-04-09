@@ -1222,8 +1222,28 @@
     {
       "url": "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
       "time": "2026-04-08T02:49:29.265750"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-senior-medical-specialist-expert",
+      "time": "2026-04-09T02:42:14.967481"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-medical-specialist-expert",
+      "time": "2026-04-09T02:42:45.025116"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-medical-specialist-expert",
+      "time": "2026-04-09T02:43:15.080071"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-medical-specialist-expert",
+      "time": "2026-04-09T02:43:45.127081"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
+      "time": "2026-04-09T02:44:15.162761"
     }
   ],
-  "last_run": "2026-04-08T02:49:59.291850",
-  "last_batch_count": 1
+  "last_run": "2026-04-09T02:44:45.192879",
+  "last_batch_count": 0
 }
