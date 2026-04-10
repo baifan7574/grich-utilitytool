@@ -88,7 +88,12 @@
     "https://scenro.com/p/alabama-professional-pediatrician-expert",
     "https://scenro.com/p/alabama-licensed-pediatrician-expert",
     "https://scenro.com/p/alabama-expert-pediatrician-expert",
-    "https://scenro.com/p/alabama-assistant-pediatrician-expert"
+    "https://scenro.com/p/alabama-assistant-pediatrician-expert",
+    "https://scenro.com/p/alabama-senior-medical-specialist-expert",
+    "https://scenro.com/p/alabama-junior-medical-specialist-expert",
+    "https://scenro.com/p/alabama-lead-medical-specialist-expert",
+    "https://scenro.com/p/alabama-assistant-medical-specialist-expert",
+    "https://scenro.com/p/alabama-senior-chiropractor-expert"
   ],
   "failed_429": [
     {
@@ -1242,8 +1247,52 @@
     {
       "url": "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
       "time": "2026-04-09T02:44:15.162761"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-medical-specialist-expert",
+      "time": "2026-04-10T02:53:38.348835"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-medical-specialist-expert",
+      "time": "2026-04-10T02:54:08.428069"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
+      "time": "2026-04-10T02:54:38.504121"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-medical-specialist-expert",
+      "time": "2026-04-10T02:55:09.767805"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-medical-specialist-expert",
+      "time": "2026-04-10T02:55:39.814431"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-medical-specialist-expert",
+      "time": "2026-04-10T02:56:09.864970"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-chiropractor-expert",
+      "time": "2026-04-10T02:56:40.508468"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-chiropractor-expert",
+      "time": "2026-04-10T02:57:10.579557"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-chiropractor-expert",
+      "time": "2026-04-10T02:57:40.717953"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-chiropractor-expert",
+      "time": "2026-04-10T02:58:10.777110"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-chiropractor-expert",
+      "time": "2026-04-10T02:58:40.846705"
     }
   ],
-  "last_run": "2026-04-09T02:44:45.192879",
-  "last_batch_count": 0
+  "last_run": "2026-04-10T02:59:10.847287",
+  "last_batch_count": 5
 }
