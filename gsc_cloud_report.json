@@ -1,42 +1,42 @@
 {
-  "timestamp": "2026-04-10T07:26:33.769891+00:00",
+  "timestamp": "2026-04-11T07:00:12.086614+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 61,
-  "total_impressions": 105,
+  "total_indexed_pages": 64,
+  "total_impressions": 109,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 24,
-      "percentage": 39.34,
-      "impressions": 41,
+      "count": 27,
+      "percentage": 42.19,
+      "impressions": 46,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-dentist-expert",
         "https://scenro.com/p/alaska-expert-pharmacist-expert",
         "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-        "https://scenro.com/p/arkansas-expert-pharmacist-expert",
-        "https://scenro.com/p/florida-professional-property-manager-expert"
+        "https://scenro.com/p/arkansas-expert-dentist-expert",
+        "https://scenro.com/p/arkansas-expert-pharmacist-expert"
       ]
     },
     "Medical": {
       "count": 16,
-      "percentage": 26.23,
-      "impressions": 31,
+      "percentage": 25.0,
+      "impressions": 30,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-physician-expert",
         "https://scenro.com/p/alabama-expert-medical-specialist-expert",
+        "https://scenro.com/p/connecticut-consulting-physical-therapist-expert",
         "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-        "https://scenro.com/p/georgia-expert-medical-specialist-expert",
-        "https://scenro.com/p/iowa-licensed-medical-specialist-expert"
+        "https://scenro.com/p/georgia-expert-medical-specialist-expert"
       ]
     },
     "Tutor": {
       "count": 4,
-      "percentage": 6.56,
+      "percentage": 6.25,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -49,7 +49,7 @@
     },
     "Lawyer": {
       "count": 12,
-      "percentage": 19.67,
+      "percentage": 18.75,
       "impressions": 20,
       "clicks": 0,
       "ctr": 0.0,
@@ -63,7 +63,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 6.56,
+      "percentage": 6.25,
       "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
@@ -76,7 +76,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 1.64,
+      "percentage": 1.56,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -129,6 +129,13 @@
       "position": 62.714285714285715
     },
     {
+      "url": "https://scenro.com/p/arkansas-expert-dentist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 46
+    },
+    {
       "url": "https://scenro.com/p/arkansas-expert-pharmacist-expert",
       "impressions": 2,
       "clicks": 0,
@@ -148,6 +155,20 @@
       "clicks": 0,
       "ctr": 0,
       "position": 69.8
+    },
+    {
+      "url": "https://scenro.com/p/connecticut-consulting-physical-therapist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 90
+    },
+    {
+      "url": "https://scenro.com/p/connecticut-expert-dentist-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 57
     },
     {
       "url": "https://scenro.com/p/connecticut-junior-teacher-expert",
@@ -242,10 +263,10 @@
     },
     {
       "url": "https://scenro.com/p/iowa-professional-pharmacist-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 27
+      "position": 37
     },
     {
       "url": "https://scenro.com/p/kansas-expert-medical-specialist-expert",
@@ -395,6 +416,13 @@
       "position": 90.5
     },
     {
+      "url": "https://scenro.com/p/montana-consulting-pharmacist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 36
+    },
+    {
       "url": "https://scenro.com/p/montana-licensed-lawyer-expert",
       "impressions": 1,
       "clicks": 0,
@@ -449,13 +477,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 27
-    },
-    {
-      "url": "https://scenro.com/p/south-dakota-licensed-physician-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 48
     },
     {
       "url": "https://scenro.com/p/south-dakota-professional-medical-specialist-expert",
