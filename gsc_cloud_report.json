@@ -1,28 +1,14 @@
 {
-  "timestamp": "2026-04-12T07:13:01.095264+00:00",
+  "timestamp": "2026-04-13T08:01:51.047812+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 49,
-  "total_impressions": 91,
+  "total_indexed_pages": 48,
+  "total_impressions": 88,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
-    "Other": {
-      "count": 22,
-      "percentage": 44.9,
-      "impressions": 39,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/alabama-consulting-dentist-expert",
-        "https://scenro.com/p/alaska-expert-pharmacist-expert",
-        "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-        "https://scenro.com/p/arkansas-expert-dentist-expert",
-        "https://scenro.com/p/arkansas-expert-pharmacist-expert"
-      ]
-    },
     "Medical": {
       "count": 11,
-      "percentage": 22.45,
+      "percentage": 22.92,
       "impressions": 25,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,9 +20,23 @@
         "https://scenro.com/p/georgia-expert-medical-specialist-expert"
       ]
     },
+    "Other": {
+      "count": 21,
+      "percentage": 43.75,
+      "impressions": 37,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/alaska-expert-pharmacist-expert",
+        "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
+        "https://scenro.com/p/arkansas-expert-dentist-expert",
+        "https://scenro.com/p/arkansas-expert-pharmacist-expert",
+        "https://scenro.com/p/colorado-expert-chiropractor-expert"
+      ]
+    },
     "Tutor": {
       "count": 2,
-      "percentage": 4.08,
+      "percentage": 4.17,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -47,7 +47,7 @@
     },
     "Lawyer": {
       "count": 10,
-      "percentage": 20.41,
+      "percentage": 20.83,
       "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
@@ -61,8 +61,8 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 6.12,
-      "impressions": 6,
+      "percentage": 6.25,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -73,7 +73,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 2.04,
+      "percentage": 2.08,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -83,13 +83,6 @@
     }
   },
   "indexed_pages": [
-    {
-      "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 98
-    },
     {
       "url": "https://scenro.com/p/alabama-consulting-physician-expert",
       "impressions": 1,
@@ -120,10 +113,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 13,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0,
-      "position": 62.61538461538461
+      "position": 62.916666666666664
     },
     {
       "url": "https://scenro.com/p/arkansas-expert-dentist-expert",
@@ -155,10 +148,10 @@
     },
     {
       "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 4,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 68.75
+      "position": 68.33333333333333
     },
     {
       "url": "https://scenro.com/p/connecticut-consulting-physical-therapist-expert",
