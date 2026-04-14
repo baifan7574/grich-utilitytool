@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-13T08:01:51.047812+00:00",
+  "timestamp": "2026-04-14T07:44:01.651643+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 48,
-  "total_impressions": 88,
+  "total_indexed_pages": 49,
+  "total_impressions": 87,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 11,
-      "percentage": 22.92,
-      "impressions": 25,
+      "count": 10,
+      "percentage": 20.41,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,8 +21,8 @@
       ]
     },
     "Other": {
-      "count": 21,
-      "percentage": 43.75,
+      "count": 22,
+      "percentage": 44.9,
       "impressions": 37,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 4.17,
+      "percentage": 4.08,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,9 +46,9 @@
       ]
     },
     "Lawyer": {
-      "count": 10,
-      "percentage": 20.83,
-      "impressions": 18,
+      "count": 12,
+      "percentage": 24.49,
+      "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -59,26 +59,25 @@
         "https://scenro.com/p/maryland-licensed-defense-attorney-expert"
       ]
     },
-    "Finance": {
-      "count": 3,
-      "percentage": 6.25,
-      "impressions": 5,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/connecticut-certified-cpa-expert",
-        "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
-        "https://scenro.com/p/texas-licensed-tax-auditor-expert.html"
-      ]
-    },
     "RealEstate": {
       "count": 1,
-      "percentage": 2.08,
+      "percentage": 2.04,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/new-york-licensed-real-estate-agent-expert"
+      ]
+    },
+    "Finance": {
+      "count": 2,
+      "percentage": 4.08,
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
+        "https://scenro.com/p/texas-licensed-tax-auditor-expert.html"
       ]
     }
   },
@@ -113,10 +112,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 12,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0,
-      "position": 62.916666666666664
+      "position": 63.54545454545455
     },
     {
       "url": "https://scenro.com/p/arkansas-expert-dentist-expert",
@@ -147,11 +146,11 @@
       "position": 37
     },
     {
-      "url": "https://scenro.com/p/connecticut-certified-cpa-expert",
-      "impressions": 3,
+      "url": "https://scenro.com/p/connecticut-certified-engineer-expert",
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 68.33333333333333
+      "position": 54
     },
     {
       "url": "https://scenro.com/p/connecticut-consulting-physical-therapist-expert",
@@ -350,13 +349,6 @@
       "position": 60.25
     },
     {
-      "url": "https://scenro.com/p/south-dakota-expert-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 50
-    },
-    {
       "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -399,6 +391,13 @@
       "position": 2
     },
     {
+      "url": "https://scenro.com/p/utah-certified-defense-attorney-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2
+    },
+    {
       "url": "https://scenro.com/p/utah-certified-physician-expert",
       "impressions": 1,
       "clicks": 0,
@@ -407,13 +406,20 @@
     },
     {
       "url": "https://scenro.com/p/utah-junior-family-lawyer-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 6
+      "position": 4.5
     },
     {
       "url": "https://scenro.com/p/utah-lead-attorney-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "url": "https://scenro.com/p/utah-professional-attorney-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
