@@ -99,7 +99,11 @@
     "https://scenro.com/p/alabama-licensed-medical-specialist-expert",
     "https://scenro.com/p/alabama-expert-medical-specialist-expert",
     "https://scenro.com/p/alabama-consulting-medical-specialist-expert",
-    "https://scenro.com/p/alabama-junior-chiropractor-expert"
+    "https://scenro.com/p/alabama-junior-chiropractor-expert",
+    "https://scenro.com/p/alabama-associate-medical-specialist-expert",
+    "https://scenro.com/p/alabama-certified-chiropractor-expert",
+    "https://scenro.com/p/alabama-assistant-chiropractor-expert",
+    "https://scenro.com/p/alabama-senior-nurse-expert"
   ],
   "failed_429": [
     {
@@ -1361,8 +1365,52 @@
     {
       "url": "https://scenro.com/p/alabama-lead-chiropractor-expert",
       "time": "2026-04-13T03:24:44.021052"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-chiropractor-expert",
+      "time": "2026-04-14T02:54:38.374849"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-chiropractor-expert",
+      "time": "2026-04-14T02:55:08.444369"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-chiropractor-expert",
+      "time": "2026-04-14T02:55:38.551802"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-chiropractor-expert",
+      "time": "2026-04-14T02:56:09.168576"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-chiropractor-expert",
+      "time": "2026-04-14T02:56:39.226015"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-chiropractor-expert",
+      "time": "2026-04-14T02:57:09.272794"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-nurse-expert",
+      "time": "2026-04-14T02:57:39.855525"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-nurse-expert",
+      "time": "2026-04-14T02:58:09.958107"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-nurse-expert",
+      "time": "2026-04-14T02:58:40.013285"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-nurse-expert",
+      "time": "2026-04-14T02:59:10.110464"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-nurse-expert",
+      "time": "2026-04-14T02:59:40.166111"
     }
   ],
-  "last_run": "2026-04-13T03:25:14.051213",
-  "last_batch_count": 0
+  "last_run": "2026-04-14T03:00:10.168407",
+  "last_batch_count": 4
 }
