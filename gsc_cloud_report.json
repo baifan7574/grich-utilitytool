@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-04-14T07:44:01.651643+00:00",
+  "timestamp": "2026-04-15T07:44:00.040587+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 49,
-  "total_impressions": 87,
+  "total_impressions": 86,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -23,7 +23,7 @@
     "Other": {
       "count": 22,
       "percentage": 44.9,
-      "impressions": 37,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -112,10 +112,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 11,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0,
-      "position": 63.54545454545455
+      "position": 63.9
     },
     {
       "url": "https://scenro.com/p/arkansas-expert-dentist-expert",
