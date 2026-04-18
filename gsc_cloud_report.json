@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-17T07:45:00.539211+00:00",
+  "timestamp": "2026-04-18T07:06:13.672090+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 64,
-  "total_impressions": 108,
+  "total_impressions": 107,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 30,
       "percentage": 46.88,
-      "impressions": 49,
+      "impressions": 48,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -121,10 +121,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 9,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0,
-      "position": 65.22222222222223
+      "position": 66.125
     },
     {
       "url": "https://scenro.com/p/arkansas-consulting-dentist-expert",
@@ -281,13 +281,6 @@
       "position": 52
     },
     {
-      "url": "https://scenro.com/p/iowa-licensed-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 42
-    },
-    {
       "url": "https://scenro.com/p/iowa-professional-pharmacist-expert",
       "impressions": 3,
       "clicks": 0,
@@ -400,6 +393,13 @@
       "position": 43
     },
     {
+      "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 80
+    },
+    {
       "url": "https://scenro.com/p/new-jersey-consulting-pediatrician-expert",
       "impressions": 1,
       "clicks": 0,
@@ -450,10 +450,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-doctor-expert",
-      "impressions": 4,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 60.25
+      "position": 62.666666666666664
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
