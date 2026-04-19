@@ -110,7 +110,12 @@
     "https://scenro.com/p/alabama-consulting-chiropractor-expert",
     "https://scenro.com/p/alabama-junior-nurse-expert",
     "https://scenro.com/p/alabama-licensed-nurse-expert",
-    "https://scenro.com/p/alabama-assistant-nurse-expert"
+    "https://scenro.com/p/alabama-assistant-nurse-expert",
+    "https://scenro.com/p/alabama-lead-chiropractor-expert",
+    "https://scenro.com/p/alabama-associate-chiropractor-expert",
+    "https://scenro.com/p/alabama-lead-nurse-expert",
+    "https://scenro.com/p/alabama-associate-nurse-expert",
+    "https://scenro.com/p/alabama-junior-registered-nurse-expert"
   ],
   "failed_429": [
     {
@@ -1516,8 +1521,48 @@
     {
       "url": "https://scenro.com/p/alabama-lead-nurse-expert",
       "time": "2026-04-18T02:48:11.248205"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-nurse-expert",
+      "time": "2026-04-19T03:20:43.443245"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-nurse-expert",
+      "time": "2026-04-19T03:21:13.522680"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-nurse-expert",
+      "time": "2026-04-19T03:21:44.731671"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-nurse-expert",
+      "time": "2026-04-19T03:22:14.811357"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-senior-registered-nurse-expert",
+      "time": "2026-04-19T03:22:44.862754"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-registered-nurse-expert",
+      "time": "2026-04-19T03:23:15.486472"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-registered-nurse-expert",
+      "time": "2026-04-19T03:23:45.566078"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-registered-nurse-expert",
+      "time": "2026-04-19T03:24:15.643919"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-registered-nurse-expert",
+      "time": "2026-04-19T03:24:45.689998"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-registered-nurse-expert",
+      "time": "2026-04-19T03:25:15.759780"
     }
   ],
-  "last_run": "2026-04-18T02:48:41.255636",
-  "last_batch_count": 0
+  "last_run": "2026-04-19T03:25:45.789989",
+  "last_batch_count": 5
 }
