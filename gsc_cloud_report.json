@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-04-19T07:18:05.674305+00:00",
+  "timestamp": "2026-04-20T08:05:39.984288+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 64,
-  "total_impressions": 109,
+  "total_indexed_pages": 67,
+  "total_impressions": 118,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 29,
-      "percentage": 45.31,
+      "percentage": 43.28,
       "impressions": 47,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,8 +22,8 @@
     },
     "Medical": {
       "count": 15,
-      "percentage": 23.44,
-      "impressions": 31,
+      "percentage": 22.39,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -34,9 +34,23 @@
         "https://scenro.com/p/connecticut-consulting-physical-therapist-expert"
       ]
     },
+    "RealEstate": {
+      "count": 5,
+      "percentage": 7.46,
+      "impressions": 6,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/alaska-lead-broker-expert",
+        "https://scenro.com/p/delaware-junior-broker-expert",
+        "https://scenro.com/p/kansas-lead-broker-expert",
+        "https://scenro.com/p/new-york-licensed-real-estate-agent-expert",
+        "https://scenro.com/p/texas-lead-broker-expert"
+      ]
+    },
     "Tutor": {
       "count": 3,
-      "percentage": 4.69,
+      "percentage": 4.48,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -48,7 +62,7 @@
     },
     "Lawyer": {
       "count": 13,
-      "percentage": 20.31,
+      "percentage": 19.4,
       "impressions": 23,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,20 +74,9 @@
         "https://scenro.com/p/maryland-licensed-defense-attorney-expert"
       ]
     },
-    "RealEstate": {
-      "count": 2,
-      "percentage": 3.12,
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/delaware-junior-broker-expert",
-        "https://scenro.com/p/new-york-licensed-real-estate-agent-expert"
-      ]
-    },
     "Finance": {
       "count": 2,
-      "percentage": 3.12,
+      "percentage": 2.99,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -111,6 +114,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 31
+    },
+    {
+      "url": "https://scenro.com/p/alaska-lead-broker-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 3.5
     },
     {
       "url": "https://scenro.com/p/alaska-professional-professor-expert",
@@ -295,6 +305,13 @@
       "position": 58
     },
     {
+      "url": "https://scenro.com/p/kansas-lead-broker-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2
+    },
+    {
       "url": "https://scenro.com/p/kentucky-consulting-pediatrician-expert",
       "impressions": 1,
       "clicks": 0,
@@ -394,10 +411,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 3,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 80
+      "position": 79.6
     },
     {
       "url": "https://scenro.com/p/new-jersey-consulting-pediatrician-expert",
@@ -464,10 +481,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
-      "impressions": 2,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 61
+      "position": 60.4
     },
     {
       "url": "https://scenro.com/p/texas-consulting-physical-therapist-expert",
@@ -482,6 +499,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 53
+    },
+    {
+      "url": "https://scenro.com/p/texas-lead-broker-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4
     },
     {
       "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert.html",
