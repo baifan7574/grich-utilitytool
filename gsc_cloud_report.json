@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-21T07:48:35.947623+00:00",
+  "timestamp": "2026-04-22T07:45:14.653527+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 69,
-  "total_impressions": 124,
+  "total_impressions": 122,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 30,
       "percentage": 43.48,
-      "impressions": 49,
+      "impressions": 48,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 17,
       "percentage": 24.64,
-      "impressions": 42,
+      "impressions": 41,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -103,10 +103,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-medical-specialist-expert",
-      "impressions": 4,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 93.75
+      "position": 100
     },
     {
       "url": "https://scenro.com/p/alaska-expert-pharmacist-expert",
@@ -131,10 +131,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 8,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 66.125
+      "position": 66.57142857142857
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -243,10 +243,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-      "impressions": 7,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 71.42857142857143
+      "position": 71.8
     },
     {
       "url": "https://scenro.com/p/delaware-junior-broker-expert",
@@ -268,13 +268,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 7
-    },
-    {
-      "url": "https://scenro.com/p/georgia-expert-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 77
     },
     {
       "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
@@ -382,6 +375,13 @@
       "position": 72.16666666666667
     },
     {
+      "url": "https://scenro.com/p/minnesota-senior-physician-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7
+    },
+    {
       "url": "https://scenro.com/p/missouri-expert-pediatrician-expert",
       "impressions": 1,
       "clicks": 0,
@@ -418,10 +418,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 7,
+      "impressions": 9,
       "clicks": 0,
       "ctr": 0,
-      "position": 79.28571428571429
+      "position": 79.66666666666667
     },
     {
       "url": "https://scenro.com/p/new-jersey-consulting-pediatrician-expert",
@@ -481,10 +481,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-doctor-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 62.666666666666664
+      "position": 62.5
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
@@ -495,10 +495,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
-      "impressions": 7,
+      "impressions": 9,
       "clicks": 0,
       "ctr": 0,
-      "position": 59.714285714285715
+      "position": 59.55555555555556
     },
     {
       "url": "https://scenro.com/p/texas-consulting-physical-therapist-expert",
