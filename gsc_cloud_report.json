@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-22T07:45:14.653527+00:00",
+  "timestamp": "2026-04-23T07:50:45.530329+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 69,
-  "total_impressions": 122,
+  "total_impressions": 118,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 30,
-      "percentage": 43.48,
-      "impressions": 48,
+      "count": 31,
+      "percentage": 44.93,
+      "impressions": 49,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,17 +21,17 @@
       ]
     },
     "Medical": {
-      "count": 17,
-      "percentage": 24.64,
-      "impressions": 41,
+      "count": 16,
+      "percentage": 23.19,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-physician-expert",
-        "https://scenro.com/p/alabama-expert-medical-specialist-expert",
         "https://scenro.com/p/arkansas-associate-nurse-expert",
         "https://scenro.com/p/arkansas-consulting-physical-therapist-expert",
-        "https://scenro.com/p/arkansas-expert-medical-specialist-expert"
+        "https://scenro.com/p/arkansas-expert-medical-specialist-expert",
+        "https://scenro.com/p/connecticut-consulting-physical-therapist-expert"
       ]
     },
     "RealEstate": {
@@ -102,13 +102,6 @@
       "position": 83
     },
     {
-      "url": "https://scenro.com/p/alabama-expert-medical-specialist-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 100
-    },
-    {
       "url": "https://scenro.com/p/alaska-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -131,10 +124,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 7,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0,
-      "position": 66.57142857142857
+      "position": 68
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -243,10 +236,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-      "impressions": 5,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 71.8
+      "position": 69
     },
     {
       "url": "https://scenro.com/p/delaware-junior-broker-expert",
@@ -459,6 +452,13 @@
       "position": 70
     },
     {
+      "url": "https://scenro.com/p/oklahoma-consulting-engineer-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
       "url": "https://scenro.com/p/oklahoma-expert-dentist-expert",
       "impressions": 2,
       "clicks": 0,
@@ -480,18 +480,18 @@
       "position": 46
     },
     {
-      "url": "https://scenro.com/p/south-dakota-expert-doctor-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 62.5
-    },
-    {
       "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 27
+    },
+    {
+      "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 62
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
