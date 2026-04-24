@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-23T07:50:45.530329+00:00",
+  "timestamp": "2026-04-24T08:01:58.697299+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 69,
-  "total_impressions": 118,
+  "total_impressions": 115,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 31,
       "percentage": 44.93,
-      "impressions": 49,
+      "impressions": 47,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 16,
       "percentage": 23.19,
-      "impressions": 36,
+      "impressions": 35,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -124,10 +124,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 6,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 68
+      "position": 69.4
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -236,10 +236,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 69
+      "position": 80
     },
     {
       "url": "https://scenro.com/p/delaware-junior-broker-expert",
@@ -390,10 +390,10 @@
     },
     {
       "url": "https://scenro.com/p/missouri-licensed-property-manager-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 90.5
+      "position": 89
     },
     {
       "url": "https://scenro.com/p/montana-consulting-pharmacist-expert",
