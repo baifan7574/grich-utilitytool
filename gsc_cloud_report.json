@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-24T08:01:58.697299+00:00",
+  "timestamp": "2026-04-25T07:14:34.633142+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 69,
-  "total_impressions": 115,
+  "total_indexed_pages": 70,
+  "total_impressions": 118,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 31,
-      "percentage": 44.93,
-      "impressions": 47,
+      "count": 33,
+      "percentage": 47.14,
+      "impressions": 49,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,9 +21,9 @@
       ]
     },
     "Medical": {
-      "count": 16,
-      "percentage": 23.19,
-      "impressions": 35,
+      "count": 15,
+      "percentage": 21.43,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "RealEstate": {
       "count": 5,
-      "percentage": 7.25,
+      "percentage": 7.14,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 3,
-      "percentage": 4.35,
+      "percentage": 4.29,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,7 +62,7 @@
     },
     "Lawyer": {
       "count": 12,
-      "percentage": 17.39,
+      "percentage": 17.14,
       "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
@@ -76,7 +76,7 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 2.9,
+      "percentage": 2.86,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -124,10 +124,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 5,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 69.4
+      "position": 71.75
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -233,13 +233,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 65
-    },
-    {
-      "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 80
     },
     {
       "url": "https://scenro.com/p/delaware-junior-broker-expert",
@@ -480,6 +473,20 @@
       "position": 46
     },
     {
+      "url": "https://scenro.com/p/rhode-island-certified-actuary-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "url": "https://scenro.com/p/south-carolina-consulting-mechanical-engineer-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 77
+    },
+    {
       "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -488,10 +495,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 2,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 62
+      "position": 64.25
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
