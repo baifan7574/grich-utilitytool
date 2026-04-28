@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-04-27T08:23:15.511893+00:00",
+  "timestamp": "2026-04-28T08:23:44.234046+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 68,
-  "total_impressions": 114,
+  "total_impressions": 122,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 32,
-      "percentage": 47.06,
-      "impressions": 45,
+      "count": 30,
+      "percentage": 44.12,
+      "impressions": 42,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,9 +21,9 @@
       ]
     },
     "Medical": {
-      "count": 14,
-      "percentage": 20.59,
-      "impressions": 37,
+      "count": 15,
+      "percentage": 22.06,
+      "impressions": 45,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -63,7 +63,7 @@
     "Lawyer": {
       "count": 11,
       "percentage": 16.18,
-      "impressions": 19,
+      "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -75,13 +75,14 @@
       ]
     },
     "Finance": {
-      "count": 2,
-      "percentage": 2.94,
-      "impressions": 3,
+      "count": 3,
+      "percentage": 4.41,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
+        "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
         "https://scenro.com/p/texas-licensed-tax-auditor-expert.html"
       ]
     }
@@ -124,10 +125,10 @@
     },
     {
       "url": "https://scenro.com/p/arizona-consulting-financial-analyst-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 86
+      "position": 92
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -326,25 +327,11 @@
       "position": 7
     },
     {
-      "url": "https://scenro.com/p/maryland-certified-property-manager-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 92
-    },
-    {
-      "url": "https://scenro.com/p/maryland-licensed-architect-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
-    },
-    {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-      "impressions": 2,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 78.5
+      "position": 75.75
     },
     {
       "url": "https://scenro.com/p/massachusetts-licensed-teacher-expert",
@@ -366,6 +353,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 7
+    },
+    {
+      "url": "https://scenro.com/p/mississippi-consulting-registered-nurse-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 94
     },
     {
       "url": "https://scenro.com/p/missouri-expert-pediatrician-expert",
@@ -397,10 +391,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 9,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0,
-      "position": 79.66666666666667
+      "position": 79.2
     },
     {
       "url": "https://scenro.com/p/new-jersey-consulting-pediatrician-expert",
@@ -488,10 +482,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 6,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0,
-      "position": 65.5
+      "position": 64.66666666666666
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
@@ -499,6 +493,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 59.55555555555556
+    },
+    {
+      "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 77
     },
     {
       "url": "https://scenro.com/p/texas-expert-real-estate-consultant-expert",
