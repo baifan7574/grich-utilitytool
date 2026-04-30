@@ -1,15 +1,29 @@
 {
-  "timestamp": "2026-04-29T08:15:26.726056+00:00",
+  "timestamp": "2026-04-30T08:20:38.238444+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 66,
-  "total_impressions": 120,
-  "total_clicks": 0,
-  "overall_ctr": 0.0,
+  "total_indexed_pages": 68,
+  "total_impressions": 126,
+  "total_clicks": 1,
+  "overall_ctr": 0.79,
   "industry_distribution": {
+    "Medical": {
+      "count": 16,
+      "percentage": 23.53,
+      "impressions": 50,
+      "clicks": 1,
+      "ctr": 2.0,
+      "sample_urls": [
+        "https://scenro.com/p/florida-professional-physician-expert",
+        "https://scenro.com/p/alabama-consulting-physician-expert",
+        "https://scenro.com/p/arkansas-associate-nurse-expert",
+        "https://scenro.com/p/arkansas-consulting-physical-therapist-expert",
+        "https://scenro.com/p/arkansas-expert-medical-specialist-expert"
+      ]
+    },
     "Other": {
-      "count": 29,
-      "percentage": 43.94,
-      "impressions": 41,
+      "count": 30,
+      "percentage": 44.12,
+      "impressions": 42,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -20,23 +34,9 @@
         "https://scenro.com/p/arkansas-expert-pharmacist-expert"
       ]
     },
-    "Medical": {
-      "count": 15,
-      "percentage": 22.73,
-      "impressions": 45,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/alabama-consulting-physician-expert",
-        "https://scenro.com/p/arkansas-associate-nurse-expert",
-        "https://scenro.com/p/arkansas-consulting-physical-therapist-expert",
-        "https://scenro.com/p/arkansas-expert-medical-specialist-expert",
-        "https://scenro.com/p/connecticut-consulting-physical-therapist-expert"
-      ]
-    },
     "RealEstate": {
       "count": 6,
-      "percentage": 9.09,
+      "percentage": 8.82,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 3,
-      "percentage": 4.55,
+      "percentage": 4.41,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,7 +62,7 @@
     },
     "Lawyer": {
       "count": 10,
-      "percentage": 15.15,
+      "percentage": 14.71,
       "impressions": 20,
       "clicks": 0,
       "ctr": 0.0,
@@ -76,7 +76,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 4.55,
+      "percentage": 4.41,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -88,6 +88,13 @@
     }
   },
   "indexed_pages": [
+    {
+      "url": "https://scenro.com/p/florida-professional-physician-expert",
+      "impressions": 2,
+      "clicks": 1,
+      "ctr": 0.5,
+      "position": 6
+    },
     {
       "url": "https://scenro.com/p/alabama-consulting-dentist-expert",
       "impressions": 1,
@@ -468,10 +475,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 12,
+      "impressions": 15,
       "clicks": 0,
       "ctr": 0,
-      "position": 64.66666666666666
+      "position": 65.13333333333334
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
@@ -500,6 +507,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 4
+    },
+    {
+      "url": "https://scenro.com/p/texas-lead-data-scientist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6
     },
     {
       "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert.html",
