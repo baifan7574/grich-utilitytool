@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-04-30T08:20:38.238444+00:00",
+  "timestamp": "2026-05-01T08:09:58.853377+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 68,
-  "total_impressions": 126,
+  "total_indexed_pages": 67,
+  "total_impressions": 124,
   "total_clicks": 1,
-  "overall_ctr": 0.79,
+  "overall_ctr": 0.81,
   "industry_distribution": {
     "Medical": {
-      "count": 16,
-      "percentage": 23.53,
-      "impressions": 50,
+      "count": 15,
+      "percentage": 22.39,
+      "impressions": 49,
       "clicks": 1,
-      "ctr": 2.0,
+      "ctr": 2.04,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-physician-expert",
@@ -22,7 +22,7 @@
     },
     "Other": {
       "count": 30,
-      "percentage": 44.12,
+      "percentage": 44.78,
       "impressions": 42,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "RealEstate": {
       "count": 6,
-      "percentage": 8.82,
+      "percentage": 8.96,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 3,
-      "percentage": 4.41,
+      "percentage": 4.48,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,8 +62,8 @@
     },
     "Lawyer": {
       "count": 10,
-      "percentage": 14.71,
-      "impressions": 20,
+      "percentage": 14.93,
+      "impressions": 19,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -76,7 +76,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 4.41,
+      "percentage": 4.48,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -342,10 +342,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 7,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0,
-      "position": 71.42857142857143
+      "position": 72.66666666666667
     },
     {
       "url": "https://scenro.com/p/minnesota-senior-physician-expert",
@@ -535,13 +535,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 2
-    },
-    {
-      "url": "https://scenro.com/p/utah-certified-physician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 39
     },
     {
       "url": "https://scenro.com/p/utah-junior-family-lawyer-expert",
