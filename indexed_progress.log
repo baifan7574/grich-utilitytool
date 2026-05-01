@@ -121,7 +121,8 @@
     "https://scenro.com/p/alabama-expert-nurse-expert",
     "https://scenro.com/p/alabama-consulting-nurse-expert",
     "https://scenro.com/p/alabama-senior-registered-nurse-expert",
-    "https://scenro.com/p/alabama-licensed-registered-nurse-expert"
+    "https://scenro.com/p/alabama-licensed-registered-nurse-expert",
+    "https://scenro.com/p/alabama-certified-registered-nurse-expert"
   ],
   "failed_429": [
     {
@@ -1795,8 +1796,28 @@
     {
       "url": "https://scenro.com/p/alabama-associate-registered-nurse-expert",
       "time": "2026-04-30T03:36:43.085309"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-registered-nurse-expert",
+      "time": "2026-05-01T03:45:45.985111"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-registered-nurse-expert",
+      "time": "2026-05-01T03:46:16.039260"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-registered-nurse-expert",
+      "time": "2026-05-01T03:46:46.094643"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-registered-nurse-expert",
+      "time": "2026-05-01T03:47:16.134751"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-registered-nurse-expert",
+      "time": "2026-05-01T03:47:46.185828"
     }
   ],
-  "last_run": "2026-04-30T03:37:13.109214",
-  "last_batch_count": 0
+  "last_run": "2026-05-01T03:48:16.209701",
+  "last_batch_count": 1
 }
