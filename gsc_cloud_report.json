@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-05-01T08:09:58.853377+00:00",
+  "timestamp": "2026-05-02T07:42:32.721454+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 67,
-  "total_impressions": 124,
+  "total_indexed_pages": 64,
+  "total_impressions": 122,
   "total_clicks": 1,
-  "overall_ctr": 0.81,
+  "overall_ctr": 0.82,
   "industry_distribution": {
     "Medical": {
-      "count": 15,
-      "percentage": 22.39,
-      "impressions": 49,
+      "count": 14,
+      "percentage": 21.88,
+      "impressions": 48,
       "clicks": 1,
-      "ctr": 2.04,
+      "ctr": 2.08,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
-        "https://scenro.com/p/alabama-consulting-physician-expert",
         "https://scenro.com/p/arkansas-associate-nurse-expert",
         "https://scenro.com/p/arkansas-consulting-physical-therapist-expert",
-        "https://scenro.com/p/arkansas-expert-medical-specialist-expert"
+        "https://scenro.com/p/arkansas-expert-medical-specialist-expert",
+        "https://scenro.com/p/connecticut-consulting-physical-therapist-expert"
       ]
     },
     "Other": {
       "count": 30,
-      "percentage": 44.78,
-      "impressions": 42,
+      "percentage": 46.88,
+      "impressions": 43,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "RealEstate": {
       "count": 6,
-      "percentage": 8.96,
+      "percentage": 9.38,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 3,
-      "percentage": 4.48,
+      "percentage": 4.69,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -61,22 +61,22 @@
       ]
     },
     "Lawyer": {
-      "count": 10,
-      "percentage": 14.93,
-      "impressions": 19,
+      "count": 8,
+      "percentage": 12.5,
+      "impressions": 17,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/maine-lead-attorney-expert",
-        "https://scenro.com/p/maine-lead-paralegal-expert",
         "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
         "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-        "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert"
+        "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert",
+        "https://scenro.com/p/utah-assistant-attorney-expert",
+        "https://scenro.com/p/utah-certified-defense-attorney-expert"
       ]
     },
     "Finance": {
       "count": 3,
-      "percentage": 4.48,
+      "percentage": 4.69,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -101,13 +101,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 62
-    },
-    {
-      "url": "https://scenro.com/p/alabama-consulting-physician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 83
     },
     {
       "url": "https://scenro.com/p/alaska-expert-pharmacist-expert",
@@ -313,20 +306,6 @@
       "position": 61
     },
     {
-      "url": "https://scenro.com/p/maine-lead-attorney-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
-    },
-    {
-      "url": "https://scenro.com/p/maine-lead-paralegal-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 7
-    },
-    {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
       "impressions": 4,
       "clicks": 0,
@@ -461,10 +440,10 @@
     },
     {
       "url": "https://scenro.com/p/south-carolina-consulting-mechanical-engineer-expert",
-      "impressions": 2,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 77
+      "position": 78.66666666666667
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
