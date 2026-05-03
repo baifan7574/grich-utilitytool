@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-05-02T07:42:32.721454+00:00",
+  "timestamp": "2026-05-03T08:00:08.748487+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 64,
-  "total_impressions": 122,
+  "total_impressions": 120,
   "total_clicks": 1,
-  "overall_ctr": 0.82,
+  "overall_ctr": 0.83,
   "industry_distribution": {
     "Medical": {
       "count": 14,
@@ -63,7 +63,7 @@
     "Lawyer": {
       "count": 8,
       "percentage": 12.5,
-      "impressions": 17,
+      "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -307,10 +307,10 @@
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-      "impressions": 4,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 75.75
+      "position": 81
     },
     {
       "url": "https://scenro.com/p/massachusetts-licensed-teacher-expert",
@@ -321,10 +321,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 6,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 72.66666666666667
+      "position": 71.8
     },
     {
       "url": "https://scenro.com/p/minnesota-senior-physician-expert",
