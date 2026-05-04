@@ -122,7 +122,12 @@
     "https://scenro.com/p/alabama-consulting-nurse-expert",
     "https://scenro.com/p/alabama-senior-registered-nurse-expert",
     "https://scenro.com/p/alabama-licensed-registered-nurse-expert",
-    "https://scenro.com/p/alabama-certified-registered-nurse-expert"
+    "https://scenro.com/p/alabama-certified-registered-nurse-expert",
+    "https://scenro.com/p/alabama-professional-registered-nurse-expert",
+    "https://scenro.com/p/alabama-lead-registered-nurse-expert",
+    "https://scenro.com/p/alabama-expert-registered-nurse-expert",
+    "https://scenro.com/p/alabama-consulting-registered-nurse-expert",
+    "https://scenro.com/p/alabama-senior-medical-assistant-expert"
   ],
   "failed_429": [
     {
@@ -1856,8 +1861,36 @@
     {
       "url": "https://scenro.com/p/alabama-expert-registered-nurse-expert",
       "time": "2026-05-03T03:39:42.392068"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-registered-nurse-expert",
+      "time": "2026-05-04T03:36:26.453037"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-registered-nurse-expert",
+      "time": "2026-05-04T03:36:56.519646"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-medical-assistant-expert",
+      "time": "2026-05-04T03:37:28.279076"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-medical-assistant-expert",
+      "time": "2026-05-04T03:37:58.356063"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-medical-assistant-expert",
+      "time": "2026-05-04T03:38:28.434565"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-medical-assistant-expert",
+      "time": "2026-05-04T03:38:58.506510"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-medical-assistant-expert",
+      "time": "2026-05-04T03:39:28.577048"
     }
   ],
-  "last_run": "2026-05-03T03:40:12.422189",
-  "last_batch_count": 0
+  "last_run": "2026-05-04T03:39:58.607185",
+  "last_batch_count": 5
 }
