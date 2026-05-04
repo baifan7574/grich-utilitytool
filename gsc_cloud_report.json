@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-05-03T08:00:08.748487+00:00",
+  "timestamp": "2026-05-04T08:28:03.335466+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 64,
-  "total_impressions": 120,
+  "total_impressions": 119,
   "total_clicks": 1,
-  "overall_ctr": 0.83,
+  "overall_ctr": 0.84,
   "industry_distribution": {
     "Medical": {
       "count": 14,
@@ -21,9 +21,9 @@
       ]
     },
     "Other": {
-      "count": 30,
-      "percentage": 46.88,
-      "impressions": 43,
+      "count": 29,
+      "percentage": 45.31,
+      "impressions": 42,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,9 +35,9 @@
       ]
     },
     "RealEstate": {
-      "count": 6,
-      "percentage": 9.38,
-      "impressions": 7,
+      "count": 7,
+      "percentage": 10.94,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -63,7 +63,7 @@
     "Lawyer": {
       "count": 8,
       "percentage": 12.5,
-      "impressions": 15,
+      "impressions": 14,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -271,13 +271,6 @@
       "position": 6
     },
     {
-      "url": "https://scenro.com/p/indiana-certified-investment-banker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 52
-    },
-    {
       "url": "https://scenro.com/p/iowa-professional-pharmacist-expert",
       "impressions": 3,
       "clicks": 0,
@@ -321,10 +314,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 5,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 71.8
+      "position": 71.25
     },
     {
       "url": "https://scenro.com/p/minnesota-senior-physician-expert",
@@ -437,6 +430,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 2
+    },
+    {
+      "url": "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 14
     },
     {
       "url": "https://scenro.com/p/south-carolina-consulting-mechanical-engineer-expert",
