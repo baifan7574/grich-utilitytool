@@ -127,7 +127,13 @@
     "https://scenro.com/p/alabama-lead-registered-nurse-expert",
     "https://scenro.com/p/alabama-expert-registered-nurse-expert",
     "https://scenro.com/p/alabama-consulting-registered-nurse-expert",
-    "https://scenro.com/p/alabama-senior-medical-assistant-expert"
+    "https://scenro.com/p/alabama-senior-medical-assistant-expert",
+    "https://scenro.com/p/alabama-assistant-registered-nurse-expert",
+    "https://scenro.com/p/alabama-associate-registered-nurse-expert",
+    "https://scenro.com/p/alabama-professional-medical-assistant-expert",
+    "https://scenro.com/p/alabama-licensed-medical-assistant-expert",
+    "https://scenro.com/p/alabama-expert-medical-assistant-expert",
+    "https://scenro.com/p/alabama-senior-pharmacist-expert"
   ],
   "failed_429": [
     {
@@ -1889,8 +1895,52 @@
     {
       "url": "https://scenro.com/p/alabama-lead-medical-assistant-expert",
       "time": "2026-05-04T03:39:28.577048"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-medical-assistant-expert",
+      "time": "2026-05-05T03:23:15.371483"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-medical-assistant-expert",
+      "time": "2026-05-05T03:23:45.447934"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-medical-assistant-expert",
+      "time": "2026-05-05T03:24:16.618934"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-assistant-medical-assistant-expert",
+      "time": "2026-05-05T03:24:46.655875"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-associate-medical-assistant-expert",
+      "time": "2026-05-05T03:25:16.686261"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-consulting-medical-assistant-expert",
+      "time": "2026-05-05T03:25:47.292795"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-junior-pharmacist-expert",
+      "time": "2026-05-05T03:26:17.855285"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-certified-pharmacist-expert",
+      "time": "2026-05-05T03:26:47.909065"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-pharmacist-expert",
+      "time": "2026-05-05T03:27:17.966724"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-licensed-pharmacist-expert",
+      "time": "2026-05-05T03:27:48.020398"
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-pharmacist-expert",
+      "time": "2026-05-05T03:28:18.075550"
     }
   ],
-  "last_run": "2026-05-04T03:39:58.607185",
-  "last_batch_count": 5
+  "last_run": "2026-05-05T03:28:48.105656",
+  "last_batch_count": 6
 }
