@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-07T08:32:20.227394+00:00",
+  "timestamp": "2026-05-08T07:28:39.900483+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 64,
-  "total_impressions": 117,
+  "total_indexed_pages": 59,
+  "total_impressions": 111,
   "total_clicks": 1,
-  "overall_ctr": 0.85,
+  "overall_ctr": 0.9,
   "industry_distribution": {
     "Medical": {
       "count": 16,
-      "percentage": 25.0,
+      "percentage": 27.12,
       "impressions": 50,
       "clicks": 1,
       "ctr": 2.0,
@@ -21,9 +21,9 @@
       ]
     },
     "Other": {
-      "count": 28,
-      "percentage": 43.75,
-      "impressions": 41,
+      "count": 26,
+      "percentage": 44.07,
+      "impressions": 39,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "RealEstate": {
       "count": 6,
-      "percentage": 9.38,
+      "percentage": 10.17,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -48,22 +48,10 @@
         "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html"
       ]
     },
-    "Tutor": {
-      "count": 3,
-      "percentage": 4.69,
-      "impressions": 3,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/alaska-professional-professor-expert",
-        "https://scenro.com/p/connecticut-junior-teacher-expert",
-        "https://scenro.com/p/massachusetts-licensed-teacher-expert"
-      ]
-    },
     "Lawyer": {
       "count": 8,
-      "percentage": 12.5,
-      "impressions": 12,
+      "percentage": 13.56,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -74,16 +62,25 @@
         "https://scenro.com/p/utah-certified-defense-attorney-expert"
       ]
     },
+    "Tutor": {
+      "count": 1,
+      "percentage": 1.69,
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/massachusetts-licensed-teacher-expert"
+      ]
+    },
     "Finance": {
-      "count": 3,
-      "percentage": 4.69,
-      "impressions": 4,
+      "count": 2,
+      "percentage": 3.39,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
-        "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
-        "https://scenro.com/p/texas-licensed-tax-auditor-expert.html"
+        "https://scenro.com/p/tennessee-certified-tax-auditor-expert"
       ]
     }
   },
@@ -122,13 +119,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 3.5
-    },
-    {
-      "url": "https://scenro.com/p/alaska-professional-professor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 9
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -229,13 +219,6 @@
       "position": 62
     },
     {
-      "url": "https://scenro.com/p/connecticut-junior-teacher-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 10
-    },
-    {
       "url": "https://scenro.com/p/connecticut-licensed-nurse-expert",
       "impressions": 1,
       "clicks": 0,
@@ -264,25 +247,11 @@
       "position": 11
     },
     {
-      "url": "https://scenro.com/p/florida-professional-property-manager-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 7
-    },
-    {
       "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 48
-    },
-    {
-      "url": "https://scenro.com/p/illinois-licensed-data-scientist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 6
     },
     {
       "url": "https://scenro.com/p/iowa-professional-pharmacist-expert",
@@ -328,10 +297,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 70.5
+      "position": 67
     },
     {
       "url": "https://scenro.com/p/minnesota-senior-physician-expert",
@@ -493,13 +462,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 6
-    },
-    {
-      "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert.html",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 8
     },
     {
       "url": "https://scenro.com/p/utah-assistant-attorney-expert",
