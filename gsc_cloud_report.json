@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-08T07:28:39.900483+00:00",
+  "timestamp": "2026-05-09T07:54:51.369437+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 59,
-  "total_impressions": 111,
+  "total_indexed_pages": 53,
+  "total_impressions": 101,
   "total_clicks": 1,
-  "overall_ctr": 0.9,
+  "overall_ctr": 0.99,
   "industry_distribution": {
     "Medical": {
       "count": 16,
-      "percentage": 27.12,
+      "percentage": 30.19,
       "impressions": 50,
       "clicks": 1,
       "ctr": 2.0,
@@ -21,22 +21,22 @@
       ]
     },
     "Other": {
-      "count": 26,
-      "percentage": 44.07,
-      "impressions": 39,
+      "count": 22,
+      "percentage": 41.51,
+      "impressions": 33,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-dentist-expert",
-        "https://scenro.com/p/alaska-expert-pharmacist-expert",
         "https://scenro.com/p/arkansas-consulting-dentist-expert",
         "https://scenro.com/p/arkansas-expert-dentist-expert",
-        "https://scenro.com/p/arkansas-expert-pharmacist-expert"
+        "https://scenro.com/p/colorado-expert-chiropractor-expert",
+        "https://scenro.com/p/connecticut-certified-engineer-expert"
       ]
     },
     "RealEstate": {
       "count": 6,
-      "percentage": 10.17,
+      "percentage": 11.32,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -49,22 +49,22 @@
       ]
     },
     "Lawyer": {
-      "count": 8,
-      "percentage": 13.56,
-      "impressions": 11,
+      "count": 6,
+      "percentage": 11.32,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
         "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
         "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert",
-        "https://scenro.com/p/utah-assistant-attorney-expert",
-        "https://scenro.com/p/utah-certified-defense-attorney-expert"
+        "https://scenro.com/p/utah-certified-defense-attorney-expert",
+        "https://scenro.com/p/utah-junior-family-lawyer-expert"
       ]
     },
     "Tutor": {
       "count": 1,
-      "percentage": 1.69,
+      "percentage": 1.89,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -74,8 +74,8 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 3.39,
-      "impressions": 3,
+      "percentage": 3.77,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -105,13 +105,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 67
-    },
-    {
-      "url": "https://scenro.com/p/alaska-expert-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 31
     },
     {
       "url": "https://scenro.com/p/alaska-lead-broker-expert",
@@ -154,13 +147,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 51
-    },
-    {
-      "url": "https://scenro.com/p/arkansas-expert-pharmacist-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 40
     },
     {
       "url": "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
@@ -255,10 +241,10 @@
     },
     {
       "url": "https://scenro.com/p/iowa-professional-pharmacist-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 38
+      "position": 43.5
     },
     {
       "url": "https://scenro.com/p/kansas-junior-pediatrician-expert",
@@ -324,13 +310,6 @@
       "position": 49
     },
     {
-      "url": "https://scenro.com/p/missouri-expert-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 48
-    },
-    {
       "url": "https://scenro.com/p/montana-consulting-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -360,10 +339,10 @@
     },
     {
       "url": "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 84
+      "position": 92
     },
     {
       "url": "https://scenro.com/p/north-carolina-licensed-academic-advisor-expert",
@@ -422,13 +401,6 @@
       "position": 78.66666666666667
     },
     {
-      "url": "https://scenro.com/p/south-dakota-expert-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 27
-    },
-    {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
       "impressions": 15,
       "clicks": 0,
@@ -464,13 +436,6 @@
       "position": 6
     },
     {
-      "url": "https://scenro.com/p/utah-assistant-attorney-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
-    },
-    {
       "url": "https://scenro.com/p/utah-certified-defense-attorney-expert",
       "impressions": 1,
       "clicks": 0,
@@ -479,17 +444,10 @@
     },
     {
       "url": "https://scenro.com/p/utah-junior-family-lawyer-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4.5
-    },
-    {
-      "url": "https://scenro.com/p/utah-lead-attorney-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 1
+      "position": 3
     },
     {
       "url": "https://scenro.com/p/utah-professional-attorney-expert",
