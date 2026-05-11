@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-10T08:06:24.115052+00:00",
+  "timestamp": "2026-05-11T09:36:54.860797+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 53,
-  "total_impressions": 98,
+  "total_indexed_pages": 52,
+  "total_impressions": 96,
   "total_clicks": 1,
-  "overall_ctr": 1.02,
+  "overall_ctr": 1.04,
   "industry_distribution": {
     "Medical": {
       "count": 15,
-      "percentage": 28.3,
+      "percentage": 28.85,
       "impressions": 49,
       "clicks": 1,
       "ctr": 2.04,
@@ -21,9 +21,9 @@
       ]
     },
     "Other": {
-      "count": 23,
-      "percentage": 43.4,
-      "impressions": 31,
+      "count": 22,
+      "percentage": 42.31,
+      "impressions": 29,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "RealEstate": {
       "count": 6,
-      "percentage": 11.32,
+      "percentage": 11.54,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Lawyer": {
       "count": 6,
-      "percentage": 11.32,
+      "percentage": 11.54,
       "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
@@ -64,7 +64,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 1.89,
+      "percentage": 1.92,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -74,7 +74,7 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 3.77,
+      "percentage": 3.85,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -157,10 +157,10 @@
     },
     {
       "url": "https://scenro.com/p/colorado-expert-chiropractor-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 82
+      "position": 85
     },
     {
       "url": "https://scenro.com/p/colorado-licensed-real-estate-agent-expert",
@@ -213,13 +213,6 @@
     },
     {
       "url": "https://scenro.com/p/delaware-junior-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 11
-    },
-    {
-      "url": "https://scenro.com/p/district-of-columbia-associate-architect-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
