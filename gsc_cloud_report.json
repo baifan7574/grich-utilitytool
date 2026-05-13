@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-12T08:38:09.993527+00:00",
+  "timestamp": "2026-05-13T08:42:56.742868+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 52,
-  "total_impressions": 96,
+  "total_indexed_pages": 48,
+  "total_impressions": 92,
   "total_clicks": 1,
-  "overall_ctr": 1.04,
+  "overall_ctr": 1.09,
   "industry_distribution": {
     "Medical": {
       "count": 15,
-      "percentage": 28.85,
+      "percentage": 31.25,
       "impressions": 49,
       "clicks": 1,
       "ctr": 2.04,
@@ -21,9 +21,9 @@
       ]
     },
     "Other": {
-      "count": 22,
-      "percentage": 42.31,
-      "impressions": 29,
+      "count": 21,
+      "percentage": 43.75,
+      "impressions": 28,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -31,12 +31,12 @@
         "https://scenro.com/p/arkansas-consulting-dentist-expert",
         "https://scenro.com/p/california-lead-investment-banker-expert",
         "https://scenro.com/p/colorado-expert-chiropractor-expert",
-        "https://scenro.com/p/connecticut-certified-engineer-expert"
+        "https://scenro.com/p/connecticut-consulting-pharmacist-expert"
       ]
     },
     "RealEstate": {
       "count": 6,
-      "percentage": 11.54,
+      "percentage": 12.5,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -49,22 +49,20 @@
       ]
     },
     "Lawyer": {
-      "count": 6,
-      "percentage": 11.54,
-      "impressions": 8,
+      "count": 3,
+      "percentage": 6.25,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
         "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-        "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert",
-        "https://scenro.com/p/utah-certified-defense-attorney-expert",
-        "https://scenro.com/p/utah-junior-family-lawyer-expert"
+        "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert"
       ]
     },
     "Tutor": {
       "count": 1,
-      "percentage": 1.92,
+      "percentage": 2.08,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -74,7 +72,7 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 3.85,
+      "percentage": 4.17,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -168,13 +166,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 43
-    },
-    {
-      "url": "https://scenro.com/p/connecticut-certified-engineer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 54
     },
     {
       "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
@@ -427,27 +418,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 6
-    },
-    {
-      "url": "https://scenro.com/p/utah-certified-defense-attorney-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
-    },
-    {
-      "url": "https://scenro.com/p/utah-junior-family-lawyer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 3
-    },
-    {
-      "url": "https://scenro.com/p/utah-professional-attorney-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 1
     }
   ]
 }
