@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-05-15T08:47:13.913815+00:00",
+  "timestamp": "2026-05-16T08:02:53.597461+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 43,
-  "total_impressions": 86,
+  "total_indexed_pages": 31,
+  "total_impressions": 68,
   "total_clicks": 1,
-  "overall_ctr": 1.16,
+  "overall_ctr": 1.47,
   "industry_distribution": {
     "Medical": {
-      "count": 14,
-      "percentage": 32.56,
-      "impressions": 48,
+      "count": 12,
+      "percentage": 38.71,
+      "impressions": 44,
       "clicks": 1,
-      "ctr": 2.08,
+      "ctr": 2.27,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-expert-registered-nurse-expert",
         "https://scenro.com/p/arkansas-associate-nurse-expert",
-        "https://scenro.com/p/arkansas-expert-medical-specialist-expert",
-        "https://scenro.com/p/arkansas-expert-physical-therapist-expert"
+        "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
+        "https://scenro.com/p/connecticut-expert-nurse-expert"
       ]
     },
     "RealEstate": {
       "count": 5,
-      "percentage": 11.63,
+      "percentage": 16.13,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,22 +35,22 @@
       ]
     },
     "Other": {
-      "count": 19,
-      "percentage": 44.19,
-      "impressions": 26,
+      "count": 9,
+      "percentage": 29.03,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/arkansas-consulting-dentist-expert",
         "https://scenro.com/p/california-lead-investment-banker-expert",
-        "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/connecticut-expert-dentist-expert",
-        "https://scenro.com/p/georgia-expert-pharmacist-expert"
+        "https://scenro.com/p/montana-certified-pharmacist-expert",
+        "https://scenro.com/p/north-carolina-licensed-academic-advisor-expert",
+        "https://scenro.com/p/oklahoma-consulting-engineer-expert"
       ]
     },
     "Lawyer": {
       "count": 3,
-      "percentage": 6.98,
+      "percentage": 9.68,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,13 +62,13 @@
     },
     "Finance": {
       "count": 2,
-      "percentage": 4.65,
+      "percentage": 6.45,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
-        "https://scenro.com/p/tennessee-certified-tax-auditor-expert"
+        "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
+        "https://scenro.com/p/texas-consulting-tax-auditor-expert"
       ]
     }
   },
@@ -102,20 +102,6 @@
       "position": 83
     },
     {
-      "url": "https://scenro.com/p/arkansas-consulting-dentist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 42
-    },
-    {
-      "url": "https://scenro.com/p/arkansas-expert-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 51
-    },
-    {
       "url": "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -137,18 +123,11 @@
       "position": 43
     },
     {
-      "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
+      "url": "https://scenro.com/p/connecticut-expert-dentist-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 79
-    },
-    {
-      "url": "https://scenro.com/p/connecticut-expert-dentist-expert",
-      "impressions": 4,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 74.25
+      "position": 76
     },
     {
       "url": "https://scenro.com/p/connecticut-expert-nurse-expert",
@@ -158,39 +137,11 @@
       "position": 62
     },
     {
-      "url": "https://scenro.com/p/connecticut-licensed-nurse-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 62
-    },
-    {
       "url": "https://scenro.com/p/connecticut-licensed-physical-therapist-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 65
-    },
-    {
-      "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 48
-    },
-    {
-      "url": "https://scenro.com/p/iowa-professional-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 40
-    },
-    {
-      "url": "https://scenro.com/p/kansas-junior-pediatrician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 58
+      "position": 64
     },
     {
       "url": "https://scenro.com/p/kansas-lead-broker-expert",
@@ -198,13 +149,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 2
-    },
-    {
-      "url": "https://scenro.com/p/kentucky-consulting-pediatrician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 61
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
@@ -235,13 +179,6 @@
       "position": 94
     },
     {
-      "url": "https://scenro.com/p/missouri-expert-pediatrician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 49
-    },
-    {
       "url": "https://scenro.com/p/montana-certified-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -256,25 +193,11 @@
       "position": 79.2
     },
     {
-      "url": "https://scenro.com/p/new-jersey-consulting-pediatrician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 67
-    },
-    {
       "url": "https://scenro.com/p/new-jersey-expert-nurse-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 76
-    },
-    {
-      "url": "https://scenro.com/p/north-carolina-certified-bookkeeper-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 92
+      "position": 75
     },
     {
       "url": "https://scenro.com/p/north-carolina-licensed-academic-advisor-expert",
@@ -289,20 +212,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 5.5
-    },
-    {
-      "url": "https://scenro.com/p/oklahoma-expert-dentist-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 58.5
-    },
-    {
-      "url": "https://scenro.com/p/pennsylvania-consulting-dentist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 64
     },
     {
       "url": "https://scenro.com/p/pennsylvania-lead-chiropractor-expert",
@@ -359,6 +268,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 77
+    },
+    {
+      "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 72
     },
     {
       "url": "https://scenro.com/p/texas-lead-broker-expert",
