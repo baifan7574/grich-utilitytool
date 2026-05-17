@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-16T08:02:53.597461+00:00",
+  "timestamp": "2026-05-17T08:20:09.328678+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 31,
-  "total_impressions": 68,
+  "total_indexed_pages": 32,
+  "total_impressions": 67,
   "total_clicks": 1,
-  "overall_ctr": 1.47,
+  "overall_ctr": 1.49,
   "industry_distribution": {
     "Medical": {
       "count": 12,
-      "percentage": 38.71,
-      "impressions": 44,
+      "percentage": 37.5,
+      "impressions": 42,
       "clicks": 1,
-      "ctr": 2.27,
+      "ctr": 2.38,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-expert-registered-nurse-expert",
@@ -22,7 +22,7 @@
     },
     "RealEstate": {
       "count": 5,
-      "percentage": 16.13,
+      "percentage": 15.62,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Other": {
       "count": 9,
-      "percentage": 29.03,
+      "percentage": 28.12,
       "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Lawyer": {
       "count": 3,
-      "percentage": 9.68,
+      "percentage": 9.38,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -61,14 +61,15 @@
       ]
     },
     "Finance": {
-      "count": 2,
-      "percentage": 6.45,
-      "impressions": 2,
+      "count": 3,
+      "percentage": 9.38,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
-        "https://scenro.com/p/texas-consulting-tax-auditor-expert"
+        "https://scenro.com/p/texas-consulting-tax-auditor-expert",
+        "https://scenro.com/p/texas-licensed-tax-auditor-expert"
       ]
     }
   },
@@ -187,10 +188,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 10,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0,
-      "position": 79.2
+      "position": 79
     },
     {
       "url": "https://scenro.com/p/new-jersey-expert-nurse-expert",
@@ -289,6 +290,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 6
+    },
+    {
+      "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 50
     }
   ]
 }
