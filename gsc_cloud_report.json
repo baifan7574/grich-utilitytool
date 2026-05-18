@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-17T08:20:09.328678+00:00",
+  "timestamp": "2026-05-18T10:01:03.778782+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 32,
-  "total_impressions": 67,
+  "total_indexed_pages": 31,
+  "total_impressions": 63,
   "total_clicks": 1,
-  "overall_ctr": 1.49,
+  "overall_ctr": 1.59,
   "industry_distribution": {
     "Medical": {
       "count": 12,
-      "percentage": 37.5,
-      "impressions": 42,
+      "percentage": 38.71,
+      "impressions": 39,
       "clicks": 1,
-      "ctr": 2.38,
+      "ctr": 2.56,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-expert-registered-nurse-expert",
@@ -22,7 +22,7 @@
     },
     "RealEstate": {
       "count": 5,
-      "percentage": 15.62,
+      "percentage": 16.13,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Other": {
       "count": 9,
-      "percentage": 28.12,
+      "percentage": 29.03,
       "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
@@ -49,20 +49,19 @@
       ]
     },
     "Lawyer": {
-      "count": 3,
-      "percentage": 9.38,
-      "impressions": 4,
+      "count": 2,
+      "percentage": 6.45,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-        "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-        "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert"
+        "https://scenro.com/p/minnesota-certified-legal-consultant-expert"
       ]
     },
     "Finance": {
       "count": 3,
-      "percentage": 9.38,
+      "percentage": 9.68,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -188,10 +187,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 8,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 79
+      "position": 78.85714285714286
     },
     {
       "url": "https://scenro.com/p/new-jersey-expert-nurse-expert",
@@ -220,13 +219,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 38
-    },
-    {
-      "url": "https://scenro.com/p/pennsylvania-professional-legal-consultant-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 46
     },
     {
       "url": "https://scenro.com/p/rhode-island-certified-actuary-expert",
@@ -258,10 +250,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
-      "impressions": 9,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 59.55555555555556
+      "position": 59.142857142857146
     },
     {
       "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
