@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-18T10:01:03.778782+00:00",
+  "timestamp": "2026-05-19T09:40:02.850475+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 31,
-  "total_impressions": 63,
+  "total_indexed_pages": 28,
+  "total_impressions": 54,
   "total_clicks": 1,
-  "overall_ctr": 1.59,
+  "overall_ctr": 1.85,
   "industry_distribution": {
     "Medical": {
       "count": 12,
-      "percentage": 38.71,
-      "impressions": 39,
+      "percentage": 42.86,
+      "impressions": 34,
       "clicks": 1,
-      "ctr": 2.56,
+      "ctr": 2.94,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-expert-registered-nurse-expert",
@@ -20,23 +20,9 @@
         "https://scenro.com/p/connecticut-expert-nurse-expert"
       ]
     },
-    "RealEstate": {
-      "count": 5,
-      "percentage": 16.13,
-      "impressions": 6,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/alaska-lead-broker-expert",
-        "https://scenro.com/p/colorado-licensed-real-estate-agent-expert",
-        "https://scenro.com/p/kansas-lead-broker-expert",
-        "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html",
-        "https://scenro.com/p/texas-lead-broker-expert"
-      ]
-    },
     "Other": {
       "count": 9,
-      "percentage": 29.03,
+      "percentage": 32.14,
       "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
@@ -48,9 +34,20 @@
         "https://scenro.com/p/oklahoma-consulting-engineer-expert"
       ]
     },
+    "RealEstate": {
+      "count": 2,
+      "percentage": 7.14,
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/colorado-licensed-real-estate-agent-expert",
+        "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html"
+      ]
+    },
     "Lawyer": {
       "count": 2,
-      "percentage": 6.45,
+      "percentage": 7.14,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -61,7 +58,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 9.68,
+      "percentage": 10.71,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -86,13 +83,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 67
-    },
-    {
-      "url": "https://scenro.com/p/alaska-lead-broker-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 3.5
     },
     {
       "url": "https://scenro.com/p/arkansas-associate-nurse-expert",
@@ -144,13 +134,6 @@
       "position": 64
     },
     {
-      "url": "https://scenro.com/p/kansas-lead-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
-    },
-    {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
       "impressions": 2,
       "clicks": 0,
@@ -187,10 +170,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 7,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 78.85714285714286
+      "position": 78.8
     },
     {
       "url": "https://scenro.com/p/new-jersey-expert-nurse-expert",
@@ -250,10 +233,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
-      "impressions": 7,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 59.142857142857146
+      "position": 58.5
     },
     {
       "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
@@ -268,13 +251,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 72
-    },
-    {
-      "url": "https://scenro.com/p/texas-lead-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
     },
     {
       "url": "https://scenro.com/p/texas-lead-data-scientist-expert",
