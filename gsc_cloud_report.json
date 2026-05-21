@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-05-20T09:30:35.727639+00:00",
+  "timestamp": "2026-05-21T09:38:19.772730+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 29,
-  "total_impressions": 52,
+  "total_indexed_pages": 27,
+  "total_impressions": 47,
   "total_clicks": 1,
-  "overall_ctr": 1.92,
+  "overall_ctr": 2.13,
   "industry_distribution": {
     "Medical": {
-      "count": 9,
-      "percentage": 31.03,
-      "impressions": 27,
+      "count": 7,
+      "percentage": 25.93,
+      "impressions": 22,
       "clicks": 1,
-      "ctr": 3.7,
+      "ctr": 4.55,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-nurse-expert",
         "https://scenro.com/p/alabama-expert-registered-nurse-expert",
         "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
-        "https://scenro.com/p/minnesota-senior-physician-expert"
+        "https://scenro.com/p/mississippi-consulting-registered-nurse-expert"
       ]
     },
     "RealEstate": {
       "count": 5,
-      "percentage": 17.24,
+      "percentage": 18.52,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Other": {
       "count": 9,
-      "percentage": 31.03,
+      "percentage": 33.33,
       "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Lawyer": {
       "count": 3,
-      "percentage": 10.34,
+      "percentage": 11.11,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,7 +62,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 10.34,
+      "percentage": 11.11,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -173,13 +173,6 @@
       "position": 51
     },
     {
-      "url": "https://scenro.com/p/minnesota-senior-physician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 7
-    },
-    {
       "url": "https://scenro.com/p/mississippi-consulting-registered-nurse-expert",
       "impressions": 1,
       "clicks": 0,
@@ -195,10 +188,10 @@
     },
     {
       "url": "https://scenro.com/p/nevada-expert-medical-specialist-expert",
-      "impressions": 3,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 79
+      "position": 75
     },
     {
       "url": "https://scenro.com/p/oklahoma-consulting-engineer-expert",
@@ -241,13 +234,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 65.13333333333334
-    },
-    {
-      "url": "https://scenro.com/p/south-dakota-licensed-medical-specialist-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 59
     },
     {
       "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
