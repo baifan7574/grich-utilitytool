@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-21T09:38:19.772730+00:00",
+  "timestamp": "2026-05-22T09:20:20.338804+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 27,
-  "total_impressions": 47,
+  "total_impressions": 44,
   "total_clicks": 1,
-  "overall_ctr": 2.13,
+  "overall_ctr": 2.27,
   "industry_distribution": {
     "Medical": {
       "count": 7,
       "percentage": 25.93,
-      "impressions": 22,
+      "impressions": 20,
       "clicks": 1,
-      "ctr": 4.55,
+      "ctr": 5.0,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-nurse-expert",
@@ -37,7 +37,7 @@
     "Other": {
       "count": 9,
       "percentage": 33.33,
-      "impressions": 12,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -45,7 +45,7 @@
         "https://scenro.com/p/georgia-expert-pharmacist-expert",
         "https://scenro.com/p/minnesota-expert-pharmacist-expert",
         "https://scenro.com/p/montana-certified-pharmacist-expert",
-        "https://scenro.com/p/oklahoma-consulting-engineer-expert"
+        "https://scenro.com/p/pennsylvania-lead-chiropractor-expert"
       ]
     },
     "Lawyer": {
@@ -194,13 +194,6 @@
       "position": 75
     },
     {
-      "url": "https://scenro.com/p/oklahoma-consulting-engineer-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 5.5
-    },
-    {
       "url": "https://scenro.com/p/pennsylvania-lead-chiropractor-expert",
       "impressions": 1,
       "clicks": 0,
@@ -230,10 +223,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 15,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0,
-      "position": 65.13333333333334
+      "position": 65.61538461538461
     },
     {
       "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
@@ -251,6 +244,13 @@
     },
     {
       "url": "https://scenro.com/p/texas-lead-data-scientist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "url": "https://scenro.com/p/texas-licensed-civil-engineer-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
