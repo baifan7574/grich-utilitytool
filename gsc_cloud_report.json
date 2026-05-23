@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-22T09:20:20.338804+00:00",
+  "timestamp": "2026-05-23T08:17:30.979457+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 27,
-  "total_impressions": 44,
+  "total_indexed_pages": 26,
+  "total_impressions": 39,
   "total_clicks": 1,
-  "overall_ctr": 2.27,
+  "overall_ctr": 2.56,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 25.93,
-      "impressions": 20,
+      "percentage": 26.92,
+      "impressions": 18,
       "clicks": 1,
-      "ctr": 5.0,
+      "ctr": 5.56,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-nurse-expert",
@@ -22,7 +22,7 @@
     },
     "RealEstate": {
       "count": 5,
-      "percentage": 18.52,
+      "percentage": 19.23,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,9 +35,9 @@
       ]
     },
     "Other": {
-      "count": 9,
-      "percentage": 33.33,
-      "impressions": 11,
+      "count": 8,
+      "percentage": 30.77,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Lawyer": {
       "count": 3,
-      "percentage": 11.11,
+      "percentage": 11.54,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,7 +62,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 11.11,
+      "percentage": 11.54,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -201,13 +201,6 @@
       "position": 38
     },
     {
-      "url": "https://scenro.com/p/rhode-island-certified-actuary-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
-    },
-    {
       "url": "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html",
       "impressions": 1,
       "clicks": 0,
@@ -216,17 +209,17 @@
     },
     {
       "url": "https://scenro.com/p/south-carolina-consulting-mechanical-engineer-expert",
-      "impressions": 3,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 78.66666666666667
+      "position": 82
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 13,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0,
-      "position": 65.61538461538461
+      "position": 65.45454545454545
     },
     {
       "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
