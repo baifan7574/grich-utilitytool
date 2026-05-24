@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-23T08:17:30.979457+00:00",
+  "timestamp": "2026-05-24T08:27:37.407275+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 26,
-  "total_impressions": 39,
+  "total_indexed_pages": 24,
+  "total_impressions": 35,
   "total_clicks": 1,
-  "overall_ctr": 2.56,
+  "overall_ctr": 2.86,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 26.92,
-      "impressions": 18,
+      "percentage": 29.17,
+      "impressions": 16,
       "clicks": 1,
-      "ctr": 5.56,
+      "ctr": 6.25,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-nurse-expert",
@@ -21,14 +21,13 @@
       ]
     },
     "RealEstate": {
-      "count": 5,
-      "percentage": 19.23,
-      "impressions": 5,
+      "count": 4,
+      "percentage": 16.67,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alaska-lead-broker-expert",
-        "https://scenro.com/p/colorado-licensed-real-estate-agent-expert",
         "https://scenro.com/p/idaho-lead-broker-expert",
         "https://scenro.com/p/iowa-lead-broker-expert",
         "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html"
@@ -36,7 +35,7 @@
     },
     "Other": {
       "count": 8,
-      "percentage": 30.77,
+      "percentage": 33.33,
       "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
@@ -49,20 +48,19 @@
       ]
     },
     "Lawyer": {
-      "count": 3,
-      "percentage": 11.54,
-      "impressions": 5,
+      "count": 2,
+      "percentage": 8.33,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/maryland-expert-lawyer-expert",
-        "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-        "https://scenro.com/p/minnesota-certified-legal-consultant-expert"
+        "https://scenro.com/p/maryland-licensed-defense-attorney-expert"
       ]
     },
     "Finance": {
       "count": 3,
-      "percentage": 11.54,
+      "percentage": 12.5,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -117,13 +115,6 @@
       "position": 4
     },
     {
-      "url": "https://scenro.com/p/colorado-licensed-real-estate-agent-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 43
-    },
-    {
       "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
       "impressions": 1,
       "clicks": 0,
@@ -157,13 +148,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 73
-    },
-    {
-      "url": "https://scenro.com/p/minnesota-certified-legal-consultant-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 67
     },
     {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
@@ -216,10 +200,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 11,
+      "impressions": 9,
       "clicks": 0,
       "ctr": 0,
-      "position": 65.45454545454545
+      "position": 64.88888888888889
     },
     {
       "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
