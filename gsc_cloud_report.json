@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-05-25T10:03:06.022091+00:00",
+  "timestamp": "2026-05-26T09:54:14.504563+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 31,
-  "total_impressions": 40,
+  "total_indexed_pages": 30,
+  "total_impressions": 38,
   "total_clicks": 1,
-  "overall_ctr": 2.5,
+  "overall_ctr": 2.63,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 22.58,
-      "impressions": 14,
+      "percentage": 23.33,
+      "impressions": 12,
       "clicks": 1,
-      "ctr": 7.14,
+      "ctr": 8.33,
       "sample_urls": [
         "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-nurse-expert",
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 3,
-      "percentage": 9.68,
+      "percentage": 10.0,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,7 +34,7 @@
     },
     "RealEstate": {
       "count": 4,
-      "percentage": 12.9,
+      "percentage": 13.33,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -47,7 +47,7 @@
     },
     "Other": {
       "count": 11,
-      "percentage": 35.48,
+      "percentage": 36.67,
       "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,22 +60,21 @@
       ]
     },
     "Finance": {
-      "count": 5,
-      "percentage": 16.13,
+      "count": 4,
+      "percentage": 13.33,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/kentucky-expert-accountant-expert",
         "https://scenro.com/p/north-dakota-certified-accountant-expert",
-        "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
         "https://scenro.com/p/texas-consulting-tax-auditor-expert",
         "https://scenro.com/p/texas-licensed-tax-auditor-expert"
       ]
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.23,
+      "percentage": 3.33,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -262,17 +261,10 @@
     },
     {
       "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 7,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 65
-    },
-    {
-      "url": "https://scenro.com/p/tennessee-certified-tax-auditor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 77
+      "position": 65.6
     },
     {
       "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
@@ -297,10 +289,10 @@
     },
     {
       "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 50
+      "position": 63
     }
   ]
 }
