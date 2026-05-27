@@ -821,10 +821,31 @@ SUBPAGE_TEMPLATE = """
             if(processedBytes) download(processedBytes, "processed_by_{{brand}}.pdf");
         }
 
-        function generateAuditPDF() {
+        async function generateAuditPDF() {
             const { jsPDF } = window.jspdf; const doc = new jsPDF();
             const fileName = selectedFiles.length > 0 ? selectedFiles[0].name : "Document_Analysis.pdf";
-            
+
+            let reportText = "";
+            try {
+                const reportRes = await fetch("/api/generate-report", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        profession: "{{profession}}",
+                        state: "{{state}}",
+                        action: currentMode || "audit",
+                        filename: fileName
+                    })
+                });
+                const reportData = await reportRes.json();
+                if (!reportRes.ok || !reportData.report) {
+                    throw new Error(reportData.error || "AI report service unavailable");
+                }
+                reportText = reportData.report;
+            } catch (err) {
+                reportText = "Automated report generation is temporarily unavailable. Your payment was accepted, but the audit service could not complete the live analysis. Please contact support with this error: " + err.message;
+            }
+
             doc.setFontSize(22); doc.text("{{brand}} Professional Audit", 20, 30);
             doc.setFontSize(10); doc.text("Audit ID: AUDIT-" + Math.random().toString(36).substr(2, 9).toUpperCase(), 20, 40);
             doc.text("Jurisdiction: {{state}} | Practitioner: {{profession}}", 20, 46);
@@ -832,10 +853,13 @@ SUBPAGE_TEMPLATE = """
             doc.setFontSize(12); doc.text("1. Local Node Analysis", 20, 65);
             doc.setFontSize(10); doc.text("File Reference: " + fileName, 20, 75);
             doc.text("Scan Timestamp: " + new Date().toLocaleString(), 20, 80);
-            doc.setFontSize(12); doc.text("2. Professional Standards Discovery", 20, 95);
-            doc.setFontSize(10); doc.text("Compliance verified against {{state}} regulations.", 20, 105);
-            doc.setFontSize(12); doc.text("3. Certification Status", 20, 140);
-            doc.text("Status: SECURITY STAMP APPLIED. COMPLIANCE VERIFIED.", 20, 150);
+            doc.setFontSize(12); doc.text("2. AI-Assisted Risk Report", 20, 95);
+            doc.setFontSize(10);
+            const lines = doc.splitTextToSize(reportText, 170);
+            doc.text(lines.slice(0, 48), 20, 105);
+            const nextY = Math.min(270, 105 + (Math.min(lines.length, 48) * 5));
+            doc.setFontSize(12); doc.text("3. Handling Status", 20, nextY);
+            doc.setFontSize(10); doc.text("Status: REPORT GENERATED. Review before professional filing.", 20, nextY + 10);
             doc.save("Professional_Audit_Report.pdf"); hideLoader();
         }
 
@@ -979,6 +1003,13 @@ def build():
         print(f"✅ Copied ads.txt to {OUTPUT_DIR}")
     else:
         print("⚠️ ads.txt not found in root directory!")
+
+    robots_txt = f"""User-agent: *
+Allow: /
+Sitemap: {BASE_URL}/sitemap.xml
+"""
+    with open(os.path.join(OUTPUT_DIR, "robots.txt"), 'w', encoding='utf-8') as f:
+        f.write(robots_txt)
         
     print(f"🎉 Build Complete. Total Pages: {total}")
     print(f"📂 Output Directory: {os.path.abspath(OUTPUT_DIR)}")
