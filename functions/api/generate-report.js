@@ -12,14 +12,37 @@ function cleanText(value, fallback) {
         .slice(0, 120);
 }
 
+function fallbackReport(profession, state, action, filename, reason) {
+    return `Executive Summary
+This report was generated for ${filename} for a ${profession} in ${state}. The requested action was ${action}. The live analysis service could not complete the provider call, so this fallback report records the core handling guidance and the service reason: ${reason}.
+
+Potential Metadata Risks
+PDF files may contain author names, editing software, timestamps, hidden comments, revision history, embedded file paths, device identifiers, and other metadata that is not obvious when viewing the document normally.
+
+Recommended Actions
+Use the local processing tools to remove document title, author, subject, creator, and producer fields where possible. Download the processed file and review it manually before sending, filing, or storing it.
+
+Professional Handling Notes
+Do not treat this report as a legal, medical, tax, or regulatory certification. Use it as a practical risk checklist before sharing sensitive PDFs.
+
+Disclaimer
+This report is informational only. Final responsibility for professional filing, privacy review, and compliance remains with the user.`;
+}
+
 export async function onRequestPost(context) {
     const { request, env } = context;
 
     try {
         if (!env.DEEPSEEK_API_KEY) {
+            const body = await request.json().catch(() => ({}));
+            const profession = cleanText(body.profession, "professional");
+            const state = cleanText(body.state, "United States");
+            const action = cleanText(body.action, "PDF metadata audit");
+            const filename = cleanText(body.filename, "uploaded document");
             return new Response(JSON.stringify({
-                error: "DEEPSEEK_API_KEY is not configured in Cloudflare Pages."
-            }), { status: 500, headers: corsHeaders });
+                report: fallbackReport(profession, state, action, filename, "DEEPSEEK_API_KEY is not configured."),
+                fallback: true
+            }), { headers: corsHeaders });
         }
 
         const body = await request.json();
@@ -64,8 +87,9 @@ Return 5 short sections:
             const errorText = await response.text();
             console.error("DeepSeek API Error:", errorText);
             return new Response(JSON.stringify({
-                error: `DeepSeek API Error (${response.status}). Check key, balance, or provider status.`
-            }), { status: 500, headers: corsHeaders });
+                report: fallbackReport(profession, state, action, filename, `DeepSeek API Error (${response.status}). Check key, balance, or provider status.`),
+                fallback: true
+            }), { headers: corsHeaders });
         }
 
         const data = await response.json();
@@ -73,8 +97,9 @@ Return 5 short sections:
 
         if (!reportText) {
             return new Response(JSON.stringify({
-                error: "DeepSeek returned an empty report."
-            }), { status: 502, headers: corsHeaders });
+                report: fallbackReport(profession, state, action, filename, "DeepSeek returned an empty report."),
+                fallback: true
+            }), { headers: corsHeaders });
         }
 
         return new Response(JSON.stringify({ report: reportText }), {
@@ -83,8 +108,9 @@ Return 5 short sections:
     } catch (err) {
         console.error("Report generation failed:", err.message);
         return new Response(JSON.stringify({
-            error: "Report generation failed: " + err.message
-        }), { status: 500, headers: corsHeaders });
+            report: fallbackReport("professional", "United States", "PDF metadata audit", "uploaded document", err.message),
+            fallback: true
+        }), { headers: corsHeaders });
     }
 }
 
