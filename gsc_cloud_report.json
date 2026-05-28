@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-05-27T09:42:33.290447+00:00",
+  "timestamp": "2026-05-28T09:59:08.953639+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 28,
-  "total_impressions": 33,
-  "total_clicks": 1,
-  "overall_ctr": 3.03,
+  "total_indexed_pages": 27,
+  "total_impressions": 29,
+  "total_clicks": 0,
+  "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 6,
-      "percentage": 21.43,
-      "impressions": 9,
-      "clicks": 1,
-      "ctr": 11.11,
+      "count": 5,
+      "percentage": 18.52,
+      "impressions": 5,
+      "clicks": 0,
+      "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/florida-professional-physician-expert",
         "https://scenro.com/p/alabama-consulting-nurse-expert",
         "https://scenro.com/p/alabama-expert-registered-nurse-expert",
         "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
-        "https://scenro.com/p/oregon-senior-physical-therapist-expert"
+        "https://scenro.com/p/oregon-senior-physical-therapist-expert",
+        "https://scenro.com/p/utah-lead-medical-specialist-expert"
       ]
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 7.14,
+      "percentage": 7.41,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -33,7 +33,7 @@
     },
     "RealEstate": {
       "count": 4,
-      "percentage": 14.29,
+      "percentage": 14.81,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,7 +46,7 @@
     },
     "Other": {
       "count": 11,
-      "percentage": 39.29,
+      "percentage": 40.74,
       "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 14.29,
+      "percentage": 14.81,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -73,7 +73,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.57,
+      "percentage": 3.7,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -83,13 +83,6 @@
     }
   },
   "indexed_pages": [
-    {
-      "url": "https://scenro.com/p/florida-professional-physician-expert",
-      "impressions": 2,
-      "clicks": 1,
-      "ctr": 0.5,
-      "position": 6
-    },
     {
       "url": "https://scenro.com/p/alabama-consulting-nurse-expert",
       "impressions": 1,
@@ -245,13 +238,6 @@
       "position": 82
     },
     {
-      "url": "https://scenro.com/p/south-dakota-expert-physician-expert",
-      "impressions": 3,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 67
-    },
-    {
       "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
       "impressions": 1,
       "clicks": 0,
@@ -278,6 +264,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 63
+    },
+    {
+      "url": "https://scenro.com/p/utah-lead-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 48
     }
   ]
 }
