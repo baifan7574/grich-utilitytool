@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-28T09:59:08.953639+00:00",
+  "timestamp": "2026-05-29T09:52:31.564840+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 27,
-  "total_impressions": 29,
+  "total_indexed_pages": 26,
+  "total_impressions": 28,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 18.52,
+      "percentage": 19.23,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 7.41,
+      "percentage": 7.69,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -33,7 +33,7 @@
     },
     "RealEstate": {
       "count": 4,
-      "percentage": 14.81,
+      "percentage": 15.38,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -45,9 +45,9 @@
       ]
     },
     "Other": {
-      "count": 11,
-      "percentage": 40.74,
-      "impressions": 11,
+      "count": 10,
+      "percentage": 38.46,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -60,7 +60,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 14.81,
+      "percentage": 15.38,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -73,7 +73,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.7,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -243,13 +243,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 72
-    },
-    {
-      "url": "https://scenro.com/p/texas-lead-data-scientist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 6
     },
     {
       "url": "https://scenro.com/p/texas-licensed-civil-engineer-expert",
