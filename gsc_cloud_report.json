@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-05-31T08:43:20.273671+00:00",
+  "timestamp": "2026-06-01T11:30:53.000182+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
-  "total_impressions": 27,
+  "total_indexed_pages": 26,
+  "total_impressions": 28,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 20.0,
+      "percentage": 19.23,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 8.0,
+      "percentage": 7.69,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -33,7 +33,7 @@
     },
     "RealEstate": {
       "count": 4,
-      "percentage": 16.0,
+      "percentage": 15.38,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,7 +46,7 @@
     },
     "Other": {
       "count": 9,
-      "percentage": 36.0,
+      "percentage": 34.62,
       "impressions": 9,
       "clicks": 0,
       "ctr": 0.0,
@@ -59,12 +59,13 @@
       ]
     },
     "Finance": {
-      "count": 4,
-      "percentage": 16.0,
-      "impressions": 5,
+      "count": 5,
+      "percentage": 19.23,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
+        "https://scenro.com/p/colorado-expert-cpa-expert",
         "https://scenro.com/p/kentucky-expert-accountant-expert",
         "https://scenro.com/p/north-dakota-certified-accountant-expert",
         "https://scenro.com/p/texas-consulting-tax-auditor-expert",
@@ -73,7 +74,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -124,6 +125,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 4
+    },
+    {
+      "url": "https://scenro.com/p/colorado-expert-cpa-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 69
     },
     {
       "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
