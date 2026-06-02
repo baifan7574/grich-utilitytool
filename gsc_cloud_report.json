@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-06-01T11:30:53.000182+00:00",
+  "timestamp": "2026-06-02T10:21:30.396774+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 26,
-  "total_impressions": 28,
+  "total_indexed_pages": 25,
+  "total_impressions": 27,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 19.23,
+      "percentage": 20.0,
       "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 7.69,
+      "percentage": 8.0,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -32,21 +32,20 @@
       ]
     },
     "RealEstate": {
-      "count": 4,
-      "percentage": 15.38,
-      "impressions": 4,
+      "count": 3,
+      "percentage": 12.0,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alaska-lead-broker-expert",
         "https://scenro.com/p/idaho-lead-broker-expert",
-        "https://scenro.com/p/iowa-lead-broker-expert",
-        "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html"
+        "https://scenro.com/p/iowa-lead-broker-expert"
       ]
     },
     "Other": {
       "count": 9,
-      "percentage": 34.62,
+      "percentage": 36.0,
       "impressions": 9,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +59,7 @@
     },
     "Finance": {
       "count": 5,
-      "percentage": 19.23,
+      "percentage": 20.0,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -74,7 +73,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 4.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -230,13 +229,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 38
-    },
-    {
-      "url": "https://scenro.com/p/south-carolina-associate-real-estate-agent-expert.html",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 14
     },
     {
       "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
