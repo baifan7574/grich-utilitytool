@@ -1,28 +1,26 @@
 {
-  "timestamp": "2026-06-02T10:21:30.396774+00:00",
+  "timestamp": "2026-06-03T10:56:43.430625+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
-  "total_impressions": 27,
+  "total_indexed_pages": 23,
+  "total_impressions": 25,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 5,
-      "percentage": 20.0,
-      "impressions": 5,
+      "count": 3,
+      "percentage": 13.04,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-nurse-expert",
-        "https://scenro.com/p/alabama-expert-registered-nurse-expert",
-        "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
         "https://scenro.com/p/oregon-senior-physical-therapist-expert",
         "https://scenro.com/p/utah-lead-medical-specialist-expert"
       ]
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 8.0,
+      "percentage": 8.7,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -33,7 +31,7 @@
     },
     "RealEstate": {
       "count": 3,
-      "percentage": 12.0,
+      "percentage": 13.04,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -45,7 +43,7 @@
     },
     "Other": {
       "count": 9,
-      "percentage": 36.0,
+      "percentage": 39.13,
       "impressions": 9,
       "clicks": 0,
       "ctr": 0.0,
@@ -59,7 +57,7 @@
     },
     "Finance": {
       "count": 5,
-      "percentage": 20.0,
+      "percentage": 21.74,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -73,7 +71,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 4.35,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -91,13 +89,6 @@
       "position": 66
     },
     {
-      "url": "https://scenro.com/p/alabama-expert-registered-nurse-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 67
-    },
-    {
       "url": "https://scenro.com/p/alabama-lead-legal-consultant-expert",
       "impressions": 1,
       "clicks": 0,
@@ -110,13 +101,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 2
-    },
-    {
-      "url": "https://scenro.com/p/arkansas-expert-physical-therapist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 48
     },
     {
       "url": "https://scenro.com/p/california-lead-investment-banker-expert",
