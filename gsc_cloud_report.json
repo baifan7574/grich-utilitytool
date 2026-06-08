@@ -1,26 +1,27 @@
 {
-  "timestamp": "2026-06-07T08:54:05.906816+00:00",
+  "timestamp": "2026-06-08T10:51:16.845841+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 23,
-  "total_impressions": 25,
+  "total_indexed_pages": 21,
+  "total_impressions": 23,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 3,
-      "percentage": 13.04,
-      "impressions": 3,
+      "count": 4,
+      "percentage": 19.05,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-nurse-expert",
+        "https://scenro.com/p/delaware-expert-medical-specialist-expert",
         "https://scenro.com/p/oregon-senior-physical-therapist-expert",
         "https://scenro.com/p/utah-lead-medical-specialist-expert"
       ]
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 8.7,
+      "percentage": 9.52,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -31,7 +32,7 @@
     },
     "RealEstate": {
       "count": 3,
-      "percentage": 13.04,
+      "percentage": 14.29,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -41,23 +42,9 @@
         "https://scenro.com/p/iowa-lead-broker-expert"
       ]
     },
-    "Other": {
-      "count": 9,
-      "percentage": 39.13,
-      "impressions": 9,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/california-lead-investment-banker-expert",
-        "https://scenro.com/p/georgia-expert-pharmacist-expert",
-        "https://scenro.com/p/kentucky-assistant-software-developer-expert",
-        "https://scenro.com/p/kentucky-lead-mechanical-engineer-expert",
-        "https://scenro.com/p/maryland-junior-property-manager-expert"
-      ]
-    },
     "Finance": {
       "count": 5,
-      "percentage": 21.74,
+      "percentage": 23.81,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -69,9 +56,23 @@
         "https://scenro.com/p/texas-licensed-tax-auditor-expert"
       ]
     },
+    "Other": {
+      "count": 6,
+      "percentage": 28.57,
+      "impressions": 6,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/georgia-expert-pharmacist-expert",
+        "https://scenro.com/p/kentucky-assistant-software-developer-expert",
+        "https://scenro.com/p/kentucky-lead-mechanical-engineer-expert",
+        "https://scenro.com/p/maryland-junior-property-manager-expert",
+        "https://scenro.com/p/minnesota-expert-pharmacist-expert"
+      ]
+    },
     "Tutor": {
       "count": 1,
-      "percentage": 4.35,
+      "percentage": 4.76,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -103,18 +104,18 @@
       "position": 2
     },
     {
-      "url": "https://scenro.com/p/california-lead-investment-banker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
-    },
-    {
       "url": "https://scenro.com/p/colorado-expert-cpa-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 69
+    },
+    {
+      "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 98
     },
     {
       "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
@@ -180,13 +181,6 @@
       "position": 51
     },
     {
-      "url": "https://scenro.com/p/montana-certified-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 43
-    },
-    {
       "url": "https://scenro.com/p/new-jersey-lead-tutor-expert",
       "impressions": 1,
       "clicks": 0,
@@ -206,13 +200,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 4
-    },
-    {
-      "url": "https://scenro.com/p/pennsylvania-lead-chiropractor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 38
     },
     {
       "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
