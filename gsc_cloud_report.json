@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-06-12T10:10:49.058624+00:00",
+  "timestamp": "2026-06-13T08:56:25.056780+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 25,
-  "total_impressions": 32,
+  "total_impressions": 34,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
       "percentage": 20.0,
-      "impressions": 10,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -44,31 +44,30 @@
       ]
     },
     "Finance": {
-      "count": 5,
-      "percentage": 20.0,
-      "impressions": 6,
+      "count": 4,
+      "percentage": 16.0,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/colorado-expert-cpa-expert",
         "https://scenro.com/p/kentucky-expert-accountant-expert",
         "https://scenro.com/p/north-dakota-certified-accountant-expert",
-        "https://scenro.com/p/texas-consulting-tax-auditor-expert",
         "https://scenro.com/p/texas-licensed-tax-auditor-expert"
       ]
     },
     "Other": {
-      "count": 9,
-      "percentage": 36.0,
-      "impressions": 9,
+      "count": 10,
+      "percentage": 40.0,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/district-of-columbia-consulting-real-estate-consultant-expert",
         "https://scenro.com/p/georgia-expert-pharmacist-expert",
-        "https://scenro.com/p/kentucky-assistant-software-developer-expert",
-        "https://scenro.com/p/kentucky-lead-mechanical-engineer-expert"
+        "https://scenro.com/p/hawaii-expert-engineer-expert",
+        "https://scenro.com/p/kentucky-assistant-software-developer-expert"
       ]
     },
     "Tutor": {
@@ -92,10 +91,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 5,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.2
+      "position": 82.66666666666667
     },
     {
       "url": "https://scenro.com/p/alabama-lead-legal-consultant-expert",
@@ -145,6 +144,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 87
+    },
+    {
+      "url": "https://scenro.com/p/hawaii-expert-engineer-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4.5
     },
     {
       "url": "https://scenro.com/p/idaho-lead-broker-expert",
@@ -229,13 +235,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 4
-    },
-    {
-      "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 72
     },
     {
       "url": "https://scenro.com/p/texas-licensed-civil-engineer-expert",
