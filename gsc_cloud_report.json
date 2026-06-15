@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-14T09:31:50.898673+00:00",
+  "timestamp": "2026-06-15T12:10:25.437125+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 25,
   "total_impressions": 35,
@@ -9,7 +9,7 @@
     "Medical": {
       "count": 5,
       "percentage": 20.0,
-      "impressions": 12,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -46,7 +46,7 @@
     "Finance": {
       "count": 4,
       "percentage": 16.0,
-      "impressions": 5,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -91,10 +91,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 7,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.57142857142857
+      "position": 82.625
     },
     {
       "url": "https://scenro.com/p/alabama-lead-legal-consultant-expert",
@@ -245,10 +245,10 @@
     },
     {
       "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 63
+      "position": 76
     },
     {
       "url": "https://scenro.com/p/utah-lead-medical-specialist-expert",
