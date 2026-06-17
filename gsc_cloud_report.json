@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-06-16T11:08:09.636823+00:00",
+  "timestamp": "2026-06-17T10:53:24.452073+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 26,
-  "total_impressions": 37,
+  "total_indexed_pages": 28,
+  "total_impressions": 46,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 19.23,
-      "impressions": 14,
+      "percentage": 17.86,
+      "impressions": 20,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,19 +21,21 @@
       ]
     },
     "Lawyer": {
-      "count": 2,
-      "percentage": 7.69,
-      "impressions": 3,
+      "count": 4,
+      "percentage": 14.29,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
+        "https://scenro.com/p/alabama-expert-attorney-expert",
+        "https://scenro.com/p/alabama-expert-lawyer-expert",
         "https://scenro.com/p/alabama-lead-legal-consultant-expert",
         "https://scenro.com/p/maryland-expert-lawyer-expert"
       ]
     },
     "RealEstate": {
       "count": 3,
-      "percentage": 11.54,
+      "percentage": 10.71,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -45,7 +47,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 15.38,
+      "percentage": 14.29,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -58,21 +60,21 @@
     },
     "Other": {
       "count": 11,
-      "percentage": 42.31,
-      "impressions": 12,
+      "percentage": 39.29,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/district-of-columbia-consulting-real-estate-consultant-expert",
-        "https://scenro.com/p/georgia-expert-pharmacist-expert",
         "https://scenro.com/p/hawaii-expert-engineer-expert",
-        "https://scenro.com/p/kentucky-assistant-software-developer-expert"
+        "https://scenro.com/p/kentucky-assistant-software-developer-expert",
+        "https://scenro.com/p/kentucky-expert-dentist-expert"
       ]
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 3.57,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -87,14 +89,28 @@
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 66
+      "position": 69
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-attorney-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 86
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 9,
+      "impressions": 15,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.66666666666667
+      "position": 83.6
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 93
     },
     {
       "url": "https://scenro.com/p/alabama-lead-legal-consultant-expert",
@@ -137,13 +153,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 118
-    },
-    {
-      "url": "https://scenro.com/p/georgia-expert-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 87
     },
     {
       "url": "https://scenro.com/p/hawaii-expert-engineer-expert",
@@ -213,7 +222,14 @@
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 51
+      "position": 77
+    },
+    {
+      "url": "https://scenro.com/p/minnesota-professional-pediatrician-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 74.5
     },
     {
       "url": "https://scenro.com/p/new-jersey-lead-tutor-expert",
