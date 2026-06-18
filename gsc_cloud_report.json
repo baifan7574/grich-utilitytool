@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-06-17T10:53:24.452073+00:00",
+  "timestamp": "2026-06-18T10:18:28.541279+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 28,
-  "total_impressions": 46,
+  "total_indexed_pages": 24,
+  "total_impressions": 42,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 17.86,
-      "impressions": 20,
+      "percentage": 20.83,
+      "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,33 +21,20 @@
       ]
     },
     "Lawyer": {
-      "count": 4,
-      "percentage": 14.29,
-      "impressions": 5,
+      "count": 3,
+      "percentage": 12.5,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-expert-attorney-expert",
         "https://scenro.com/p/alabama-expert-lawyer-expert",
-        "https://scenro.com/p/alabama-lead-legal-consultant-expert",
-        "https://scenro.com/p/maryland-expert-lawyer-expert"
-      ]
-    },
-    "RealEstate": {
-      "count": 3,
-      "percentage": 10.71,
-      "impressions": 3,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/alaska-lead-broker-expert",
-        "https://scenro.com/p/idaho-lead-broker-expert",
-        "https://scenro.com/p/iowa-lead-broker-expert"
+        "https://scenro.com/p/alabama-lead-legal-consultant-expert"
       ]
     },
     "Finance": {
       "count": 4,
-      "percentage": 14.29,
+      "percentage": 16.67,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +47,7 @@
     },
     "Other": {
       "count": 11,
-      "percentage": 39.29,
+      "percentage": 45.83,
       "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
@@ -74,7 +61,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.57,
+      "percentage": 4.17,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -100,10 +87,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 15,
+      "impressions": 16,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.6
+      "position": 83.5625
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -118,13 +105,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 9
-    },
-    {
-      "url": "https://scenro.com/p/alaska-lead-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
     },
     {
       "url": "https://scenro.com/p/colorado-expert-cpa-expert",
@@ -162,20 +142,6 @@
       "position": 4.5
     },
     {
-      "url": "https://scenro.com/p/idaho-lead-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 5
-    },
-    {
-      "url": "https://scenro.com/p/iowa-lead-broker-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
-    },
-    {
       "url": "https://scenro.com/p/kentucky-assistant-software-developer-expert",
       "impressions": 1,
       "clicks": 0,
@@ -202,13 +168,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 5
-    },
-    {
-      "url": "https://scenro.com/p/maryland-expert-lawyer-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 49.5
     },
     {
       "url": "https://scenro.com/p/maryland-junior-property-manager-expert",
