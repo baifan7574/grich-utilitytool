@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-06-19T10:24:08.891286+00:00",
+  "timestamp": "2026-06-20T08:53:58.240197+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 24,
-  "total_impressions": 43,
+  "total_indexed_pages": 23,
+  "total_impressions": 44,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 20.83,
+      "percentage": 21.74,
       "impressions": 22,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 3,
-      "percentage": 12.5,
+      "percentage": 13.04,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -34,7 +34,7 @@
     },
     "Finance": {
       "count": 4,
-      "percentage": 16.67,
+      "percentage": 17.39,
       "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
@@ -46,9 +46,9 @@
       ]
     },
     "Other": {
-      "count": 11,
-      "percentage": 45.83,
-      "impressions": 13,
+      "count": 10,
+      "percentage": 43.48,
+      "impressions": 14,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -61,7 +61,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 4.17,
+      "percentage": 4.35,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -206,10 +206,10 @@
     },
     {
       "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
-      "impressions": 1,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 56
+      "position": 60
     },
     {
       "url": "https://scenro.com/p/oregon-senior-physical-therapist-expert",
@@ -217,13 +217,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 4
-    },
-    {
-      "url": "https://scenro.com/p/texas-licensed-civil-engineer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 6
     },
     {
       "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert",
