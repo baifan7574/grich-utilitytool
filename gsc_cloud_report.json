@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-06-20T08:53:58.240197+00:00",
+  "timestamp": "2026-06-21T09:47:57.554957+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 23,
-  "total_impressions": 44,
+  "total_impressions": 46,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
       "percentage": 21.74,
-      "impressions": 22,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -87,10 +87,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 17,
+      "impressions": 19,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.76470588235294
+      "position": 83.94736842105263
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
