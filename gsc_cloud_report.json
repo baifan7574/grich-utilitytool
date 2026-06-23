@@ -1,72 +1,58 @@
 {
-  "timestamp": "2026-06-22T11:51:00.805985+00:00",
+  "timestamp": "2026-06-23T09:36:18.831908+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 23,
-  "total_impressions": 46,
+  "total_indexed_pages": 16,
+  "total_impressions": 57,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 5,
-      "percentage": 21.74,
-      "impressions": 24,
+      "count": 4,
+      "percentage": 25.0,
+      "impressions": 37,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-nurse-expert",
         "https://scenro.com/p/alabama-expert-doctor-expert",
         "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-        "https://scenro.com/p/oregon-senior-physical-therapist-expert",
         "https://scenro.com/p/utah-lead-medical-specialist-expert"
       ]
     },
     "Lawyer": {
-      "count": 3,
-      "percentage": 13.04,
+      "count": 2,
+      "percentage": 12.5,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-expert-attorney-expert",
-        "https://scenro.com/p/alabama-expert-lawyer-expert",
-        "https://scenro.com/p/alabama-lead-legal-consultant-expert"
+        "https://scenro.com/p/alabama-expert-lawyer-expert"
       ]
     },
     "Finance": {
-      "count": 4,
-      "percentage": 17.39,
-      "impressions": 4,
+      "count": 2,
+      "percentage": 12.5,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/colorado-expert-cpa-expert",
-        "https://scenro.com/p/kentucky-expert-accountant-expert",
-        "https://scenro.com/p/north-dakota-certified-accountant-expert",
         "https://scenro.com/p/texas-licensed-tax-auditor-expert"
       ]
     },
     "Other": {
-      "count": 10,
-      "percentage": 43.48,
-      "impressions": 14,
+      "count": 8,
+      "percentage": 50.0,
+      "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/district-of-columbia-consulting-real-estate-consultant-expert",
+        "https://scenro.com/p/georgia-lead-pediatrician-expert",
         "https://scenro.com/p/hawaii-expert-engineer-expert",
-        "https://scenro.com/p/kentucky-assistant-software-developer-expert",
         "https://scenro.com/p/kentucky-expert-dentist-expert"
-      ]
-    },
-    "Tutor": {
-      "count": 1,
-      "percentage": 4.35,
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/new-jersey-lead-tutor-expert"
       ]
     }
   },
@@ -80,17 +66,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-attorney-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 86
+      "position": 82.5
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 19,
+      "impressions": 33,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.94736842105263
+      "position": 80.48484848484848
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -98,13 +84,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 93
-    },
-    {
-      "url": "https://scenro.com/p/alabama-lead-legal-consultant-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 9
     },
     {
       "url": "https://scenro.com/p/colorado-expert-cpa-expert",
@@ -115,10 +94,10 @@
     },
     {
       "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 99
+      "position": 83.5
     },
     {
       "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
@@ -135,6 +114,13 @@
       "position": 118
     },
     {
+      "url": "https://scenro.com/p/georgia-lead-pediatrician-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 77
+    },
+    {
       "url": "https://scenro.com/p/hawaii-expert-engineer-expert",
       "impressions": 2,
       "clicks": 0,
@@ -142,39 +128,11 @@
       "position": 4.5
     },
     {
-      "url": "https://scenro.com/p/kentucky-assistant-software-developer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 7
-    },
-    {
-      "url": "https://scenro.com/p/kentucky-expert-accountant-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 2
-    },
-    {
       "url": "https://scenro.com/p/kentucky-expert-dentist-expert",
-      "impressions": 1,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 100
-    },
-    {
-      "url": "https://scenro.com/p/kentucky-lead-mechanical-engineer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 5
-    },
-    {
-      "url": "https://scenro.com/p/maryland-junior-property-manager-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 3
+      "position": 99
     },
     {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
@@ -191,32 +149,11 @@
       "position": 74.5
     },
     {
-      "url": "https://scenro.com/p/new-jersey-lead-tutor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 6
-    },
-    {
-      "url": "https://scenro.com/p/north-dakota-certified-accountant-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 8
-    },
-    {
       "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
       "impressions": 3,
       "clicks": 0,
       "ctr": 0,
       "position": 60
-    },
-    {
-      "url": "https://scenro.com/p/oregon-senior-physical-therapist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
     },
     {
       "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert",
