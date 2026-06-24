@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-06-23T09:36:18.831908+00:00",
+  "timestamp": "2026-06-24T09:26:48.923350+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 16,
-  "total_impressions": 57,
+  "total_indexed_pages": 15,
+  "total_impressions": 56,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 4,
-      "percentage": 25.0,
+      "percentage": 26.67,
       "impressions": 37,
       "clicks": 0,
       "ctr": 0.0,
@@ -21,7 +21,7 @@
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 12.5,
+      "percentage": 13.33,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -31,19 +31,18 @@
       ]
     },
     "Finance": {
-      "count": 2,
-      "percentage": 12.5,
-      "impressions": 2,
+      "count": 1,
+      "percentage": 6.67,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/colorado-expert-cpa-expert",
-        "https://scenro.com/p/texas-licensed-tax-auditor-expert"
+        "https://scenro.com/p/colorado-expert-cpa-expert"
       ]
     },
     "Other": {
       "count": 8,
-      "percentage": 50.0,
+      "percentage": 53.33,
       "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
@@ -154,13 +153,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 60
-    },
-    {
-      "url": "https://scenro.com/p/texas-licensed-tax-auditor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 76
     },
     {
       "url": "https://scenro.com/p/utah-lead-medical-specialist-expert",
