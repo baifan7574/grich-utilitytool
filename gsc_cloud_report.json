@@ -1,27 +1,28 @@
 {
-  "timestamp": "2026-06-24T09:26:48.923350+00:00",
+  "timestamp": "2026-06-25T09:22:29.578042+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 15,
-  "total_impressions": 56,
+  "total_indexed_pages": 16,
+  "total_impressions": 59,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 4,
-      "percentage": 26.67,
-      "impressions": 37,
+      "count": 5,
+      "percentage": 31.25,
+      "impressions": 40,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-consulting-nurse-expert",
         "https://scenro.com/p/alabama-expert-doctor-expert",
         "https://scenro.com/p/delaware-expert-medical-specialist-expert",
+        "https://scenro.com/p/utah-expert-physician-expert",
         "https://scenro.com/p/utah-lead-medical-specialist-expert"
       ]
     },
     "Lawyer": {
       "count": 2,
-      "percentage": 13.33,
+      "percentage": 12.5,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -32,7 +33,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 6.67,
+      "percentage": 6.25,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -42,7 +43,7 @@
     },
     "Other": {
       "count": 8,
-      "percentage": 53.33,
+      "percentage": 50.0,
       "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
@@ -72,10 +73,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 33,
+      "impressions": 35,
       "clicks": 0,
       "ctr": 0,
-      "position": 80.48484848484848
+      "position": 80.71428571428571
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -153,6 +154,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 60
+    },
+    {
+      "url": "https://scenro.com/p/utah-expert-physician-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 59
     },
     {
       "url": "https://scenro.com/p/utah-lead-medical-specialist-expert",
