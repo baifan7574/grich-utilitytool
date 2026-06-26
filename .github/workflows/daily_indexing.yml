@@ -2,49 +2,53 @@ name: Traffic Sentry - Daily Indexer
 
 on:
   schedule:
-    # 每天 UTC 00:00 (北京时间 08:00) 运行
+    # Daily at 00:00 UTC.
     - cron: "0 0 * * *"
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   indexing-job:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 允许回写 log
+      contents: write
+    concurrency:
+      group: scenro-daily-indexing
+      cancel-in-progress: false
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.11"
 
       - name: Install Dependencies
         run: |
-          pip install google-api-python-client google-auth oauth2client
+          pip install google-api-python-client google-auth requests
 
       - name: Run Indexer Script
         env:
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          PYTHONIOENCODING: utf-8
         run: |
-          cd .agent/skills/traffic-sentry/scripts
-          python daily_indexer.py
+          python .agent/skills/traffic-sentry/scripts/daily_indexer.py
 
       - name: Run GSC Status Report
         env:
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          PYTHONIOENCODING: utf-8
         run: |
-          cd .agent/skills/traffic-sentry/scripts
-          python gsc_status_check.py
+          python .agent/skills/traffic-sentry/scripts/gsc_status_check.py
 
       - name: Commit & Push Log Updates
-        # 只有当 log 文件发生变化时才提交
         run: |
           git config --global user.name "Traffic Sentry Bot"
           git config --global user.email "bot@scenro.com"
-          git add indexed_progress.log
-          git commit -m "chore: update indexing progress [skip ci]" || echo "No changes to commit"
           git pull --rebase origin main
+          git add indexed_progress.log gsc_daily_stats.json
+          git commit -m "chore: update indexing progress [skip ci]" || echo "No changes to commit"
           git push
