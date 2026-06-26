@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-06-25T09:22:29.578042+00:00",
+  "timestamp": "2026-06-26T09:23:27.521522+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 16,
+  "total_indexed_pages": 17,
   "total_impressions": 59,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 5,
-      "percentage": 31.25,
-      "impressions": 40,
+      "percentage": 29.41,
+      "impressions": 39,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,19 +21,20 @@
       ]
     },
     "Lawyer": {
-      "count": 2,
-      "percentage": 12.5,
-      "impressions": 3,
+      "count": 3,
+      "percentage": 17.65,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-expert-attorney-expert",
-        "https://scenro.com/p/alabama-expert-lawyer-expert"
+        "https://scenro.com/p/alabama-expert-lawyer-expert",
+        "https://scenro.com/p/oklahoma-associate-legal-consultant-expert"
       ]
     },
     "Finance": {
       "count": 1,
-      "percentage": 6.25,
+      "percentage": 5.88,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -43,7 +44,7 @@
     },
     "Other": {
       "count": 8,
-      "percentage": 50.0,
+      "percentage": 47.06,
       "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
@@ -156,6 +157,13 @@
       "position": 60
     },
     {
+      "url": "https://scenro.com/p/oklahoma-associate-legal-consultant-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6
+    },
+    {
       "url": "https://scenro.com/p/utah-expert-physician-expert",
       "impressions": 1,
       "clicks": 0,
@@ -164,10 +172,10 @@
     },
     {
       "url": "https://scenro.com/p/utah-lead-medical-specialist-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 44
+      "position": 40
     }
   ]
 }
