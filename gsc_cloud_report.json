@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-06-28T08:53:44.647570+00:00",
+  "timestamp": "2026-06-29T10:56:04.618964+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
-  "total_impressions": 75,
+  "total_indexed_pages": 26,
+  "total_impressions": 79,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 10,
-      "percentage": 40.0,
+      "percentage": 38.46,
       "impressions": 17,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,8 +22,8 @@
     },
     "Medical": {
       "count": 6,
-      "percentage": 24.0,
-      "impressions": 47,
+      "percentage": 23.08,
+      "impressions": 49,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "Lawyer": {
       "count": 7,
-      "percentage": 28.0,
+      "percentage": 26.92,
       "impressions": 9,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -59,13 +59,14 @@
       ]
     },
     "Tutor": {
-      "count": 1,
-      "percentage": 4.0,
-      "impressions": 1,
+      "count": 2,
+      "percentage": 7.69,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/north-dakota-junior-school-principal-expert"
+        "https://scenro.com/p/north-dakota-junior-school-principal-expert",
+        "https://scenro.com/p/texas-certified-tutor-expert"
       ]
     }
   },
@@ -93,10 +94,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 42,
+      "impressions": 44,
       "clicks": 0,
       "ctr": 0,
-      "position": 81.38095238095238
+      "position": 81.5909090909091
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -223,6 +224,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 6
+    },
+    {
+      "url": "https://scenro.com/p/texas-certified-tutor-expert",
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 3
     },
     {
       "url": "https://scenro.com/p/utah-expert-physician-expert",
