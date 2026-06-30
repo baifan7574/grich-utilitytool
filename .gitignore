@@ -2,6 +2,7 @@
 gen-lang-client-0846513202-3d6c54387cae.json
 *.json
 !submission_tracker.json
+!gsc_daily_stats.json
 .env
 dist/
 __pycache__/

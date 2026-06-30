@@ -48,7 +48,12 @@ jobs:
         run: |
           git config --global user.name "Traffic Sentry Bot"
           git config --global user.email "bot@scenro.com"
+          git fetch origin main
+          git add -f indexed_progress.log gsc_daily_stats.json
+          if git diff --cached --quiet; then
+            echo "No log changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update indexing progress [skip ci]"
           git pull --rebase origin main
-          git add indexed_progress.log gsc_daily_stats.json
-          git commit -m "chore: update indexing progress [skip ci]" || echo "No changes to commit"
           git push
