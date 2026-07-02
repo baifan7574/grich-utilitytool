@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-01T09:42:31.153848+00:00",
+  "timestamp": "2026-07-02T08:53:48.791716+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 25,
-  "total_impressions": 80,
+  "total_impressions": 85,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 6,
       "percentage": 24.0,
-      "impressions": 51,
+      "impressions": 55,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -37,7 +37,7 @@
     "Lawyer": {
       "count": 7,
       "percentage": 28.0,
-      "impressions": 9,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -84,10 +84,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 46,
+      "impressions": 50,
       "clicks": 0,
       "ctr": 0,
-      "position": 81.80434782608695
+      "position": 81.98
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -105,10 +105,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-licensed-legal-consultant-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 81
+      "position": 88
     },
     {
       "url": "https://scenro.com/p/alabama-professional-corporate-lawyer-expert",
