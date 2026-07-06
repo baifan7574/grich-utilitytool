@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-07-05T08:50:37.503976+00:00",
+  "timestamp": "2026-07-06T10:17:35.849174+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
+  "total_indexed_pages": 24,
   "total_impressions": 93,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 10,
-      "percentage": 40.0,
+      "percentage": 41.67,
       "impressions": 17,
       "clicks": 0,
       "ctr": 0.0,
@@ -21,8 +21,8 @@
       ]
     },
     "Medical": {
-      "count": 6,
-      "percentage": 24.0,
+      "count": 5,
+      "percentage": 20.83,
       "impressions": 63,
       "clicks": 0,
       "ctr": 0.0,
@@ -30,13 +30,13 @@
         "https://scenro.com/p/alabama-consulting-nurse-expert",
         "https://scenro.com/p/alabama-expert-doctor-expert",
         "https://scenro.com/p/alabama-senior-doctor-expert",
-        "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-        "https://scenro.com/p/utah-expert-physician-expert"
+        "https://scenro.com/p/utah-expert-physician-expert",
+        "https://scenro.com/p/utah-lead-medical-specialist-expert"
       ]
     },
     "Lawyer": {
       "count": 7,
-      "percentage": 28.0,
+      "percentage": 29.17,
       "impressions": 10,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 8.0,
+      "percentage": 8.33,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -84,10 +84,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 57,
+      "impressions": 58,
       "clicks": 0,
       "ctr": 0,
-      "position": 81.2280701754386
+      "position": 81.25862068965517
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -137,13 +137,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 83.5
-    },
-    {
-      "url": "https://scenro.com/p/delaware-expert-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 98
     },
     {
       "url": "https://scenro.com/p/district-of-columbia-consulting-real-estate-consultant-expert",
