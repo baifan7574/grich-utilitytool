@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-07-08T08:25:36.210921+00:00",
+  "timestamp": "2026-07-09T09:36:24.211844+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 24,
-  "total_impressions": 93,
+  "total_impressions": 90,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 10,
       "percentage": 41.67,
-      "impressions": 17,
+      "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 5,
       "percentage": 20.83,
-      "impressions": 63,
+      "impressions": 62,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -84,10 +84,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 58,
+      "impressions": 57,
       "clicks": 0,
       "ctr": 0,
-      "position": 81.25862068965517
+      "position": 81.19298245614036
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -133,10 +133,10 @@
     },
     {
       "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.5
+      "position": 68
     },
     {
       "url": "https://scenro.com/p/district-of-columbia-consulting-real-estate-consultant-expert",
@@ -189,10 +189,10 @@
     },
     {
       "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 60
+      "position": 62
     },
     {
       "url": "https://scenro.com/p/oklahoma-associate-legal-consultant-expert",
