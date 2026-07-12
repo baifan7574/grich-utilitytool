@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-07-11T07:52:57.316506+00:00",
+  "timestamp": "2026-07-12T08:14:12.925669+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 24,
-  "total_impressions": 90,
+  "total_indexed_pages": 23,
+  "total_impressions": 88,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 9,
-      "percentage": 37.5,
-      "impressions": 15,
+      "count": 8,
+      "percentage": 34.78,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/contact",
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/georgia-lead-pediatrician-expert",
-        "https://scenro.com/p/hawaii-expert-engineer-expert",
-        "https://scenro.com/p/kentucky-expert-dentist-expert"
+        "https://scenro.com/p/kentucky-expert-dentist-expert",
+        "https://scenro.com/p/minnesota-expert-pharmacist-expert"
       ]
     },
     "Medical": {
       "count": 5,
-      "percentage": 20.83,
+      "percentage": 21.74,
       "impressions": 60,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Lawyer": {
       "count": 7,
-      "percentage": 29.17,
+      "percentage": 30.43,
       "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 8.33,
+      "percentage": 8.7,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -61,7 +61,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 4.17,
+      "percentage": 4.35,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -94,10 +94,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 55,
+      "impressions": 54,
       "clicks": 0,
       "ctr": 0,
-      "position": 81.30909090909091
+      "position": 81.33333333333333
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -136,10 +136,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-senior-doctor-expert",
-      "impressions": 2,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 80
+      "position": 80.33333333333333
     },
     {
       "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
@@ -161,13 +161,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 77
-    },
-    {
-      "url": "https://scenro.com/p/hawaii-expert-engineer-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4.5
     },
     {
       "url": "https://scenro.com/p/kentucky-expert-dentist-expert",
