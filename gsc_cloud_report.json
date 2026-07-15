@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-07-14T08:01:23.873306+00:00",
+  "timestamp": "2026-07-15T08:06:40.648447+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 29,
-  "total_impressions": 102,
+  "total_impressions": 100,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 10,
       "percentage": 34.48,
-      "impressions": 21,
+      "impressions": 20,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -37,7 +37,7 @@
     "Medical": {
       "count": 5,
       "percentage": 17.24,
-      "impressions": 59,
+      "impressions": 58,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -108,10 +108,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 53,
+      "impressions": 52,
       "clicks": 0,
       "ctr": 0,
-      "position": 81.32075471698113
+      "position": 81.28846153846153
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -192,10 +192,10 @@
     },
     {
       "url": "https://scenro.com/p/kentucky-expert-dentist-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 99
+      "position": 98.5
     },
     {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
