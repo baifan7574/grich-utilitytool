@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-07-17T08:07:30.836203+00:00",
+  "timestamp": "2026-07-18T07:46:49.662073+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
+  "total_indexed_pages": 26,
   "total_impressions": 89,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 8,
-      "percentage": 32.0,
-      "impressions": 17,
+      "count": 9,
+      "percentage": 34.62,
+      "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 10,
-      "percentage": 40.0,
+      "percentage": 38.46,
       "impressions": 16,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,8 +36,8 @@
     },
     "Medical": {
       "count": 4,
-      "percentage": 16.0,
-      "impressions": 52,
+      "percentage": 15.38,
+      "impressions": 51,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -49,7 +49,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 8.0,
+      "percentage": 7.69,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -100,10 +100,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 47,
+      "impressions": 46,
       "clicks": 0,
       "ctr": 0,
-      "position": 78.17021276595744
+      "position": 77.97826086956522
     },
     {
       "url": "https://scenro.com/p/alabama-junior-attorney-expert",
@@ -181,6 +181,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 98.5
+    },
+    {
+      "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 94
     },
     {
       "url": "https://scenro.com/p/north-dakota-junior-school-principal-expert",
