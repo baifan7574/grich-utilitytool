@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-07-18T07:46:49.662073+00:00",
+  "timestamp": "2026-07-19T08:13:57.838197+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 26,
-  "total_impressions": 89,
+  "total_impressions": 87,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 9,
       "percentage": 34.62,
-      "impressions": 18,
+      "impressions": 16,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -198,10 +198,10 @@
     },
     {
       "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
-      "impressions": 3,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 62.333333333333336
+      "position": 63
     },
     {
       "url": "https://scenro.com/p/ohio-junior-lawyer-expert",
