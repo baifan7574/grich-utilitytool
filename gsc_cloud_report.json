@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-19T08:13:57.838197+00:00",
+  "timestamp": "2026-07-20T08:55:03.002482+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 26,
-  "total_impressions": 87,
+  "total_impressions": 85,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -37,7 +37,7 @@
     "Medical": {
       "count": 4,
       "percentage": 15.38,
-      "impressions": 51,
+      "impressions": 49,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -100,10 +100,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 46,
+      "impressions": 44,
       "clicks": 0,
       "ctr": 0,
-      "position": 77.97826086956522
+      "position": 77.63636363636364
     },
     {
       "url": "https://scenro.com/p/alabama-junior-attorney-expert",
