@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-07-23T08:26:59.609749+00:00",
+  "timestamp": "2026-07-24T08:25:04.402609+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 26,
-  "total_impressions": 76,
+  "total_impressions": 77,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 6,
-      "percentage": 23.08,
-      "impressions": 15,
+      "count": 7,
+      "percentage": 26.92,
+      "impressions": 17,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -17,7 +17,7 @@
         "https://scenro.com/p/hawaii-expert-engineer-expert",
         "https://scenro.com/p/minnesota-expert-pharmacist-expert",
         "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
-        "https://scenro.com/privacy"
+        "https://scenro.com/p/tennessee-consulting-pediatrician-expert"
       ]
     },
     "Lawyer": {
@@ -35,16 +35,15 @@
       ]
     },
     "Medical": {
-      "count": 4,
-      "percentage": 15.38,
-      "impressions": 37,
+      "count": 3,
+      "percentage": 11.54,
+      "impressions": 36,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-expert-doctor-expert",
         "https://scenro.com/p/alabama-senior-doctor-expert",
-        "https://scenro.com/p/delaware-licensed-nurse-expert",
-        "https://scenro.com/p/utah-expert-physician-expert"
+        "https://scenro.com/p/delaware-licensed-nurse-expert"
       ]
     },
     "Tutor": {
@@ -117,7 +116,7 @@
       "impressions": 32,
       "clicks": 0,
       "ctr": 0,
-      "position": 74.625
+      "position": 70.3125
     },
     {
       "url": "https://scenro.com/p/alabama-junior-attorney-expert",
@@ -184,10 +183,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 94
+      "position": 92.5
     },
     {
       "url": "https://scenro.com/p/north-dakota-junior-school-principal-expert",
@@ -218,6 +217,13 @@
       "position": 6
     },
     {
+      "url": "https://scenro.com/p/tennessee-consulting-pediatrician-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 90
+    },
+    {
       "url": "https://scenro.com/p/texas-certified-tutor-expert",
       "impressions": 4,
       "clicks": 0,
@@ -230,13 +236,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 93
-    },
-    {
-      "url": "https://scenro.com/p/utah-expert-physician-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 59
     },
     {
       "url": "https://scenro.com/privacy",
