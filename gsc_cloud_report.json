@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-27T09:49:09.310579+00:00",
+  "timestamp": "2026-07-28T08:31:00.067001+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 25,
-  "total_impressions": 78,
+  "total_impressions": 74,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -37,7 +37,7 @@
     "Medical": {
       "count": 4,
       "percentage": 16.0,
-      "impressions": 43,
+      "impressions": 41,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     "Tutor": {
       "count": 1,
       "percentage": 4.0,
-      "impressions": 4,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -120,10 +120,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 35,
+      "impressions": 33,
       "clicks": 0,
       "ctr": 0,
-      "position": 64.45714285714286
+      "position": 63.15151515151515
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -218,10 +218,10 @@
     },
     {
       "url": "https://scenro.com/p/texas-certified-tutor-expert",
-      "impressions": 4,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 2.75
+      "position": 2.5
     },
     {
       "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
