@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-08-01T08:17:42.931182+00:00",
+  "timestamp": "2026-08-02T08:21:43.825341+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 29,
-  "total_impressions": 83,
+  "total_impressions": 106,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 7,
       "percentage": 24.14,
-      "impressions": 44,
+      "impressions": 67,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -100,10 +100,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-associate-doctor-expert",
-      "impressions": 1,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 6
+      "position": 46
     },
     {
       "url": "https://scenro.com/p/alabama-associate-lawyer-expert",
@@ -135,10 +135,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 34,
+      "impressions": 55,
       "clicks": 0,
       "ctr": 0,
-      "position": 60.88235294117647
+      "position": 70.2909090909091
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -198,10 +198,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-licensed-nurse-expert",
-      "impressions": 3,
+      "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 89
+      "position": 88.75
     },
     {
       "url": "https://scenro.com/p/hawaii-expert-engineer-expert",
