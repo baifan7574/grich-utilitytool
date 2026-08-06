@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-08-05T08:33:13.128639+00:00",
+  "timestamp": "2026-08-06T08:33:05.620755+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 30,
-  "total_impressions": 108,
+  "total_indexed_pages": 33,
+  "total_impressions": 137,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 8,
-      "percentage": 26.67,
-      "impressions": 20,
+      "count": 9,
+      "percentage": 27.27,
+      "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/contact",
+        "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/hawaii-expert-engineer-expert",
         "https://scenro.com/p/minnesota-expert-pharmacist-expert",
-        "https://scenro.com/p/nevada-licensed-appraiser-expert",
-        "https://scenro.com/p/north-dakota-licensed-appraiser-expert"
+        "https://scenro.com/p/nevada-licensed-appraiser-expert"
       ]
     },
     "Medical": {
-      "count": 8,
-      "percentage": 26.67,
-      "impressions": 69,
+      "count": 10,
+      "percentage": 30.3,
+      "impressions": 97,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "Lawyer": {
       "count": 12,
-      "percentage": 40.0,
+      "percentage": 36.36,
       "impressions": 16,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.33,
+      "percentage": 3.03,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 3.33,
+      "percentage": 3.03,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -135,10 +135,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 56,
+      "impressions": 82,
       "clicks": 0,
       "ctr": 0,
-      "position": 70.64285714285714
+      "position": 74.03658536585365
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -197,6 +197,13 @@
       "position": 9
     },
     {
+      "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 73
+    },
+    {
       "url": "https://scenro.com/p/delaware-licensed-nurse-expert",
       "impressions": 4,
       "clicks": 0,
@@ -223,6 +230,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 92.5
+    },
+    {
+      "url": "https://scenro.com/p/missouri-licensed-physical-therapist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 29
     },
     {
       "url": "https://scenro.com/p/nevada-licensed-appraiser-expert",
@@ -265,6 +279,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 93
+    },
+    {
+      "url": "https://scenro.com/p/utah-lead-doctor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 43
     },
     {
       "url": "https://scenro.com/privacy",
