@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-08-08T06:49:45.980512+00:00",
+  "timestamp": "2026-08-09T06:53:30.973135+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 32,
-  "total_impressions": 136,
+  "total_indexed_pages": 31,
+  "total_impressions": 137,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 9,
-      "percentage": 28.12,
-      "impressions": 21,
+      "percentage": 29.03,
+      "impressions": 20,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,8 +22,8 @@
     },
     "Medical": {
       "count": 10,
-      "percentage": 31.25,
-      "impressions": 97,
+      "percentage": 32.26,
+      "impressions": 100,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "Lawyer": {
       "count": 11,
-      "percentage": 34.38,
+      "percentage": 35.48,
       "impressions": 15,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,22 +50,12 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.12,
+      "percentage": 3.23,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/texas-certified-tutor-expert"
-      ]
-    },
-    "Finance": {
-      "count": 1,
-      "percentage": 3.12,
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/texas-consulting-tax-auditor-expert"
       ]
     }
   },
@@ -128,10 +118,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 83,
+      "impressions": 86,
       "clicks": 0,
       "ctr": 0,
-      "position": 74.09638554216868
+      "position": 74.46511627906976
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -240,10 +230,10 @@
     },
     {
       "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 60
+      "position": 57
     },
     {
       "url": "https://scenro.com/p/ohio-junior-lawyer-expert",
@@ -265,13 +255,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 2.5
-    },
-    {
-      "url": "https://scenro.com/p/texas-consulting-tax-auditor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 93
     },
     {
       "url": "https://scenro.com/p/utah-lead-doctor-expert",
