@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-08-11T07:04:01.821020+00:00",
+  "timestamp": "2026-08-12T07:21:49.347206+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 28,
-  "total_impressions": 128,
+  "total_indexed_pages": 26,
+  "total_impressions": 125,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 9,
-      "percentage": 32.14,
-      "impressions": 14,
+      "count": 8,
+      "percentage": 30.77,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/contact",
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
-        "https://scenro.com/p/hawaii-expert-engineer-expert",
         "https://scenro.com/p/minnesota-expert-pharmacist-expert",
-        "https://scenro.com/p/nevada-licensed-appraiser-expert"
+        "https://scenro.com/p/nevada-licensed-appraiser-expert",
+        "https://scenro.com/p/north-dakota-licensed-appraiser-expert"
       ]
     },
     "Medical": {
       "count": 9,
-      "percentage": 32.14,
+      "percentage": 34.62,
       "impressions": 102,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,9 +35,9 @@
       ]
     },
     "Lawyer": {
-      "count": 8,
-      "percentage": 28.57,
-      "impressions": 9,
+      "count": 7,
+      "percentage": 26.92,
+      "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -45,12 +45,12 @@
         "https://scenro.com/p/alabama-expert-defense-attorney-expert",
         "https://scenro.com/p/alabama-expert-legal-consultant-expert",
         "https://scenro.com/p/alabama-junior-family-lawyer-expert",
-        "https://scenro.com/p/alabama-lead-corporate-lawyer-expert"
+        "https://scenro.com/p/alabama-lead-family-lawyer-expert"
       ]
     },
     "Finance": {
       "count": 1,
-      "percentage": 3.57,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.57,
+      "percentage": 3.85,
       "impressions": 2,
       "clicks": 0,
       "ctr": 0.0,
@@ -141,13 +141,6 @@
       "position": 9
     },
     {
-      "url": "https://scenro.com/p/alabama-lead-corporate-lawyer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 36
-    },
-    {
       "url": "https://scenro.com/p/alabama-lead-family-lawyer-expert",
       "impressions": 1,
       "clicks": 0,
@@ -188,13 +181,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 26
-    },
-    {
-      "url": "https://scenro.com/p/hawaii-expert-engineer-expert",
-      "impressions": 2,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 4
     },
     {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
