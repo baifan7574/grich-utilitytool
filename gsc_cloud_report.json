@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-08-13T07:23:42.916648+00:00",
+  "timestamp": "2026-08-14T07:21:29.259790+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 27,
-  "total_impressions": 157,
+  "total_indexed_pages": 30,
+  "total_impressions": 166,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 8,
-      "percentage": 29.63,
-      "impressions": 13,
+      "count": 9,
+      "percentage": 30.0,
+      "impressions": 14,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/contact",
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
+        "https://scenro.com/p/michigan-consulting-data-scientist-expert",
         "https://scenro.com/p/minnesota-expert-pharmacist-expert",
-        "https://scenro.com/p/nevada-licensed-appraiser-expert",
-        "https://scenro.com/p/north-dakota-licensed-appraiser-expert"
+        "https://scenro.com/p/nevada-licensed-appraiser-expert"
       ]
     },
     "Medical": {
       "count": 9,
-      "percentage": 33.33,
-      "impressions": 132,
+      "percentage": 30.0,
+      "impressions": 135,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,9 +35,9 @@
       ]
     },
     "Lawyer": {
-      "count": 8,
-      "percentage": 29.63,
-      "impressions": 9,
+      "count": 9,
+      "percentage": 30.0,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 3.7,
+      "percentage": 3.33,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -59,12 +59,13 @@
       ]
     },
     "Tutor": {
-      "count": 1,
-      "percentage": 3.7,
-      "impressions": 2,
+      "count": 2,
+      "percentage": 6.67,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
+        "https://scenro.com/p/north-carolina-licensed-education-coordinator-expert",
         "https://scenro.com/p/texas-certified-tutor-expert"
       ]
     }
@@ -121,10 +122,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 118,
+      "impressions": 121,
       "clicks": 0,
       "ctr": 0,
-      "position": 76.88135593220339
+      "position": 78
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -190,6 +191,20 @@
       "position": 26
     },
     {
+      "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 90.5
+    },
+    {
+      "url": "https://scenro.com/p/michigan-consulting-data-scientist-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 94
+    },
+    {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
       "impressions": 2,
       "clicks": 0,
@@ -216,6 +231,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 98
+    },
+    {
+      "url": "https://scenro.com/p/north-carolina-licensed-education-coordinator-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 80
     },
     {
       "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
