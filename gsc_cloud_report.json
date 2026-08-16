@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-08-15T06:34:39.842831+00:00",
+  "timestamp": "2026-08-16T06:36:24.923509+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 30,
-  "total_impressions": 166,
+  "total_indexed_pages": 32,
+  "total_impressions": 174,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 9,
-      "percentage": 30.0,
-      "impressions": 14,
+      "percentage": 28.12,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,8 +22,8 @@
     },
     "Medical": {
       "count": 9,
-      "percentage": 30.0,
-      "impressions": 135,
+      "percentage": 28.12,
+      "impressions": 139,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,22 +35,22 @@
       ]
     },
     "Lawyer": {
-      "count": 9,
-      "percentage": 30.0,
-      "impressions": 13,
+      "count": 11,
+      "percentage": 34.38,
+      "impressions": 18,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-associate-corporate-lawyer-expert",
+        "https://scenro.com/p/alabama-expert-attorney-expert",
         "https://scenro.com/p/alabama-expert-corporate-lawyer-expert",
         "https://scenro.com/p/alabama-expert-defense-attorney-expert",
-        "https://scenro.com/p/alabama-expert-legal-consultant-expert",
-        "https://scenro.com/p/alabama-junior-family-lawyer-expert"
+        "https://scenro.com/p/alabama-expert-legal-consultant-expert"
       ]
     },
     "Finance": {
       "count": 1,
-      "percentage": 3.33,
+      "percentage": 3.12,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Tutor": {
       "count": 2,
-      "percentage": 6.67,
+      "percentage": 6.25,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -107,6 +107,13 @@
       "position": 82.66666666666667
     },
     {
+      "url": "https://scenro.com/p/alabama-expert-attorney-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 98
+    },
+    {
       "url": "https://scenro.com/p/alabama-expert-corporate-lawyer-expert",
       "impressions": 1,
       "clicks": 0,
@@ -122,10 +129,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 121,
+      "impressions": 125,
       "clicks": 0,
       "ctr": 0,
-      "position": 78
+      "position": 78.096
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -154,6 +161,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 98
+    },
+    {
+      "url": "https://scenro.com/p/alabama-lead-lawyer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 53
     },
     {
       "url": "https://scenro.com/p/alabama-professional-paralegal-expert",
@@ -192,10 +206,10 @@
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-      "impressions": 4,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0,
-      "position": 90.5
+      "position": 92.14285714285714
     },
     {
       "url": "https://scenro.com/p/michigan-consulting-data-scientist-expert",
@@ -206,10 +220,10 @@
     },
     {
       "url": "https://scenro.com/p/minnesota-expert-pharmacist-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 92.5
+      "position": 91
     },
     {
       "url": "https://scenro.com/p/missouri-licensed-physical-therapist-expert",
