@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-08-16T06:36:24.923509+00:00",
+  "timestamp": "2026-08-17T06:51:20.743091+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 32,
-  "total_impressions": 174,
+  "total_impressions": 179,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 9,
       "percentage": 28.12,
-      "impressions": 139,
+      "impressions": 141,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -37,7 +37,7 @@
     "Lawyer": {
       "count": 11,
       "percentage": 34.38,
-      "impressions": 18,
+      "impressions": 21,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -129,10 +129,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 125,
+      "impressions": 127,
       "clicks": 0,
       "ctr": 0,
-      "position": 78.096
+      "position": 78.14960629921259
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -206,10 +206,10 @@
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-      "impressions": 7,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0,
-      "position": 92.14285714285714
+      "position": 93
     },
     {
       "url": "https://scenro.com/p/michigan-consulting-data-scientist-expert",
