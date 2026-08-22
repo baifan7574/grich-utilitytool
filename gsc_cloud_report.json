@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-08-21T06:42:01.719951+00:00",
+  "timestamp": "2026-08-22T06:36:16.461754+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 28,
-  "total_impressions": 183,
+  "total_impressions": 178,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -23,7 +23,7 @@
     "Medical": {
       "count": 10,
       "percentage": 35.71,
-      "impressions": 147,
+      "impressions": 142,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -93,10 +93,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-certified-doctor-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.66666666666667
+      "position": 85
     },
     {
       "url": "https://scenro.com/p/alabama-expert-attorney-expert",
@@ -114,10 +114,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 128,
+      "impressions": 124,
       "clicks": 0,
       "ctr": 0,
-      "position": 80.2421875
+      "position": 80.80645161290323
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
