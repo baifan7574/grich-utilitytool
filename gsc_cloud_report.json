@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-08-22T06:36:16.461754+00:00",
+  "timestamp": "2026-08-23T06:37:30.382303+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 28,
-  "total_impressions": 178,
+  "total_impressions": 174,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
@@ -15,15 +15,15 @@
       "sample_urls": [
         "https://scenro.com/contact",
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
+        "https://scenro.com/p/maine-licensed-architect-expert",
         "https://scenro.com/p/michigan-consulting-data-scientist-expert",
-        "https://scenro.com/p/nevada-licensed-appraiser-expert",
         "https://scenro.com/p/north-dakota-licensed-appraiser-expert"
       ]
     },
     "Medical": {
       "count": 10,
       "percentage": 35.71,
-      "impressions": 142,
+      "impressions": 139,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -37,7 +37,7 @@
     "Lawyer": {
       "count": 9,
       "percentage": 32.14,
-      "impressions": 26,
+      "impressions": 25,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -93,7 +93,7 @@
     },
     {
       "url": "https://scenro.com/p/alabama-certified-doctor-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 85
@@ -114,17 +114,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 124,
+      "impressions": 122,
       "clicks": 0,
       "ctr": 0,
-      "position": 80.80645161290323
+      "position": 80.8360655737705
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 80.66666666666667
+      "position": 84.5
     },
     {
       "url": "https://scenro.com/p/alabama-junior-doctor-expert",
@@ -197,6 +197,13 @@
       "position": 26
     },
     {
+      "url": "https://scenro.com/p/maine-licensed-architect-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 52
+    },
+    {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
       "impressions": 15,
       "clicks": 0,
@@ -216,13 +223,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 29
-    },
-    {
-      "url": "https://scenro.com/p/nevada-licensed-appraiser-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 92
     },
     {
       "url": "https://scenro.com/p/new-jersey-certified-cpa-expert",
