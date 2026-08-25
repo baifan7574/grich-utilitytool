@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-08-24T06:54:10.920211+00:00",
+  "timestamp": "2026-08-25T06:42:39.851627+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 28,
-  "total_impressions": 180,
+  "total_indexed_pages": 26,
+  "total_impressions": 174,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 7,
-      "percentage": 25.0,
+      "percentage": 26.92,
       "impressions": 8,
       "clicks": 0,
       "ctr": 0.0,
@@ -21,36 +21,36 @@
       ]
     },
     "Medical": {
-      "count": 10,
-      "percentage": 35.71,
-      "impressions": 144,
+      "count": 9,
+      "percentage": 34.62,
+      "impressions": 139,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-assistant-doctor-expert",
         "https://scenro.com/p/alabama-associate-doctor-expert",
-        "https://scenro.com/p/alabama-certified-doctor-expert",
         "https://scenro.com/p/alabama-expert-doctor-expert",
-        "https://scenro.com/p/alabama-junior-doctor-expert"
+        "https://scenro.com/p/alabama-junior-doctor-expert",
+        "https://scenro.com/p/alabama-professional-doctor-expert"
       ]
     },
     "Lawyer": {
-      "count": 9,
-      "percentage": 32.14,
-      "impressions": 26,
+      "count": 8,
+      "percentage": 30.77,
+      "impressions": 25,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/alabama-expert-attorney-expert",
         "https://scenro.com/p/alabama-expert-corporate-lawyer-expert",
         "https://scenro.com/p/alabama-expert-legal-consultant-expert",
-        "https://scenro.com/p/alabama-lead-family-lawyer-expert",
-        "https://scenro.com/p/alabama-lead-lawyer-expert"
+        "https://scenro.com/p/alabama-lead-lawyer-expert",
+        "https://scenro.com/p/alabama-professional-lawyer-expert"
       ]
     },
     "Finance": {
       "count": 1,
-      "percentage": 3.57,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.57,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -92,13 +92,6 @@
       "position": 64.5
     },
     {
-      "url": "https://scenro.com/p/alabama-certified-doctor-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 85
-    },
-    {
       "url": "https://scenro.com/p/alabama-expert-attorney-expert",
       "impressions": 1,
       "clicks": 0,
@@ -114,10 +107,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 120,
+      "impressions": 118,
       "clicks": 0,
       "ctr": 0,
-      "position": 80.875
+      "position": 81.96610169491525
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -132,13 +125,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 8
-    },
-    {
-      "url": "https://scenro.com/p/alabama-lead-family-lawyer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 98
     },
     {
       "url": "https://scenro.com/p/alabama-lead-lawyer-expert",
@@ -184,10 +170,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-licensed-nurse-expert",
-      "impressions": 5,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 87.8
+      "position": 85.33333333333333
     },
     {
       "url": "https://scenro.com/p/florida-consulting-nurse-expert",
