@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-08-27T17:20:26.497874+00:00",
+  "timestamp": "2026-08-28T18:12:55.729005+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 20,
-  "total_impressions": 163,
+  "total_indexed_pages": 21,
+  "total_impressions": 165,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 8,
-      "percentage": 40.0,
+      "percentage": 38.1,
       "impressions": 133,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,8 +22,8 @@
     },
     "Lawyer": {
       "count": 6,
-      "percentage": 30.0,
-      "impressions": 23,
+      "percentage": 28.57,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,13 +35,14 @@
       ]
     },
     "Other": {
-      "count": 4,
-      "percentage": 20.0,
-      "impressions": 5,
+      "count": 5,
+      "percentage": 23.81,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
+        "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
         "https://scenro.com/p/maine-licensed-architect-expert",
         "https://scenro.com/p/michigan-consulting-data-scientist-expert",
         "https://scenro.com/p/north-dakota-licensed-appraiser-expert"
@@ -49,7 +50,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 5.0,
+      "percentage": 4.76,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -59,7 +60,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 5.0,
+      "percentage": 4.76,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -85,17 +86,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-corporate-lawyer-expert",
-      "impressions": 2,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 84
+      "position": 84.66666666666667
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 114,
+      "impressions": 112,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.6140350877193
+      "position": 82.69642857142857
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -113,10 +114,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-professional-doctor-expert",
-      "impressions": 9,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0,
-      "position": 84.77777777777777
+      "position": 85
     },
     {
       "url": "https://scenro.com/p/alabama-professional-lawyer-expert",
@@ -145,6 +146,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 26
+    },
+    {
+      "url": "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 68
     },
     {
       "url": "https://scenro.com/p/maine-licensed-architect-expert",
