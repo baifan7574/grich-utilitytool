@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-08-28T18:12:55.729005+00:00",
+  "timestamp": "2026-08-29T12:18:42.907655+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 21,
-  "total_impressions": 165,
+  "total_indexed_pages": 20,
+  "total_impressions": 161,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 8,
-      "percentage": 38.1,
-      "impressions": 133,
+      "percentage": 40.0,
+      "impressions": 131,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,8 +22,8 @@
     },
     "Lawyer": {
       "count": 6,
-      "percentage": 28.57,
-      "impressions": 24,
+      "percentage": 30.0,
+      "impressions": 23,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,22 +35,21 @@
       ]
     },
     "Other": {
-      "count": 5,
-      "percentage": 23.81,
-      "impressions": 6,
+      "count": 4,
+      "percentage": 20.0,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
         "https://scenro.com/p/maine-licensed-architect-expert",
-        "https://scenro.com/p/michigan-consulting-data-scientist-expert",
-        "https://scenro.com/p/north-dakota-licensed-appraiser-expert"
+        "https://scenro.com/p/michigan-consulting-data-scientist-expert"
       ]
     },
     "Finance": {
       "count": 1,
-      "percentage": 4.76,
+      "percentage": 5.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +59,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 4.76,
+      "percentage": 5.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -93,17 +92,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 112,
+      "impressions": 110,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.69642857142857
+      "position": 82.73636363636363
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 84.5
+      "position": 83
     },
     {
       "url": "https://scenro.com/p/alabama-lead-lawyer-expert",
@@ -202,13 +201,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 80
-    },
-    {
-      "url": "https://scenro.com/p/north-dakota-licensed-appraiser-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 57
     },
     {
       "url": "https://scenro.com/p/utah-lead-doctor-expert",
