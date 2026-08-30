@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-08-29T12:18:42.907655+00:00",
+  "timestamp": "2026-08-30T11:17:40.204191+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 20,
-  "total_impressions": 161,
+  "total_indexed_pages": 21,
+  "total_impressions": 137,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 8,
-      "percentage": 40.0,
-      "impressions": 131,
+      "percentage": 38.1,
+      "impressions": 106,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 6,
-      "percentage": 30.0,
+      "percentage": 28.57,
       "impressions": 23,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,21 +35,22 @@
       ]
     },
     "Other": {
-      "count": 4,
-      "percentage": 20.0,
-      "impressions": 5,
+      "count": 5,
+      "percentage": 23.81,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
         "https://scenro.com/p/maine-licensed-architect-expert",
-        "https://scenro.com/p/michigan-consulting-data-scientist-expert"
+        "https://scenro.com/p/michigan-consulting-data-scientist-expert",
+        "https://scenro.com/p/texas-professional-engineer-expert"
       ]
     },
     "Finance": {
       "count": 1,
-      "percentage": 5.0,
+      "percentage": 4.76,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -59,7 +60,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 5.0,
+      "percentage": 4.76,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -71,10 +72,10 @@
   "indexed_pages": [
     {
       "url": "https://scenro.com/p/alabama-associate-doctor-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 84
+      "position": 83
     },
     {
       "url": "https://scenro.com/p/alabama-expert-attorney-expert",
@@ -92,10 +93,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 110,
+      "impressions": 87,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.73636363636363
+      "position": 82.47126436781609
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -134,10 +135,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-licensed-nurse-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 85.33333333333333
+      "position": 84
     },
     {
       "url": "https://scenro.com/p/florida-consulting-nurse-expert",
@@ -201,6 +202,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 80
+    },
+    {
+      "url": "https://scenro.com/p/texas-professional-engineer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 71
     },
     {
       "url": "https://scenro.com/p/utah-lead-doctor-expert",
