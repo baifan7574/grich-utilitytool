@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-01T11:07:50.152872+00:00",
+  "timestamp": "2026-09-02T10:40:04.209759+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 26,
-  "total_impressions": 138,
+  "total_indexed_pages": 25,
+  "total_impressions": 135,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 9,
-      "percentage": 34.62,
-      "impressions": 103,
+      "count": 8,
+      "percentage": 32.0,
+      "impressions": 100,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -17,12 +17,12 @@
         "https://scenro.com/p/alabama-expert-doctor-expert",
         "https://scenro.com/p/alabama-professional-doctor-expert",
         "https://scenro.com/p/delaware-licensed-nurse-expert",
-        "https://scenro.com/p/florida-consulting-nurse-expert"
+        "https://scenro.com/p/minnesota-lead-physical-therapist-expert"
       ]
     },
     "Lawyer": {
       "count": 9,
-      "percentage": 34.62,
+      "percentage": 36.0,
       "impressions": 26,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Other": {
       "count": 5,
-      "percentage": 19.23,
+      "percentage": 20.0,
       "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 4.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 4.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -70,7 +70,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 4.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -103,10 +103,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 83,
+      "impressions": 81,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.44578313253012
+      "position": 82.4320987654321
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -156,13 +156,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 84
-    },
-    {
-      "url": "https://scenro.com/p/florida-consulting-nurse-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 26
     },
     {
       "url": "https://scenro.com/p/georgia-certified-family-lawyer-expert",
