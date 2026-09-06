@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-05T09:59:00.548239+00:00",
+  "timestamp": "2026-09-06T10:17:26.194674+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
-  "total_impressions": 117,
+  "total_indexed_pages": 26,
+  "total_impressions": 116,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 28.0,
-      "impressions": 79,
+      "percentage": 26.92,
+      "impressions": 77,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 9,
-      "percentage": 36.0,
+      "percentage": 34.62,
       "impressions": 29,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,22 +35,22 @@
       ]
     },
     "Other": {
-      "count": 6,
-      "percentage": 24.0,
-      "impressions": 6,
+      "count": 7,
+      "percentage": 26.92,
+      "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
+        "https://scenro.com/p/florida-consulting-academic-advisor-expert",
         "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
         "https://scenro.com/p/maine-licensed-architect-expert",
-        "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
-        "https://scenro.com/p/michigan-consulting-data-scientist-expert"
+        "https://scenro.com/p/massachusetts-certified-financial-analyst-expert"
       ]
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Finance": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -70,7 +70,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 3.85,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -103,10 +103,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 53,
+      "impressions": 51,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.9622641509434
+      "position": 82.92156862745098
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -163,6 +163,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 84
+    },
+    {
+      "url": "https://scenro.com/p/florida-consulting-academic-advisor-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 187
     },
     {
       "url": "https://scenro.com/p/georgia-certified-family-lawyer-expert",
