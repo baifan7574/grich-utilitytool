@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-08T10:36:40.685448+00:00",
+  "timestamp": "2026-09-09T10:47:26.204828+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 26,
-  "total_impressions": 113,
+  "total_indexed_pages": 25,
+  "total_impressions": 110,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 26.92,
-      "impressions": 74,
+      "percentage": 28.0,
+      "impressions": 72,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 9,
-      "percentage": 34.62,
+      "percentage": 36.0,
       "impressions": 29,
       "clicks": 0,
       "ctr": 0.0,
@@ -36,7 +36,7 @@
     },
     "Other": {
       "count": 7,
-      "percentage": 26.92,
+      "percentage": 28.0,
       "impressions": 7,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 4.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -58,19 +58,9 @@
         "https://scenro.com/p/idaho-junior-real-estate-agent-expert"
       ]
     },
-    "Finance": {
-      "count": 1,
-      "percentage": 3.85,
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/new-jersey-certified-cpa-expert"
-      ]
-    },
     "Tutor": {
       "count": 1,
-      "percentage": 3.85,
+      "percentage": 4.0,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -103,10 +93,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 48,
+      "impressions": 46,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.79166666666667
+      "position": 82.78260869565217
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -226,13 +216,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 68
-    },
-    {
-      "url": "https://scenro.com/p/new-jersey-certified-cpa-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 98
     },
     {
       "url": "https://scenro.com/p/north-carolina-licensed-education-coordinator-expert",
