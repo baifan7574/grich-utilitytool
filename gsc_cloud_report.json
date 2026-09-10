@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-09T10:47:26.204828+00:00",
+  "timestamp": "2026-09-10T10:39:15.474962+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 25,
-  "total_impressions": 110,
+  "total_indexed_pages": 24,
+  "total_impressions": 84,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 28.0,
-      "impressions": 72,
+      "percentage": 29.17,
+      "impressions": 47,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 9,
-      "percentage": 36.0,
+      "percentage": 37.5,
       "impressions": 29,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,22 +35,22 @@
       ]
     },
     "Other": {
-      "count": 7,
-      "percentage": 28.0,
-      "impressions": 7,
+      "count": 6,
+      "percentage": 25.0,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
-        "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
         "https://scenro.com/p/florida-consulting-academic-advisor-expert",
         "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
         "https://scenro.com/p/maine-licensed-architect-expert",
-        "https://scenro.com/p/massachusetts-certified-financial-analyst-expert"
+        "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
+        "https://scenro.com/p/michigan-consulting-data-scientist-expert"
       ]
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 4.17,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,7 +60,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 4.0,
+      "percentage": 4.17,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -72,10 +72,10 @@
   "indexed_pages": [
     {
       "url": "https://scenro.com/p/alabama-associate-doctor-expert",
-      "impressions": 2,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 83
+      "position": 88
     },
     {
       "url": "https://scenro.com/p/alabama-expert-attorney-expert",
@@ -86,17 +86,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-corporate-lawyer-expert",
-      "impressions": 3,
+      "impressions": 2,
       "clicks": 0,
       "ctr": 0,
-      "position": 84.66666666666667
+      "position": 84
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 46,
+      "impressions": 18,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.78260869565217
+      "position": 82.33333333333333
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -114,24 +114,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-professional-doctor-expert",
-      "impressions": 19,
+      "impressions": 22,
       "clicks": 0,
       "ctr": 0,
-      "position": 84.84210526315789
+      "position": 83.81818181818181
     },
     {
       "url": "https://scenro.com/p/alabama-professional-lawyer-expert",
-      "impressions": 2,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 45.5
-    },
-    {
-      "url": "https://scenro.com/p/connecticut-consulting-pharmacist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 91
+      "position": 46.666666666666664
     },
     {
       "url": "https://scenro.com/p/connecticut-expert-registered-nurse-expert",
@@ -149,10 +142,10 @@
     },
     {
       "url": "https://scenro.com/p/delaware-licensed-nurse-expert",
-      "impressions": 2,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 84
+      "position": 87
     },
     {
       "url": "https://scenro.com/p/florida-consulting-academic-advisor-expert",
