@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-10T10:39:15.474962+00:00",
+  "timestamp": "2026-09-11T10:38:35.760412+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 24,
-  "total_impressions": 84,
+  "total_impressions": 79,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 7,
       "percentage": 29.17,
-      "impressions": 47,
+      "impressions": 45,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -23,7 +23,7 @@
     "Lawyer": {
       "count": 9,
       "percentage": 37.5,
-      "impressions": 29,
+      "impressions": 26,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -93,10 +93,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 18,
+      "impressions": 16,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.33333333333333
+      "position": 82.375
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -184,10 +184,10 @@
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-      "impressions": 15,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0,
-      "position": 92.6
+      "position": 92.75
     },
     {
       "url": "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
