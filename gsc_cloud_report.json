@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-11T10:38:35.760412+00:00",
+  "timestamp": "2026-09-12T10:07:37.383963+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 24,
-  "total_impressions": 79,
+  "total_indexed_pages": 23,
+  "total_impressions": 78,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 7,
-      "percentage": 29.17,
-      "impressions": 45,
+      "percentage": 30.43,
+      "impressions": 46,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -21,8 +21,8 @@
       ]
     },
     "Lawyer": {
-      "count": 9,
-      "percentage": 37.5,
+      "count": 10,
+      "percentage": 43.48,
       "impressions": 26,
       "clicks": 0,
       "ctr": 0.0,
@@ -31,13 +31,13 @@
         "https://scenro.com/p/alabama-expert-corporate-lawyer-expert",
         "https://scenro.com/p/alabama-expert-legal-consultant-expert",
         "https://scenro.com/p/alabama-lead-lawyer-expert",
-        "https://scenro.com/p/alabama-professional-lawyer-expert"
+        "https://scenro.com/p/alabama-professional-family-lawyer-expert"
       ]
     },
     "Other": {
-      "count": 6,
-      "percentage": 25.0,
-      "impressions": 6,
+      "count": 5,
+      "percentage": 21.74,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -45,27 +45,17 @@
         "https://scenro.com/p/maine-certified-mechanical-engineer-expert",
         "https://scenro.com/p/maine-licensed-architect-expert",
         "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
-        "https://scenro.com/p/michigan-consulting-data-scientist-expert"
+        "https://scenro.com/p/texas-professional-engineer-expert"
       ]
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 4.17,
+      "percentage": 4.35,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/idaho-junior-real-estate-agent-expert"
-      ]
-    },
-    "Tutor": {
-      "count": 1,
-      "percentage": 4.17,
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/north-carolina-licensed-education-coordinator-expert"
       ]
     }
   },
@@ -93,10 +83,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 16,
+      "impressions": 15,
       "clicks": 0,
       "ctr": 0,
-      "position": 82.375
+      "position": 82.93333333333334
     },
     {
       "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
@@ -114,10 +104,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-professional-doctor-expert",
-      "impressions": 22,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.81818181818181
+      "position": 84.04166666666667
+    },
+    {
+      "url": "https://scenro.com/p/alabama-professional-family-lawyer-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 85
     },
     {
       "url": "https://scenro.com/p/alabama-professional-lawyer-expert",
@@ -184,10 +181,10 @@
     },
     {
       "url": "https://scenro.com/p/maryland-licensed-defense-attorney-expert",
-      "impressions": 12,
+      "impressions": 11,
       "clicks": 0,
       "ctr": 0,
-      "position": 92.75
+      "position": 93.36363636363636
     },
     {
       "url": "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
@@ -197,25 +194,11 @@
       "position": 82
     },
     {
-      "url": "https://scenro.com/p/michigan-consulting-data-scientist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 94
-    },
-    {
       "url": "https://scenro.com/p/minnesota-lead-physical-therapist-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 68
-    },
-    {
-      "url": "https://scenro.com/p/north-carolina-licensed-education-coordinator-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 80
     },
     {
       "url": "https://scenro.com/p/pennsylvania-professional-corporate-lawyer-expert",
