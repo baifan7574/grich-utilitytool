@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-17T10:59:38.457833+00:00",
+  "timestamp": "2026-09-18T10:36:27.608885+00:00",
   "site_url": "https://scenro.com/",
   "total_indexed_pages": 19,
-  "total_impressions": 50,
+  "total_impressions": 46,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
       "count": 6,
       "percentage": 31.58,
-      "impressions": 31,
+      "impressions": 30,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -23,7 +23,7 @@
     "Lawyer": {
       "count": 7,
       "percentage": 36.84,
-      "impressions": 13,
+      "impressions": 10,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -76,17 +76,17 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 5,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 85.2
-    },
-    {
-      "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
       "impressions": 4,
       "clicks": 0,
       "ctr": 0,
-      "position": 80.75
+      "position": 86.75
+    },
+    {
+      "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 80
     },
     {
       "url": "https://scenro.com/p/alabama-professional-doctor-expert",
@@ -104,10 +104,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-professional-lawyer-expert",
-      "impressions": 3,
+      "impressions": 1,
       "clicks": 0,
       "ctr": 0,
-      "position": 46.666666666666664
+      "position": 49
     },
     {
       "url": "https://scenro.com/p/connecticut-expert-registered-nurse-expert",
