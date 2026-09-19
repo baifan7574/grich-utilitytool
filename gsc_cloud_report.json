@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-09-18T10:36:27.608885+00:00",
+  "timestamp": "2026-09-19T10:20:45.426020+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 19,
-  "total_impressions": 46,
+  "total_indexed_pages": 22,
+  "total_impressions": 49,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Medical": {
-      "count": 6,
-      "percentage": 31.58,
-      "impressions": 30,
+      "count": 7,
+      "percentage": 31.82,
+      "impressions": 31,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -22,7 +22,7 @@
     },
     "Lawyer": {
       "count": 7,
-      "percentage": 36.84,
+      "percentage": 31.82,
       "impressions": 10,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,9 +35,9 @@
       ]
     },
     "Other": {
-      "count": 5,
-      "percentage": 26.32,
-      "impressions": 5,
+      "count": 6,
+      "percentage": 27.27,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,12 +50,22 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 5.26,
+      "percentage": 4.55,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/p/idaho-junior-real-estate-agent-expert"
+      ]
+    },
+    "Tutor": {
+      "count": 1,
+      "percentage": 4.55,
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0.0,
+      "sample_urls": [
+        "https://scenro.com/p/tennessee-professional-school-principal-expert"
       ]
     }
   },
@@ -180,6 +190,20 @@
       "position": 97
     },
     {
+      "url": "https://scenro.com/p/tennessee-professional-physician-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "url": "https://scenro.com/p/tennessee-professional-school-principal-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 3
+    },
+    {
       "url": "https://scenro.com/p/texas-professional-engineer-expert",
       "impressions": 1,
       "clicks": 0,
@@ -192,6 +216,13 @@
       "clicks": 0,
       "ctr": 0,
       "position": 65
+    },
+    {
+      "url": "https://scenro.com/privacy",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5
     }
   ]
 }
