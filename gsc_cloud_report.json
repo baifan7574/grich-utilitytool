@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-09-27T11:26:14.369768+00:00",
+  "timestamp": "2026-09-28T12:57:30.668460+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 33,
-  "total_impressions": 57,
+  "total_indexed_pages": 32,
+  "total_impressions": 56,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 6,
-      "percentage": 18.18,
+      "percentage": 18.75,
       "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
@@ -21,9 +21,9 @@
       ]
     },
     "Medical": {
-      "count": 8,
-      "percentage": 24.24,
-      "impressions": 25,
+      "count": 7,
+      "percentage": 21.88,
+      "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -36,7 +36,7 @@
     },
     "Lawyer": {
       "count": 14,
-      "percentage": 42.42,
+      "percentage": 43.75,
       "impressions": 16,
       "clicks": 0,
       "ctr": 0.0,
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 9.09,
+      "percentage": 9.38,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -62,7 +62,7 @@
     },
     "RealEstate": {
       "count": 1,
-      "percentage": 3.03,
+      "percentage": 3.12,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -72,7 +72,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.03,
+      "percentage": 3.12,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -291,13 +291,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 1
-    },
-    {
-      "url": "https://scenro.com/p/utah-certified-medical-specialist-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 65
     },
     {
       "url": "https://scenro.com/privacy",
