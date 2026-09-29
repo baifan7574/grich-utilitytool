@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-09-28T12:57:30.668460+00:00",
+  "timestamp": "2026-09-29T12:09:47.072047+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 32,
-  "total_impressions": 56,
+  "total_indexed_pages": 28,
+  "total_impressions": 52,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
       "count": 6,
-      "percentage": 18.75,
+      "percentage": 21.43,
       "impressions": 11,
       "clicks": 0,
       "ctr": 0.0,
@@ -22,7 +22,7 @@
     },
     "Medical": {
       "count": 7,
-      "percentage": 21.88,
+      "percentage": 25.0,
       "impressions": 24,
       "clicks": 0,
       "ctr": 0.0,
@@ -35,9 +35,9 @@
       ]
     },
     "Lawyer": {
-      "count": 14,
-      "percentage": 43.75,
-      "impressions": 16,
+      "count": 11,
+      "percentage": 39.29,
+      "impressions": 13,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -50,7 +50,7 @@
     },
     "Finance": {
       "count": 3,
-      "percentage": 9.38,
+      "percentage": 10.71,
       "impressions": 3,
       "clicks": 0,
       "ctr": 0.0,
@@ -60,19 +60,9 @@
         "https://scenro.com/p/texas-consulting-tax-auditor-expert"
       ]
     },
-    "RealEstate": {
-      "count": 1,
-      "percentage": 3.12,
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0.0,
-      "sample_urls": [
-        "https://scenro.com/p/idaho-junior-real-estate-agent-expert"
-      ]
-    },
     "Tutor": {
       "count": 1,
-      "percentage": 3.12,
+      "percentage": 3.57,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -216,32 +206,11 @@
       "position": 77
     },
     {
-      "url": "https://scenro.com/p/delaware-certified-legal-consultant-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 87
-    },
-    {
       "url": "https://scenro.com/p/florida-consulting-academic-advisor-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 187
-    },
-    {
-      "url": "https://scenro.com/p/georgia-certified-family-lawyer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 93
-    },
-    {
-      "url": "https://scenro.com/p/idaho-junior-real-estate-agent-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 86
     },
     {
       "url": "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
@@ -256,13 +225,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 9
-    },
-    {
-      "url": "https://scenro.com/p/pennsylvania-professional-corporate-lawyer-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 97
     },
     {
       "url": "https://scenro.com/p/rhode-island-certified-actuary-expert",
