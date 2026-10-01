@@ -1,29 +1,29 @@
 {
-  "timestamp": "2026-09-30T11:56:57.301865+00:00",
+  "timestamp": "2026-10-01T12:28:26.092058+00:00",
   "site_url": "https://scenro.com/",
-  "total_indexed_pages": 31,
-  "total_impressions": 60,
+  "total_indexed_pages": 29,
+  "total_impressions": 47,
   "total_clicks": 0,
   "overall_ctr": 0.0,
   "industry_distribution": {
     "Other": {
-      "count": 6,
-      "percentage": 19.35,
-      "impressions": 13,
+      "count": 5,
+      "percentage": 17.24,
+      "impressions": 12,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
         "https://scenro.com/contact",
         "https://scenro.com/p/florida-consulting-academic-advisor-expert",
-        "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
         "https://scenro.com/p/rhode-island-certified-actuary-expert",
-        "https://scenro.com/privacy"
+        "https://scenro.com/privacy",
+        "https://scenro.com/terms"
       ]
     },
     "Medical": {
-      "count": 7,
-      "percentage": 22.58,
-      "impressions": 24,
+      "count": 6,
+      "percentage": 20.69,
+      "impressions": 14,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -35,9 +35,9 @@
       ]
     },
     "Lawyer": {
-      "count": 14,
-      "percentage": 45.16,
-      "impressions": 17,
+      "count": 13,
+      "percentage": 44.83,
+      "impressions": 14,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
@@ -45,16 +45,17 @@
         "https://scenro.com/p/alabama-associate-corporate-lawyer-expert",
         "https://scenro.com/p/alabama-consulting-family-lawyer-expert",
         "https://scenro.com/p/alabama-expert-lawyer-expert",
-        "https://scenro.com/p/alabama-expert-legal-consultant-expert"
+        "https://scenro.com/p/alabama-expert-paralegal-expert"
       ]
     },
     "Finance": {
-      "count": 3,
-      "percentage": 9.68,
-      "impressions": 5,
+      "count": 4,
+      "percentage": 13.79,
+      "impressions": 6,
       "clicks": 0,
       "ctr": 0.0,
       "sample_urls": [
+        "https://scenro.com/p/california-licensed-cpa-expert",
         "https://scenro.com/p/colorado-expert-cpa-expert",
         "https://scenro.com/p/oklahoma-senior-bookkeeper-expert",
         "https://scenro.com/p/texas-consulting-tax-auditor-expert"
@@ -62,7 +63,7 @@
     },
     "Tutor": {
       "count": 1,
-      "percentage": 3.23,
+      "percentage": 3.45,
       "impressions": 1,
       "clicks": 0,
       "ctr": 0.0,
@@ -116,10 +117,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-expert-doctor-expert",
-      "impressions": 4,
+      "impressions": 3,
       "clicks": 0,
       "ctr": 0,
-      "position": 86.75
+      "position": 86
     },
     {
       "url": "https://scenro.com/p/alabama-expert-lawyer-expert",
@@ -127,13 +128,6 @@
       "clicks": 0,
       "ctr": 0,
       "position": 8
-    },
-    {
-      "url": "https://scenro.com/p/alabama-expert-legal-consultant-expert",
-      "impressions": 3,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 80
     },
     {
       "url": "https://scenro.com/p/alabama-expert-paralegal-expert",
@@ -179,10 +173,10 @@
     },
     {
       "url": "https://scenro.com/p/alabama-professional-doctor-expert",
-      "impressions": 13,
+      "impressions": 5,
       "clicks": 0,
       "ctr": 0,
-      "position": 83.23076923076923
+      "position": 81
     },
     {
       "url": "https://scenro.com/p/alabama-professional-family-lawyer-expert",
@@ -213,6 +207,13 @@
       "position": 5
     },
     {
+      "url": "https://scenro.com/p/california-licensed-cpa-expert",
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4
+    },
+    {
       "url": "https://scenro.com/p/colorado-expert-cpa-expert",
       "impressions": 2,
       "clicks": 0,
@@ -220,25 +221,11 @@
       "position": 7
     },
     {
-      "url": "https://scenro.com/p/connecticut-expert-registered-nurse-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 77
-    },
-    {
       "url": "https://scenro.com/p/florida-consulting-academic-advisor-expert",
       "impressions": 1,
       "clicks": 0,
       "ctr": 0,
       "position": 187
-    },
-    {
-      "url": "https://scenro.com/p/massachusetts-certified-financial-analyst-expert",
-      "impressions": 1,
-      "clicks": 0,
-      "ctr": 0,
-      "position": 82
     },
     {
       "url": "https://scenro.com/p/oklahoma-senior-bookkeeper-expert",
